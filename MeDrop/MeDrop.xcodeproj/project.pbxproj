@@ -19,6 +19,10 @@
 		B099510A2A57A412009AC534 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951012A57A411009AC534 /* SF-Pro-Text-Bold.otf */; };
 		B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */; };
 		B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */; };
+		B09951162A57BC7D009AC534 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951152A57BC7D009AC534 /* CardView.swift */; };
+		B09951182A57BC89009AC534 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951172A57BC89009AC534 /* ProfileView.swift */; };
+		B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951192A57BC92009AC534 /* ProfileViewModel.swift */; };
+		B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951202A57BD43009AC534 /* Profile+Model1.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 		B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		B099510C2A57A437009AC534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemAsset.swift; sourceTree = "<group>"; };
+		B09951152A57BC7D009AC534 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B09951172A57BC89009AC534 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B09951192A57BC92009AC534 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		B09951202A57BD43009AC534 /* Profile+Model1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Model1.swift"; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +78,9 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B099511F2A57BD25009AC534 /* Model */,
+				B09951132A57BC51009AC534 /* Components */,
+				B09951102A57BC2A009AC534 /* Profile */,
 				B09950F52A579DBC009AC534 /* Util */,
 				B0E4D6932A5266D000788200 /* ContentView.swift */,
 				B0E4D6912A5266D000788200 /* MeDropApp.swift */,
@@ -115,6 +126,55 @@
 				B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		B09951102A57BC2A009AC534 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B09951122A57BC38009AC534 /* ViewModel */,
+				B09951112A57BC33009AC534 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B09951112A57BC33009AC534 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B09951172A57BC89009AC534 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B09951122A57BC38009AC534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B09951192A57BC92009AC534 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B09951132A57BC51009AC534 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B09951142A57BC5B009AC534 /* CardView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B09951142A57BC5B009AC534 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				B09951152A57BC7D009AC534 /* CardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		B099511F2A57BD25009AC534 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B09951202A57BD43009AC534 /* Profile+Model1.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -259,6 +319,10 @@
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
+				B09951182A57BC89009AC534 /* ProfileView.swift in Sources */,
+				B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */,
+				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
+				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
