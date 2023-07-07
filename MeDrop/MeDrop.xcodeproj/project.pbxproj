@@ -23,6 +23,7 @@
 		B09951182A57BC89009AC534 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951172A57BC89009AC534 /* ProfileView.swift */; };
 		B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951192A57BC92009AC534 /* ProfileViewModel.swift */; };
 		B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951202A57BD43009AC534 /* Profile+Model1.swift */; };
+		B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B09951222A5838DF009AC534 /* GoogleService-Info.plist */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		B09951172A57BC89009AC534 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B09951192A57BC92009AC534 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B09951202A57BD43009AC534 /* Profile+Model1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Model1.swift"; sourceTree = "<group>"; };
+		B09951222A5838DF009AC534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		B0E4D6852A5266D000788200 = {
 			isa = PBXGroup;
 			children = (
+				B09951222A5838DF009AC534 /* GoogleService-Info.plist */,
 				B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */,
 				B0E4D6902A5266D000788200 /* MeDrop */,
 				B0E4D68F2A5266D000788200 /* Products */,
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */,
 				B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */,
 				B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */,
 				B09951082A57A412009AC534 /* SF-Pro-Text-Black.otf in Resources */,
