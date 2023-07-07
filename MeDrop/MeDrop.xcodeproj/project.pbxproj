@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
+		B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09950F72A579DEB009AC534 /* Extension+Font.swift */; };
+		B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */; };
+		B09951042A57A412009AC534 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FB2A57A411009AC534 /* SF-Pro-Text-Light.otf */; };
+		B09951052A57A412009AC534 /* SF-Pro-Text-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FC2A57A411009AC534 /* SF-Pro-Text-Ultralight.otf */; };
+		B09951062A57A412009AC534 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FD2A57A411009AC534 /* SF-Pro-Text-Regular.otf */; };
+		B09951072A57A412009AC534 /* SF-Pro-Text-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FE2A57A411009AC534 /* SF-Pro-Text-Thin.otf */; };
+		B09951082A57A412009AC534 /* SF-Pro-Text-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FF2A57A411009AC534 /* SF-Pro-Text-Black.otf */; };
+		B09951092A57A412009AC534 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951002A57A411009AC534 /* SF-Pro-Text-Heavy.otf */; };
+		B099510A2A57A412009AC534 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951012A57A411009AC534 /* SF-Pro-Text-Bold.otf */; };
+		B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */; };
+		B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -16,6 +27,18 @@
 
 /* Begin PBXFileReference section */
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B09950F72A579DEB009AC534 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
+		B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		B09950FB2A57A411009AC534 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		B09950FC2A57A411009AC534 /* SF-Pro-Text-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Ultralight.otf"; sourceTree = "<group>"; };
+		B09950FD2A57A411009AC534 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		B09950FE2A57A411009AC534 /* SF-Pro-Text-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Thin.otf"; sourceTree = "<group>"; };
+		B09950FF2A57A411009AC534 /* SF-Pro-Text-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Black.otf"; sourceTree = "<group>"; };
+		B09951002A57A411009AC534 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
+		B09951012A57A411009AC534 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		B099510C2A57A437009AC534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemAsset.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +57,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B09950F32A579D88009AC534 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B099510D2A57A8A0009AC534 /* DesignSystem */,
+				B09950F92A57A0EC009AC534 /* Fonts */,
+				B0E4D6952A5266D100788200 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B09950F42A579D9D009AC534 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B09950F52A579DBC009AC534 /* Util */,
+				B0E4D6932A5266D000788200 /* ContentView.swift */,
+				B0E4D6912A5266D000788200 /* MeDropApp.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B09950F52A579DBC009AC534 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B09950F62A579DCA009AC534 /* Extensions */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B09950F62A579DCA009AC534 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B09950F72A579DEB009AC534 /* Extension+Font.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B09950F92A57A0EC009AC534 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B09950FF2A57A411009AC534 /* SF-Pro-Text-Black.otf */,
+				B09951012A57A411009AC534 /* SF-Pro-Text-Bold.otf */,
+				B09951002A57A411009AC534 /* SF-Pro-Text-Heavy.otf */,
+				B09950FB2A57A411009AC534 /* SF-Pro-Text-Light.otf */,
+				B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */,
+				B09950FD2A57A411009AC534 /* SF-Pro-Text-Regular.otf */,
+				B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */,
+				B09950FE2A57A411009AC534 /* SF-Pro-Text-Thin.otf */,
+				B09950FC2A57A411009AC534 /* SF-Pro-Text-Ultralight.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B099510D2A57A8A0009AC534 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		B0E4D6852A5266D000788200 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +137,9 @@
 		B0E4D6902A5266D000788200 /* MeDrop */ = {
 			isa = PBXGroup;
 			children = (
-				B0E4D6912A5266D000788200 /* MeDropApp.swift */,
-				B0E4D6932A5266D000788200 /* ContentView.swift */,
-				B0E4D6952A5266D100788200 /* Assets.xcassets */,
+				B099510C2A57A437009AC534 /* Info.plist */,
+				B09950F42A579D9D009AC534 /* Sources */,
+				B09950F32A579D88009AC534 /* Resources */,
 				B0E4D6972A5266D100788200 /* Preview Content */,
 			);
 			path = MeDrop;
@@ -129,9 +212,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */,
+				B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */,
+				B09951082A57A412009AC534 /* SF-Pro-Text-Black.otf in Resources */,
+				B09951052A57A412009AC534 /* SF-Pro-Text-Ultralight.otf in Resources */,
 				B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */,
 				B0E4D6992A5266D100788200 /* Preview Assets.xcassets in Resources */,
+				B099510A2A57A412009AC534 /* SF-Pro-Text-Bold.otf in Resources */,
+				B09951072A57A412009AC534 /* SF-Pro-Text-Thin.otf in Resources */,
 				B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */,
+				B09951092A57A412009AC534 /* SF-Pro-Text-Heavy.otf in Resources */,
+				B09951042A57A412009AC534 /* SF-Pro-Text-Light.otf in Resources */,
+				B09951062A57A412009AC534 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
+				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 			);
@@ -296,6 +390,7 @@
 				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MeDrop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -328,6 +423,7 @@
 				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MeDrop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
