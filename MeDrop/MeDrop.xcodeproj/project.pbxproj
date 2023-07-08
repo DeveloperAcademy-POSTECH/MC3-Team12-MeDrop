@@ -26,6 +26,7 @@
 		B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B09951222A5838DF009AC534 /* GoogleService-Info.plist */; };
 		B09951262A5914D1009AC534 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B09951252A5914D1009AC534 /* FirebaseAnalytics */; };
 		B09951282A5914D1009AC534 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B09951272A5914D1009AC534 /* FirebaseDatabase */; };
+		B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951292A591BFD009AC534 /* AppDelegate.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		B09951192A57BC92009AC534 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B09951202A57BD43009AC534 /* Profile+Model1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Model1.swift"; sourceTree = "<group>"; };
 		B09951222A5838DF009AC534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B09951292A591BFD009AC534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				B09950F52A579DBC009AC534 /* Util */,
 				B0E4D6932A5266D000788200 /* ContentView.swift */,
 				B0E4D6912A5266D000788200 /* MeDropApp.swift */,
+				B09951292A591BFD009AC534 /* AppDelegate.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
+				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B09951182A57BC89009AC534 /* ProfileView.swift in Sources */,
 				B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */,
