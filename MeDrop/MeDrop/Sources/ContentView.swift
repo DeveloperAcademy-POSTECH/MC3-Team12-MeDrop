@@ -13,19 +13,6 @@ struct ContentView: View {
             Text("10")
         }
         .padding()
-        .onAppear{
-            FireBaseDataBaseManager.shared
-                .child("firest")
-                .observeSingleEvent(of: .value) { snapshot in
-                    print("SnapShot")
-                   
-                    guard let value = snapshot.value as? String else {
-                        print("RET")
-                        return
-                    }
-                    print(value)
-                }
-        }
     }
 }
 

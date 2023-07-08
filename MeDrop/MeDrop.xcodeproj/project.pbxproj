@@ -88,6 +88,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
 				B09951102A57BC2A009AC534 /* Profile */,
@@ -195,6 +196,13 @@
 				B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */,
 			);
 			path = FireBase;
+			sourceTree = "<group>";
+		};
+		B099512E2A597BAB009AC534 /* OnBoard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OnBoard;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
