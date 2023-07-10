@@ -14,15 +14,15 @@ func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
     Button {
         //동작
     } label: {
-        HStack(spacing: 10) {
+        VStack(spacing: 2) {
             Image(systemName: "\(sfsymbol)")
                 .tint(.black)
+                .font(.system(size: 20))
             Text("\(labelText)")
-                .font(.semiBold(17))
+                .font(.semiBold(11))
                 .foregroundColor(.black)
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 14)
+        .frame(width: 76, height: 66)
         .background(DesignSystemAsset.ButtonColor.gray3)
         .cornerRadius(14)
     }
@@ -58,10 +58,11 @@ struct ProfileDetailView: View {
                             .padding(.top, 39)
                     }
                     
-                    HStack(spacing: 3) {
+                    HStack(spacing: 15) {
                         actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone")
                         actionButtonDrawer(sfsymbol: "message", labelText: "Message")
                         actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail")
+                        actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari")
                     }
                     .padding(.top, 20)
                     
