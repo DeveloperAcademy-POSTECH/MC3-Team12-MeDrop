@@ -26,9 +26,7 @@
 		B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09951022A57A411009AC534 /* SF-Pro-Text-Semibold.otf */; };
 		B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */; };
 		B09951162A57BC7D009AC534 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951152A57BC7D009AC534 /* CardView.swift */; };
-		B09951182A57BC89009AC534 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951172A57BC89009AC534 /* ProfileView.swift */; };
 		B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951192A57BC92009AC534 /* ProfileViewModel.swift */; };
-		B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951202A57BD43009AC534 /* Profile+Model1.swift */; };
 		B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B09951222A5838DF009AC534 /* GoogleService-Info.plist */; };
 		B09951262A5914D1009AC534 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B09951252A5914D1009AC534 /* FirebaseAnalytics */; };
 		B09951282A5914D1009AC534 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B09951272A5914D1009AC534 /* FirebaseDatabase */; };
@@ -69,9 +67,7 @@
 		B099510C2A57A437009AC534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B099510E2A57A8CA009AC534 /* DesignSystemAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemAsset.swift; sourceTree = "<group>"; };
 		B09951152A57BC7D009AC534 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		B09951172A57BC89009AC534 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B09951192A57BC92009AC534 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		B09951202A57BD43009AC534 /* Profile+Model1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Model1.swift"; sourceTree = "<group>"; };
 		B09951222A5838DF009AC534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B09951292A591BFD009AC534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseDataBaseManager.swift; sourceTree = "<group>"; };
@@ -148,7 +144,7 @@
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
-				B09951102A57BC2A009AC534 /* Profile */,
+				B09951102A57BC2A009AC534 /* ProfileDetail */,
 				B09950F52A579DBC009AC534 /* Util */,
 				B0E4D6932A5266D000788200 /* ContentView.swift */,
 				B0E4D6912A5266D000788200 /* MeDropApp.swift */,
@@ -203,19 +199,18 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		B09951102A57BC2A009AC534 /* Profile */ = {
+		B09951102A57BC2A009AC534 /* ProfileDetail */ = {
 			isa = PBXGroup;
 			children = (
 				B09951122A57BC38009AC534 /* ViewModel */,
 				B09951112A57BC33009AC534 /* View */,
 			);
-			path = Profile;
+			path = ProfileDetail;
 			sourceTree = "<group>";
 		};
 		B09951112A57BC33009AC534 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B09951172A57BC89009AC534 /* ProfileView.swift */,
 				9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */,
 			);
 			path = View;
@@ -249,7 +244,6 @@
 		B099511F2A57BD25009AC534 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B09951202A57BD43009AC534 /* Profile+Model1.swift */,
 				682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */,
 			);
 			path = Model;
@@ -474,9 +468,7 @@
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
-				B09951182A57BC89009AC534 /* ProfileView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
-				B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,

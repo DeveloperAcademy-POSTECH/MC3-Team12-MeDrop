@@ -13,6 +13,7 @@ struct ContentView: View {
             Text("10")
         }
         .padding()
+        
     }
 }
 
