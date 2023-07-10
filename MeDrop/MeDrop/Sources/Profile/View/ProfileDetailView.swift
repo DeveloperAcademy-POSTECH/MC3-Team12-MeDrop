@@ -9,9 +9,27 @@
 import Foundation
 import SwiftUI
 
+@ViewBuilder
+func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
+    Button {
+        //동작
+    } label: {
+        HStack(spacing: 10) {
+            Image(systemName: "\(sfsymbol)")
+                .tint(.black)
+            Text("\(labelText)")
+                .font(.semiBold(17))
+                .foregroundColor(.black)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
+        .background(DesignSystemAsset.ButtonColor.gray3)
+        .cornerRadius(14)
+    }
+}
+
 struct ProfileDetailView: View {
     var body: some View {
-        
         VStack {
             ZStack {
                 Rectangle()
@@ -23,34 +41,21 @@ struct ProfileDetailView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     // 소속
                     Text("􀣺 Apple Developer Academy")
-                        .font(Font.custom("SF Pro Text", size: 11))
+                        .font(Font.regular(11))
                         .foregroundColor(.white)
                         .padding(.top, 120)
                     // 한 줄 소개
                     Text("한 줄 소개; 안녕하세요 어쩌구 저쩌구")
-                      .font(
-                        Font.custom("SF Pro Text", size: 20)
-                          .weight(.bold)
-                      )
-                      .foregroundColor(.white)
-                      .padding(.top, 21)
+                        .font(Font.bold(20))
+                        .foregroundColor(.white)
+                        .padding(.top, 21)
                     
                     Group {
-                        // 성
-                        Text("Lee.")
-                          .font(
-                            Font.custom("SF Pro Text", size: 48)
-                              .weight(.black)
-                          )
-                          .foregroundColor(.white)
-                          .padding(.top, 39)
                         // 이름
-                        Text("WooBeen")
-                          .font(
-                            Font.custom("SF Pro Text", size: 48)
-                              .weight(.black)
-                          )
-                          .foregroundColor(.white)
+                        Text("이우빈")
+                            .font(Font.black(48))
+                            .foregroundColor(.white)
+                            .padding(.top, 39)
                     }
                     
                     HStack(spacing: 3) {
@@ -73,25 +78,7 @@ struct ProfileDetailView: View {
                             .background(Color(red: 0.95, green: 0.95, blue: 0.97))
                             .cornerRadius(14)
                         }
-                        Button {
-                            print("Message")
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "message")
-                                    .tint(.black)
-                                Text("Message")
-                                    .font(
-                                        Font.custom("SF Pro Text", size: 17)
-                                        .weight(.semibold)
-                                    )
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 14)
-                            .background(Color(red: 0.95, green: 0.95, blue: 0.97))
-                            .cornerRadius(14)
-                        }
+                        actionButtonDrawer(sfsymbol: "message", labelText: "Message")
                         Button {
                             print("mail")
                         } label: {
@@ -201,4 +188,3 @@ struct ProfileDetailView_Previews: PreviewProvider {
         ProfileDetailView()
     }
 }
-
