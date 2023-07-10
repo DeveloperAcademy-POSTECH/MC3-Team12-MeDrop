@@ -59,49 +59,13 @@ struct ProfileDetailView: View {
                     }
                     
                     HStack(spacing: 3) {
-                        Button {
-                            print("Phone")
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "phone.fill")
-                                    .tint(.black)
-                                Text("Phone")
-                                    .font(
-                                        Font.custom("SF Pro Text", size: 17)
-                                        .weight(.semibold)
-                                    )
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.horizontal, 11)
-                            .padding(.vertical, 14)
-                            .background(Color(red: 0.95, green: 0.95, blue: 0.97))
-                            .cornerRadius(14)
-                        }
+                        actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone")
                         actionButtonDrawer(sfsymbol: "message", labelText: "Message")
-                        Button {
-                            print("mail")
-                        } label: {
-                            HStack(spacing: 10) {
-                                Image(systemName: "envelope.fill")
-                                    .tint(.black)
-                                Text("mail")
-                                    .font(
-                                        Font.custom("SF Pro Text", size: 17)
-                                        .weight(.semibold)
-                                    )
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 14)
-                            .background(Color(red: 0.95, green: 0.95, blue: 0.97))
-                            .cornerRadius(14)
-                        }
+                        actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail")
                     }
                     .padding(.top, 20)
                     
-                    VStack(alignment: .leading ,spacing: 35) {
+                    VStack(alignment: .leading, spacing: 35) {
                         VStack(alignment: .leading) {
                             Text("LinkedIn 􀉣")
                               .font(
@@ -144,7 +108,7 @@ struct ProfileDetailView: View {
                     Spacer()
                         .frame(height: 45)
                     
-                    HStack() {
+                    HStack {
                         Spacer()
                         Text("Designer.")
                           .font(
