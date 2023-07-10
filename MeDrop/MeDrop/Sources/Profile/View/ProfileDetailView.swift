@@ -46,7 +46,7 @@ struct ProfileDetailView: View {
             ZStack {
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: .infinity, height: 755)
+                    .frame(width: .infinity, height: 664)
                     .background(.black)
                     .cornerRadius(135, corners: [.bottomLeft])
                 
@@ -55,19 +55,19 @@ struct ProfileDetailView: View {
                     Text("􀣺 Apple Developer Academy")
                         .font(Font.regular(11))
                         .foregroundColor(.white)
-                        .padding(.top, 120)
+                        .padding(.top, 57)
                     // 한 줄 소개
                     Text("한 줄 소개; 안녕하세요 어쩌구 저쩌구")
                         .font(Font.bold(20))
                         .foregroundColor(.white)
-                        .padding(.top, 21)
+                        .padding(.top, 15)
                     
                     Group {
                         // 이름
                         Text("이우빈")
                             .font(Font.black(48))
                             .foregroundColor(.white)
-                            .padding(.top, 39)
+                            .padding(.top, 48)
                     }
                     
                     HStack(spacing: 15) {
@@ -76,9 +76,9 @@ struct ProfileDetailView: View {
                         actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail")
                         actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari")
                     }
-                    .padding(.top, 20)
+                    .padding(.top, 43)
                     
-                    VStack(alignment: .leading, spacing: 35) {
+                    VStack(alignment: .leading, spacing: 34) {
                         infoRowDrawer(label: "Phone Number", content: "010-0000-0000")
                         infoRowDrawer(label: "Mail", content: "kdbvkdbsvbn@gmail.com")
                         infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
@@ -86,7 +86,7 @@ struct ProfileDetailView: View {
                     .padding(.top, 32)
                     
                     Spacer()
-                        .frame(height: 45)
+                        .frame(height: 46)
                     
                     HStack {
                         Spacer()
@@ -101,27 +101,6 @@ struct ProfileDetailView: View {
                 .padding(.horizontal, 15)
             }
             Spacer()
-            
-            Button {
-                print("Link")
-            } label: {
-                HStack(alignment: .center, spacing: 10) {
-                    Text("Link")
-                      .font(
-                        Font.custom("SF Pro Text", size: 17)
-                          .weight(.semibold)
-                      )
-                      .multilineTextAlignment(.center)
-                      .foregroundColor(.black)
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 14)
-                .frame(minWidth: 314, maxWidth: 314, maxHeight: .infinity, alignment: .center)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.97))
-                .cornerRadius(14)
-                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
-            }
-            .padding(.top, 13)
         }
         .ignoresSafeArea()
     }
