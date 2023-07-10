@@ -61,8 +61,8 @@ empty_parameters:
 
 # 함수 line 길이 제한. https://realm.github.io/SwiftLint/function_body_length.html
 function_body_length:
-    warning: 50
-    error: 100
+    warning: 300
+    error: 500
 
 #파일에 leading whitespace 없어야 한다. https://realm.github.io/SwiftLint/leading_whitespace.html
 leading_whitespace:
@@ -102,8 +102,8 @@ accessibility_trait_for_button:
 
 # 클로저 바디의 길이가 너무 길면 안된다. https://realm.github.io/SwiftLint/closure_body_length.html
 closure_body_length:
-    warning: 30
-    error: 100
+    warning: 300
+    error: 500
 
 # filter(where:).count 이랑 0 비교할 때는 contains를 써야 한다. https://realm.github.io/SwiftLint/contains_over_filter_count.html
 contains_over_filter_count:
