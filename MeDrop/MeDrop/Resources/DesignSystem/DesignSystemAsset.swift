@@ -28,7 +28,7 @@ public enum DesignSystemAsset {
         static let white2 = Color("White2")
         static let neonPink = Color("NeonPink")
         static let lime = Color("Lime")
-        static let gray3 = Color("Lime")
+        static let gray3 = Color("Gray3")
     }
     
     public enum IconColor {
