@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol ProfileCard: Identifiable {
-    var lastName: String { get set }
-    var firstName: String { get set }
+    var name: String { get set }
     var contact: String { get set }
     var email: String { get set }
     var company: String { get set }
@@ -30,10 +29,8 @@ enum Card: String {
 }
 
 struct ProfileCardModel: ProfileCard {
-    var id = UUID()
-    
-    var lastName: String = ""
-    var firstName: String = ""
+    var id: UUID = UUID()
+    var name: String = ""
     var contact: String = ""
     var email: String = ""
     var company: String = ""
@@ -42,7 +39,7 @@ struct ProfileCardModel: ProfileCard {
     var card: Color = Color.white
     
     func complete() -> Bool {
-        if lastName.isEmpty || firstName.isEmpty || contact.isEmpty || company.isEmpty || job.isEmpty || introduction.isEmpty {
+        if name.isEmpty || contact.isEmpty || company.isEmpty || job.isEmpty || introduction.isEmpty {
             return false
         } else {
             return true
@@ -50,7 +47,7 @@ struct ProfileCardModel: ProfileCard {
     }
     
     func back() -> Bool {
-        if !lastName.isEmpty || !firstName.isEmpty || !contact.isEmpty || !company.isEmpty || !job.isEmpty || !introduction.isEmpty {
+        if !name.isEmpty || !contact.isEmpty || !company.isEmpty || !job.isEmpty || !introduction.isEmpty {
             return true
         } else {
             return false
