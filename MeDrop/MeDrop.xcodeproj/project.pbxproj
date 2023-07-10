@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
+		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
+		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
+		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
 		9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2222A5B9123003B7556 /* Extension+View.swift */; };
 		9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */; };
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
@@ -45,6 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
+		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
+		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
+		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
 		9BA1A2222A5B9123003B7556 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -96,6 +104,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		682C62BD2A59A57F00137393 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				682C62BF2A59A5AB00137393 /* ViewModel */,
+				682C62BE2A59A5A700137393 /* View */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		682C62BE2A59A5A700137393 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				682C62C02A59A61000137393 /* CreateInfoView.swift */,
+				682C62C22A59A61800137393 /* SelectColorView.swift */,
+				682C62C42A59A65C00137393 /* CreationMainDummyView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		682C62BF2A59A5AB00137393 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B09950F32A579D88009AC534 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +143,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				682C62BD2A59A57F00137393 /* Creation */,
 				B099513A2A5BA40B009AC534 /* Main */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099511F2A57BD25009AC534 /* Model */,
@@ -215,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				B09951202A57BD43009AC534 /* Profile+Model1.swift */,
+				682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +462,8 @@
 			files = (
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
+				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
+				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
@@ -442,8 +480,10 @@
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
+				682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */,
 				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
+				682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 28NL63HBTJ;
+				DEVELOPMENT_TEAM = V7Y2HCV8V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -607,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 28NL63HBTJ;
+				DEVELOPMENT_TEAM = V7Y2HCV8V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
