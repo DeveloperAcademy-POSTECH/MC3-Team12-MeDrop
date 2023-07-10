@@ -28,6 +28,18 @@ func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
     }
 }
 
+@ViewBuilder
+func infoRowDrawer(label: String, content: String) -> some View {
+    VStack(alignment: .leading) {
+        Text("\(label)")
+          .font(Font.regular(14))
+          .foregroundColor(.white)
+        Text("\(content)")
+          .font(Font.bold(17))
+          .foregroundColor(.white)
+    }
+}
+
 struct ProfileDetailView: View {
     var body: some View {
         VStack {
@@ -67,42 +79,9 @@ struct ProfileDetailView: View {
                     .padding(.top, 20)
                     
                     VStack(alignment: .leading, spacing: 35) {
-                        VStack(alignment: .leading) {
-                            Text("LinkedIn 􀉣")
-                              .font(
-                                Font.custom("SF Pro Text", size: 17)
-                                  .weight(.bold)
-                              )
-                              .foregroundColor(.white)
-                            Text("www.LinkedInLinkedIn//LinkedIn.com")
-                              .font(Font.custom("SF Pro Text", size: 14))
-                              .underline()
-                              .foregroundColor(.white)
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("Instagram")
-                              .font(
-                                Font.custom("SF Pro Text", size: 17)
-                                  .weight(.bold)
-                              )
-                              .foregroundColor(.white)
-                            Text("@dskd__ksdjcnk____")
-                              .font(Font.custom("SF Pro Text", size: 14))
-                              .foregroundColor(.white)
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("Portfolio")
-                              .font(
-                                Font.custom("SF Pro Text", size: 17)
-                                  .weight(.bold)
-                              )
-                              .foregroundColor(.white)
-                            Text("Project; TBD (Me-Drop)")
-                              .font(Font.custom("SF Pro Text", size: 14))
-                              .foregroundColor(.white)
-                        }
+                        infoRowDrawer(label: "Phone Number", content: "010-0000-0000")
+                        infoRowDrawer(label: "Mail", content: "kdbvkdbsvbn@gmail.com")
+                        infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
                     }
                     .padding(.top, 32)
                     
