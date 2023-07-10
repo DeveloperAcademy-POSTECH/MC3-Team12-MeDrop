@@ -9,6 +9,17 @@ import Foundation
 import SwiftUI
 
 extension View {
+    
+    var safeArea: UIEdgeInsets { //노치 판단 .zero이면 노치 없음
+        
+        if let safeArea = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.safeAreaInsets {
+            return safeArea
+        }
+        
+        return .zero
+    }
+    
+    
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
