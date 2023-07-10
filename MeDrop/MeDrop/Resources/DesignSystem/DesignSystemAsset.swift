@@ -49,5 +49,9 @@ public enum DesignSystemAsset {
         static let blue1 = Color("Blue1")
     }
     
-    
+    public enum OnBoardImage {
+        static let onboard1 = Image("onBoardImg1")
+        static let onboard2 = Image("onBoardImg2")
+        static let onboard3 = Image("onBoardImg3")
+    }
 }

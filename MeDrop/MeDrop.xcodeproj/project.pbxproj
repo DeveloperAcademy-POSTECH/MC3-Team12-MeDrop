@@ -32,6 +32,10 @@
 		B09951352A5B98B2009AC534 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951342A5B98B2009AC534 /* Utility.swift */; };
 		B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */; };
 		B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */; };
+		B099513D2A5BA428009AC534 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099513C2A5BA428009AC534 /* MainView.swift */; };
+		B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099513F2A5BA5BF009AC534 /* OnBoardView.swift */; };
+		B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951412A5BA8AF009AC534 /* Extension+Color.swift */; };
+		B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951442A5BA8EF009AC534 /* PreferenceManager.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -64,6 +68,10 @@
 		B09951342A5B98B2009AC534 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIApplication.swift"; sourceTree = "<group>"; };
 		B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIScreen.swift"; sourceTree = "<group>"; };
+		B099513C2A5BA428009AC534 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B099513F2A5BA5BF009AC534 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
+		B09951412A5BA8AF009AC534 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
+		B09951442A5BA8EF009AC534 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B099513A2A5BA40B009AC534 /* Main */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
@@ -112,8 +121,8 @@
 		B09950F52A579DBC009AC534 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				B09951432A5BA8CF009AC534 /* Manager */,
 				B09951332A5B9895009AC534 /* Utility */,
-				B099512B2A592445009AC534 /* FireBase */,
 				B09950F62A579DCA009AC534 /* Extensions */,
 			);
 			path = Util;
@@ -125,6 +134,7 @@
 				B09950F72A579DEB009AC534 /* Extension+Font.swift */,
 				B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */,
 				B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */,
+				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -203,17 +213,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B099512B2A592445009AC534 /* FireBase */ = {
-			isa = PBXGroup;
-			children = (
-				B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */,
-			);
-			path = FireBase;
-			sourceTree = "<group>";
-		};
 		B099512E2A597BAB009AC534 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B099513E2A5BA5AC009AC534 /* View */,
 			);
 			path = OnBoard;
 			sourceTree = "<group>";
@@ -232,6 +235,39 @@
 				B09951342A5B98B2009AC534 /* Utility.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		B099513A2A5BA40B009AC534 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B099513B2A5BA41C009AC534 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B099513B2A5BA41C009AC534 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B099513C2A5BA428009AC534 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B099513E2A5BA5AC009AC534 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B099513F2A5BA5BF009AC534 /* OnBoardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B09951432A5BA8CF009AC534 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */,
+				B09951442A5BA8EF009AC534 /* PreferenceManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -386,15 +422,19 @@
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
+				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
+				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
 				B09951182A57BC89009AC534 /* ProfileView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951212A57BD43009AC534 /* Profile+Model1.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
+				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
+				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
