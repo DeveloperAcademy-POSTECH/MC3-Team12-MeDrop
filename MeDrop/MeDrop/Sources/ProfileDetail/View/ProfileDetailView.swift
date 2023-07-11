@@ -31,30 +31,27 @@ func actionButtonDrawer(sfsymbol: String, labelText: String, buttonColor: Color,
 }
 
 @ViewBuilder
-func infoRowDrawer(label: String, content: String, textColor: Color) -> some View {
+func infoRowDrawer(label: String, content: String) -> some View {
     VStack(alignment: .leading) {
         Text("\(label)")
           .font(Font.regular(14))
-          .foregroundColor(textColor)
         Text("\(content)")
           .font(Font.bold(17))
-          .foregroundColor(textColor)
     }
 }
 
 struct ProfileDetailView: View {
-    @State var profileCard: ProfileCardModel
+    @Binding var profileCard: ProfileCardModel
     
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
-                    .frame(width: .infinity, height: 664)
+                    .frame(width: .infinity, height: UIScreen.height * 0.8)
                     .foregroundColor(.clear)
                     .background(profileCard.colorSet.contentBackgroundColor)
                     .cornerRadius(135, corners: [.bottomLeft])
                 
-                // 컨텐츠 내용
                 VStack(alignment: .leading, spacing: 0) {
                     Group {
                     // 소속
@@ -81,28 +78,31 @@ struct ProfileDetailView: View {
                     }
                     .padding(.top, 43)
                     
-                    VStack(alignment: .leading, spacing: 34) {
-                        infoRowDrawer(label: "Phone Number", content: profileCard.contact, textColor: profileCard.colorSet.cardTextColor)
-                        infoRowDrawer(label: "Mail", content: profileCard.email, textColor: profileCard.colorSet.cardTextColor)
-                        infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com", textColor: profileCard.colorSet.cardTextColor)
-                    }
-                    .padding(.top, 32)
-                    
-                    Spacer()
-                        .frame(height: 46)
-                    
-                    HStack {
+                    Group {
+                        VStack(alignment: .leading, spacing: 34) {
+                            infoRowDrawer(label: "Phone Number", content: profileCard.contact)
+                            infoRowDrawer(label: "Mail", content: profileCard.email)
+                            infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
+                        }
+                        .padding(.top, 32)
+                        
                         Spacer()
-                        Text(profileCard.job)
-                          .font(
-                            Font.custom("SF Pro Text", size: 32)
-                              .weight(.bold)
-                          )
-                          .foregroundColor(profileCard.colorSet.cardTextColor)
+                            .frame(height: 46)
+                        
+                        HStack {
+                            Spacer()
+                            Text(profileCard.job)
+                                .font(
+                                    Font.custom("SF Pro Text", size: 32)
+                                        .weight(.bold)
+                                )
+                        }
                     }
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
                 .padding(.horizontal, 15)
             }
+            
             Spacer()
         }
         .background(profileCard.colorSet.backgroundColor)
@@ -112,6 +112,6 @@ struct ProfileDetailView: View {
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(profileCard: ProfileCardModel.sampleData[4])
+        ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[2]))
     }
 }
