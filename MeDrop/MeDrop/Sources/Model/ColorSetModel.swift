@@ -40,6 +40,14 @@ enum ColorSet: String, CaseIterable, Identifiable, Codable {
         }
     }
     
+    var buttonTextColor: Color {
+        switch self {
+        case .neonPink, .white: return DesignSystemAsset.ButtonTextColor.white
+        case .blue1: return DesignSystemAsset.ButtonTextColor.blue1
+        case .black, .lime: return DesignSystemAsset.ButtonTextColor.black
+        }
+    }
+    
     var contentBackgroundColor: Color {
         switch self {
         case .black: return DesignSystemAsset.CardColor.black
