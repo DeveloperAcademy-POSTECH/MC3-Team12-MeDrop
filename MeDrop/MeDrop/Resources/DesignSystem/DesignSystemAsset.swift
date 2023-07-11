@@ -50,8 +50,15 @@ public enum DesignSystemAsset {
     }
     
     public enum OnBoardImage {
-        static let onboard1 = Image("onBoardImg1")
-        static let onboard2 = Image("onBoardImg2")
-        static let onboard3 = Image("onBoardImg3")
+        static let onboard1 = "onBoardImg1"
+        static let onboard2 = "onBoardImg2"
+        static let onboard3 = "onBoardImg3"
+    }
+    
+    enum OnBoardText: String {
+        case obt1 = "**간편하게** 제작하는\n나만의 명함, **Me-card.**"
+        case obt2 = "나를 **각인**시키는\n명함교환, **Me-Sync.**"
+        case obt3 = "빠르게 **연결**되는\n비지니스, **Me-Drop.**"
+        case obt4 = "번거로운 **명함**관리이제는 **간편하게** 해요."
     }
 }
