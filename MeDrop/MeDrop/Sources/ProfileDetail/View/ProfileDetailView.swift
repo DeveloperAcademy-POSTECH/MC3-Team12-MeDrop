@@ -51,7 +51,7 @@ struct ProfileDetailView: View {
                     
                     HStack(spacing: 15) {
                         ForEach(ContactButton.allCases, id: \.self) { contactButton in
-                            actionButtonDrawer(contactButton: contactButton, buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor, profileCard: profileCard)
+                            actionButtonDrawer(contactButton: contactButton, profileCard: profileCard)
                         }
                     }
                     .padding(.top, 43)

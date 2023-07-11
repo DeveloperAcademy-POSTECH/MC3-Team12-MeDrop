@@ -1,4 +1,3 @@
-//
 //  ProfileViewModel.swift
 //  MeDrop
 //
@@ -42,7 +41,7 @@ enum ContactButton: String, Identifiable, CaseIterable {
 }
 
 @ViewBuilder
-func actionButtonDrawer(contactButton: ContactButton, buttonColor: Color, buttonTextColor: Color, profileCard: any ProfileCard) -> some View {
+func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCard) -> some View {
     Button(
         action: {
         switch contactButton {
@@ -74,9 +73,9 @@ func actionButtonDrawer(contactButton: ContactButton, buttonColor: Color, button
             Text(contactButton.labelText)
                 .font(.semiBold(11))
         }
-        .foregroundColor(buttonTextColor)
+        .foregroundColor(profileCard.colorSet.buttonTextColor)
         .frame(width: 76, height: 66)
-        .background(buttonColor)
+        .background(profileCard.colorSet.buttonColor)
         .cornerRadius(14)
     }
 }
