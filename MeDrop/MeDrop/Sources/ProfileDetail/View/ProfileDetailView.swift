@@ -41,6 +41,8 @@ func infoRowDrawer(label: String, content: String) -> some View {
 }
 
 struct ProfileDetailView: View {
+    @State var profileCard: ProfileCardModel
+    
     var body: some View {
         VStack {
             ZStack {
@@ -52,19 +54,19 @@ struct ProfileDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     // 소속
-                    Text("􀣺 Apple Developer Academy")
+                    Text(profileCard.company)
                         .font(Font.regular(11))
                         .foregroundColor(.white)
                         .padding(.top, 57)
                     // 한 줄 소개
-                    Text("한 줄 소개; 안녕하세요 어쩌구 저쩌구")
+                    Text(profileCard.introduction)
                         .font(Font.bold(20))
                         .foregroundColor(.white)
                         .padding(.top, 15)
                     
                     Group {
                         // 이름
-                        Text("이우빈")
+                        Text(profileCard.name)
                             .font(Font.black(48))
                             .foregroundColor(.white)
                             .padding(.top, 48)
@@ -79,8 +81,8 @@ struct ProfileDetailView: View {
                     .padding(.top, 43)
                     
                     VStack(alignment: .leading, spacing: 34) {
-                        infoRowDrawer(label: "Phone Number", content: "010-0000-0000")
-                        infoRowDrawer(label: "Mail", content: "kdbvkdbsvbn@gmail.com")
+                        infoRowDrawer(label: "Phone Number", content: profileCard.contact)
+                        infoRowDrawer(label: "Mail", content: profileCard.email)
                         infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
                     }
                     .padding(.top, 32)
@@ -108,6 +110,6 @@ struct ProfileDetailView: View {
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView()
+        ProfileDetailView(profileCard: ProfileCardModel.sampleData[0])
     }
 }
