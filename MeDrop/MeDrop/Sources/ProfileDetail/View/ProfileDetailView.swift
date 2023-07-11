@@ -10,9 +10,12 @@ import Foundation
 import SwiftUI
 
 @ViewBuilder
-func actionButtonDrawer(sfsymbol: String, labelText: String, buttonColor: Color, buttonTextColor: Color) -> some View {
-    Button {
-    } label: {
+func actionButtonDrawer(sfsymbol: String, labelText: String, buttonColor: Color, buttonTextColor: Color, phoneNumber: String) -> some View {
+    Button(action: {
+        if let url = URL(string: "sms:\(phoneNumber)") {
+            UIApplication.shared.open(url)
+        }
+    }) {
         Group {
             VStack(spacing: 2) {
                 Image(systemName: "\(sfsymbol)")
@@ -70,10 +73,10 @@ struct ProfileDetailView: View {
                     .foregroundColor(profileCard.colorSet.cardTextColor)
                     
                     HStack(spacing: 15) {
-                        actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
-                        actionButtonDrawer(sfsymbol: "message", labelText: "Message", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
-                        actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
-                        actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
+                        //actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
+                        actionButtonDrawer(sfsymbol: "message", labelText: "Message", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor, phoneNumber: profileCard.contact)
+                        //actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
+                        //actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari", buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor)
                     }
                     .padding(.top, 43)
                     
@@ -81,7 +84,7 @@ struct ProfileDetailView: View {
                         VStack(alignment: .leading, spacing: 34) {
                             infoRowDrawer(label: "Phone Number", content: profileCard.contact)
                             infoRowDrawer(label: "Mail", content: profileCard.email)
-                            infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
+                            infoRowDrawer(label: "Link", content: profileCard.link)
                         }
                         .padding(.top, 32)
                         
@@ -101,7 +104,6 @@ struct ProfileDetailView: View {
                 }
                 .padding(.horizontal, 15)
             }
-            
             Spacer()
         }
         .background(profileCard.colorSet.backgroundColor)
