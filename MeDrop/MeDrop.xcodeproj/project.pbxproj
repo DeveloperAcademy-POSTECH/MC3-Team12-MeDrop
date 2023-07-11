@@ -42,6 +42,8 @@
 		B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951442A5BA8EF009AC534 /* PreferenceManager.swift */; };
 		B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951472A5CD706009AC534 /* MainViewModel.swift */; };
 		B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514B2A5CDC08009AC534 /* SplashView.swift */; };
+		B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */; };
+		B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951552A5CF15E009AC534 /* Extension+String.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		B09951442A5BA8EF009AC534 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		B09951472A5CD706009AC534 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B099514B2A5CDC08009AC534 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
+		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */,
 				B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */,
 				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
+				B09951552A5CF15E009AC534 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,7 +237,6 @@
 		B09951132A57BC51009AC534 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B09951302A5B974C009AC534 /* AppleSignInButton */,
 				B09951142A57BC5B009AC534 /* CardView */,
 			);
 			path = Components;
@@ -257,6 +261,7 @@
 		B099512E2A597BAB009AC534 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B099514D2A5CE2A8009AC534 /* ViewModel */,
 				B099513E2A5BA5AC009AC534 /* View */,
 			);
 			path = OnBoard;
@@ -298,6 +303,7 @@
 		B099513E2A5BA5AC009AC534 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B09951302A5B974C009AC534 /* AppleSignInButton */,
 				B099513F2A5BA5BF009AC534 /* OnBoardView.swift */,
 			);
 			path = View;
@@ -334,6 +340,14 @@
 				B099514B2A5CDC08009AC534 /* SplashView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B099514D2A5CE2A8009AC534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -489,6 +503,7 @@
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
+				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
@@ -498,6 +513,7 @@
 				9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
+				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
