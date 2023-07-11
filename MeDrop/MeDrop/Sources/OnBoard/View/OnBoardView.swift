@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct OnBoardView : View {
+struct OnBoardView: View {
     var body: some View {
-        ZStack{
-            
+        ZStack {
+            Color.red
         }
     }
 }

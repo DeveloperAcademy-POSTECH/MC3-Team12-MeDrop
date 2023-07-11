@@ -17,12 +17,23 @@ struct MainView: View {
                     .ignoresSafeArea()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now()+1.5, execute: {
-                            
                             withAnimation(.easeIn) {
                                 viewModel.isSplashFinished.toggle()
                             }
                         })
                     }
+            } else if viewModel.isSplashFinished && viewModel.id == nil {
+                OnBoardView()
+            } else {
+                Button("Reset") {
+                    withAnimation(.easeIn) {
+                        if PreferenceManager.id == nil {
+                            PreferenceManager.id = "123"
+                        } else {
+                            PreferenceManager.id = nil
+                        }
+                    }
+                }
             }
         }
     }
