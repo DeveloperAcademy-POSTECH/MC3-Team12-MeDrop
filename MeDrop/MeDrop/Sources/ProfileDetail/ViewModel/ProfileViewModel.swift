@@ -42,6 +42,9 @@ enum ContactButton: String, Identifiable, CaseIterable {
 
 @ViewBuilder
 func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCard) -> some View {
+    let isEmailEmpty = profileCard.email.isEmpty
+    let isLinkEmpty = profileCard.link.isEmpty
+        
     Button(
         action: {
         switch contactButton {
@@ -77,5 +80,6 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
         .frame(width: 76, height: 66)
         .background(profileCard.colorSet.buttonColor)
         .cornerRadius(14)
+        .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
     }
 }
