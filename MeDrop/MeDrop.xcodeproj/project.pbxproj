@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1231DBB42A5BB52D00473CA0 /* CollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectView.swift */; };
-		1231DBB62A5BB53500473CA0 /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB52A5BB53500473CA0 /* ChangeView.swift */; };
+		1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectionView.swift */; };
 		1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB72A5BB53C00473CA0 /* MyView.swift */; };
+		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
+		1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */; };
+		1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */; };
+		1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */; };
+		1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */; };
 		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
 		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
@@ -50,9 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1231DBB32A5BB52D00473CA0 /* CollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectView.swift; sourceTree = "<group>"; };
-		1231DBB52A5BB53500473CA0 /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
+		1231DBB32A5BB52D00473CA0 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		1231DBB72A5BB53C00473CA0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
+		1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MyView.swift"; sourceTree = "<group>"; };
+		1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
+		1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
 		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
@@ -110,30 +118,25 @@
 			isa = PBXGroup;
 			children = (
 				1231DBB02A5BB51600473CA0 /* View */,
+				1231DBBB2A5C01EE00473CA0 /* ViewModel */,
 			);
 			path = My;
 			sourceTree = "<group>";
 		};
-		1231DBAE2A5BB4F900473CA0 /* Change */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBB22A5BB52100473CA0 /* View */,
-			);
-			path = Change;
-			sourceTree = "<group>";
-		};
-		1231DBAF2A5BB50100473CA0 /* Collect */ = {
+		1231DBAF2A5BB50100473CA0 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
 				1231DBB12A5BB51C00473CA0 /* View */,
+				1231DBC02A5CAC4B00473CA0 /* ViewModel */,
 			);
-			path = Collect;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		1231DBB02A5BB51600473CA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1231DBB72A5BB53C00473CA0 /* MyView.swift */,
+				1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,17 +144,26 @@
 		1231DBB12A5BB51C00473CA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1231DBB32A5BB52D00473CA0 /* CollectView.swift */,
+				1231DBB32A5BB52D00473CA0 /* CollectionView.swift */,
+				1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		1231DBB22A5BB52100473CA0 /* View */ = {
+		1231DBBB2A5C01EE00473CA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1231DBB52A5BB53500473CA0 /* ChangeView.swift */,
+				1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */,
 			);
-			path = View;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1231DBC02A5CAC4B00473CA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		682C62BD2A59A57F00137393 /* Creation */ = {
@@ -196,8 +208,7 @@
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099513A2A5BA40B009AC534 /* Main */,
 				1231DBAD2A5BB4DA00473CA0 /* My */,
-				1231DBAE2A5BB4F900473CA0 /* Change */,
-				1231DBAF2A5BB50100473CA0 /* Collect */,
+				1231DBAF2A5BB50100473CA0 /* Collection */,
 				682C62BD2A59A57F00137393 /* Creation */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
@@ -228,6 +239,7 @@
 				B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */,
 				B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */,
 				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
+				1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -513,9 +525,9 @@
 			files = (
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
+				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
-				1231DBB62A5BB53500473CA0 /* ChangeView.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
@@ -524,14 +536,18 @@
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
-				1231DBB42A5BB52D00473CA0 /* CollectView.swift in Sources */,
+				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
+				1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */,
+				1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
+				1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
 				682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */,
+				1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */,
 				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
 				1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,

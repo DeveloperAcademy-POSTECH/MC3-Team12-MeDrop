@@ -18,18 +18,12 @@ struct MainView: View {
                     Label("My", systemImage: "person.crop.circle.fill")
                 }
                 .tag(1)
-            ChangeView()
+            CollectionView()
                 .tabItem {
-                    Label("Change", systemImage: "antenna.radiowaves.left.and.right")
+                    Label("Collection", systemImage: "shared.with.you")
                 }
                 .tag(2)
-            CollectView()
-                .tabItem {
-                    Label("Collect", systemImage: "shared.with.you")
-                }
-                .tag(3)
         }
-        .font(.regular(50))
     }
 }
 
