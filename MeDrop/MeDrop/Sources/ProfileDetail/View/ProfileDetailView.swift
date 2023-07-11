@@ -46,12 +46,14 @@ struct ProfileDetailView: View {
     var body: some View {
         VStack {
             ZStack {
+                // 컨텐츠 사각형
                 Rectangle()
-                    .foregroundColor(.clear)
+                    //.foregroundColor(.clear)
                     .frame(width: .infinity, height: 664)
-                    .background(.black)
+                    .background(profileCard.colorSet.contentBackgroundColor)
                     .cornerRadius(135, corners: [.bottomLeft])
                 
+                // 컨텐츠 내용
                 VStack(alignment: .leading, spacing: 0) {
                     // 소속
                     Text(profileCard.company)
@@ -110,6 +112,6 @@ struct ProfileDetailView: View {
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(profileCard: ProfileCardModel.sampleData[0])
+        ProfileDetailView(profileCard: ProfileCardModel.sampleData[3])
     }
 }
