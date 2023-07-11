@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct CreateInfoView: View {
+struct CreateInfoView: View { 
+    @EnvironmentObject var myCards: EnvironmentData
     @Environment(\.dismiss) private var dismiss
     
     @State var profileCard: ProfileCardModel = ProfileCardModel()
@@ -32,8 +33,8 @@ struct CreateInfoView: View {
                             .listRowBackground(Color.clear)
                         
                         Section(header: Text("필수 입력란")) {
-                            TextField("성", text: $profileCard.lastName)
-                            TextField("이름", text: $profileCard.firstName)
+                            TextField("이름", text: $profileCard.name)
+                            
                             
                             TextField("연락처", text: $profileCard.contact).keyboardType(.numberPad)
                             TextField("소속", text: $profileCard.company)
@@ -47,7 +48,7 @@ struct CreateInfoView: View {
                     }
                 }
             }
-            NavigationLink("", destination: SelectColorView(profileCard: profileCard), isActive: $gotoNext)
+            NavigationLink("", destination: SelectColorView(profileCard: profileCard), isActive: $gotoNext).environmentObject(myCards)
             
         }.navigationTitle("프로필 만들기")
             .navigationBarBackButtonHidden(true)
