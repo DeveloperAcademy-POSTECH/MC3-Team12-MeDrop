@@ -12,9 +12,8 @@ import SwiftUI
 @ViewBuilder
 func actionButtonDrawer(sfsymbol: String, labelText: String, buttonColor: Color, buttonTextColor: Color) -> some View {
     Button {
-        
     } label: {
-        Group{
+        Group {
             VStack(spacing: 2) {
                 Image(systemName: "\(sfsymbol)")
                     .tint(.black)
