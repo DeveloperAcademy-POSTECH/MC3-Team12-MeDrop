@@ -11,10 +11,10 @@ import SwiftUI
 struct MeDropApp: App {
     // register app delegate for Firebase setup
       @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+        
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
 //                                    .onAppear{
 //                                        for family in UIFont.familyNames {
 //                                                    print(family)

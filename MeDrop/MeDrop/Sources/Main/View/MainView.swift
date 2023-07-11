@@ -9,11 +9,27 @@ import Foundation
 import SwiftUI
 
 struct MainView: View {
-
+    @StateObject var viewModel: MainViewModel = .init()
     var body: some View {
-        ZStack{
-            
+        ZStack {
+            if !viewModel.isSplashFinished {
+                SplashView()
+                    .ignoresSafeArea()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now()+1.5, execute: {
+                            
+                            withAnimation(.easeIn) {
+                                viewModel.isSplashFinished.toggle()
+                            }
+                        })
+                    }
+            }
         }
     }
-    
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+    }
 }
