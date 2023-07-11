@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct CreateInfoView: View {
+struct CreateInfoView: View { 
+    @EnvironmentObject var myCards: EnvironmentData
     @Environment(\.dismiss) private var dismiss
     
     @State var profileCard: ProfileCardModel = ProfileCardModel()
@@ -47,7 +48,8 @@ struct CreateInfoView: View {
                     }
                 }
             }
-            NavigationLink("", destination: SelectColorView(profileCard: profileCard), isActive: $gotoNext)
+            NavigationLink("", destination: SelectColorView(profileCard: profileCard), isActive: $gotoNext).environmentObject(myCards)
+            
         }.navigationTitle("프로필 만들기")
             .navigationBarBackButtonHidden(true)
             .toolbar {
