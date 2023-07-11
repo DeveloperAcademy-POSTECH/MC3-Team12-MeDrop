@@ -10,106 +10,85 @@ import Foundation
 import SwiftUI
 
 @ViewBuilder
-func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
-    Button {
-        //동작
-    } label: {
-        VStack(spacing: 2) {
-            Image(systemName: "\(sfsymbol)")
-                .tint(.black)
-                .font(.system(size: 20))
-            Text("\(labelText)")
-                .font(.semiBold(11))
-                .foregroundColor(.black)
-        }
-        .frame(width: 76, height: 66)
-        .background(DesignSystemAsset.ButtonColor.gray3)
-        .cornerRadius(14)
-    }
-}
-
-@ViewBuilder
 func infoRowDrawer(label: String, content: String) -> some View {
     VStack(alignment: .leading) {
         Text("\(label)")
           .font(Font.regular(14))
-          .foregroundColor(.white)
         Text("\(content)")
           .font(Font.bold(17))
-          .foregroundColor(.white)
     }
 }
 
 struct ProfileDetailView: View {
-    @State var profileCard: ProfileCardModel
+    @Binding var profileCard: ProfileCardModel
     
     var body: some View {
         VStack {
             ZStack {
                 Rectangle()
+                    .frame(width: .infinity, height: UIScreen.height * 0.8)
                     .foregroundColor(.clear)
-                    .frame(width: .infinity, height: 664)
-                    .background(.black)
+                    .background(profileCard.colorSet.contentBackgroundColor)
                     .cornerRadius(135, corners: [.bottomLeft])
                 
                 VStack(alignment: .leading, spacing: 0) {
+                    Group {
                     // 소속
                     Text(profileCard.company)
                         .font(Font.regular(11))
-                        .foregroundColor(.white)
                         .padding(.top, 57)
                     // 한 줄 소개
                     Text(profileCard.introduction)
                         .font(Font.bold(20))
-                        .foregroundColor(.white)
                         .padding(.top, 15)
                     
-                    Group {
                         // 이름
                         Text(profileCard.name)
                             .font(Font.black(48))
-                            .foregroundColor(.white)
                             .padding(.top, 48)
                     }
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
                     
                     HStack(spacing: 15) {
-                        actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone")
-                        actionButtonDrawer(sfsymbol: "message", labelText: "Message")
-                        actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail")
-                        actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari")
+                        ForEach(ContactButton.allCases, id: \.self) { contactButton in
+                            actionButtonDrawer(contactButton: contactButton, buttonColor: profileCard.colorSet.buttonColor, buttonTextColor: profileCard.colorSet.buttonTextColor, profileCard: profileCard)
+                        }
                     }
                     .padding(.top, 43)
                     
-                    VStack(alignment: .leading, spacing: 34) {
-                        infoRowDrawer(label: "Phone Number", content: profileCard.contact)
-                        infoRowDrawer(label: "Mail", content: profileCard.email)
-                        infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
-                    }
-                    .padding(.top, 32)
-                    
-                    Spacer()
-                        .frame(height: 46)
-                    
-                    HStack {
+                    Group {
+                        VStack(alignment: .leading, spacing: 34) {
+                            infoRowDrawer(label: "Phone Number", content: profileCard.contact)
+                            infoRowDrawer(label: "Mail", content: profileCard.email)
+                            infoRowDrawer(label: "Link", content: profileCard.link)
+                        }
+                        .padding(.top, 32)
+                        
                         Spacer()
-                        Text("Designer.")
-                          .font(
-                            Font.custom("SF Pro Text", size: 32)
-                              .weight(.bold)
-                          )
-                          .foregroundColor(.white)
+                            .frame(height: 46)
+                        
+                        HStack {
+                            Spacer()
+                            Text(profileCard.job)
+                                .font(
+                                    Font.custom("SF Pro Text", size: 32)
+                                        .weight(.bold)
+                                )
+                        }
                     }
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
                 .padding(.horizontal, 15)
             }
             Spacer()
         }
+        .background(profileCard.colorSet.backgroundColor)
         .ignoresSafeArea()
     }
 }
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(profileCard: ProfileCardModel.sampleData[0])
+        ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[3]))
     }
 }

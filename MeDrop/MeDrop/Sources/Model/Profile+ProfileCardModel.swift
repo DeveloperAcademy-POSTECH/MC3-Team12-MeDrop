@@ -7,15 +7,6 @@
 
 import Foundation
 import SwiftUI
-//
-//  Profile+ProfileInfoModel.swift
-//  MeDrop
-//
-//  Created by jose Yun on 2023/07/08.
-//
-
-import Foundation
-import SwiftUI
 
 class EnvironmentData: ObservableObject {
     @Published var cardNum: [Int] = []
