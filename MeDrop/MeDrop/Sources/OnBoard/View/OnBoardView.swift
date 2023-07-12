@@ -86,23 +86,18 @@ struct OnBoardView: View {
     
     @ViewBuilder
     func lineWithText() -> some View {
-        HStack(spacing: 0) {
-          Rectangle().frame(height: 1)
+        ZStack {
             Text("MeDrop으로 쉬운 명함관리해요")
-                .frame(maxWidth: .infinity)
+                //.frame(maxWidth: .infinity)
                 .font(.bold(15))
                 .lineLimit(1)
                 .kerning(-0.4) // 자간 조정
-               
-           Rectangle().frame(height: 1)
+                .padding(.horizontal,3)
+                .background(.white)
+                .zIndex(1)
+                
+            Rectangle().frame(height: 1)
         }
-        .onTapGesture {
-         
-                currentTab = onBoardTabs[0]
-            
-            
-        }
-       // .background(.red)
         
     }
     
