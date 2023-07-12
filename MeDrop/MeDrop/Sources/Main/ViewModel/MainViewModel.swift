@@ -21,10 +21,7 @@ final class MainViewModel: ObservableObject {
 
 extension MainViewModel {
     func output() {
-        PreferenceManager.$id.sink {[weak self]  id in
-            guard let self else {return}
-            self.id = id
-        }
-        .store(in: &subscriptions)
+        PreferenceManager.$id
+            .assign(to: &$id)
     }
 }
