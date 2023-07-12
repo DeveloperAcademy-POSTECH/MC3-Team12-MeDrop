@@ -11,24 +11,25 @@ import SwiftUI
 struct MyView: View {
     @StateObject var myViewModel = MyViewModel()
     
+    @State var selectedMyProfileCardIndex = 1
+    
     let screenWidth: Double
     let cardWidth: Double
     let cardHeight: Double
-    let widthHeightRatio: Double = 8.56 / 5.39
+    let widthHeightRatio: Double = 521 / 348
+    
+    let verticalPatternRatio: Double = 22 / 348
+    let horizontalPatternRatio: Double = 172 / 521
     
     init() {
         self.screenWidth = UIScreen.main.bounds.size.width
-        cardWidth = screenWidth - .spacing40 - .spacing10
+        cardWidth = screenWidth - .spacing40
         cardHeight = cardWidth * widthHeightRatio
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("My Profile")
-                    .font(.black(34))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
+        ZStack {
+            VStack(spacing: 0) {
                 Menu {
                     Button {
                     } label: {
@@ -43,18 +44,50 @@ struct MyView: View {
                         Label("회원 탈퇴", systemImage: "exclamationmark.triangle")
                     }
                 } label: {
-                    Image(systemName: "list.bullet")
+                    Image(systemName: "gear.badge.questionmark")
                 }
-                .font(.regular(20))
-                .frame(alignment: .trailing)
+                .font(.semiBold(24))
+                .frame(maxWidth: .infinity, maxHeight: .spacing32, alignment: .trailing)
+                .foregroundColor(Color.black)
+                
+                Text("My Profile")
+                    .font(.black(34))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                //                .border(Color.green)
+                
+                if selectedMyProfileCardIndex == myViewModel.myProfileCards.count + 1 {
+                    VStack {
+                    }.frame(maxWidth: .infinity, maxHeight: .spacing32, alignment: .trailing)
+                } else {
+                    Button {
+                    } label: {
+                        Label("교환하기", systemImage: "arrow.2.squarepath")
+                    }
+                    .font(.semiBold(20))
+                    .frame(maxWidth: .infinity, maxHeight: .spacing32, alignment: .trailing)
+                    .foregroundColor(DesignSystemAsset.IconColor.blue1)
+                }
+                
+                Spacer()
             }
+            .padding(.horizontal, .spacing20)
             
-            carouselContainerView()
-            
-            Spacer()
+            TabView(selection: $selectedMyProfileCardIndex) {
+                ForEach(myViewModel.myProfileCards) { myProfileCard in
+                    carouselItemView(info: myProfileCard)
+                        .tag(myProfileCard.idx)
+                }
+                if myViewModel.myProfileCards.count != 5 {
+                    emptyCarouselView()
+                        .tag(myViewModel.myProfileCards.count + 1)
+                } else {
+                    fullCarouselView()
+                        .tag(myViewModel.myProfileCards.count + 1)
+                }
+            }
+            .tabViewStyle(.page)
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
         }
-        .padding(.top, .spacing40)
-        .padding(.horizontal, .spacing20)
     }
 }
 

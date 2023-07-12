@@ -13,10 +13,21 @@ struct CollectionView: View {
     
     @State var sortedBy = "가나다 순"
     
+    let screenWidth: Double
+    let cardWidth: Double
+    let cardHeight: Double
+    let widthHeightRatio: Double = 8.56 / 5.39
+    
+    init() {
+        self.screenWidth = UIScreen.main.bounds.size.width
+        cardWidth = screenWidth - .spacing40 - .spacing20
+        cardHeight = cardWidth * widthHeightRatio
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Wallet")
+                Text("Collection")
                     .font(.black(34))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -58,14 +69,30 @@ struct CollectionView: View {
                     Text(sortedBy)
                     Image(systemName: "chevron.down")
                 }
-                .font(.regular(20))
+                .font(.regular(18))
                 .frame(alignment: .trailing)
             }
+            .border(Color.green)
+            
+//            ScrollView(showsIndicators: false) {
+//                ZStack {
+//                    ForEach(0..<colors.count) {
+//                        Rectangle()
+//                            .fill(colors[$0])
+//                            .frame(width: cardWidth, height: cardHeight)
+//                            .offset(y: CGFloat($0) * .spacing60)
+//                    }
+//                }
+//                .border(Color.orange)
+//            }
+//            .frame(maxWidth: .infinity)
+//            .border(Color.blue)
             
             Spacer()
         }
         .padding(.top, .spacing40)
         .padding(.horizontal, .spacing20)
+        .border(Color.red)
     }
 }
 
