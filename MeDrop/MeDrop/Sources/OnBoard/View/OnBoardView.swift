@@ -11,8 +11,12 @@ import SwiftUI
 struct OnBoardView: View {
     @State var currentTab: OnBoardTab = onBoardTabs.first!
     @State var offset: CGFloat = .zero
+    @State var showAlert: Bool = false
+    
+    let alertTitle:String = "앱을 종료하시겠습니까?"
+    let alertMessage:String = "증말로?"
+    
     let hPadding: CGFloat = 16
-    @Namespace var animation
     
     var body: some View {
         GeometryReader { outerProxy in
@@ -31,9 +35,7 @@ struct OnBoardView: View {
                                 .font(.title2)
                         }
                     }
-                    
                     dynamicCustomHeader(screenSize)
-                       // .animation(.easeIn, value: currentTab)
                     TabView(selection: $currentTab) {
                         ForEach(onBoardTabs) { tab in
                             GeometryReader { _ in
@@ -54,7 +56,6 @@ struct OnBoardView: View {
                         }
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))// 인디케이터 제거
-                    // .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                     lineWithText()
                     AppleSignInButton()
                         .cornerRadius(100)
@@ -64,6 +65,14 @@ struct OnBoardView: View {
                 .padding(.bottom, 69)
             }
             .frame(width: screenSize.width, height: screenSize.height)
+            .alert("메시지", isPresented: $showAlert) {
+                Button("Cancel", role: .destructive) {
+                    exit(0)
+                }
+                
+              Button("OK", role: .cancel) {
+              
+            }
         }
     }
     
@@ -73,7 +82,7 @@ struct OnBoardView: View {
             ForEach(onBoardTabs) { tab in
                 ZStack { // 움직이는 막대기
                     if currentTab == tab {
-                        Rectangle().fill(DesignSystemAsset.CardColor.blue1).matchedGeometryEffect(id: "TAB", in: animation)
+                        Rectangle().fill(DesignSystemAsset.CardColor.blue1)
                     } else {
                         Rectangle().fill(DesignSystemAsset.CardColor.black)
                     }
@@ -88,17 +97,18 @@ struct OnBoardView: View {
     func lineWithText() -> some View {
         ZStack {
             Text("MeDrop으로 쉬운 명함관리해요")
-                //.frame(maxWidth: .infinity)
                 .font(.bold(15))
                 .lineLimit(1)
                 .kerning(-0.4) // 자간 조정
-                .padding(.horizontal,3)
+                .padding(.horizontal, 3)
                 .background(.white)
                 .zIndex(1)
                 
             Rectangle().frame(height: 1)
         }
-        
+        .onTapGesture {
+            showAlert.toggle()
+        }
     }
     
     struct OnBoardContentView: View {
@@ -109,7 +119,6 @@ struct OnBoardView: View {
                 HStack {
                     Text(tab.content.rawValue.convertMarkDown())
                         .font(.regular(28))
-                    // .lineSpacing(30)
                         .multilineTextAlignment(.leading) // 왼쪽 정렬
                         .kerning(-0.4) // 자간 조정
                     Spacer()
