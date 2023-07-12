@@ -29,6 +29,22 @@ struct MyView: View {
     
     var body: some View {
         ZStack {
+            TabView(selection: $selectedMyProfileCardIndex) {
+                ForEach(myViewModel.myProfileCards) { myProfileCard in
+                    carouselItemView(info: myProfileCard)
+                        .tag(myProfileCard.idx)
+                }
+                if myViewModel.myProfileCards.count != 5 {
+                    emptyCarouselView()
+                        .tag(myViewModel.myProfileCards.count + 1)
+                } else {
+                    fullCarouselView()
+                        .tag(myViewModel.myProfileCards.count + 1)
+                }
+            }
+            .tabViewStyle(.page)
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            
             VStack(spacing: 0) {
                 Menu {
                     Button {
@@ -53,7 +69,6 @@ struct MyView: View {
                 Text("My Profile")
                     .font(.black(34))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                //                .border(Color.green)
                 
                 if selectedMyProfileCardIndex == myViewModel.myProfileCards.count + 1 {
                     VStack {
@@ -71,22 +86,6 @@ struct MyView: View {
                 Spacer()
             }
             .padding(.horizontal, .spacing20)
-            
-            TabView(selection: $selectedMyProfileCardIndex) {
-                ForEach(myViewModel.myProfileCards) { myProfileCard in
-                    carouselItemView(info: myProfileCard)
-                        .tag(myProfileCard.idx)
-                }
-                if myViewModel.myProfileCards.count != 5 {
-                    emptyCarouselView()
-                        .tag(myViewModel.myProfileCards.count + 1)
-                } else {
-                    fullCarouselView()
-                        .tag(myViewModel.myProfileCards.count + 1)
-                }
-            }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
         }
     }
 }

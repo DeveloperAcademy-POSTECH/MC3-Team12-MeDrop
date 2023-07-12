@@ -15,7 +15,7 @@ struct MainView: View {
         TabView(selection: $selectedTab) {
             MyView()
                 .tabItem {
-                    Label("My", systemImage: "person.crop.circle.fill")
+                    Label("My Profile", systemImage: "person.crop.circle.fill")
                 }
                 .tag(1)
             CollectionView()
