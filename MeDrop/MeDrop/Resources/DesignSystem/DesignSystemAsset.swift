@@ -53,6 +53,7 @@ public enum DesignSystemAsset {
         static let onboard1 = "onBoardImg1"
         static let onboard2 = "onBoardImg2"
         static let onboard3 = "onBoardImg3"
+        static let onboard4 = "obBoardImg4"
     }
     
     enum OnBoardText: String {
