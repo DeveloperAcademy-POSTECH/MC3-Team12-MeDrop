@@ -66,12 +66,14 @@ struct OnBoardView: View {
             }
             .frame(width: screenSize.width, height: screenSize.height)
             .alert("메시지", isPresented: $showAlert) {
+              
                 Button("Cancel", role: .destructive) {
                     exit(0)
                 }
                 
               Button("OK", role: .cancel) {
-              
+              }
+    
             }
         }
     }
