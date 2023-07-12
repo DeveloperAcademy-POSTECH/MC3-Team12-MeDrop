@@ -44,6 +44,7 @@
 		B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514B2A5CDC08009AC534 /* SplashView.swift */; };
 		B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */; };
 		B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951552A5CF15E009AC534 /* Extension+String.swift */; };
+		B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951572A5E377A009AC534 /* OnBoardTab.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		B099514B2A5CDC08009AC534 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */,
+				B09951572A5E377A009AC534 /* OnBoardTab.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
+				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,

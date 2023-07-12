@@ -8,6 +8,5 @@
 import Foundation
 
 final class OnBoardViewModel: ObservableObject {
-    @Published var index: Int = .zero
-    
+
 }
