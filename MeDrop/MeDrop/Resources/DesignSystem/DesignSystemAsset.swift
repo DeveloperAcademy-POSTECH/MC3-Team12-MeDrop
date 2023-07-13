@@ -17,18 +17,33 @@ public enum DesignSystemAsset {
         static let white = Color("White")
     }
     public enum TextColor {
-        static let black = Color("Black")
-        static let gray1 = Color("Gray1")
-        static let gray2 = Color("Gray2")
-        static let red = Color("Red")
+        static let text1 = Color("Text1")
+        static let text2 = Color("Text2")
+        static let text3 = Color("Text3")
+        static let text4 = Color("Text4")
+        static let text5 = Color("Text5")
+        static let text6 = Color("Text6")
+        static let text7 = Color("Text7")
+        static let text8 = Color("Text8")
     }
     
     public enum ButtonColor {
-        static let black = Color("Black")
-        static let white2 = Color("White2")
-        static let neonPink = Color("NeonPink")
-        static let lime = Color("Lime")
-        static let gray3 = Color("Gray3")
+        static let button1 = Color("Button1")
+        static let button2 = Color("Button2")
+        static let button3 = Color("Button3")
+        static let button4 = Color("Button4")
+        static let button5 = Color("Button5")
+        static let button6 = Color("Button6")
+        static let button7 = Color("Button7")
+        static let toggle1 = Color("Toggle1")
+        static let toggle2 = Color("Toggle2")
+    }
+    
+    public enum BackgroundColor {
+        static let background1 = Color("Background1")
+        static let background2 = Color("Background2")
+        static let onboardingDefault = Color("OnboardingDefault")
+        static let OnboardingOn = Color("OnboardingON")
     }
     
     public enum IconColor {
@@ -43,11 +58,6 @@ public enum DesignSystemAsset {
         static let white = Color("White")
     }
     
-    public enum ButtonTextColor {
-        static let white = Color("White")
-        static let gray2 = Color("Gray2")
-        static let blue1 = Color("Blue1")
-    }
     
     public enum OnBoardImage {
         static let onboard1 = "onBoardImg1"

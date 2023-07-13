@@ -11,11 +11,6 @@ import SwiftUI
 struct OnBoardView: View {
     @State var currentTab: OnBoardTab = onBoardTabs.first!
     @State var offset: CGFloat = .zero
-    @State var showAlert: Bool = false
-    
-    let alertTitle:String = "앱을 종료하시겠습니까?"
-    let alertMessage:String = "증말로?"
-    
     let hPadding: CGFloat = 16
     
     var body: some View {
@@ -25,16 +20,6 @@ struct OnBoardView: View {
             ZStack(alignment: .top) {
                 Color.white.ignoresSafeArea()
                 VStack(spacing: 30) {
-                    HStack {
-                        Spacer()
-                        Button {
-                            print("Exit")
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                        }
-                    }
                     dynamicCustomHeader(screenSize)
                     TabView(selection: $currentTab) {
                         ForEach(onBoardTabs) { tab in
@@ -63,17 +48,9 @@ struct OnBoardView: View {
                 }
                 .padding(.horizontal, hPadding)
                 .padding(.bottom, 69)
+                .padding(.top, 50)
             }
             .frame(width: screenSize.width, height: screenSize.height)
-            .alert("메시지", isPresented: $showAlert) {
-              
-                Button("Cancel", role: .destructive) {
-                    exit(0)
-                }
-              Button("OK", role: .cancel) {
-              }
-    
-            }
         }
     }
     @ViewBuilder
@@ -82,9 +59,9 @@ struct OnBoardView: View {
             ForEach(onBoardTabs) { tab in
                 ZStack { // 움직이는 막대기
                     if currentTab == tab {
-                        Rectangle().fill(DesignSystemAsset.CardColor.blue1)
+                        Rectangle().fill(DesignSystemAsset.BackgroundColor.OnboardingOn)
                     } else {
-                        Rectangle().fill(DesignSystemAsset.CardColor.black)
+                        Rectangle().fill(DesignSystemAsset.BackgroundColor.onboardingDefault)
                     }
                 }
                 
@@ -103,11 +80,10 @@ struct OnBoardView: View {
                 .padding(.horizontal, 3)
                 .background(.white)
                 .zIndex(1)
+                .foregroundColor(DesignSystemAsset.TextColor.text2)
                 
             Rectangle().frame(height: 1)
-        }
-        .onTapGesture {
-            showAlert.toggle()
+                .foregroundColor(DesignSystemAsset.TextColor.text2)
         }
     }
     
@@ -115,8 +91,8 @@ struct OnBoardView: View {
         var tab: OnBoardTab
         
         var body: some View {
-            VStack(spacing: 0) {
-                HStack {
+            VStack(spacing: 50) {
+                HStack(spacing:0) {
                     Text(tab.content.rawValue.convertMarkDown())
                         .font(.regular(28))
                         .multilineTextAlignment(.leading) // 왼쪽 정렬
@@ -124,13 +100,12 @@ struct OnBoardView: View {
                     Spacer()
                 }
                 
-                Spacer()
+             //   Spacer()
                 
                 Image(tab.image)
                     .resizable() // 사이즈 조정 가능
                     .aspectRatio(contentMode: .fit) // 프레임 사이즈에 맞게 이미지 사이즈 조정
                     .frame(width: 300, height: 300) // 이미지 뷰 frame 사이즈 조정
-                Spacer()
             }
         }
     }
