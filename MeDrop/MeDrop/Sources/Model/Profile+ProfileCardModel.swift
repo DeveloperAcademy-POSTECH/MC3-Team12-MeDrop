@@ -21,7 +21,7 @@ class EnvironmentData: ObservableObject {
     @Published var cardNum: [Int] = []
 }
 
-protocol ProfileCard: Identifiable {
+protocol ProfileCard: Identifiable, Codable {
     var name: String { get set }
     var contact: String { get set }
     var company: String { get set }
