@@ -13,7 +13,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if !viewModel.isSplashFinished {
-                LottieView(jsonName: "ME-DROP") { _ in
+                LottieView(jsonName: "MEDROP") { _ in
                     withAnimation {
                         viewModel.isSplashFinished.toggle()
                     }
