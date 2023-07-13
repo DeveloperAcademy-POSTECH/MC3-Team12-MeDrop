@@ -70,14 +70,12 @@ struct OnBoardView: View {
                 Button("Cancel", role: .destructive) {
                     exit(0)
                 }
-                
               Button("OK", role: .cancel) {
               }
     
             }
         }
     }
-    
     @ViewBuilder
     func dynamicCustomHeader(_ size: CGSize) -> some View {
         HStack(spacing: 5) {
