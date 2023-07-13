@@ -23,7 +23,7 @@ func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
                 .foregroundColor(.black)
         }
         .frame(width: 76, height: 66)
-        .background(DesignSystemAsset.ButtonColor.gray3)
+        .background(DesignSystemAsset.ButtonColor.button4)
         .cornerRadius(14)
     }
 }
