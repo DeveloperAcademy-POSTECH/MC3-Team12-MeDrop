@@ -44,31 +44,35 @@ enum ContactButton: String, Identifiable, CaseIterable {
 func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCard) -> some View {
     let isEmailEmpty = profileCard.email.isEmpty
     let isLinkEmpty = profileCard.link.isEmpty
-        
+    
     Button(
         action: {
-        switch contactButton {
-        case .phone:
-            if let url = URL(string: "tel:\(profileCard.contact)") {
-                UIApplication.shared.open(url)
+            switch contactButton {
+            case .phone:
+                if let url = URL(string: "tel:\(profileCard.contact)") {
+                    UIApplication.shared.open(url)
+                }
+                
+            case .message:
+                if let url = URL(string: "sms:\(profileCard.contact)") {
+                    UIApplication.shared.open(url)
+                }
+                
+            case .mail:
+                if let url = URL(string: "mailto:\(profileCard.email)") {
+                    UIApplication.shared.open(url)
+                }
+                
+            case .safari:
+                if let url = URL(string: "https://\(profileCard.link)") {
+                    UIApplication.shared.open(url)
+                }
             }
-            
-        case .message:
-            if let url = URL(string: "sms:\(profileCard.contact)") {
-                UIApplication.shared.open(url)
-            }
-            
-        case .mail:
-            if let url = URL(string: "mailto:\(profileCard.email)") {
-                UIApplication.shared.open(url)
-            }
-            
-        case .safari:
-            if let url = URL(string: "https://\(profileCard.link)") {
-                UIApplication.shared.open(url)
+            if (contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty) {
+                print("disabled")
             }
         }
-    }) {
+    ) {
         VStack(spacing: 2) {
             Image(systemName: contactButton.sfSymbol)
                 .tint(.black)
@@ -76,10 +80,22 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
             Text(contactButton.labelText)
                 .font(.semiBold(11))
         }
-        .foregroundColor(profileCard.colorSet.buttonTextColor)
-        .frame(width: 76, height: 66)
-        .background(profileCard.colorSet.buttonColor)
-        .cornerRadius(14)
         .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
+        .foregroundColor((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty) ? DesignSystemAsset.ButtonTextColor.gray2 : profileCard.colorSet.buttonTextColor)
+        .frame(width: 76, height: 66)
+        .background((isEmailEmpty || isLinkEmpty) ? DesignSystemAsset.ButtonColor.gray3 : profileCard.colorSet.buttonColor)
+        .cornerRadius(14)
+    }
+    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3) 
+}
+
+@ViewBuilder
+func infoRowDrawer(label: String, content: String) -> some View {
+    VStack(alignment: .leading) {
+        Text("\(label)")
+            .font(Font.regular(14))
+        Text("\(content)")
+            .font(Font.bold(17))
+            .padding(.top, 2)
     }
 }
