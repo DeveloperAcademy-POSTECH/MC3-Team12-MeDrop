@@ -13,7 +13,7 @@ struct MyCardTest: View {
         NavigationView {
             VStack {
                 ForEach($cards) {  $card in
-                    NavigationLink(destination: ProfileDetailView2(profileCard: $card, isFromMy: true)) {
+                    NavigationLink(destination: ProfileDetailView(profileCard: $card, isFromMy: true)) {
                         Text(card.name)
                     }
                 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileDetailView2: View {
+struct ProfileDetailView: View {
     @Binding var profileCard: ProfileCardModel
     var isFromMy: Bool
     @Environment(\.presentationMode) var presentationMode
@@ -111,8 +111,8 @@ struct ProfileDetailView2: View {
     }
 }
 
-struct ProfileDetailView2_Previews: PreviewProvider {
+struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView2(profileCard: .constant(ProfileCardModel.sampleData[1]), isFromMy: true)
+        ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[1]), isFromMy: true)
     }
 }
