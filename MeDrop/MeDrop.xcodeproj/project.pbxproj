@@ -41,11 +41,12 @@
 		B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951412A5BA8AF009AC534 /* Extension+Color.swift */; };
 		B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951442A5BA8EF009AC534 /* PreferenceManager.swift */; };
 		B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951472A5CD706009AC534 /* MainViewModel.swift */; };
-		B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514B2A5CDC08009AC534 /* SplashView.swift */; };
 		B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */; };
 		B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951552A5CF15E009AC534 /* Extension+String.swift */; };
 		B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951572A5E377A009AC534 /* OnBoardTab.swift */; };
 		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
+		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
+		B09951622A5F851C009AC534 /* ME-DROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951612A5F851C009AC534 /* ME-DROP.json */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -87,10 +88,11 @@
 		B09951412A5BA8AF009AC534 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		B09951442A5BA8EF009AC534 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		B09951472A5CD706009AC534 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		B099514B2A5CDC08009AC534 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
+		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		B09951612A5F851C009AC534 /* ME-DROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ME-DROP.json"; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				B099510D2A57A8A0009AC534 /* DesignSystem */,
 				B09950F92A57A0EC009AC534 /* Fonts */,
 				B0E4D6952A5266D100788200 /* Assets.xcassets */,
+				B09951612A5F851C009AC534 /* ME-DROP.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -151,7 +154,6 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B09951492A5CDBA5009AC534 /* Splash */,
 				682C62BD2A59A57F00137393 /* Creation */,
 				B099513A2A5BA40B009AC534 /* Main */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
@@ -241,6 +243,7 @@
 		B09951132A57BC51009AC534 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B099515C2A5F7F72009AC534 /* LottieView */,
 				B09951142A57BC5B009AC534 /* CardView */,
 			);
 			path = Components;
@@ -331,28 +334,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B09951492A5CDBA5009AC534 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				B099514A2A5CDBFF009AC534 /* View */,
-			);
-			path = Splash;
-			sourceTree = "<group>";
-		};
-		B099514A2A5CDBFF009AC534 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B099514B2A5CDC08009AC534 /* SplashView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		B099514D2A5CE2A8009AC534 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B099515C2A5F7F72009AC534 /* LottieView */ = {
+			isa = PBXGroup;
+			children = (
+				B099515D2A5F7F84009AC534 /* LottieView.swift */,
+			);
+			path = LottieView;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -467,6 +462,7 @@
 				B09951082A57A412009AC534 /* SF-Pro-Text-Black.otf in Resources */,
 				B09951052A57A412009AC534 /* SF-Pro-Text-Ultralight.otf in Resources */,
 				B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */,
+				B09951622A5F851C009AC534 /* ME-DROP.json in Resources */,
 				B0E4D6992A5266D100788200 /* Preview Assets.xcassets in Resources */,
 				B099510A2A57A412009AC534 /* SF-Pro-Text-Bold.otf in Resources */,
 				B09951072A57A412009AC534 /* SF-Pro-Text-Thin.otf in Resources */,
@@ -507,7 +503,6 @@
 			files = (
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
-				B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
@@ -516,6 +511,7 @@
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
+				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */,
