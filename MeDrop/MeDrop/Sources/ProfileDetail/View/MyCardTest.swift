@@ -19,6 +19,9 @@ struct MyCardTest: View {
                 }
             }
         }
+        .onAppear{
+            loadUserData()
+        }
     }
 }
 

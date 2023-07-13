@@ -68,9 +68,6 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
                     UIApplication.shared.open(url)
                 }
             }
-            if (contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty) {
-                print("disabled")
-            }
         }
     ) {
         VStack(spacing: 2) {
@@ -80,12 +77,12 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
             Text(contactButton.labelText)
                 .font(.semiBold(11))
         }
-        .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
         .foregroundColor((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty) ? DesignSystemAsset.ButtonTextColor.gray2 : profileCard.colorSet.buttonTextColor)
         .frame(width: 76, height: 66)
         .background((isEmailEmpty || isLinkEmpty) ? DesignSystemAsset.ButtonColor.gray3 : profileCard.colorSet.buttonColor)
         .cornerRadius(14)
     }
+    .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3) 
 }
 

@@ -84,33 +84,25 @@ struct ProfileDetailView2: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
-                    Group{
-                        Image(systemName: "chevron.left")
-                        Text("뒤로가기")
-                    }
-                    .foregroundColor(profileCard.colorSet.cardTextColor)
+                Button(action: {presentationMode.wrappedValue.dismiss()}) {
+                    Image(systemName: "chevron.left")
+                    Text("뒤로가기")
                 }
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
-                }
+                .foregroundColor(profileCard.colorSet.cardTextColor)
             }
-            
+        
             ToolbarItem(placement: .principal) {
                 Text("상세페이지")
                     .foregroundColor(profileCard.colorSet.cardTextColor)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    
-                }) {
-                    Group{
+                Button(action: {}) {
+                    Group {
                         Text("편집")
                         Image(systemName: "square.and.pencil")
                     }
                     .foregroundColor(profileCard.colorSet.cardTextColor)
-                    
                 }
                 .opacity(isFromMy ? 1 : 0)
             }

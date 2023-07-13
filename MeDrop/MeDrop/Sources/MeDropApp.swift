@@ -14,7 +14,7 @@ struct MeDropApp: App {
         
     var body: some Scene {
         WindowGroup {
-            ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[1]), isFromMy: true)
+            MyCardTest(cards: ProfileCardModel.sampleData)
 //                                    .onAppear{
 //                                        for family in UIFont.familyNames {
 //                                                    print(family)
