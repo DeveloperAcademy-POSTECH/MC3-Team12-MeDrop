@@ -21,7 +21,9 @@ struct AppleSignInButton: View {
                 case let appleIDCretential as ASAuthorizationAppleIDCredential:
                     
                     let user = appleIDCretential.user
-                    DEBUG_LOG(user)
+                    
+                    //TODO: 파베 연동 
+                    PreferenceManager.id = user
                     
                 default:
                     break

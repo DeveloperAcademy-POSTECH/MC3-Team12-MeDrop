@@ -9,20 +9,29 @@ import Foundation
 import SwiftUI
 
 struct MainView: View {
-    @State private var selectedTab = 1
-    
+    @StateObject var viewModel: MainViewModel = .init()
     var body: some View {
-        TabView(selection: $selectedTab) {
-            MyView()
-                .tabItem {
-                    Label("My Profile", systemImage: "person.crop.circle.fill")
+        ZStack {
+            if !viewModel.isSplashFinished {
+                LottieView(jsonName: "MEDROP") { _ in
+                    withAnimation {
+                        viewModel.isSplashFinished.toggle()
+                    }
+            
                 }
-                .tag(1)
-            CollectionView()
-                .tabItem {
-                    Label("Collection", systemImage: "shared.with.you")
+            } else if viewModel.isSplashFinished && viewModel.id == nil {
+                OnBoardView()
+            } else {
+                Button("Reset") {
+                    withAnimation(.easeIn) {
+                        if PreferenceManager.id == nil {
+                            PreferenceManager.id = "123"
+                        } else {
+                            PreferenceManager.id = nil
+                        }
+                    }
                 }
-                .tag(2)
+            }
         }
     }
 }

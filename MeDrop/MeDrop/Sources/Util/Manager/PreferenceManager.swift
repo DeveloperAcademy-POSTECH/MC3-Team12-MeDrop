@@ -13,11 +13,11 @@ public final class PreferenceManager {
     
     /// UserDefaults에 저장 된 데이터에 접근하기 위한 키 값의 나열.
     enum Constants: String {
-        case test
+        case id
     }
     
-//    @UserDefaultWrapper(key: Constants.recentRecords.rawValue, defaultValue: nil)
-    
+    @UserDefaultWrapper(key: Constants.id.rawValue, defaultValue: nil)
+    public static var id: String?
 }
 
 @propertyWrapper

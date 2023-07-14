@@ -19,6 +19,7 @@
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
 		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
+		9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9706B4992A5C28DB00841C3F /* ColorSetModel.swift */; };
 		9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2222A5B9123003B7556 /* Extension+View.swift */; };
 		9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */; };
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
@@ -48,6 +49,13 @@
 		B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099513F2A5BA5BF009AC534 /* OnBoardView.swift */; };
 		B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951412A5BA8AF009AC534 /* Extension+Color.swift */; };
 		B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951442A5BA8EF009AC534 /* PreferenceManager.swift */; };
+		B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951472A5CD706009AC534 /* MainViewModel.swift */; };
+		B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */; };
+		B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951552A5CF15E009AC534 /* Extension+String.swift */; };
+		B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951572A5E377A009AC534 /* OnBoardTab.swift */; };
+		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
+		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
+		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -67,6 +75,7 @@
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
+		9706B4992A5C28DB00841C3F /* ColorSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetModel.swift; sourceTree = "<group>"; };
 		9BA1A2222A5B9123003B7556 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -96,6 +105,12 @@
 		B099513F2A5BA5BF009AC534 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		B09951412A5BA8AF009AC534 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		B09951442A5BA8EF009AC534 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		B09951472A5CD706009AC534 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
+		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
+		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +125,7 @@
 			files = (
 				B09951282A5914D1009AC534 /* FirebaseDatabase in Frameworks */,
 				B09951262A5914D1009AC534 /* FirebaseAnalytics in Frameworks */,
+				B099515B2A5F7E41009AC534 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +217,7 @@
 				B099510D2A57A8A0009AC534 /* DesignSystem */,
 				B09950F92A57A0EC009AC534 /* Fonts */,
 				B0E4D6952A5266D100788200 /* Assets.xcassets */,
+				B09951632A5FF55C009AC534 /* MEDROP.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -243,6 +260,7 @@
 				B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */,
 				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
 				1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */,
+				B09951552A5CF15E009AC534 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,7 +317,7 @@
 		B09951132A57BC51009AC534 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B09951302A5B974C009AC534 /* AppleSignInButton */,
+				B099515C2A5F7F72009AC534 /* LottieView */,
 				B09951142A57BC5B009AC534 /* CardView */,
 			);
 			path = Components;
@@ -317,6 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */,
+				B09951572A5E377A009AC534 /* OnBoardTab.swift */,
+				9706B4992A5C28DB00841C3F /* ColorSetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +344,7 @@
 		B099512E2A597BAB009AC534 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B099514D2A5CE2A8009AC534 /* ViewModel */,
 				B099513E2A5BA5AC009AC534 /* View */,
 			);
 			path = OnBoard;
@@ -348,6 +369,7 @@
 		B099513A2A5BA40B009AC534 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B09951462A5CD6FC009AC534 /* ViewModel */,
 				B099513B2A5BA41C009AC534 /* View */,
 			);
 			path = Main;
@@ -364,6 +386,7 @@
 		B099513E2A5BA5AC009AC534 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B09951302A5B974C009AC534 /* AppleSignInButton */,
 				B099513F2A5BA5BF009AC534 /* OnBoardView.swift */,
 			);
 			path = View;
@@ -376,6 +399,30 @@
 				B09951442A5BA8EF009AC534 /* PreferenceManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		B09951462A5CD6FC009AC534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B09951472A5CD706009AC534 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B099514D2A5CE2A8009AC534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B099515C2A5F7F72009AC534 /* LottieView */ = {
+			isa = PBXGroup;
+			children = (
+				B099515D2A5F7F84009AC534 /* LottieView.swift */,
+			);
+			path = LottieView;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -436,6 +483,7 @@
 			packageProductDependencies = (
 				B09951252A5914D1009AC534 /* FirebaseAnalytics */,
 				B09951272A5914D1009AC534 /* FirebaseDatabase */,
+				B099515A2A5F7E41009AC534 /* Lottie */,
 			);
 			productName = MeDrop;
 			productReference = B0E4D68E2A5266D000788200 /* MeDrop.app */;
@@ -467,6 +515,7 @@
 			mainGroup = B0E4D6852A5266D000788200;
 			packageReferences = (
 				B09951242A5914D1009AC534 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = B0E4D68F2A5266D000788200 /* Products */;
 			projectDirPath = "";
@@ -482,6 +531,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09951642A5FF55C009AC534 /* MEDROP.json in Resources */,
 				B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */,
 				B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */,
 				B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */,
@@ -527,20 +577,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
+				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
+				9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
+				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
+				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
+				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
 				1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */,
 				1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */,
@@ -555,6 +610,7 @@
 				12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */,
 				1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
+				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
 				682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -666,7 +722,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -685,7 +741,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y2HCV8V2;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -719,7 +775,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y2HCV8V2;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -776,6 +832,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -788,6 +852,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B09951242A5914D1009AC534 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		B099515A2A5F7E41009AC534 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
