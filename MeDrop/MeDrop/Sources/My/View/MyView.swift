@@ -8,6 +8,15 @@
 import Foundation
 import SwiftUI
 
+/*
+ 1. 카드 눌렀을 때 ProfileDetailView로 Navigation, ProfileCard
+ 
+ 
+ 
+ */
+
+
+
 struct MyView: View {
     // MyViewModel에서 데이터를 불러옵니다.
     @StateObject var myViewModel = MyViewModel()

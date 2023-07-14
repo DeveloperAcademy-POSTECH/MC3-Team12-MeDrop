@@ -12,7 +12,7 @@ import SwiftUI
 struct ProfileDetailView: View {
     @Binding var profileCard: ProfileCardModel
     var isFromMy: Bool
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -94,7 +94,7 @@ struct ProfileDetailView: View {
                     .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
                 .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }
             }
             

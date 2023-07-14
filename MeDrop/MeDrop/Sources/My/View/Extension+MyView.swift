@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 extension MyView {
-    
     // My Profile에 표시되는 카드의 View 입니다.
+    @ViewBuilder
     func carouselItemView(info: MyProfileCardInfo) -> some View {
         ZStack(alignment: .bottomTrailing) {
             HStack(spacing: 0) {
@@ -77,6 +77,7 @@ extension MyView {
     }
     
     // My Profile에 카드가 없을 때 표시되는 View 입니다.
+    @ViewBuilder
     func emptyCarouselView() -> some View {
         ZStack(alignment: .bottomTrailing) {
             Button {
@@ -95,6 +96,7 @@ extension MyView {
     }
     
     // My Profile에 카드가 최대로 만들어졌을 때 표시되는 View 입니다.
+    @ViewBuilder
     func fullCarouselView() -> some View {
         ZStack {
             Text("내 프로필 카드는\n최대 5개까지 만들 수 있습니다.\n\n새로운 프로필 카드를 만드시려면\n기존 카드를 삭제해 주시기 바랍니다.\n\n삭제하고 싶은 카드를 길게 누른 뒤\n삭제 버튼을 누르시면 삭제됩니다.")
