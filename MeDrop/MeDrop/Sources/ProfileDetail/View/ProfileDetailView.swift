@@ -9,107 +9,118 @@
 import Foundation
 import SwiftUI
 
-@ViewBuilder
-func actionButtonDrawer(sfsymbol: String, labelText: String) -> some View {
-    Button {
-        //동작
-    } label: {
-        VStack(spacing: 2) {
-            Image(systemName: "\(sfsymbol)")
-                .tint(.black)
-                .font(.system(size: 20))
-            Text("\(labelText)")
-                .font(.semiBold(11))
-                .foregroundColor(.black)
-        }
-        .frame(width: 76, height: 66)
-        .background(DesignSystemAsset.ButtonColor.button4)
-        .cornerRadius(14)
-    }
-}
-
-@ViewBuilder
-func infoRowDrawer(label: String, content: String) -> some View {
-    VStack(alignment: .leading) {
-        Text("\(label)")
-          .font(Font.regular(14))
-          .foregroundColor(.white)
-        Text("\(content)")
-          .font(Font.bold(17))
-          .foregroundColor(.white)
-    }
-}
-
 struct ProfileDetailView: View {
-    @State var profileCard: ProfileCardModel
+    @Binding var profileCard: ProfileCardModel
+    var isFromMy: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: .infinity, height: 664)
-                    .background(.black)
-                    .cornerRadius(135, corners: [.bottomLeft])
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    // 소속
-                    Text(profileCard.company)
-                        .font(Font.regular(11))
-                        .foregroundColor(.white)
-                        .padding(.top, 57)
-                    // 한 줄 소개
-                    Text(profileCard.introduction)
-                        .font(Font.bold(20))
-                        .foregroundColor(.white)
-                        .padding(.top, 15)
-                    
-                    Group {
-                        // 이름
-                        Text(profileCard.name)
-                            .font(Font.black(48))
-                            .foregroundColor(.white)
-                            .padding(.top, 48)
-                    }
-                    
-                    HStack(spacing: 15) {
-                        actionButtonDrawer(sfsymbol: "phone.fill", labelText: "Phone")
-                        actionButtonDrawer(sfsymbol: "message", labelText: "Message")
-                        actionButtonDrawer(sfsymbol: "envelope.fill", labelText: "mail")
-                        actionButtonDrawer(sfsymbol: "safari.fill", labelText: "Safari")
-                    }
-                    .padding(.top, 43)
-                    
-                    VStack(alignment: .leading, spacing: 34) {
-                        infoRowDrawer(label: "Phone Number", content: profileCard.contact)
-                        infoRowDrawer(label: "Mail", content: profileCard.email)
-                        infoRowDrawer(label: "Link", content: "dbksbkdj//cadcjk.akcdk.com")
-                    }
-                    .padding(.top, 32)
-                    
-                    Spacer()
-                        .frame(height: 46)
-                    
-                    HStack {
+            Rectangle()
+                .frame( maxHeight: UIScreen.height * 0.9)
+                .foregroundColor(.clear)
+                .background(profileCard.colorSet.contentBackgroundColor)
+                .cornerRadius(135, corners: [.bottomLeft])
+                .overlay {
+                    VStack(alignment: .leading) {
                         Spacer()
-                        Text("Designer.")
-                          .font(
-                            Font.custom("SF Pro Text", size: 32)
-                              .weight(.bold)
-                          )
-                          .foregroundColor(.white)
+                            .frame(height: UIScreen.height * 0.12)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(profileCard.company)
+                                .font(Font.regular(11))
+                                .padding(.vertical)
+                            Text(profileCard.introduction)
+                                .font(Font.bold(20))
+                            Spacer()
+                            Text(profileCard.name)
+                                .font(Font.black(48))
+                            Spacer()
+                        }
+                        .frame(height: UIScreen.height * 0.25)
+                        HStack(spacing: 15) {
+                            ForEach(ContactButton.allCases, id: \.self) { contactButton in
+                                actionButtonDrawer(contactButton: contactButton, profileCard: profileCard)
+                            }
+                        }
+                        .padding(.bottom)
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 34) {
+                            infoRowDrawer(label: "Phone Number", content: profileCard.contact)
+                            infoRowDrawer(label: "Mail", content: profileCard.email)
+                            infoRowDrawer(label: "Link", content: profileCard.link)
+                        }
+                        .padding(.vertical)
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Text(profileCard.job)
+                                .font(
+                                    Font.custom("SF Pro Text", size: 32)
+                                        .weight(.bold)
+                                )
+                        }
+                        .padding(.vertical)
                     }
+                    .padding()
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
-                .padding(.horizontal, 15)
+            ZStack {
+                Spacer()
+                Button(action: {
+                    // 삭제하기 버튼 동작
+                }) {
+                    Text("삭제하기")
+                    Image(systemName: "trash")
+                }
+                .font(Font.regular(14))
+                .foregroundColor(DesignSystemAsset.TextColor.red)
+                .frame(width: UIScreen.width * 0.6, height: UIScreen.height * 0.01)
+                .padding()
+                .background(DesignSystemAsset.ButtonColor.gray3)
+                .cornerRadius(10)
+                .padding()
             }
             Spacer()
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {
+                    Group {
+                        Image(systemName: "chevron.left")
+                        Text("뒤로가기")
+                    }
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
+                }
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                Text("상세페이지")
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                }) {
+                    Group{
+                        Text("편집")
+                        Image(systemName: "square.and.pencil")
+                    }
+                    .foregroundColor(profileCard.colorSet.cardTextColor)
+                }
+                .opacity(isFromMy ? 1 : 0)
+            }
+        }
+        .background(profileCard.colorSet.backgroundColor)
     }
 }
 
-struct ProfileDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileDetailView(profileCard: ProfileCardModel.sampleData[0])
-    }
-}
+ struct ProfileDetailView_Previews: PreviewProvider {
+     static var previews: some View {
+         ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[1]), isFromMy: true)
+     }
+ }

@@ -27,7 +27,7 @@ protocol ProfileCard: Identifiable, Codable {
     func back() -> Bool
 }
 
-struct ProfileCardModel: ProfileCard {
+struct ProfileCardModel: ProfileCard, Identifiable {
     var id = UUID()
     
     var name: String = ""

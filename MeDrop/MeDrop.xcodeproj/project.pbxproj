@@ -20,8 +20,11 @@
 		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
 		9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9706B4992A5C28DB00841C3F /* ColorSetModel.swift */; };
+		97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58342A5ED34B00549E65 /* YourCardTest.swift */; };
+		97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58362A5F87C300549E65 /* ProfileDetailView.swift */; };
+		97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */; };
+		97EB4F532A5ECCCA00524E67 /* MyCardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F522A5ECCCA00524E67 /* MyCardTest.swift */; };
 		9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2222A5B9123003B7556 /* Extension+View.swift */; };
-		9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */; };
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
 		B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09950F72A579DEB009AC534 /* Extension+Font.swift */; };
 		B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */; };
@@ -76,8 +79,11 @@
 		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
 		9706B4992A5C28DB00841C3F /* ColorSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetModel.swift; sourceTree = "<group>"; };
+		97CE58342A5ED34B00549E65 /* YourCardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourCardTest.swift; sourceTree = "<group>"; };
+		97CE58362A5F87C300549E65 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFBTest.swift; sourceTree = "<group>"; };
+		97EB4F522A5ECCCA00524E67 /* MyCardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardTest.swift; sourceTree = "<group>"; };
 		9BA1A2222A5B9123003B7556 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
-		9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B09950F72A579DEB009AC534 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -293,7 +299,9 @@
 		B09951112A57BC33009AC534 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9BA1A2242A5B91C0003B7556 /* ProfileDetailView.swift */,
+				97CE58362A5F87C300549E65 /* ProfileDetailView.swift */,
+				97EB4F522A5ECCCA00524E67 /* MyCardTest.swift */,
+				97CE58342A5ED34B00549E65 /* YourCardTest.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				B09951192A57BC92009AC534 /* ProfileViewModel.swift */,
+				97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -568,11 +577,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */,
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
 				9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */,
+				97EB4F532A5ECCCA00524E67 /* MyCardTest.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
@@ -583,7 +594,7 @@
 				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
-				9BA1A2252A5B91C0003B7556 /* ProfileDetailView.swift in Sources */,
+				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
@@ -603,6 +614,7 @@
 				1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
 				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
+				97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */,
 				682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,7 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 28NL63HBTJ;
+				DEVELOPMENT_TEAM = 2YSYJFB7P9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -767,7 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 28NL63HBTJ;
+				DEVELOPMENT_TEAM = 2YSYJFB7P9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
