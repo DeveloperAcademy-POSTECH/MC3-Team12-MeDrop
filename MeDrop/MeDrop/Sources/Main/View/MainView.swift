@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
+    @State var tab: MainViewTab = .my
+    
     var body: some View {
         ZStack {
             if !viewModel.isSplashFinished {
@@ -21,14 +23,18 @@ struct MainView: View {
             } else if viewModel.isSplashFinished && viewModel.id == nil {
                 OnBoardView()
             } else {
-                Button("Reset") {
-                    withAnimation(.easeIn) {
-                        if PreferenceManager.id == nil {
-                            PreferenceManager.id = "123"
-                        } else {
-                            PreferenceManager.id = nil
+                TabView(selection: $tab) {
+                    MyView()
+                        .tabItem {
+                            Label("My", systemImage: "person.crop.circle.fill")
                         }
-                    }
+                        .tag(MainViewTab.my)
+                    
+                    CollectionView()
+                        .tabItem {
+                            Label("Collect", systemImage: "shared.with.you")
+                        }
+                        .tag(MainViewTab.collection)
                 }
             }
         }
@@ -39,4 +45,9 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
+}
+
+enum MainViewTab: Hashable {
+    case my
+    case collection
 }
