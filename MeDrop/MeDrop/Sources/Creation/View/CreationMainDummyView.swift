@@ -12,10 +12,15 @@ struct CreationMainDummyView: View {
     @StateObject var myCards = EnvironmentData()
     @StateObject var yourCards = EnvironmentData()
     
+    @State private var isShowingCreation = false
+    
     var body: some View {
         NavigationStack {
-            NavigationLink("New Card", destination: CreateInfoView())
-                .environmentObject(myCards)
+            Button("create new one") {
+                isShowingCreation = true
+            }
+        }.sheet(isPresented: $isShowingCreation) {
+            CreateInfoView(isShowingCreation: $isShowingCreation).environmentObject(myCards)
         }
     }
 }
