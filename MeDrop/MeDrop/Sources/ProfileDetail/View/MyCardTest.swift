@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MyCardTest: View {
-//    @StateObject var viewModel = MyCardTestViewModel()
+    //    @StateObject var viewModel = MyCardTestViewModel()
     @State var cards: [ProfileCardModel]
     var body: some View {
         NavigationView {
@@ -20,6 +20,7 @@ struct MyCardTest: View {
                 }
             }
         }
+    }
 }
 
 struct MyCardTest_Previews: PreviewProvider {
