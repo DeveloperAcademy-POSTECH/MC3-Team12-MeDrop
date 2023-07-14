@@ -11,18 +11,14 @@ struct MyCardTest: View {
 //    @StateObject var viewModel = MyCardTestViewModel()
     @State var cards: [ProfileCardModel]
     var body: some View {
-            NavigationView {
-                VStack {
-                    ForEach($cards) {$card in
-                        NavigationLink(destination: ProfileDetailView(profileCard: $card, isFromMy: true)) {
-                            Text(card.name)
-                        }
+        NavigationView {
+            VStack {
+                ForEach($cards) {$card in
+                    NavigationLink(destination: ProfileDetailView(profileCard: $card, isFromMy: true)) {
+                        Text(card.name)
                     }
                 }
             }
-//            .onAppear {
-//                viewModel.loadUserData()
-//            }
         }
 }
 
