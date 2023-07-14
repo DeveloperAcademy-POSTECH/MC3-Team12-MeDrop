@@ -21,7 +21,7 @@ struct CreateInfoView: View {
     var textLimit: Int = 100
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 VStack {
                     Form {
@@ -44,11 +44,11 @@ struct CreateInfoView: View {
                             TextField("이메일", text: $profileCard.email)
                         }
                     }
-                }
-                
-                NavigationLink("", destination: SelectColorView(profileCard: profileCard, showingCreation: $isShowingCreation), isActive: $isGotoNext).environmentObject(myCards)
-                
-            }.navigationBarTitle(Text("프로필 제작"), displayMode: .inline)
+                }.navigationDestination(isPresented: $isGotoNext) {
+                         SelectColorView(profileCard: profileCard, showingCreation: $isShowingCreation).environmentObject(myCards)
+                    }
+                }.navigationTitle("프로필 제작")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("돌아가기") {

@@ -17,7 +17,7 @@ struct SelectColorView: View {
     var ref: DatabaseReference! = FireBaseDataBaseManager.shared
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Image(systemName: "lanyardcard").font(.system(size: 300))
                     .foregroundColor(colorSelection)
@@ -41,7 +41,7 @@ struct SelectColorView: View {
                 }.shadow(color: .gray, radius: 3)
                     .padding()
             }
-        }.navigationTitle("프로필 만들기")
+        }.navigationTitle("프로필 제작")
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
