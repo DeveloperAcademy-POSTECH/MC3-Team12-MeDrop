@@ -10,8 +10,7 @@ import SwiftUI
 @main
 struct MeDropApp: App {
     // register app delegate for Firebase setup
-      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-        
+      @UIApplicationDelegateAdaptor(AppDelegate.self) var dele        
     var body: some Scene {
         WindowGroup {
             MyCardTest(cards: ProfileCardModel.sampleData)
