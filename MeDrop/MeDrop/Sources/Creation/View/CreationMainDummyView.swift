@@ -12,7 +12,7 @@ struct CreationMainDummyView: View {
     @StateObject var myCards = EnvironmentData()
     @StateObject var yourCards = EnvironmentData()
     
-    @State var isShowingCreation = false
+    @State private var isShowingCreation = false
     
     var body: some View {
         NavigationStack {
