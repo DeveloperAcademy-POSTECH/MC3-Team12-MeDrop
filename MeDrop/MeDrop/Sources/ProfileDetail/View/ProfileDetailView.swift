@@ -73,10 +73,10 @@ struct ProfileDetailView: View {
                     Image(systemName: "trash")
                 }
                 .font(Font.regular(14))
-                .foregroundColor(DesignSystemAsset.TextColor.red)
+                .foregroundColor(DesignSystemAsset.ButtonColor.button4)// 변경
                 .frame(width: UIScreen.width * 0.6, height: UIScreen.height * 0.01)
                 .padding()
-                .background(DesignSystemAsset.ButtonColor.gray3)
+                .background(DesignSystemAsset.ButtonColor.button4) // 변경
                 .cornerRadius(10)
                 .padding()
             }

@@ -1,11 +1,8 @@
-//
-//  RoundedCorner.swift
 //  MeDrop
 //
 //  Created by Kim Yejoon on 2023/07/10.
 //
 
-import Foundation
 import SwiftUI
 
 extension View {
@@ -17,13 +14,14 @@ extension View {
         
         return .zero
     }
-    
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
+    
     func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
         overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
-
+    }
+    
     @ViewBuilder
     func offsetX(completion: @escaping (CGFloat) -> Void) -> some View {
         self
@@ -48,21 +46,23 @@ struct OffsetKey: PreferenceKey {
     }
 }
 
+
 struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        var radius: CGFloat = .infinity
+        var corners: UIRectCorner = .allCorners
         
-        return Path(path.cgPath)
+        func path(in rect: CGRect) -> Path {
+            let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            
+            return Path(path.cgPath)
     }
 }
+
 
 struct EdgeBorder: Shape {
     var width: CGFloat
     var edges: [Edge]
-
+    
     func path(in rect: CGRect) -> Path {
         edges.map { edge -> Path in
             switch edge {
@@ -71,6 +71,8 @@ struct EdgeBorder: Shape {
             case .leading: return Path(.init(x: rect.minX, y: rect.minY, width: width, height: rect.height))
             case .trailing: return Path(.init(x: rect.maxX - width, y: rect.minY, width: width, height: rect.height))
             }
-        }.reduce(into: Path()) { $0.addPath($1) }
+        }
+        .reduce(into: Path()) { $0.addPath($1) }
     }
 }
+

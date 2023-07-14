@@ -33,10 +33,10 @@ enum ColorSet: String, CaseIterable, Identifiable, Codable {
     
     var buttonColor: Color {
         switch self {
-        case .black, .blue1: return DesignSystemAsset.ButtonColor.white2
-        case .neonPink: return DesignSystemAsset.ButtonColor.neonPink
-        case .white: return DesignSystemAsset.ButtonColor.black
-        case .lime: return DesignSystemAsset.ButtonColor.lime
+        case .black, .blue1: return DesignSystemAsset.ButtonColor.button4 // 변경
+        case .neonPink: return DesignSystemAsset.ButtonColor.button4 // 변경
+        case .white: return DesignSystemAsset.ButtonColor.button4 // 변경
+        case .lime: return DesignSystemAsset.ButtonColor.button4 // 변경
         }
     }
     

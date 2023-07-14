@@ -16,9 +16,8 @@ struct MainView: View {
                 LottieView(jsonName: "MEDROP") { _ in
                     withAnimation {
                         viewModel.isSplashFinished.toggle()
-                    }
-            
-                }
+                    }            
+            }
             } else if viewModel.isSplashFinished && viewModel.id == nil {
                 OnBoardView()
             } else {

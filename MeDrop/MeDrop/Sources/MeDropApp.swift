@@ -13,7 +13,7 @@ struct MeDropApp: App {
       @UIApplicationDelegateAdaptor(AppDelegate.self) var dele        
     var body: some Scene {
         WindowGroup {
-            MyCardTest(cards: ProfileCardModel.sampleData)
+            MainView()
 //                .onAppear{
 //                    loadUserData()
 //                }
