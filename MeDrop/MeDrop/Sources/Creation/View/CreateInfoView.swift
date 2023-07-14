@@ -10,9 +10,10 @@ import SwiftUI
 struct CreateInfoView: View { 
     @EnvironmentObject var myCards: EnvironmentData
    
-    @Binding var isShowingCreation: Bool
+    @Binding var isShowingSheet: Bool
     
-    @State var profileCard: ProfileCardModel = ProfileCardModel()
+    @Binding var profileCard: ProfileCardModel
+    @Binding var sheetTitle: String
     
     @State var isNotCompleted: Bool = false
     @State var isNotSaved: Bool = false
@@ -45,9 +46,9 @@ struct CreateInfoView: View {
                         }
                     }
                 }.navigationDestination(isPresented: $isGotoNext) {
-                         SelectColorView(profileCard: profileCard, showingCreation: $isShowingCreation).environmentObject(myCards)
+                    SelectColorView(profileCard: $profileCard, sheetTitle: $sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
                     }
-                }.navigationTitle("프로필 제작")
+                }.navigationTitle(sheetTitle)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -55,7 +56,7 @@ struct CreateInfoView: View {
                             if profileCard.back() {
                                 isNotSaved = true
                             } else {
-                                isShowingCreation.toggle()
+                                isShowingSheet.toggle()
                             }
                         }
                     }
@@ -72,7 +73,7 @@ struct CreateInfoView: View {
                 }
                 .alert("돌아가시겠어요?", isPresented: $isNotSaved) {
                     Button("확인", role: .destructive) { // 정보 저장 없이 돌아가기
-                        isShowingCreation.toggle()
+                        isShowingSheet.toggle()
                     }
                     Button("취소", role: .cancel) {
                         isNotSaved = false
@@ -88,11 +89,13 @@ struct CreateInfoView: View {
         }
     }
 }
-struct CreateInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateInfoView(isShowingCreation: .constant(true)).environmentObject(EnvironmentData())
-    }
-}
+
+//struct CreateInfoView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        CreateInfoView(isShowingSheet: .constant(true), profileCard: ProfileCardModel()).environmentObject(EnvironmentData())
+//    }
+//}
 
 extension Binding where Value == String {
     func max(_ limit: Int) -> Self {
