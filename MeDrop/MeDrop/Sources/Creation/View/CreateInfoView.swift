@@ -10,14 +10,14 @@ import SwiftUI
 struct CreateInfoView: View { 
     @EnvironmentObject var myCards: EnvironmentData
    
-    @Binding var showingCreation: Bool
+    @Binding var isShowingCreation: Bool
     
     @State var profileCard: ProfileCardModel = ProfileCardModel()
     
-    @State var notCompleted: Bool = false
-    @State var notSaved: Bool = false
+    @State var isNotCompleted: Bool = false
+    @State var isNotSaved: Bool = false
     
-    @State var gotoNext: Bool = false
+    @State var isGotoNext: Bool = false
     var textLimit: Int = 100
     
     var body: some View {
@@ -45,15 +45,17 @@ struct CreateInfoView: View {
                         }
                     }
                 }
-                NavigationLink("", destination: SelectColorView(profileCard: profileCard, showingCreation: $showingCreation), isActive: $gotoNext).environmentObject(myCards)
+                
+                NavigationLink("", destination: SelectColorView(profileCard: profileCard, showingCreation: $isShowingCreation), isActive: $isGotoNext).environmentObject(myCards)
+                
             }.navigationBarTitle(Text("프로필 제작"), displayMode: .inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("돌아가기") {
                             if profileCard.back() {
-                                notSaved = true
+                                isNotSaved = true
                             } else {
-                                showingCreation.toggle()
+                                isShowingCreation.toggle()
                             }
                         }
                     }
@@ -61,24 +63,24 @@ struct CreateInfoView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("다음") {
                             if profileCard.complete() {
-                                gotoNext = true
+                                isGotoNext = true
                             } else {
-                                notCompleted = true
+                                isNotCompleted = true
                             }
                         }
                     }
                 }
-                .alert("돌아가시겠어요?", isPresented: $notSaved) {
+                .alert("돌아가시겠어요?", isPresented: $isNotSaved) {
                     Button("확인", role: .destructive) { // 정보 저장 없이 돌아가기
-                        showingCreation.toggle()
+                        isShowingCreation.toggle()
                     }
                     Button("취소", role: .cancel) {
-                        notSaved = false
+                        isNotSaved = false
                     }
                 } message: {
                     Text("지금 돌아간다면 정보는 저장되지 않습니다. ")
                 }
-                .alert("필수입력란이 채워지지 않았어요", isPresented: $notCompleted) {
+                .alert("필수입력란이 채워지지 않았어요", isPresented: $isNotCompleted) {
                     Button("확인", role: .cancel) {}
                 } message: {
                     Text("필수 입력 정보를 채워주세요. ")
@@ -88,7 +90,7 @@ struct CreateInfoView: View {
 }
 struct CreateInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateInfoView(showingCreation: .constant(true)).environmentObject(EnvironmentData())
+        CreateInfoView(isShowingCreation: .constant(true)).environmentObject(EnvironmentData())
     }
 }
 
