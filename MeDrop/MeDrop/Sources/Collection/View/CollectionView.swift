@@ -5,7 +5,6 @@
 //  Created by JAESEOK LEE on 2023/07/10.
 //
 
-import Foundation
 import SwiftUI
 
 struct CollectionView: View {
