@@ -13,16 +13,24 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if !viewModel.isSplashFinished {
-                SplashView()
-                    .ignoresSafeArea()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now()+1.5, execute: {
-                            
-                            withAnimation(.easeIn) {
-                                viewModel.isSplashFinished.toggle()
-                            }
-                        })
+                LottieView(jsonName: "MEDROP") { _ in
+                    withAnimation {
+                        viewModel.isSplashFinished.toggle()
                     }
+            
+                }
+            } else if viewModel.isSplashFinished && viewModel.id == nil {
+                OnBoardView()
+            } else {
+                Button("Reset") {
+                    withAnimation(.easeIn) {
+                        if PreferenceManager.id == nil {
+                            PreferenceManager.id = "123"
+                        } else {
+                            PreferenceManager.id = nil
+                        }
+                    }
+                }
             }
         }
     }

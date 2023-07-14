@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectionView.swift */; };
+		1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB72A5BB53C00473CA0 /* MyView.swift */; };
+		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
+		1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */; };
+		1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */; };
+		1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */; };
+		1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */; };
+		12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */; };
 		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
 		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
@@ -45,7 +53,12 @@
 		B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951412A5BA8AF009AC534 /* Extension+Color.swift */; };
 		B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951442A5BA8EF009AC534 /* PreferenceManager.swift */; };
 		B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951472A5CD706009AC534 /* MainViewModel.swift */; };
-		B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514B2A5CDC08009AC534 /* SplashView.swift */; };
+		B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */; };
+		B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951552A5CF15E009AC534 /* Extension+String.swift */; };
+		B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951572A5E377A009AC534 /* OnBoardTab.swift */; };
+		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
+		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
+		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -53,6 +66,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1231DBB32A5BB52D00473CA0 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		1231DBB72A5BB53C00473CA0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
+		1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MyView.swift"; sourceTree = "<group>"; };
+		1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
+		1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
+		12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardViewRatio.swift; sourceTree = "<group>"; };
 		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
@@ -91,7 +112,11 @@
 		B09951412A5BA8AF009AC534 /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		B09951442A5BA8EF009AC534 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		B09951472A5CD706009AC534 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		B099514B2A5CDC08009AC534 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
+		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
+		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,16 +131,69 @@
 			files = (
 				B09951282A5914D1009AC534 /* FirebaseDatabase in Frameworks */,
 				B09951262A5914D1009AC534 /* FirebaseAnalytics in Frameworks */,
+				B099515B2A5F7E41009AC534 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1231DBAD2A5BB4DA00473CA0 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBB02A5BB51600473CA0 /* View */,
+				1231DBBB2A5C01EE00473CA0 /* ViewModel */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		1231DBAF2A5BB50100473CA0 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBB12A5BB51C00473CA0 /* View */,
+				1231DBC02A5CAC4B00473CA0 /* ViewModel */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		1231DBB02A5BB51600473CA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBB72A5BB53C00473CA0 /* MyView.swift */,
+				1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */,
+				12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1231DBB12A5BB51C00473CA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBB32A5BB52D00473CA0 /* CollectionView.swift */,
+				1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1231DBBB2A5C01EE00473CA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1231DBC02A5CAC4B00473CA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		682C62BD2A59A57F00137393 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
-				682C62BF2A59A5AB00137393 /* ViewModel */,
 				682C62BE2A59A5A700137393 /* View */,
 			);
 			path = Creation;
@@ -131,19 +209,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		682C62BF2A59A5AB00137393 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		B09950F32A579D88009AC534 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				B099510D2A57A8A0009AC534 /* DesignSystem */,
 				B09950F92A57A0EC009AC534 /* Fonts */,
 				B0E4D6952A5266D100788200 /* Assets.xcassets */,
+				B09951632A5FF55C009AC534 /* MEDROP.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -151,10 +223,11 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B09951492A5CDBA5009AC534 /* Splash */,
-				682C62BD2A59A57F00137393 /* Creation */,
-				B099513A2A5BA40B009AC534 /* Main */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
+				B099513A2A5BA40B009AC534 /* Main */,
+				1231DBAD2A5BB4DA00473CA0 /* My */,
+				1231DBAF2A5BB50100473CA0 /* Collection */,
+				682C62BD2A59A57F00137393 /* Creation */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
 				B09951102A57BC2A009AC534 /* ProfileDetail */,
@@ -184,6 +257,8 @@
 				B09951362A5B9AFC009AC534 /* Extension+UIApplication.swift */,
 				B09951382A5B9B4D009AC534 /* Extension+UIScreen.swift */,
 				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
+				1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */,
+				B09951552A5CF15E009AC534 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,7 +318,7 @@
 		B09951132A57BC51009AC534 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B09951302A5B974C009AC534 /* AppleSignInButton */,
+				B099515C2A5F7F72009AC534 /* LottieView */,
 				B09951142A57BC5B009AC534 /* CardView */,
 			);
 			path = Components;
@@ -261,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */,
+				B09951572A5E377A009AC534 /* OnBoardTab.swift */,
 				9706B4992A5C28DB00841C3F /* ColorSetModel.swift */,
 			);
 			path = Model;
@@ -269,6 +345,7 @@
 		B099512E2A597BAB009AC534 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
+				B099514D2A5CE2A8009AC534 /* ViewModel */,
 				B099513E2A5BA5AC009AC534 /* View */,
 			);
 			path = OnBoard;
@@ -310,6 +387,7 @@
 		B099513E2A5BA5AC009AC534 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B09951302A5B974C009AC534 /* AppleSignInButton */,
 				B099513F2A5BA5BF009AC534 /* OnBoardView.swift */,
 			);
 			path = View;
@@ -332,20 +410,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B09951492A5CDBA5009AC534 /* Splash */ = {
+		B099514D2A5CE2A8009AC534 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B099514A2A5CDBFF009AC534 /* View */,
+				B099514E2A5CE2B3009AC534 /* OnBoardViewModel.swift */,
 			);
-			path = Splash;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B099514A2A5CDBFF009AC534 /* View */ = {
+		B099515C2A5F7F72009AC534 /* LottieView */ = {
 			isa = PBXGroup;
 			children = (
-				B099514B2A5CDC08009AC534 /* SplashView.swift */,
+				B099515D2A5F7F84009AC534 /* LottieView.swift */,
 			);
-			path = View;
+			path = LottieView;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -406,6 +484,7 @@
 			packageProductDependencies = (
 				B09951252A5914D1009AC534 /* FirebaseAnalytics */,
 				B09951272A5914D1009AC534 /* FirebaseDatabase */,
+				B099515A2A5F7E41009AC534 /* Lottie */,
 			);
 			productName = MeDrop;
 			productReference = B0E4D68E2A5266D000788200 /* MeDrop.app */;
@@ -437,6 +516,7 @@
 			mainGroup = B0E4D6852A5266D000788200;
 			packageReferences = (
 				B09951242A5914D1009AC534 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = B0E4D68F2A5266D000788200 /* Products */;
 			projectDirPath = "";
@@ -452,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09951642A5FF55C009AC534 /* MEDROP.json in Resources */,
 				B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */,
 				B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */,
 				B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */,
@@ -498,28 +579,39 @@
 			files = (
 				97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */,
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
-				B099514C2A5CDC08009AC534 /* SplashView.swift in Sources */,
+				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
+				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
 				9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */,
 				97EB4F532A5ECCCA00524E67 /* MyCardTest.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
+				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
+				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
+				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
+				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
+				1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */,
+				1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
+				1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
 				682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */,
+				1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */,
 				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
+				12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */,
+				1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
 				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
 				97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */,
@@ -580,7 +672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -634,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -744,6 +836,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -756,6 +856,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B09951242A5914D1009AC534 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		B099515A2A5F7E41009AC534 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B09951592A5F7E41009AC534 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

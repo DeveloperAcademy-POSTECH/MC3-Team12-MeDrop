@@ -5,14 +5,13 @@
 //  Created by jose Yun on 2023/07/08.
 //
 
-import Foundation
 import SwiftUI
 
 class EnvironmentData: ObservableObject {
     @Published var cardNum: [Int] = []
 }
 
-protocol ProfileCard: Identifiable {
+protocol ProfileCard: Identifiable, Codable {
     var name: String { get set }
     var contact: String { get set }
     var company: String { get set }
