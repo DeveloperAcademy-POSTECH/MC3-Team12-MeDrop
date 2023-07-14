@@ -13,7 +13,7 @@ struct MeDropApp: App {
       @UIApplicationDelegateAdaptor(AppDelegate.self) var dele        
     var body: some Scene {
         WindowGroup {
-            MainView()
+            ProfileDetailView(profileCard: .constant(ProfileCardModel.sampleData[1]))
 //                                    .onAppear{
 //                                        for family in UIFont.familyNames {
 //                                                    print(family)
