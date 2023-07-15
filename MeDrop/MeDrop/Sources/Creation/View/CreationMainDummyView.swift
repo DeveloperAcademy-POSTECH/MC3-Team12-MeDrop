@@ -12,15 +12,17 @@ struct CreationMainDummyView: View {
     @StateObject var myCards = EnvironmentData()
     @StateObject var yourCards = EnvironmentData()
     
-    @State private var isShowingCreation = false
+    @State var profileCard: ProfileCardModel = ProfileCardModel()
+    @State var sheetTitle: String = "프로필 만들기"
+    @State private var isShowingSheet = false
     
     var body: some View {
         NavigationStack {
             Button("create new one") {
-                isShowingCreation = true
+                isShowingSheet.toggle()
             }
-        }.sheet(isPresented: $isShowingCreation) {
-            CreateInfoView(isShowingCreation: $isShowingCreation).environmentObject(myCards)
+        }.sheet(isPresented: $isShowingSheet) {
+            CreateInfoView(isShowingSheet: $isShowingSheet, profileCard: $profileCard, sheetTitle: $sheetTitle).environmentObject(myCards)
         }
     }
 }

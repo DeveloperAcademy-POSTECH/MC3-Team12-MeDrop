@@ -58,7 +58,6 @@ struct RoundedCorner: Shape {
     }
 }
 
-
 struct EdgeBorder: Shape {
     var width: CGFloat
     var edges: [Edge]
@@ -75,4 +74,3 @@ struct EdgeBorder: Shape {
         .reduce(into: Path()) { $0.addPath($1) }
     }
 }
-

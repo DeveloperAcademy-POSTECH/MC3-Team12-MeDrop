@@ -10,10 +10,13 @@ import SwiftUI
 
 struct SelectColorView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var profileCard: ProfileCardModel
+    
+    @Binding var profileCard: ProfileCardModel
+    @Binding var sheetTitle: String
     @State var colorSelection: Color =  DesignSystemAsset.CardColor.white
     
-    @Binding var showingCreation: Bool
+    @Binding var isShowingSheet: Bool
+    
     var ref: DatabaseReference! = FireBaseDataBaseManager.shared
     
     var body: some View {
@@ -41,7 +44,7 @@ struct SelectColorView: View {
                 }.shadow(color: .gray, radius: 3)
                     .padding()
             }
-        }.navigationTitle("프로필 제작")
+        }.navigationTitle(sheetTitle)
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -57,7 +60,7 @@ struct SelectColorView: View {
                                 self.ref.child("cards/\($profileCard.id)").setValue(json)
                             }
                         }
-                        showingCreation.toggle()
+                        isShowingSheet.toggle()
                     }
                 }
             } // toolbar end
@@ -65,8 +68,8 @@ struct SelectColorView: View {
     }
 }
 
-struct SelectColorView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectColorView(profileCard: ProfileCardModel(), showingCreation: .constant(true))
-    }
-}
+//struct SelectColorView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SelectColorView(profileCard: ProfileCardModel(), isShowingSheet: .constant(true))
+//    }
+//}
