@@ -35,8 +35,10 @@ struct MyView: View {
             // if-else문을 통해 카드의 개수에 따라 카드 추가 화면과 삭제 안내 문구 화면을 띄워줍니다.
             TabView(selection: $selectedMyProfileCardIndex) {
                 ForEach(myViewModel.myProfileCards) { myProfileCard in
-                    carouselItemView(info: myProfileCard)
-                        .tag(myProfileCard.idx)
+                    Button(action: {}){
+                        carouselItemView(info: myProfileCard)
+                    }
+                    .tag(myProfileCard.idx)
                 }
                 if myViewModel.myProfileCards.count != 5 {
                     emptyCarouselView()
