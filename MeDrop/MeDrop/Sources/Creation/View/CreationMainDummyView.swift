@@ -13,7 +13,7 @@ struct CreationMainDummyView: View {
     @StateObject var yourCards = EnvironmentData()
     
     @State var profileCard: ProfileCardModel = ProfileCardModel()
-    @State var sheetTitle: String = "프로필 만들기"
+    var sheetTitle: String = "프로필 만들기"
     @State private var isShowingSheet = false
     
     var body: some View {
@@ -22,7 +22,7 @@ struct CreationMainDummyView: View {
                 isShowingSheet.toggle()
             }
         }.sheet(isPresented: $isShowingSheet) {
-            CreateInfoView(isShowingSheet: $isShowingSheet, profileCard: $profileCard, sheetTitle: $sheetTitle).environmentObject(myCards)
+            CreateInfoView(isShowingSheet: $isShowingSheet, profileCard: $profileCard, sheetTitle: sheetTitle).environmentObject(myCards)
         }
     }
 }

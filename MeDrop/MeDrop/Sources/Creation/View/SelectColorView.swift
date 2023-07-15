@@ -12,7 +12,7 @@ struct SelectColorView: View {
     @Environment(\.dismiss) private var dismiss
     
     @Binding var profileCard: ProfileCardModel
-    @Binding var sheetTitle: String
+    var sheetTitle: String
     @State var colorSelection: Color =  DesignSystemAsset.CardColor.white
     
     @Binding var isShowingSheet: Bool

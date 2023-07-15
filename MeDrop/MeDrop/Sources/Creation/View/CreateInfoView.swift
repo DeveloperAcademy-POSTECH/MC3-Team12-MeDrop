@@ -13,7 +13,8 @@ struct CreateInfoView: View {
     @Binding var isShowingSheet: Bool
     
     @Binding var profileCard: ProfileCardModel
-    @Binding var sheetTitle: String
+//    @Binding var sheetTitle: String
+    var sheetTitle: String
     
     @State var isNotCompleted: Bool = false
     @State var isNotSaved: Bool = false
@@ -46,7 +47,7 @@ struct CreateInfoView: View {
                         }
                     }
                 }.navigationDestination(isPresented: $isGotoNext) {
-                    SelectColorView(profileCard: $profileCard, sheetTitle: $sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
+                    SelectColorView(profileCard: $profileCard, sheetTitle: sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
                     }
                 }.navigationTitle(sheetTitle)
                 .navigationBarTitleDisplayMode(.inline)
