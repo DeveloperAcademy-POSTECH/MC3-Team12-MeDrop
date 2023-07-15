@@ -11,6 +11,9 @@ import SwiftUI
 
 struct ProfileDetailView: View {
     @Binding var profileCard: ProfileCardModel
+    @State var isShowingSheet: Bool = false
+    @State var sheetTitle = "프로필 편집"
+    @StateObject var myCards = EnvironmentData()
     var isFromMy: Bool
     @Environment(\.dismiss) private var dismiss
     
@@ -105,6 +108,7 @@ struct ProfileDetailView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
+                    isShowingSheet = true
                 }) {
                     Group{
                         Text("편집")
@@ -116,6 +120,9 @@ struct ProfileDetailView: View {
             }
         }
         .background(profileCard.colorSet.backgroundColor)
+        .sheet(isPresented: $isShowingSheet) {
+            CreateInfoView(isShowingSheet: $isShowingSheet, profileCard: $profileCard, sheetTitle: $sheetTitle).environmentObject(myCards)
+        }
     }
 }
 
