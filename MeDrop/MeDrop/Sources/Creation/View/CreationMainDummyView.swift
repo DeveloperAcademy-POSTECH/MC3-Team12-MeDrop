@@ -24,8 +24,17 @@ struct CreationMainDummyView: View {
         }.sheet(isPresented: $isShowingSheet) {
             CreateInfoView(isShowingSheet: $isShowingSheet, profileCard: $profileCard, sheetTitle: sheetTitle).environmentObject(myCards)
         }
+//        .onAppear {
+//
+//
+//              // ...
+//            }) { error in
+//              print(error.localizedDescription)
+//            }
+            
+        }
     }
-}
+
 
 struct CreationMainDummyView_Previews: PreviewProvider {
     static var previews: some View {

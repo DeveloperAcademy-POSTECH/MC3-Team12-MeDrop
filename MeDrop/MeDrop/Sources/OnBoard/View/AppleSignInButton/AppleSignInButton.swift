@@ -24,6 +24,8 @@ struct AppleSignInButton: View {
                     
                     //TODO: 파베 연동 
                     PreferenceManager.id = user
+                    print("id is", PreferenceManager.id)
+                    FireBaseDataBaseManager.registerUser()
                     
                 default:
                     break
