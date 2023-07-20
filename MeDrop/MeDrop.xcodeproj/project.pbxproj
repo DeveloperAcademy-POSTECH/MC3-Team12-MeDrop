@@ -27,7 +27,7 @@
 		9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2222A5B9123003B7556 /* Extension+View.swift */; };
 		B00125772A677B2E00439760 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00125762A677B2E00439760 /* ShareView.swift */; };
 		B001257A2A677B3B00439760 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00125792A677B3B00439760 /* ShareViewModel.swift */; };
-		B001257C2A677C3B00439760 /* NearByManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001257B2A677C3B00439760 /* NearByManager.swift */; };
+		B001257C2A677C3B00439760 /* MpcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001257B2A677C3B00439760 /* MpcManager.swift */; };
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
 		B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09950F72A579DEB009AC534 /* Extension+Font.swift */; };
 		B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */; };
@@ -89,7 +89,7 @@
 		9BA1A2222A5B9123003B7556 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		B00125762A677B2E00439760 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		B00125792A677B3B00439760 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
-		B001257B2A677C3B00439760 /* NearByManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByManager.swift; sourceTree = "<group>"; };
+		B001257B2A677C3B00439760 /* MpcManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MpcManager.swift; sourceTree = "<group>"; };
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B09950F72A579DEB009AC534 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 			children = (
 				B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */,
 				B09951442A5BA8EF009AC534 /* PreferenceManager.swift */,
-				B001257B2A677C3B00439760 /* NearByManager.swift */,
+				B001257B2A677C3B00439760 /* MpcManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -624,7 +624,7 @@
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
-				B001257C2A677C3B00439760 /* NearByManager.swift in Sources */,
+				B001257C2A677C3B00439760 /* MpcManager.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
 				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
@@ -781,7 +781,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -815,7 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;

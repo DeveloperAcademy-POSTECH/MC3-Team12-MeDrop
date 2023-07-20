@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var mpc = MpcManager(userName: "H", cardId: "123\(UIDevice.current.name)")
+    
     var body: some View {
         VStack {
-            Text("10")
+            Button("Button") {
+                mpc.startHosting()
+            }
+            Text(mpc.receiveCard)
+            
         }
-        .padding()
-        
     }
 }
 
