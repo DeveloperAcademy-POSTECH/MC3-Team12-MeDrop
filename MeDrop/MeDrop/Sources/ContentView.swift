@@ -12,11 +12,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button("Button") {
+            Button("Start") {
                 mpc.startHosting()
             }
-            Text(mpc.receiveCard)
             
+            Button("Stop") {
+                mpc.invalidate()
+            }
+            Text(mpc.receiveCard)
         }
     }
 }

@@ -9,10 +9,6 @@ import SwiftUI
 import MultipeerConnectivity
 
 class MpcManager: NSObject, ObservableObject {
-    var peerDataHandler: ((Data, MCPeerID) -> Void)? // 연결된 피어에서 데이터를 수신하면 호출
-    var peerConnectedHandler: ((MCPeerID) -> Void)? // 피어가 연결되면 호출
-    var peerDisconnectedHandler: ((MCPeerID) -> Void)? // 피어가 연결 해체되면 호출
-    
     private let mcSession: MCSession
     private let localPeerID: MCPeerID
     private let mcAdvertiser: MCNearbyServiceAdvertiser
@@ -42,6 +38,11 @@ class MpcManager: NSObject, ObservableObject {
         mcAdvertiser.delegate = self
         mcBrowser.delegate = self
     }
+    
+    deinit {
+        invalidate()
+        DEBUG_LOG("DEINIT: MpcManager")
+    }
 }
 
 extension MpcManager {
@@ -62,7 +63,6 @@ extension MpcManager {
     }
     
     func sendData() {
-
         DEBUG_LOG("SEND")
         if !mcSession.connectedPeers.isEmpty {
             guard let cardData = card.data(using: .utf8) else {
@@ -80,7 +80,6 @@ extension MpcManager {
 
 extension MpcManager: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        
         DEBUG_LOG("제발1")
         
         switch state {
@@ -98,7 +97,6 @@ extension MpcManager: MCSessionDelegate {
                 self.sendData()
             }
             
-        
         @unknown default:
             DEBUG_LOG("Unkwon Error")
         }
