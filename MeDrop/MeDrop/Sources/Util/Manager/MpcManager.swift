@@ -20,7 +20,7 @@ class MpcManager: NSObject, ObservableObject {
     private let identityString: String
     private let maxNumPeers: Int // 최대 연결 가능한 피어 수
     private let card: String
-    private let serviceType: String = "medrop" // Bonjour Service 아이디에서 _  .tcp 제거한 값
+    private let serviceType: String = "medrop" // Bonjour Service 아이디에서 _  _.tcp 제거한 값
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어 
     @Published var receiveCard: String = "H"
