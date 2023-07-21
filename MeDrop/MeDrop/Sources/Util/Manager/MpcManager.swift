@@ -20,7 +20,7 @@ class MpcManager: NSObject, ObservableObject {
     private let identityString: String
     private let maxNumPeers: Int // 최대 연결 가능한 피어 수
     private let card: String
-    private let serviceType: String = "dp-service" // Bonjour Service 아이디에서 _  .tcp 제거한 값
+    private let serviceType: String = "medrop" // Bonjour Service 아이디에서 _  .tcp 제거한 값
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어 
     @Published var receiveCard: String = "H"
@@ -41,13 +41,12 @@ class MpcManager: NSObject, ObservableObject {
         mcSession.delegate = self
         mcAdvertiser.delegate = self
         mcBrowser.delegate = self
-        
-        
     }
 }
 
 extension MpcManager {
     func startHosting() {
+        DEBUG_LOG("START")
         mcAdvertiser.startAdvertisingPeer()
         mcBrowser.startBrowsingForPeers()
     }
@@ -55,6 +54,11 @@ extension MpcManager {
     func stopHosting() {
         mcAdvertiser.stopAdvertisingPeer()
         mcBrowser.stopBrowsingForPeers()
+    }
+    
+    func invalidate() {
+        stopHosting()
+        mcSession.disconnect()
     }
     
     func sendData() {
@@ -128,7 +132,6 @@ extension MpcManager: MCSessionDelegate {
 
 extension MpcManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        
         DEBUG_LOG("Foundpeer")
         browser.invitePeer(peerID, to: mcSession, withContext: nil, timeout: 10)
     }

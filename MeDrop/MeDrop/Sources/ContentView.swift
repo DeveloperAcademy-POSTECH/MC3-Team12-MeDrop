@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var mpc = MpcManager(userName: "H", cardId: "123\(UIDevice.current.name)")
+    @StateObject var mpc = MpcManager(userName: "H", cardId: "12345\(UIDevice.current.name)")
     
     var body: some View {
         VStack {
