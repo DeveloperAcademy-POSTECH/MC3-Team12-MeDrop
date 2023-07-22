@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
+    @StateObject var cardStore = CardStore()
     @State var tab: MainViewTab = .my
     
     var body: some View {
