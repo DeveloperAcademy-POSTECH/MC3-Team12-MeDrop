@@ -14,6 +14,5 @@ struct CardView: View {
         RoundedRectangle(cornerRadius: 20)
             .foregroundColor(.clear)
             .background(card.colorSet.cardColor)
-            .frame(width: UIScreen.width/2, height: UIScreen.height/2)
     }
 }

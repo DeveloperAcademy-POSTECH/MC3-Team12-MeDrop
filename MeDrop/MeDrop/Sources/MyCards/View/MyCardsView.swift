@@ -9,14 +9,16 @@ import SwiftUI
 
 struct MyCardsView: View {
     @Binding var myCards: [ProfileCardModel]
-    @State var selectedIndex = 1
+    @State var selectedIndex = 0
+    
+    @State var isMenu = false
     var body: some View {
         NavigationStack {
             ZStack {
                 TabView(selection: $selectedIndex) {
-                    ForEach($myCards) { card in
-                        CardView(card: card)
-                            .tag(card.id)
+                    ForEach($myCards.indices) { index in
+                        CardView(card: $myCards[index])
+                            .tag(index)
                     }
                 }
                 .border(.red)
@@ -25,8 +27,11 @@ struct MyCardsView: View {
             }
             .navigationTitle("My Cards")
             .toolbar {
-                Button(action:{}){
+                Button(action:{ isMenu.toggle() }){
                     Image(systemName: "ellipsis")
+                }
+                .navigationDestination(isPresented: $isMenu) {
+                    MenuView()
                 }
             }
         }
