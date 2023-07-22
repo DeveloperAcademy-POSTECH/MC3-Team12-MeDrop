@@ -24,11 +24,17 @@ struct MainView: View {
                 OnBoardView()
             } else {
                 TabView(selection: $tab) {
-                    MyView()
+                    MyCardsView()
                         .tabItem {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
                         .tag(MainViewTab.my)
+                    
+                    ExchangeView()
+                        .tabItem {
+                            Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
+                        }
+                        .tag(MainViewTab.exchange)
                     
                     CollectionView()
                         .tabItem {
@@ -49,5 +55,6 @@ struct MainView_Previews: PreviewProvider {
 
 enum MainViewTab: Hashable {
     case my
+    case exchange
     case collection
 }
