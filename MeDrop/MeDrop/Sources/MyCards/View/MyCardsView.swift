@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyCardsView: View {
+    @Binding var myCards: [ProfileCardModel]
     var body: some View {
         Text("MyCardsView")
     }
@@ -15,6 +16,6 @@ struct MyCardsView: View {
 
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardsView()
+        MyCardsView(myCards: .constant(ProfileCardModel.sampleData))
     }
 }

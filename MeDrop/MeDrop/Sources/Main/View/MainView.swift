@@ -10,38 +10,40 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
-    @StateObject var cardStore = CardStore()
+//    @StateObject var cardStore = CardStore()
     @State var tab: MainViewTab = .my
     
     var body: some View {
-        ZStack {
-            if !viewModel.isSplashFinished {
-                LottieView(jsonName: "MEDROP") { _ in
-                    withAnimation {
-                        viewModel.isSplashFinished.toggle()
-                    }            
-            }
-            } else if viewModel.isSplashFinished && viewModel.id == nil {
-                OnBoardView()
-            } else {
-                TabView(selection: $tab) {
-                    MyCardsView()
-                        .tabItem {
-                            Label("My", systemImage: "person.crop.circle.fill")
-                        }
-                        .tag(MainViewTab.my)
-                    
-                    ExchangeView()
-                        .tabItem {
-                            Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
-                        }
-                        .tag(MainViewTab.exchange)
-                    
-                    CollectionView()
-                        .tabItem {
-                            Label("Collect", systemImage: "shared.with.you")
-                        }
-                        .tag(MainViewTab.collection)
+        NavigationStack {
+            ZStack {
+                if !viewModel.isSplashFinished {
+                    LottieView(jsonName: "MEDROP") { _ in
+                        withAnimation {
+                            viewModel.isSplashFinished.toggle()
+                        }            
+                    }
+                } else if viewModel.isSplashFinished && viewModel.id == nil {
+                    OnBoardView()
+                } else {
+                    TabView(selection: $tab) {
+                        MyCardsView(myCards: .constant(ProfileCardModel.sampleData))
+                            .tabItem {
+                                Label("My", systemImage: "person.crop.circle.fill")
+                            }
+                            .tag(MainViewTab.my)
+                        
+                        ExchangeView()
+                            .tabItem {
+                                Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
+                            }
+                            .tag(MainViewTab.exchange)
+                        
+                        CollectionView()
+                            .tabItem {
+                                Label("Collect", systemImage: "shared.with.you")
+                            }
+                            .tag(MainViewTab.collection)
+                    }
                 }
             }
         }
