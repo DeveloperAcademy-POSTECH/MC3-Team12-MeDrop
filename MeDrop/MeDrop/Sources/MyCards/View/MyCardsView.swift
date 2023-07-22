@@ -9,8 +9,27 @@ import SwiftUI
 
 struct MyCardsView: View {
     @Binding var myCards: [ProfileCardModel]
+    @State var selectedIndex = 1
     var body: some View {
-        Text("MyCardsView")
+        NavigationStack {
+            ZStack {
+                TabView(selection: $selectedIndex) {
+                    ForEach($myCards) { card in
+                        CardView(card: card)
+                            .tag(card.id)
+                    }
+                }
+                .border(.red)
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            }
+            .navigationTitle("My Cards")
+            .toolbar {
+                Button(action:{}){
+                    Image(systemName: "ellipsis")
+                }
+            }
+        }
     }
 }
 
