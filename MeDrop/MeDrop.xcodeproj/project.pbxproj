@@ -25,6 +25,8 @@
 		973748742A6C1C9E001BC803 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748732A6C1C9E001BC803 /* CardStore.swift */; };
 		973748782A6C2C85001BC803 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748772A6C2C85001BC803 /* MenuView.swift */; };
 		973748842A6D4DEC001BC803 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748832A6D4DEC001BC803 /* CardDetailView.swift */; };
+		973748892A6D767B001BC803 /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748882A6D767B001BC803 /* CardInfoView.swift */; };
+		9737488B2A6D7691001BC803 /* ColorEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737488A2A6D7691001BC803 /* ColorEffectView.swift */; };
 		97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58342A5ED34B00549E65 /* YourCardTest.swift */; };
 		97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58362A5F87C300549E65 /* ProfileDetailView.swift */; };
 		97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */; };
@@ -89,6 +91,8 @@
 		973748732A6C1C9E001BC803 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
 		973748772A6C2C85001BC803 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		973748832A6D4DEC001BC803 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		973748882A6D767B001BC803 /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
+		9737488A2A6D7691001BC803 /* ColorEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEffectView.swift; sourceTree = "<group>"; };
 		97CE58342A5ED34B00549E65 /* YourCardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourCardTest.swift; sourceTree = "<group>"; };
 		97CE58362A5F87C300549E65 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFBTest.swift; sourceTree = "<group>"; };
@@ -315,6 +319,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		973748852A6D7634001BC803 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				973748872A6D7671001BC803 /* ViewModel */,
+				973748862A6D765F001BC803 /* View */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		973748862A6D765F001BC803 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				973748882A6D767B001BC803 /* CardInfoView.swift */,
+				9737488A2A6D7691001BC803 /* ColorEffectView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		973748872A6D7671001BC803 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B09950F32A579D88009AC534 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +364,7 @@
 				9737486C2A6C1ABB001BC803 /* Exchange */,
 				973748752A6C2C70001BC803 /* Menu */,
 				973748802A6D4DC3001BC803 /* CardDetail */,
+				973748852A6D7634001BC803 /* Create */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
 				B09950F52A579DBC009AC534 /* Util */,
@@ -691,6 +721,7 @@
 				97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */,
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
+				9737488B2A6D7691001BC803 /* ColorEffectView.swift in Sources */,
 				973748702A6C1AD1001BC803 /* ExchangeView.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
@@ -732,6 +763,7 @@
 				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
 				97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */,
 				682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */,
+				973748892A6D767B001BC803 /* CardInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyCardsView: View {
     @Binding var myCards: [ProfileCardModel]
+    @State private var newCard = ProfileCardModel.emptyCard
     @State var selectedIndex = 0
     
     @State var isMenu = false
@@ -44,14 +45,15 @@ struct MyCardsView: View {
             }
             .navigationTitle("My Cards")
             .toolbar {
-                Button(action: { isMenu.toggle() })
-                { Image(systemName: "ellipsis") }
+                Button(action: { isMenu.toggle() }) { Image(systemName: "ellipsis") }
                 .navigationDestination(isPresented: $isMenu) {
                     MenuView()
                 }
             }
             .sheet(isPresented: $isCreate){
-                
+                NavigationStack{
+                    CardInfoView(card: $newCard)
+                }
             }
         }
     }
