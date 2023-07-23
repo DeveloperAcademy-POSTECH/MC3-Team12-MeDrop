@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MultipeerConnectivity
+import Combine
 
 class MpcManager: NSObject, ObservableObject {
     private let mcSession: MCSession
@@ -18,8 +19,13 @@ class MpcManager: NSObject, ObservableObject {
     private let card: String
     private let serviceType: String = "medrop" // Bonjour Service 아이디에서 _  _.tcp 제거한 값
     
+    private var subscriptions = Set<AnyCancellable>()
+    
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어 
-    @Published var receiveCard: String = "H"
+    @Published var receiveCard:String = ""
+    @Published var isPermission:Bool = false
+    @Published var showPermission:Bool = false
+    
     
     init(userName: String, cardId: String, maxPeers: Int = 1) {
         self.maxNumPeers = maxPeers
@@ -33,10 +39,13 @@ class MpcManager: NSObject, ObservableObject {
         self.mcAdvertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: serviceType)
         self.mcBrowser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: serviceType)
         
+     
         super.init()
         mcSession.delegate = self
         mcAdvertiser.delegate = self
         mcBrowser.delegate = self
+        bind()
+        
     }
     
     deinit {
@@ -75,6 +84,22 @@ extension MpcManager {
                 DEBUG_LOG(error.localizedDescription)
             }
         }
+    }
+    
+    func bind() {
+        $receiveCard
+            .filter({!$0.isEmpty})
+            .sink { [weak self] _ in
+            guard let self else {return}
+            
+            self.showPermission.toggle()
+        }
+        .store(in: &subscriptions)
+        
+        $connectedPeers.sink { peers in
+            DEBUG_LOG(peers.count)
+        }
+        .store(in: &subscriptions)
     }
 }
 
@@ -116,26 +141,23 @@ extension MpcManager: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        DEBUG_LOG("제발5")
+       
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        DEBUG_LOG("제발4")
+ 
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        DEBUG_LOG("제발3")
     }
 }
 
 extension MpcManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        DEBUG_LOG("Foundpeer")
         browser.invitePeer(peerID, to: mcSession, withContext: nil, timeout: 10)
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        DEBUG_LOG("LOST Browser Peer")
     }
 }
 
