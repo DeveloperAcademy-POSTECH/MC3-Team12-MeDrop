@@ -13,13 +13,14 @@ struct MyCardsView: View {
     
     @State var isMenu = false
     @State var isDetail = false
+    @State var isCreate = false
     
     var body: some View {
         NavigationStack {
             ZStack {
                 TabView(selection: $selectedIndex) {
                     ForEach($myCards.indices) { index in
-                        Button(action: {isDetail.toggle()}){
+                        Button(action: {isDetail.toggle()}) {
                             CardView(card: $myCards[index])
                         }
                         .tag(index)
@@ -27,8 +28,17 @@ struct MyCardsView: View {
                             CardDetailView(card: $myCards[index], isFromMy: true)
                         }
                     }
+                    
+                    if $myCards.count == 5 {
+                        FinalCardView()
+                            .tag($myCards.count + 1)
+                    } else {
+                        Button(action: {isCreate.toggle()}) {
+                            PlusCardView()
+                        }
+                        .tag($myCards.count + 1)
+                    }
                 }
-                .border(.red)
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
@@ -39,6 +49,9 @@ struct MyCardsView: View {
                 .navigationDestination(isPresented: $isMenu) {
                     MenuView()
                 }
+            }
+            .sheet(isPresented: $isCreate){
+                
             }
         }
     }
