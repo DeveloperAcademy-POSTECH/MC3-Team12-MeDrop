@@ -17,18 +17,18 @@ struct CardInfoView: View {
             Text("CardInfoView")
         }
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("취소") {
-                    
-                }
-            }
-            
             ToolbarItem(placement: .confirmationAction) {
                 Button("다음") {
                     isInputFinished.toggle()
                 }
                 .navigationDestination(isPresented: $isInputFinished) {
                     ColorSelectView(isFinish: $isFinish)
+                }
+            }
+            
+            ToolbarItem(placement: .cancellationAction) {
+                Button("취소") {
+                    isFinish.toggle()
                 }
             }
         }
