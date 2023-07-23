@@ -26,7 +26,7 @@ struct MyCardsView: View {
                         }
                         .tag(index)
                         .navigationDestination(isPresented: $isDetail) {
-                            CardDetailView(card: $myCards[index], isFromMy: true)
+                            CardDetailMyView(card: $myCards[index])
                         }
                     }
                     
@@ -53,6 +53,7 @@ struct MyCardsView: View {
             .sheet(isPresented: $isCreate){
                 NavigationStack{
                     CardInfoView(card: $newCard, isFinish: $isCreate)
+                        
                 }
             }
         }
