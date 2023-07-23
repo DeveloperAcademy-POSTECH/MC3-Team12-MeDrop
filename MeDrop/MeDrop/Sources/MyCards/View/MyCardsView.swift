@@ -24,7 +24,7 @@ struct MyCardsView: View {
                         }
                         .tag(index)
                         .navigationDestination(isPresented: $isDetail) {
-                            ProfileDetailView(profileCard: $myCards[index], isFromMy: true)
+                            CardDetailView(card: $myCards[index], isFromMy: true)
                         }
                     }
                 }
