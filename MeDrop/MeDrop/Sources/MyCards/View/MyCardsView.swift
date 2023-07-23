@@ -12,13 +12,20 @@ struct MyCardsView: View {
     @State var selectedIndex = 0
     
     @State var isMenu = false
+    @State var isDetail = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 TabView(selection: $selectedIndex) {
                     ForEach($myCards.indices) { index in
-                        CardView(card: $myCards[index])
-                            .tag(index)
+                        Button(action: {isDetail.toggle()}){
+                            CardView(card: $myCards[index])
+                        }
+                        .tag(index)
+                        .navigationDestination(isPresented: $isDetail) {
+                            ProfileDetailView(profileCard: $myCards[index], isFromMy: true)
+                        }
                     }
                 }
                 .border(.red)
@@ -27,9 +34,8 @@ struct MyCardsView: View {
             }
             .navigationTitle("My Cards")
             .toolbar {
-                Button(action:{ isMenu.toggle() }){
-                    Image(systemName: "ellipsis")
-                }
+                Button(action: { isMenu.toggle() })
+                { Image(systemName: "ellipsis") }
                 .navigationDestination(isPresented: $isMenu) {
                     MenuView()
                 }
