@@ -27,7 +27,7 @@ class MpcManager: NSObject, ObservableObject {
     @Published var showPermission:Bool = false
     
     
-    init(userName: String, cardId: String, maxPeers: Int = 1) {
+    init(userName: String, cardId: String, maxPeers: Int = 5) {
         self.maxNumPeers = maxPeers
         self.identityString = PreferenceManager.id ?? ""
         
@@ -39,7 +39,6 @@ class MpcManager: NSObject, ObservableObject {
         self.mcAdvertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: serviceType)
         self.mcBrowser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: serviceType)
         
-     
         super.init()
         mcSession.delegate = self
         mcAdvertiser.delegate = self
@@ -69,9 +68,10 @@ extension MpcManager {
     func invalidate() {
         stopHosting()
         mcSession.disconnect()
+        
     }
     
-    func sendData() {
+    func sendData(peer:MCPeerID) {
         DEBUG_LOG("SEND")
         if !mcSession.connectedPeers.isEmpty {
             guard let cardData = card.data(using: .utf8) else {
@@ -79,7 +79,11 @@ extension MpcManager {
             }
             
             do {
-                try mcSession.send(cardData, toPeers: mcSession.connectedPeers, with: .reliable)
+                
+                DEBUG_LOG(peer.displayName)
+                try mcSession.send(cardData, toPeers: [peer], with: .reliable)
+                
+                //try mcSession.send(cardData, toPeers: mcSession.connectedPeers, with: .reliable)
             } catch let error as NSError {
                 DEBUG_LOG(error.localizedDescription)
             }
@@ -96,10 +100,17 @@ extension MpcManager {
         }
         .store(in: &subscriptions)
         
-        $connectedPeers.sink { peers in
+        $connectedPeers
+            .filter({!$0.isEmpty})
+            .sink { peers in
+            DEBUG_LOG(peers.first!.displayName)
             DEBUG_LOG(peers.count)
         }
         .store(in: &subscriptions)
+    }
+    
+    func removePeerWithId(){
+        
     }
 }
 
@@ -119,7 +130,7 @@ extension MpcManager: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 self.connectedPeers = session.connectedPeers
-                self.sendData()
+                //self.sendData()
             }
             
         @unknown default:
@@ -154,7 +165,13 @@ extension MpcManager: MCSessionDelegate {
 
 extension MpcManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        browser.invitePeer(peerID, to: mcSession, withContext: nil, timeout: 10)
+        
+        DEBUG_LOG("CONNECT \(mcSession.connectedPeers.count) ")
+        if mcSession.connectedPeers.count < maxNumPeers {
+            browser.invitePeer(peerID, to: mcSession, withContext: nil, timeout: 10)
+        }
+        
+        
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
@@ -163,6 +180,12 @@ extension MpcManager: MCNearbyServiceBrowserDelegate {
 
 extension MpcManager: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        
+        DEBUG_LOG("CONNECT \(mcSession.connectedPeers.count) ")
+        
+        if mcSession.connectedPeers.count < maxNumPeers {
             invitationHandler(true, mcSession)
+        }
+            
     }
 }

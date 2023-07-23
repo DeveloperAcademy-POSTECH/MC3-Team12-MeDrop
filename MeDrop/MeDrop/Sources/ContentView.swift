@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var mpc = MpcManager(userName: "H", cardId: "12345\(UIDevice.current.name)")
+    @StateObject var mpc = MpcManager(userName: "HKKKSSS", cardId: "12345\(UIDevice.current.name)")
     
    
     var body: some View {
@@ -21,12 +21,20 @@ struct ContentView: View {
                 mpc.invalidate()
             }
             Text(mpc.receiveCard)
+        
+            if !mpc.connectedPeers.isEmpty {
+                
+                List(mpc.connectedPeers, id: \.self){ peer in
+                    Text(peer.displayName)
+                        .onTapGesture {
+                            DEBUG_LOG("TAP")
+                            mpc.sendData(peer: peer)
+                        }
+                }
+                
+            }
         }
-        .alert(isPresented: $mpc.showPermission) {
-            Alert(title: Text("\(mpc.receiveCard) 가 맞나요?"), primaryButton: .default(Text("YES"),action: {
-                DEBUG_LOG("GET")
-            }), secondaryButton: .destructive(Text("NO")))
-        }
+        
     }
 }
 
