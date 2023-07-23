@@ -9,14 +9,18 @@ import SwiftUI
 
 struct CardDetailMyView: View {
     @Binding var card: ProfileCardModel
+    @State var isShowingEdit: Bool = false
     var body: some View {
         CardDetailView(card: $card, isFromMy: true)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("편집") {
-                        
+                        isShowingEdit.toggle()
                     }
                 }
+            }
+            .sheet(isPresented: $isShowingEdit) {
+                    CardInfoView(card: $card, isFinish: $isShowingEdit)
             }
     }
 }

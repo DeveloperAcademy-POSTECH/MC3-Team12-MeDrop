@@ -51,10 +51,7 @@ struct MyCardsView: View {
                 }
             }
             .sheet(isPresented: $isCreate){
-                NavigationStack{
                     CardInfoView(card: $newCard, isFinish: $isCreate)
-                        
-                }
             }
         }
     }
