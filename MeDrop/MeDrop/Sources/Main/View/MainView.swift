@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
+    @State var cardStore = ProfileCardModel.sampleData
+    @State var yourCards = ProfileCardModel.sampleData
     @State var tab: MainViewTab = .my
     
     var body: some View {
@@ -24,13 +26,19 @@ struct MainView: View {
                 OnBoardView()
             } else {
                 TabView(selection: $tab) {
-                    MyView()
+                    MyCardsView(myCards: $cardStore)
                         .tabItem {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
                         .tag(MainViewTab.my)
                     
-                    CollectionView()
+                    ExchangeView()
+                        .tabItem {
+                            Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
+                        }
+                        .tag(MainViewTab.exchange)
+                    
+                    CollectedCardsView(yourCards: $yourCards)
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }
@@ -49,5 +57,6 @@ struct MainView_Previews: PreviewProvider {
 
 enum MainViewTab: Hashable {
     case my
+    case exchange
     case collection
 }
