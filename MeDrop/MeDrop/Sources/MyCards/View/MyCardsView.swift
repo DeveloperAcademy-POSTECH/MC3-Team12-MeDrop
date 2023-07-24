@@ -24,6 +24,9 @@ struct MyCardsView: View {
                         Button(action: {isDetail.toggle()}) {
                             CardView(card: $myCards[index])
                         }
+                        .overlay(
+                            ImageRenderView(card: myCards[index])
+                        )
                         .tag(index)
                         .navigationDestination(isPresented: $isDetail) {
                             CardDetailMyView(card: $myCards[index])
