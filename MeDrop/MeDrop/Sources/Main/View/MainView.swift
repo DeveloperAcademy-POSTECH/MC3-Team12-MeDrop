@@ -30,7 +30,7 @@ struct MainView: View {
                         }
                         .tag(MainViewTab.my)
                     
-                    CollectionView()
+                    CollectedCardsView()
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }

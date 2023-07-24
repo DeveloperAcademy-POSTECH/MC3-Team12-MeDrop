@@ -27,22 +27,81 @@ struct CreateInfoView: View {
                 VStack {
                     Form {
                         VStack(alignment: .leading) {
-                            Text("카드에 들어갈")
-                            Text("내용을 작성").bold() +
-                            Text("해주세요.")
+                            Text("안내문구1").bold()
+                            
                         }.font(.regular(28))
                             .listRowBackground(Color.clear)
                         
-                        Section(header: Text("필수 입력란")) {
-                            TextField("이름", text: $profileCard.name)
-                            TextField("연락처", text: $profileCard.contact).keyboardType(.numberPad)
-                            TextField("소속", text: $profileCard.company)
-                            TextField("직업", text: $profileCard.job)
-                            TextField("한 줄 소개", text: $profileCard.introduction.max(textLimit), axis: .vertical)
+                        Section(header: Text("필수 정보*").foregroundColor(.red)) {
+                           
+                            HStack {
+                                Text("이름").foregroundColor(Color.gray)
+                                
+                                TextField("", text: $profileCard.name).multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("연락처").foregroundColor(Color.gray)
+                                TextField("010-0000-0000", text: $profileCard.contact).keyboardType(.numberPad)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("소속").foregroundColor(Color.gray)
+                                TextField("", text: $profileCard.company)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("직업").foregroundColor(Color.gray)
+                                TextField("", text: $profileCard.job)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("한 줄 소개").foregroundColor(.gray)
+                                
+                                TextField("", text: $profileCard.introduction.max(textLimit), axis: .vertical)
+                                    .multilineTextAlignment(.trailing)
+                            }
                         }
                         
-                        Section(header: Text("선택 입력란")) {
-                            TextField("이메일", text: $profileCard.email)
+                        Section(header: Text("추가 정보")) {
+                            HStack {
+                                Text("이메일").foregroundColor(.gray)
+                                TextField("", text: $profileCard.email)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("대표링크").foregroundColor(.gray)
+                                TextField("", text: $profileCard.link)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                        }
+                        
+                        Section(header: Text("SNS 계정"))
+                        {
+                            HStack {
+                                Text("인스타그램").foregroundColor(.gray)
+                                TextField("", text: $profileCard.insta)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("트위터").foregroundColor(.gray)
+                                TextField("", text: $profileCard.twitter)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("깃헙").foregroundColor(.gray)
+                                TextField("", text: $profileCard.github)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("링크드인").foregroundColor(.gray)
+                                TextField("", text: $profileCard.linkedin)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            HStack {
+                                Text("유튜브").foregroundColor(.gray)
+                                TextField("", text: $profileCard.youtube)
+                                    .multilineTextAlignment(.trailing)
+                            }
                         }
                     }
                 }.navigationDestination(isPresented: $isGotoNext) {
@@ -52,7 +111,7 @@ struct CreateInfoView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("돌아가기") {
+                        Button("이전") {
                             if profileCard.back() {
                                 isNotSaved = true
                             } else {
@@ -90,12 +149,12 @@ struct CreateInfoView: View {
     }
 }
 
-//struct CreateInfoView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        CreateInfoView(isShowingSheet: .constant(true), profileCard: ProfileCardModel()).environmentObject(EnvironmentData())
-//    }
-//}
+struct CreateInfoView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        CreateInfoView(isShowingSheet: .constant(true), profileCard: .constant(ProfileCardModel.sampleData[0]), sheetTitle: .constant("프로필 만들기")).environmentObject(EnvironmentData())
+    }
+}
 
 extension Binding where Value == String {
     func max(_ limit: Int) -> Self {
