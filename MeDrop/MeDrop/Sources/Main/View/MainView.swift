@@ -10,8 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
-    @State var cardStore = ProfileCardModel.sampleData
-    @State var yourCards = ProfileCardModel.sampleData
+    @State var cardStore = CardStore()
     @State var tab: MainViewTab = .my
     
     var body: some View {
@@ -20,13 +19,13 @@ struct MainView: View {
                 LottieView(jsonName: "MEDROP") { _ in
                     withAnimation {
                         viewModel.isSplashFinished.toggle()
-                    }            
+                    }
             }
             } else if viewModel.isSplashFinished && viewModel.id == nil {
                 OnBoardView()
             } else {
                 TabView(selection: $tab) {
-                    MyCardsView(myCards: $cardStore)
+                    MyCardsView(myCards: $cardStore.myCards)
                         .tabItem {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
@@ -38,7 +37,7 @@ struct MainView: View {
                         }
                         .tag(MainViewTab.exchange)
                     
-                    CollectedCardsView(yourCards: $yourCards)
+                    CollectedCardsView(yourCards: $cardStore.yourCards)
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }
