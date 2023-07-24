@@ -23,16 +23,23 @@ struct ContentView: View {
             Text(mpc.receiveCard)
         
             if !mpc.connectedPeers.isEmpty {
-                
                 List(mpc.connectedPeers, id: \.self){ peer in
                     Text(peer.displayName)
                         .onTapGesture {
-                            DEBUG_LOG("TAP")
-                            mpc.sendData(peer: peer)
+                            
+                            mpc.confirmConnectState(id: peer.displayName)
+    
                         }
                 }
                 
             }
+        }
+        .alert(isPresented: $mpc.showPermissionAlert){
+            Alert(title: Text("\(mpc.alertUserName)이 맞습니까?"), primaryButton: .default(Text("YES"),action: {
+                mpc.sendConnectState()
+            }), secondaryButton: .destructive(Text("NO"),action: {
+                mpc.sendDeniedState()
+            }))
         }
         
     }
