@@ -43,9 +43,10 @@ struct MyCardsView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
-            .navigationTitle("My Cards")
+            .navigationTitle("MY CARDS")
             .toolbar {
-                Button(action: { isMenu.toggle() }) { Image(systemName: "ellipsis") }
+                Button(action: { isMenu.toggle() })
+                { Image(systemName: "ellipsis") }
                 .navigationDestination(isPresented: $isMenu) {
                     MenuView()
                 }

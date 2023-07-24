@@ -11,6 +11,7 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
     @State var cardStore = ProfileCardModel.sampleData
+    @State var yourCards = ProfileCardModel.sampleData
     @State var tab: MainViewTab = .my
     
     var body: some View {
@@ -37,7 +38,7 @@ struct MainView: View {
                         }
                         .tag(MainViewTab.exchange)
                     
-                    CollectionView()
+                    CollectedCardsView(yourCards: $yourCards)
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }
