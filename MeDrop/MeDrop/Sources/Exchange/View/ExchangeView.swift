@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ExchangeView: View {
     var body: some View {
-        Text("Exchange View")
+        VStack{
+            Text("Exchange View")
+            Button(action:{}){
+                Text("교환")
+            }
+        }
     }
 }
 
