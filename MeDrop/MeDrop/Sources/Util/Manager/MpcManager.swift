@@ -9,23 +9,7 @@ import SwiftUI
 import MultipeerConnectivity
 import Combine
 
-enum ConnectState: Codable { // 연결 상태
-    case connected
-    case notConnected
-}
 
-enum RequestType: Codable { // mpc 요청 타입
-    case connect
-    case confirm
-    case denied
-}
-
-struct MpcInfoDTO: Codable { // mpc에 실어 보낼 데이터 타입
-    let type: RequestType
-    let peerId: String
-    let cardInfo: String
-    let userName: String
-}
 
 class MpcManager: NSObject, ObservableObject {
     private let mcSession: MCSession
@@ -34,27 +18,25 @@ class MpcManager: NSObject, ObservableObject {
     private let mcBrowser: MCNearbyServiceBrowser
     private let identityString: String
     private let maxNumPeers: Int // 최대 연결 가능한 피어 수
-    private let card: String
     private let serviceType: String = "medrop" // Bonjour Service 아이디에서 _  _.tcp 제거한 값
     
     private var subscriptions = Set<AnyCancellable>()
     var selectedPeer: MCPeerID?
-    var userName: String
+    var data: ShareData
     var connectedUser: String = ""
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어
     @Published var receiveCard: String = ""
     @Published var connectedState: ConnectState = .notConnected
-    @Published var alertUserName:String = "" // 알람에 보여줄 이름
-    @Published var showPermissionAlert:Bool = false // 알람 플래그 변수
+    @Published var alertUserName: String = "" // 알람에 보여줄 이름
+    @Published var showPermissionAlert: Bool = false // 알람 플래그 변수
     
     
-    init(userName: String, cardId: String, maxPeers: Int = 5) {
+    init(data: ShareData, maxPeers: Int = 5) {
         
         self.maxNumPeers = maxPeers
         self.identityString = UUID().uuidString //TODO: PreferenceManager.id ?? ""
-        self.userName = userName
-        self.card = cardId
+        self.data = data
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
@@ -99,7 +81,7 @@ extension MpcManager {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, cardInfo: "", userName: ""))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "", cardInfo: "")))
         disConnecting() // 이전 연결 삭제
     }
     
@@ -107,7 +89,7 @@ extension MpcManager {
         
         let peer = findPeerWIthId(id: id)
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .confirm, peerId: identityString, cardInfo: "", userName: userName))
+        sendData(peer: peer, data: MpcInfoDTO(type: .confirm, peerId: identityString, data: data))
     }
     
     public func sendConnectState() { //연결 신호 보내기
@@ -115,7 +97,7 @@ extension MpcManager {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .connect, peerId: identityString, cardInfo: card ,userName: userName ))
+        sendData(peer: peer, data: MpcInfoDTO(type: .connect, peerId: identityString, data: data))
     }
     
     private func findPeerWIthId(id: String) -> MCPeerID { // id 값을 통해 PeerID 찾기
@@ -184,15 +166,15 @@ extension MpcManager: MCSessionDelegate {
         
         
         switch receiveData.type {
-        case .connect: //연결 신호 일때
+        case .connect: // 연결 신호 일때
             
             if connectedState == .notConnected { // 아직 연결 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     self.selectedPeer = peerID
                     self.connectedState = .connected
-                    self.receiveCard = receiveData.cardInfo
-                    self.connectedUser = receiveData.userName
+                    self.receiveCard = receiveData.data.cardInfo
+                    self.connectedUser = receiveData.data.userName
                     self.sendConnectState() // 연결한 피어로 연결신호 재전송
                 }
             }
@@ -206,7 +188,7 @@ extension MpcManager: MCSessionDelegate {
                     guard let self else {return}
                 
                     //얼럿 띠우기
-                    self.alertUserName = receiveData.userName
+                    self.alertUserName = receiveData.data.userName
                     self.showPermissionAlert.toggle()
                     self.selectedPeer = peerID
                 }

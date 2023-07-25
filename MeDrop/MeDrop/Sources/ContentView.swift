@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var mpc = MpcManager(userName: "HKKKSSS", cardId: "12345\(UIDevice.current.name)")
+    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2",cardInfo: "hhh"))
     
    
     var body: some View {

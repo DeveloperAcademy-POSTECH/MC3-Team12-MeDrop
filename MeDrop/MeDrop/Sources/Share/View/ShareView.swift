@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct ShareView : View {
+    
+    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2",cardInfo: "hhh"))
+    
+    var body: some View {
+        
+        VStack{
+            
+        }
+        
+    }
+    
+}

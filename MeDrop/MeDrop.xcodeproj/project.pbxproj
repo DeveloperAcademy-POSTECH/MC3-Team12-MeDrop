@@ -62,6 +62,7 @@
 		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
 		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
 		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
+		B0D9B37D2A6F4FF80032B8FF /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
 		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
+		B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		B00125742A677B1D00439760 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				B0D9B37B2A6F4FCA0032B8FF /* Model */,
 				B00125782A677B3300439760 /* ViewModel */,
 				B00125752A677B2700439760 /* View */,
 			);
@@ -459,6 +462,14 @@
 			path = LottieView;
 			sourceTree = "<group>";
 		};
+		B0D9B37B2A6F4FCA0032B8FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B0E4D6852A5266D000788200 = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +635,7 @@
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
+				B0D9B37D2A6F4FF80032B8FF /* ShareDataModel.swift in Sources */,
 				B001257C2A677C3B00439760 /* MpcManager.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
