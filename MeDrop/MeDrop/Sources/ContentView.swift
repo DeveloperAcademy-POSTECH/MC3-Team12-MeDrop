@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2",cardInfo: "hhh"))
-    
-   
     var body: some View {
         VStack {
             Button("Start") {
@@ -26,22 +24,18 @@ struct ContentView: View {
                 List(mpc.connectedPeers, id: \.self){ peer in
                     Text(peer.displayName)
                         .onTapGesture {
-                            
                             mpc.confirmConnectState(id: peer.displayName)
-    
                         }
                 }
-                
             }
         }
-        .alert(isPresented: $mpc.showPermissionAlert){
+        .alert(isPresented: $mpc.showPermissionAlert) {
             Alert(title: Text("\(mpc.alertUserName)이 맞습니까?"), primaryButton: .default(Text("YES"),action: {
                 mpc.sendConnectState()
-            }), secondaryButton: .destructive(Text("NO"),action: {
+            }), secondaryButton: .destructive(Text("NO"), action: {
                 mpc.sendDeniedState()
             }))
         }
-        
     }
 }
 

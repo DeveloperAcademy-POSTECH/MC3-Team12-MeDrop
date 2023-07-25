@@ -13,7 +13,7 @@ struct MeDropApp: App {
       @UIApplicationDelegateAdaptor(AppDelegate.self) var dele        
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ShareView()
              //MainView()
 //                .onAppear{
 //                    loadUserData()

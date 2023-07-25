@@ -35,8 +35,8 @@ class MpcManager: NSObject, ObservableObject {
     init(data: ShareData, maxPeers: Int = 5) {
         
         self.maxNumPeers = maxPeers
-        self.identityString = UUID().uuidString //TODO: PreferenceManager.id ?? ""
         self.data = data
+        self.identityString = "\(data.userName)\(seperatorString)\(data.team)" //TODO: PreferenceManager.id ?? ""
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)

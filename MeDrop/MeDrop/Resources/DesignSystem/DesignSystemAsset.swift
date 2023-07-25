@@ -78,4 +78,10 @@ public enum DesignSystemAsset {
         case obt3 = "빠르게 **연결**되는\n비지니스, **Me-Drop.**"
         case obt4 = "번거로운 **명함**관리이제는 **간편하게** 해요."
     }
+    
+    static let mainBlue = Color("MainBlue")
+    
+    enum Jelly: String {
+        case yellowSmallJelly = "yellowSmallJelly"
+    }
 }
