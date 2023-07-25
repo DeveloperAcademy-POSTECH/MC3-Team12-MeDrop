@@ -16,11 +16,13 @@ struct MyCardsView: View {
     @State var isDetail = false
     @State var isCreate = false
     
+    let saveAction: () -> Void
+
     var body: some View {
         NavigationStack {
             ZStack {
                 TabView(selection: $selectedIndex) {
-                    ForEach($myCards.indices) { index in
+                    ForEach($myCards.indices,  id: \.self) { index in
                         Button(action: {isDetail.toggle()}) {
                             CardView(card: $myCards[index])
                         }
@@ -45,14 +47,15 @@ struct MyCardsView: View {
             }
             .navigationTitle("MY CARDS")
             .toolbar {
-                Button(action: { isMenu.toggle() })
-                { Image(systemName: "ellipsis") }
+                Button(action: { isMenu.toggle() }) {
+                    Image(systemName: "ellipsis")
+                }
                 .navigationDestination(isPresented: $isMenu) {
                     MenuView()
                 }
             }
-            .sheet(isPresented: $isCreate){
-                    CardInfoView(card: $newCard, isFinish: $isCreate)
+            .sheet(isPresented: $isCreate) {
+                NewCardView(cards: $myCards, isFinish: $isCreate)
             }
         }
     }
@@ -60,6 +63,6 @@ struct MyCardsView: View {
 
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardsView(myCards: .constant(ProfileCardModel.sampleData))
+        MyCardsView(myCards: .constant(ProfileCardModel.sampleData), saveAction: {})
     }
 }

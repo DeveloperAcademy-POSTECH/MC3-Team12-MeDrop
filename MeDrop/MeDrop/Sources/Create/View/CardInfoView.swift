@@ -8,37 +8,20 @@
 import SwiftUI
 
 struct CardInfoView: View {
+    // 보여줄 정보 담긴 카드
     @Binding var card: ProfileCardModel
     @Binding var isFinish: Bool
-    @State var isInputFinished: Bool = false
+    @Binding var isShowingColorSelectView: Bool
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                Text("CardInfoView")
-            }
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("다음") {
-                        isInputFinished.toggle()
-                    }
-                    .navigationDestination(isPresented: $isInputFinished) {
-                        ColorSelectView(isFinish: $isFinish)
-                    }
-                }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("취소") {
-                        isFinish.toggle()
-                    }
-                }
-            }
+        VStack {
+            Text("CardInfoView")
         }
     }
 }
 
 struct CardInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        CardInfoView(card: .constant(ProfileCardModel.emptyCard), isFinish: .constant(false))
+        CardInfoView (card: .constant(ProfileCardModel.emptyCard), isFinish: .constant(false), isShowingColorSelectView: .constant(false))
     }
 }

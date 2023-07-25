@@ -10,83 +10,54 @@ import SwiftUI
 class CardStore: ObservableObject {
     @Published var myCards: [ProfileCardModel] = []
     @Published var yourCards: [ProfileCardModel] = []
-    @Published var myCardIds: [String] = []
-    @Published var yourCardIds: [String] = []
     
-    func loadCardIds(for userID: String) {
-        myCards = []
-        print("loadCardIds Start")
-        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_")
-        let sanitizedUserID = userID.components(separatedBy: allowedCharacters.inverted).joined()
-        
-        let usersRef = FireBaseDataBaseManager.shared.child("users")
-        
-        // Fetch the data for the given user ID
-        usersRef.child(sanitizedUserID).observeSingleEvent(of: .value) { [weak self] snapshot in
-            guard let self = self else { return }
+    private let myCardsKey = "MyCards"
+    private let yourCardsKey = "YourCards"
+    
+    // 데이터를 UserDefaults에 저장하는 함수
+    func saveData() {
+        do {
+            let myCardsData = try JSONEncoder().encode(myCards)
+            UserDefaults.standard.set(myCardsData, forKey: myCardsKey)
             
-            if let userData = snapshot.value as? [String: Any],
-               let myCardIds = userData["myCards"] as? [String],
-               let yourCardIds = userData["yourCards"] as? [String] {
-                self.myCardIds = myCardIds
-                self.yourCardIds = yourCardIds
-                
-                // Load and add myCards
-                self.fetchAndAddCards(for: myCardIds)
-                
-                // Load and add yourCards
-//                self.fetchAndAddCards(for: yourCardIds)
-            } else {
-                // User data or card IDs not found, set the arrays to empty
-                self.myCardIds = []
-                self.yourCardIds = []
-            }
+            let yourCardsData = try JSONEncoder().encode(yourCards)
+            UserDefaults.standard.set(yourCardsData, forKey: yourCardsKey)
+            
+        } catch {
+            print("Error encoding cards: \(error)")
         }
     }
     
-    private func fetchAndAddCards(for cardIds: [String]) {
-        print("fetch Start")
-        let cardsRef = FireBaseDataBaseManager.shared.child("cards")
-        
-        // DispatchGroup 생성
-        let dispatchGroup = DispatchGroup()
-        
-        for cardID in cardIds {
-            // DispatchGroup에 enter() 호출
-            dispatchGroup.enter()
-            
-            cardsRef.child(cardID).observeSingleEvent(of: .value) { snapshot in
-                if snapshot.exists() {
-                    // 데이터가 존재하는 경우
-                    if let cardDataString = snapshot.value as? String,
-                       let cardData = cardDataString.data(using: .utf8) {
-                        do {
-                            let decoder = JSONDecoder()
-                            let profileCard = try decoder.decode(ProfileCardModel.self, from: cardData)
-                            
-                            DispatchQueue.main.async {
-                                self.myCards.append(profileCard)
-                            }
-                        } catch {
-                            print("Error decoding card data: \(error)")
-                        }
-                    } else {
-                        print("No card data found or invalid data format.")
-                    }
-                } else {
-                    // 해당 cardID에 해당하는 데이터가 없는 경우
-                    print("No data found for cardID: \(cardID)")
-                }
-                
-                // DispatchGroup에 leave() 호출
-                dispatchGroup.leave()
+    // UserDefaults에서 데이터를 로드하는 함수
+    func loadData() {
+        if let myCardsData = UserDefaults.standard.data(forKey: myCardsKey) {
+            do {
+                let decodedMyCards = try JSONDecoder().decode([ProfileCardModel].self, from: myCardsData)
+                myCards = decodedMyCards
+            } catch {
+                print("Error decoding myCards: \(error)")
+                myCards = getEmptyCardArray() // 데이터가 없을 경우 빈 배열을 설정
             }
+        } else {
+            myCards = getEmptyCardArray() // 데이터가 없을 경우 빈 배열을 설정
         }
-        
-        // 모든 비동기 작업이 완료될 때까지 기다립니다.
-        dispatchGroup.notify(queue: .main) {
-            // 모든 데이터를 가져온 후에 실행되는 코드
-            print("All data fetched")
+
+        if let yourCardsData = UserDefaults.standard.data(forKey: yourCardsKey) {
+            do {
+                let decodedYourCards = try JSONDecoder().decode([ProfileCardModel].self, from: yourCardsData)
+                yourCards = decodedYourCards
+            } catch {
+                print("Error decoding yourCards: \(error)")
+                yourCards = getEmptyCardArray() // 데이터가 없을 경우 빈 배열을 설정
+            }
+        } else {
+            yourCards = getEmptyCardArray() // 데이터가 없을 경우 빈 배열을 설정
         }
+    }
+
+    // 데이터가 없을 경우 빈 배열을 반환하는 함수
+    private func getEmptyCardArray() -> [ProfileCardModel] {
+        return []
     }
 }
+

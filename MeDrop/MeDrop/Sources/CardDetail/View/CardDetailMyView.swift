@@ -20,7 +20,7 @@ struct CardDetailMyView: View {
                 }
             }
             .sheet(isPresented: $isShowingEdit) {
-                    CardInfoView(card: $card, isFinish: $isShowingEdit)
+                EditCardView(card: $card, isFinish: $isShowingEdit)
             }
     }
 }

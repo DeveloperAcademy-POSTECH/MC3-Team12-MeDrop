@@ -30,6 +30,9 @@
 		9737488F2A6D8625001BC803 /* CardDetailMyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9737488E2A6D8625001BC803 /* CardDetailMyView.swift */; };
 		973748912A6D8721001BC803 /* CardDetailCollectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748902A6D8721001BC803 /* CardDetailCollectedView.swift */; };
 		973748962A6E065E001BC803 /* CollectedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748952A6E065E001BC803 /* CollectedCardsView.swift */; };
+		973748A22A6E19A7001BC803 /* CardStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748A12A6E19A7001BC803 /* CardStoreTest.swift */; };
+		973748A42A6EAA4D001BC803 /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748A32A6EAA4D001BC803 /* NewCardView.swift */; };
+		973748A62A6F6097001BC803 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973748A52A6F6097001BC803 /* EditCardView.swift */; };
 		97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58342A5ED34B00549E65 /* YourCardTest.swift */; };
 		97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE58362A5F87C300549E65 /* ProfileDetailView.swift */; };
 		97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */; };
@@ -99,6 +102,9 @@
 		9737488E2A6D8625001BC803 /* CardDetailMyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMyView.swift; sourceTree = "<group>"; };
 		973748902A6D8721001BC803 /* CardDetailCollectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectedView.swift; sourceTree = "<group>"; };
 		973748952A6E065E001BC803 /* CollectedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsView.swift; sourceTree = "<group>"; };
+		973748A12A6E19A7001BC803 /* CardStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStoreTest.swift; sourceTree = "<group>"; };
+		973748A32A6EAA4D001BC803 /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		973748A52A6F6097001BC803 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		97CE58342A5ED34B00549E65 /* YourCardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourCardTest.swift; sourceTree = "<group>"; };
 		97CE58362A5F87C300549E65 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFBTest.swift; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 		973748862A6D765F001BC803 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				973748A32A6EAA4D001BC803 /* NewCardView.swift */,
+				973748A52A6F6097001BC803 /* EditCardView.swift */,
 				973748882A6D767B001BC803 /* CardInfoView.swift */,
 				9737488C2A6D7DDA001BC803 /* ColorSelectView.swift */,
 			);
@@ -512,6 +520,7 @@
 				B09951572A5E377A009AC534 /* OnBoardTab.swift */,
 				9706B4992A5C28DB00841C3F /* ColorSetModel.swift */,
 				973748732A6C1C9E001BC803 /* CardStore.swift */,
+				973748A12A6E19A7001BC803 /* CardStoreTest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -759,6 +768,7 @@
 				973748702A6C1AD1001BC803 /* ExchangeView.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
+				973748A62A6F6097001BC803 /* EditCardView.swift in Sources */,
 				973748722A6C1B24001BC803 /* MyCardsView.swift in Sources */,
 				973748842A6D4DEC001BC803 /* CardDetailView.swift in Sources */,
 				9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */,
@@ -776,6 +786,7 @@
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
+				973748A22A6E19A7001BC803 /* CardStoreTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
@@ -796,6 +807,7 @@
 				1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */,
 				973748782A6C2C85001BC803 /* MenuView.swift in Sources */,
 				B099511A2A57BC92009AC534 /* ProfileViewModel.swift in Sources */,
+				973748A42A6EAA4D001BC803 /* NewCardView.swift in Sources */,
 				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
 				97CE58352A5ED34B00549E65 /* YourCardTest.swift in Sources */,
 				682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */,

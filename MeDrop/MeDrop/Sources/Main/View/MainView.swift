@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
-    @State var cardStore = CardStore()
+    @StateObject private var cardStore = CardStore()
     @State var tab: MainViewTab = .my
     
     var body: some View {
@@ -25,7 +25,11 @@ struct MainView: View {
                 OnBoardView()
             } else {
                 TabView(selection: $tab) {
-                    MyCardsView(myCards: $cardStore.myCards)
+                    MyCardsView(myCards: $cardStore.myCards) {
+                        Task {
+                            try await cardStore.saveData()
+                        }
+                    }
                         .tabItem {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
@@ -42,6 +46,15 @@ struct MainView: View {
                             Label("Collect", systemImage: "shared.with.you")
                         }
                         .tag(MainViewTab.collection)
+                }
+                .task {
+                    do {
+                        try await cardStore.loadData()
+                        print(cardStore.myCards)
+                        print(cardStore.yourCards)
+                    } catch {
+                        print("load Error")
+                    }
                 }
             }
         }

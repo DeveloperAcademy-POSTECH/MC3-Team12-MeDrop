@@ -14,18 +14,6 @@ struct MeDropApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-//                .onAppear{
-//                    loadUserData()
-//                }
-//                                    .onAppear{
-//                                        for family in UIFont.familyNames {
-//                                                    print(family)
-//
-//                                                    for names in UIFont.fontNames(forFamilyName: family) {
-//                                                        print("== \(names)")
-//                                                    }
-//                                        }
-//                                    }
         }
     }
 }
