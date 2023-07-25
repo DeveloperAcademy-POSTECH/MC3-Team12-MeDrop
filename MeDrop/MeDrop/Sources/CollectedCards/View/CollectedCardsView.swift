@@ -13,7 +13,7 @@ struct CollectedCardsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                ForEach($yourCards.indices) { index in
+                ForEach($yourCards.indices, id: \.self) { index in
                     Button(action: {isDetail.toggle()}) {
                         CardView(card: $yourCards[index])
                     }

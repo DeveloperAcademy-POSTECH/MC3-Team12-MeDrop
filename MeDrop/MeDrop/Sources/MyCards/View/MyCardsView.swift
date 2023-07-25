@@ -22,7 +22,7 @@ struct MyCardsView: View {
         NavigationStack {
             ZStack {
                 TabView(selection: $selectedIndex) {
-                    ForEach($myCards.indices,  id: \.self) { index in
+                    ForEach($myCards.indices, id: \.self) { index in
                         Button(action: {isDetail.toggle()}) {
                             CardView(card: $myCards[index])
                         }

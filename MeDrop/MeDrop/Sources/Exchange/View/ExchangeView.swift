@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ExchangeView: View {
+    @Binding var collectedCards: [ProfileCardModel]
+    var newYourCard = ProfileCardModel.sampleData[1]
     var body: some View {
         VStack{
             Text("Exchange View")
-            Button(action:{}){
+            Button(action:{
+                collectedCards.append(newYourCard)
+            }){
                 Text("교환")
             }
         }
@@ -20,6 +24,6 @@ struct ExchangeView: View {
 
 struct ExchangeView_Previews: PreviewProvider {
     static var previews: some View {
-        ExchangeView()
+        ExchangeView(collectedCards: .constant(ProfileCardModel.sampleData))
     }
 }
