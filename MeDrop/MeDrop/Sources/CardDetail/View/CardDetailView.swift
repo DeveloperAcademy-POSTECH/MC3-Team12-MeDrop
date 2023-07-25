@@ -17,6 +17,7 @@ struct CardDetailView: View {
             
             ForEach(ContactButton.allCases, id: \.self) { contactButton in
                 actionButtonDrawer(contactButton: contactButton, profileCard: card)
+                    .background(card.colorSet.cardColor)
                     .disabled(isFromMy)
             }
         }

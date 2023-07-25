@@ -9,18 +9,17 @@ import SwiftUI
 
 struct EditCardView: View {
     @State var isShowingColorSelectView: Bool = false
-    @Binding var card: ProfileCardModel
+    @Binding var originCard: ProfileCardModel
+    @Binding var editingCard: ProfileCardModel
     @Binding var isFinish: Bool
-    
-    @State var editingCard = ProfileCardModel.emptyCard
     
     var body: some View {
         NavigationStack{
-            CardInfoView(card: $card, isFinish: $isFinish, isShowingColorSelectView: $isShowingColorSelectView)
+            CardInfoView(card: $editingCard, isFinish: $isFinish, isShowingColorSelectView: $isShowingColorSelectView)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("다음") {
-                            card = ProfileCardModel.sampleData[1]
+                            editingCard = ProfileCardModel.sampleData[3]
                             isShowingColorSelectView.toggle()
                         }
                     }
@@ -32,10 +31,11 @@ struct EditCardView: View {
                     }
                 }
                 .navigationDestination(isPresented: $isShowingColorSelectView) {
-                    ColorSelectView(card: $card, isFinish: $isFinish)
+                    ColorSelectView(card: $editingCard, isFinish: $isFinish)
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("완료") {
+                                    originCard = editingCard
                                     isFinish.toggle()
                                 }
                             }
@@ -47,6 +47,6 @@ struct EditCardView: View {
 
 struct EditCardView_Previews: PreviewProvider {
     static var previews: some View {
-        EditCardView(card: .constant(ProfileCardModel.sampleData[1]), isFinish: .constant(false))
+        EditCardView(originCard: .constant(ProfileCardModel.sampleData[1]),editingCard: .constant(ProfileCardModel.sampleData[3]), isFinish: .constant(false))
     }
 }

@@ -10,17 +10,19 @@ import SwiftUI
 struct CardDetailMyView: View {
     @Binding var card: ProfileCardModel
     @State var isShowingEdit: Bool = false
+    @State var editingCard = ProfileCardModel.emptyCard
     var body: some View {
         CardDetailView(card: $card, isFromMy: true)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("편집") {
+                        editingCard = card
                         isShowingEdit.toggle()
                     }
                 }
             }
             .sheet(isPresented: $isShowingEdit) {
-                EditCardView(card: $card, isFinish: $isShowingEdit)
+                EditCardView(originCard: $card, editingCard: $editingCard, isFinish: $isShowingEdit)
             }
     }
 }
