@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension CollectionView {
+extension CollectedCardsView {
     func sortingButton(order: String) -> some View {
         Button {
             self.sortedBy = order

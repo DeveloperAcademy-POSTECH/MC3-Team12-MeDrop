@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectionView.swift */; };
+		1231DBB42A5BB52D00473CA0 /* CollectedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectedCardsView.swift */; };
 		1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB72A5BB53C00473CA0 /* MyView.swift */; };
 		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
 		1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */; };
 		1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */; };
-		1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */; };
-		1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */; };
+		1231DBC22A5CAC6200473CA0 /* CollectedCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC12A5CAC6200473CA0 /* CollectedCardsViewModel.swift */; };
+		1231DBC42A5CAC8300473CA0 /* Extension+CollectedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC32A5CAC8300473CA0 /* Extension+CollectedCardsView.swift */; };
 		12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */; };
 		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
@@ -79,13 +79,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1231DBB32A5BB52D00473CA0 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		1231DBB32A5BB52D00473CA0 /* CollectedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsView.swift; sourceTree = "<group>"; };
 		1231DBB72A5BB53C00473CA0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
 		1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		1231DBBE2A5C7EDD00473CA0 /* Extension+MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MyView.swift"; sourceTree = "<group>"; };
-		1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
-		1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
+		1231DBC12A5CAC6200473CA0 /* CollectedCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsViewModel.swift; sourceTree = "<group>"; };
+		1231DBC32A5CAC8300473CA0 /* Extension+CollectedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectedCardsView.swift"; sourceTree = "<group>"; };
 		12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardViewRatio.swift; sourceTree = "<group>"; };
 		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 		1231DBB12A5BB51C00473CA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1231DBB32A5BB52D00473CA0 /* CollectionView.swift */,
-				1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */,
+				1231DBB32A5BB52D00473CA0 /* CollectedCardsView.swift */,
+				1231DBC32A5CAC8300473CA0 /* Extension+CollectedCardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 		1231DBC02A5CAC4B00473CA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */,
+				1231DBC12A5CAC6200473CA0 /* CollectedCardsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -788,12 +788,12 @@
 				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
 				973748A22A6E19A7001BC803 /* CardStoreTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
-				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
+				1231DBB42A5BB52D00473CA0 /* CollectedCardsView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
-				1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */,
-				1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */,
+				1231DBC22A5CAC6200473CA0 /* CollectedCardsViewModel.swift in Sources */,
+				1231DBC42A5CAC8300473CA0 /* Extension+CollectedCardsView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
@@ -941,7 +941,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = V7Y2HCV8V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -975,7 +975,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = V7Y2HCV8V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
