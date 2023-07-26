@@ -23,6 +23,7 @@ struct ShareData: Codable { // 보낼 데이터 모델
     let userName: String
     let team : String
     let cardInfo: String
+    let image: String
 }
 
 struct MpcInfoDTO: Codable { // mpc에 실어 보낼 데이터 타입

@@ -81,7 +81,7 @@ extension MpcManager {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "", cardInfo: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "", cardInfo: "",image: "")))
         disConnecting() // 이전 연결 삭제
     }
     
