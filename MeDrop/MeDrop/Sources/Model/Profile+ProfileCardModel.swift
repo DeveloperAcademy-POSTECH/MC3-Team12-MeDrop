@@ -85,3 +85,10 @@ extension ProfileCardModel {
         ProfileCardModel(name: "카일", contact: "010-4444-4444", company: "􀣺 kayle Developer ", job: "COO.", introduction: "한 줄 소개; 카일 CEO", email: "kayle@gmail.com", link: "kayle.com", color: [0,0,0])
     ]
 }
+
+
+extension ProfileCardModel {
+    static var emptyCard: ProfileCardModel {
+        ProfileCardModel(name: "", contact: "", company: "", job: "", introduction: "", colorSet: ColorSet.neonPink, email: "", link: "")
+    }
+}
