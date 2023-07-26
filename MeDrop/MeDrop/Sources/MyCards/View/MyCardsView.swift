@@ -49,7 +49,6 @@ struct MyCardsView: View {
                             .padding()
                             .tag($myCards.count + 1)
                         }
-                        Spacer()
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
