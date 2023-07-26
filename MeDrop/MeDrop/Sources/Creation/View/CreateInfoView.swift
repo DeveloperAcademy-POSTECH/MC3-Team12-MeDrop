@@ -128,10 +128,12 @@ struct CreateInfoView: View {
                     }
                     .background(Color.clear)
                     .scrollContentBackground(.hidden)
-                }.navigationDestination(isPresented: $isGotoNext) {
+                }
+                .navigationDestination(isPresented: $isGotoNext) {
                     SelectColorView(profileCard: $profileCard, sheetTitle: $sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
                     }
-                }.navigationTitle(sheetTitle)
+                }
+                .navigationTitle(sheetTitle)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
