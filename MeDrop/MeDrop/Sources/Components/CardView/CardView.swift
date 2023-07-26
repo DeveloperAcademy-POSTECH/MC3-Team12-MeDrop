@@ -32,7 +32,6 @@ struct CardView: View {
                         Spacer()
                     }
                         .padding()
-                        .border(.pink)
                         .foregroundColor(.black)
                 )
                 .foregroundColor(.white)
@@ -42,16 +41,11 @@ struct CardView: View {
 
 struct PlusCardView: View {
     var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .shadow(radius: 10)
-                .padding()
-                .overlay(
-                    Text("+")
-                        .foregroundColor(.white)
-                )
-            Spacer()
-        }
+        Image("PlusCard")
+            .resizable()
+            .scaledToFit()
+            .padding()
+            .shadow(radius: 10)
     }
 }
 

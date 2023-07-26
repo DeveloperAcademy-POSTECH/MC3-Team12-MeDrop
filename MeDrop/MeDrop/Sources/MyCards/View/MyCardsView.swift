@@ -40,7 +40,7 @@ struct MyCardsView: View {
                             FinalCardView()
                                 .tag($myCards.count + 1)
                                 .padding()
-                                .frame(height: UIScreen.height * 0.8)
+                                .frame(height: UIScreen.height * 0.65)
                         } else {
                             Button(action: {isCreate.toggle()}) {
                                 PlusCardView()
