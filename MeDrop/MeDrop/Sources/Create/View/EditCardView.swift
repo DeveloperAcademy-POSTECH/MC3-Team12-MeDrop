@@ -16,10 +16,11 @@ struct EditCardView: View {
     var body: some View {
         NavigationStack{
             CardInfoView(card: $editingCard, isFinish: $isFinish, isShowingColorSelectView: $isShowingColorSelectView)
+                .navigationTitle("프로필 편집")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("다음") {
-                            editingCard = ProfileCardModel.sampleData[3]
                             isShowingColorSelectView.toggle()
                         }
                     }
@@ -32,6 +33,8 @@ struct EditCardView: View {
                 }
                 .navigationDestination(isPresented: $isShowingColorSelectView) {
                     ColorSelectView(card: $editingCard, isFinish: $isFinish)
+                        .navigationTitle("프로필 편집")
+                        .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("완료") {

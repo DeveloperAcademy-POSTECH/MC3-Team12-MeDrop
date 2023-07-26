@@ -50,7 +50,7 @@ struct CollectedCardsView: View {
             }
             .navigationTitle("Collected Card")
             .navigationDestination(isPresented: $isDetail) {
-                ProfileDetailView(profileCard: $selectedProfile, isFromMy: false)
+                CardDetailCollectedView(card: $selectedProfile)
             }
         }
         .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible

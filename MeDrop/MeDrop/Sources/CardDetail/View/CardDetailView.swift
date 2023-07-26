@@ -12,14 +12,54 @@ struct CardDetailView: View {
     var isFromMy: Bool
     
     var body: some View {
-        VStack {
-            Text("CardDetailView")
-            
-            ForEach(ContactButton.allCases, id: \.self) { contactButton in
-                actionButtonDrawer(contactButton: contactButton, profileCard: card)
-                    .background((Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2])))
-                    .disabled(isFromMy)
+        ZStack {
+            VStack {
+                Spacer()
+                HStack {
+                    Text("\(card.introduction)").font(.title).bold()
+                    Spacer()
+                }
+                
+                RoundedRectangle(cornerRadius: 15)
+//                    .frame(height: UIScreen.height * 0.4)
+//                    .padding()
+                    .foregroundColor(.white)
+                    .shadow(radius: 15)
+                    .overlay(
+                        VStack {
+                            Spacer()
+                            HStack {
+                                ForEach(ContactButton.allCases, id: \.self) { contactButton in
+                                    actionButtonDrawer(contactButton: contactButton, profileCard: card)
+                                        .disabled(isFromMy)
+                                }
+                            }
+                            .padding(.vertical)
+                            // 컴포넌트화 예정 HStack + 폰트 + Padding
+                            
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("\(card.name)").padding(.bottom)
+                                    Text("\(card.company)").padding(.bottom)
+                                    Text("\(card.job)").padding(.bottom)
+                                    Text("\(card.contact)").padding(.bottom)
+                                    Text("\(card.email)")
+                                }
+                                Spacer()
+                            }
+                            Spacer()
+                            HStack {
+                                ForEach(ContactButton.allCases, id: \.self) { contactButton in
+                                    actionButtonDrawer(contactButton: contactButton, profileCard: card)
+                                        .disabled(isFromMy)
+                                }
+                            }
+                            Spacer()
+                        }
+                            .padding()
+                    )
             }
+            .padding()
         }
     }
 }
