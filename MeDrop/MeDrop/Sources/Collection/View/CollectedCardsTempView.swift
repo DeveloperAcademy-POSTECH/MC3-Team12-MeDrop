@@ -92,6 +92,22 @@ struct CollectedCardComponent: View {
     }
 }
 
+extension CollectedCardsTempView {
+    func sortingButton(order: String) -> some View {
+        Button {
+            self.sortedBy = order
+        } label: {
+            Text(order)
+            Spacer()
+            if sortedBy == order {
+                Image(systemName: "checkmark.circle.fill")
+            } else {
+                Image(systemName: "checkmark.circle")
+            }
+        }
+    }
+}
+
 struct CollectedCardsTempView_Previews: PreviewProvider {
     static var previews: some View {
         CollectedCardsTempView()

@@ -8,28 +8,70 @@
 import SwiftUI
 
 struct CollectedCardsView: View {
-    @State var isDetail: Bool = false
+    @State var sortedBy = "가나다 순"
+    @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
     @Binding var yourCards: [ProfileCardModel]
+    @State var isDetail: Bool = false
+    @State var isDelete = false
+    
     @Environment(\.scenePhase) private var scenePhase
     let saveAction: () -> Void
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                ForEach($yourCards.indices, id: \.self) { index in
-                    Button(action: {isDetail.toggle()}) {
-                        CardView(card: $yourCards[index])
+            VStack(alignment: .leading ) { HStack { Spacer()
+                Menu { sortingButton(order: "가나다 순")
+                    sortingButton(order: "새로운 순")
+                    sortingButton(order: "오래된 순")
+                } label: {
+                    Text(sortedBy)
+                    Image(systemName: "chevron.down")
+                }.padding(.trailing)
+                    .foregroundColor(.black)
+            }
+                Spacer()
+                
+                
+                
+                
+                ScrollView {
+                    List {
+                        ForEach(yourCards,id:\.self) { profile in
+                            Button(action: { isDetail.toggle()
+                                selectedProfile = profile
+                            },
+                                   label: { CollectedCardComponent(profileCard: profile)})
+                            .swipeActions {
+                                Button(action: { selectedProfile = profile
+                                    isDelete.toggle()
+                                },
+                                       label: { Label("Delete", systemImage: "trash")})
+                                .tint(.red) }
+                            
+                            .listRowSeparator(.hidden)
+                        }
                     }
-                    .tag(index)
-                    .navigationDestination(isPresented: $isDetail) {
-                        CardDetailCollectedView(card: $yourCards[index])
-                    }
+                    .listStyle(.plain)
                 }
             }
-            .navigationTitle("Collections")
+            .navigationTitle("Collected Card")
+            .navigationDestination(isPresented: $isDetail) {
+                ProfileDetailView(profileCard: $selectedProfile, isFromMy: false)
+            }
+        }
+        .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
+        ) {
+            Button("삭제", role: .destructive) {
+                isDelete.toggle()
+                yourCards.removeAll { $0.id == selectedProfile.id
+            }
+            }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
+        }
+        .onChange(of: isDelete) { newValue in
+            DEBUG_LOG(newValue)
         }
     }
 }

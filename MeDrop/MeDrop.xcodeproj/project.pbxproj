@@ -196,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				1231DBB32A5BB52D00473CA0 /* CollectedCardsTempView.swift */,
-				1231DBC32A5CAC8300473CA0 /* Extension+CollectedCardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				973748952A6E065E001BC803 /* CollectedCardsView.swift */,
+				1231DBC32A5CAC8300473CA0 /* Extension+CollectedCardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
