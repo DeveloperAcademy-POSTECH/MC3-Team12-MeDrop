@@ -12,12 +12,12 @@ struct CardDetailView: View {
     var isFromMy: Bool
     
     var body: some View {
-        VStack{
+        VStack {
             Text("CardDetailView")
             
             ForEach(ContactButton.allCases, id: \.self) { contactButton in
                 actionButtonDrawer(contactButton: contactButton, profileCard: card)
-                    .background(card.colorSet.cardColor)
+                    .background((Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2])))
                     .disabled(isFromMy)
             }
         }
