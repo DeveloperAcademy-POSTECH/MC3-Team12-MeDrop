@@ -31,7 +31,7 @@ struct MainView: View {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
                         .tag(MainViewTab.my)
-                    
+                   
                     ExchangeView()
                         .tabItem {
                             Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
