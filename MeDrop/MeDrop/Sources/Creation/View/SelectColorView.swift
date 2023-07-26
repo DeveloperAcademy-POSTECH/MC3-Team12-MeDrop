@@ -13,41 +13,27 @@ struct SelectColorView: View {
     
     @Binding var profileCard: ProfileCardModel
     @Binding var sheetTitle: String
-    @State var typeSelection: Int = 0
     
-    @State private var bgColor =
-        Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
+    @State private var bgColor : Color = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
     
     @Binding var isShowingSheet: Bool
     
     @State private var move = false
     @State private var degree = 0.0
     
-    
     var ref: DatabaseReference! = FireBaseDataBaseManager.shared
     
     var body: some View {
         ZStack {
-            
-//            Color.gray.ignoresSafeArea()
             VStack(alignment: .leading) {
-                
                 Text("안내문구2").font(.largeTitle).bold().padding()
-                
                 HStack {
-                    Toggle(isOn: $move, label: {
-                        //                        Image(systemName: "airplane")
-                        Text("애니메이션 효과")
-                    })
-                    .padding()
-                    .toggleStyle(CheckboxStyle())
-                    
                     Spacer()
-                    
                     HStack {
                         Text("색상")
                         ColorPicker("", selection: $bgColor).labelsHidden()
-                        //                        .scaleEffect(CGSize(width: 2, height: 2))
+                            .scaleEffect(CGSize(width: 1.5, height: 1.5))
+                            .padding()
                     }
                 }
 
@@ -57,57 +43,59 @@ struct SelectColorView: View {
                         .shadow(radius: 5)
                         .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -45 : -90), z: 0.0))
                         .animation(.easeInOut.speed(0.2).repeatForever(), value: move)
-//                        .onChange(of: move) {
-//                            move = false
-//                        }
+                        .onAppear {
+                            move.toggle()
+                        }
                     
                     HStack {
-                        Button(action: { typeSelection = 0 }) {
-                            
+                        Button(action: { profileCard.type = 0 }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
-                                RoundedRectangle(cornerRadius: 30)
-                                    .foregroundColor(bgColor)
-                                    .padding()
-                                    
-                                    .rotationEffect(.degrees(move ? 360 : 0))
-                                    .animation(.linear(duration: 1).speed(0.05).repeatForever(autoreverses: false), value: move)
+                                Image("0")
+                                .renderingMode(.template)
+                                .foregroundColor(bgColor)
                             }
-                        }
+                        })
                         
-                        Button(action: { typeSelection = 1 }) {
+                        Button(action: { profileCard.type = 1 }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
-                                
-                                Circle().padding().foregroundColor(bgColor)
-                                    .offset(x: move ? -20 : 0)
-                                    .animation(.linear(duration: 1).speed(0.3).repeatForever(), value: move)
-                                
+                                Image("1")
+                                .renderingMode(.template)
+                                .foregroundColor(bgColor)
                             }
-                            
-                        }
+                        })
                         
-                        Button(action: { typeSelection =  2 }) {
+                        Button(action: { profileCard.type = 2 }, label: {
                             ZStack {
-                                Circle().foregroundColor(Color.white)}
-                        }
+                                Circle().foregroundColor(Color.white)
+                                Image("2")
+                                .renderingMode(.template)
+                                .foregroundColor(bgColor)
+                            }
+                        })
                         
-                        Button(action: { typeSelection = 3 }) {
+                        Button(action: { profileCard.type = 3 }, label: {
                             ZStack {
-                                Circle().foregroundColor(Color.white)}
-                        }
+                                Circle().foregroundColor(Color.white)
+                                Image("3")
+                                .renderingMode(.template)
+                                .foregroundColor(bgColor)
+                            }
+                        })
                         
-                        Button(action: { typeSelection = 4 }) {
+                        Button(action: { profileCard.type = 4 }, label: {
                             ZStack {
-                                Circle().foregroundColor(Color.white)}
-                        }
-                        
-                    }.shadow(color: .gray, radius: 3)
-                        .padding()
+                                Circle().foregroundColor(Color.white)
+                                Image("4")
+                                .renderingMode(.template)
+                                .foregroundColor(bgColor)
+                            }
+                        })
+                    }
                     
+                    .shadow(color: .gray, radius: 3).padding()
                 }
-                
-                
             }
         }
            
@@ -121,7 +109,8 @@ struct SelectColorView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("완료") {
-                        if let encoded = try?  JSONEncoder().encode(profileCard) {
+                        profileCard.color = bgColor.cgColor!.components!
+                        if let encoded = try? JSONEncoder().encode(profileCard) {
                             if let json = String(data: encoded, encoding: .utf8) {
                                 print(json)
                                 self.ref.child("cards/\($profileCard.id)").setValue(json)
@@ -131,9 +120,6 @@ struct SelectColorView: View {
                     }
                 }
             } // toolbar end
-           
-            
-        
     }
 }
 
