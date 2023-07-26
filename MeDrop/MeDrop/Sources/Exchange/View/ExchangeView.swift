@@ -15,6 +15,7 @@ struct ExchangeView: View {
             Text("Exchange View")
             Button(action:{
                 collectedCards.append(newYourCard)
+                print(collectedCards)
             }){
                 Text("교환")
             }

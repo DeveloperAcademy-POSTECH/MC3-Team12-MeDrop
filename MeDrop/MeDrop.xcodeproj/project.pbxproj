@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1231DBB42A5BB52D00473CA0 /* CollectedCardsTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectedCardsTempView.swift */; };
 		1231DBB82A5BB53C00473CA0 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB72A5BB53C00473CA0 /* MyView.swift */; };
 		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
 		1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */; };
@@ -79,7 +78,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1231DBB32A5BB52D00473CA0 /* CollectedCardsTempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsTempView.swift; sourceTree = "<group>"; };
 		1231DBB72A5BB53C00473CA0 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
 		1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
@@ -173,15 +171,6 @@
 			path = My;
 			sourceTree = "<group>";
 		};
-		1231DBAF2A5BB50100473CA0 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBB12A5BB51C00473CA0 /* View */,
-				1231DBC02A5CAC4B00473CA0 /* ViewModel */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
 		1231DBB02A5BB51600473CA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,26 +181,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1231DBB12A5BB51C00473CA0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBB32A5BB52D00473CA0 /* CollectedCardsTempView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		1231DBBB2A5C01EE00473CA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				1231DBBC2A5C01FD00473CA0 /* MyViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		1231DBC02A5CAC4B00473CA0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBC12A5CAC6200473CA0 /* CollectedCardsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -380,6 +353,7 @@
 		973748942A6E0650001BC803 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1231DBC12A5CAC6200473CA0 /* CollectedCardsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -410,7 +384,6 @@
 				B09951132A57BC51009AC534 /* Components */,
 				B09950F52A579DBC009AC534 /* Util */,
 				1231DBAD2A5BB4DA00473CA0 /* My */,
-				1231DBAF2A5BB50100473CA0 /* Collection */,
 				682C62BD2A59A57F00137393 /* Creation */,
 				B09951102A57BC2A009AC534 /* ProfileDetail */,
 				B0E4D6932A5266D000788200 /* ContentView.swift */,
@@ -788,7 +761,6 @@
 				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
 				973748A22A6E19A7001BC803 /* CardStoreTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
-				1231DBB42A5BB52D00473CA0 /* CollectedCardsTempView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,

@@ -13,8 +13,8 @@ struct CollectedCardsView: View {
     @Binding var yourCards: [ProfileCardModel]
     @State var isDetail: Bool = false
     @State var isDelete = false
-    
     @Environment(\.scenePhase) private var scenePhase
+    
     let saveAction: () -> Void
     
     var body: some View {
@@ -30,13 +30,8 @@ struct CollectedCardsView: View {
                     .foregroundColor(.black)
             }
                 Spacer()
-                
-                
-                
-                
-                ScrollView {
                     List {
-                        ForEach(yourCards,id:\.self) { profile in
+                        ForEach(yourCards, id:\.self) { profile in
                             Button(action: { isDetail.toggle()
                                 selectedProfile = profile
                             },
@@ -52,7 +47,6 @@ struct CollectedCardsView: View {
                         }
                     }
                     .listStyle(.plain)
-                }
             }
             .navigationTitle("Collected Card")
             .navigationDestination(isPresented: $isDetail) {
@@ -72,6 +66,32 @@ struct CollectedCardsView: View {
         }
         .onChange(of: isDelete) { newValue in
             DEBUG_LOG(newValue)
+        }
+    }
+}
+
+struct CollectedCardComponent: View {
+    var profileCard: ProfileCardModel
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10.0)
+                .stroke(.black, lineWidth: 1)
+            HStack {
+                Image("\(profileCard.type)")
+                    .renderingMode(.template)
+                    .foregroundColor(Color(.sRGB, red: profileCard.color[0], green: profileCard.color[1], blue: profileCard.color[2]))
+                    .padding()
+                
+                VStack(alignment: .leading) {
+                    Text("\(profileCard.name)")
+                        .font(.title2).bold().truncationMode(.tail)
+                    Text("\(profileCard.company)")
+                        .truncationMode(.tail)
+                    Text("\(profileCard.job)")
+                        .truncationMode(.tail)
+                }
+                Spacer()
+            }
         }
     }
 }
