@@ -10,9 +10,10 @@ import SwiftUI
 struct CreateInfoView: View { 
     @EnvironmentObject var myCards: EnvironmentData
    
-    @Binding var isShowingCreation: Bool
+    @Binding var isShowingSheet: Bool
     
-    @State var profileCard: ProfileCardModel = ProfileCardModel()
+    @Binding var profileCard: ProfileCardModel
+    @Binding var sheetTitle: String
     
     @State var isNotCompleted: Bool = false
     @State var isNotSaved: Bool = false
@@ -23,39 +24,122 @@ struct CreateInfoView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
+                VStack(alignment: .leading) {
+                    Text("안내문구2").font(.largeTitle).bold().padding()
                     Form {
-                        VStack(alignment: .leading) {
-                            Text("카드에 들어갈")
-                            Text("내용을 작성").bold() +
-                            Text("해주세요.")
-                        }.font(.regular(28))
-                            .listRowBackground(Color.clear)
-                        
-                        Section(header: Text("필수 입력란")) {
-                            TextField("이름", text: $profileCard.name)
-                            TextField("연락처", text: $profileCard.contact).keyboardType(.numberPad)
-                            TextField("소속", text: $profileCard.company)
-                            TextField("직업", text: $profileCard.job)
-                            TextField("한 줄 소개", text: $profileCard.introduction.max(textLimit), axis: .vertical)
+                        Section(header: Text("필수 정보*").foregroundColor(.red)) {
+                           
+                            HStack {
+                                HStack {
+                                    Text("이름").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                    
+                                
+                                TextField("", text: $profileCard.name)
+                            }
+                            HStack {
+                                HStack {
+                                    Text("연락처").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                TextField("010-0000-0000", text: $profileCard.contact).keyboardType(.numberPad)
+                            }
+                            HStack {
+                                HStack {
+                                    Text("소속").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                TextField("", text: $profileCard.company)
+                            }
+                            HStack {
+                                HStack {
+                                    Text("직업").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                TextField("", text: $profileCard.job)
+                                    
+                            }
+                            HStack {
+                                HStack {
+                                    Text("한 줄 소개").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                
+                                TextField("", text: $profileCard.introduction.max(textLimit), axis: .vertical)
+                                    
+                            }
                         }
                         
-                        Section(header: Text("선택 입력란")) {
-                            TextField("이메일", text: $profileCard.email)
+                        Section(header: Text("추가 정보")) {
+                            HStack {
+                                HStack {
+                                    Text("이메일").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                TextField("", text: $profileCard.email)
+                                    
+                            }
+                            HStack {
+                                HStack {
+                                    Text("대표 링크").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                TextField("", text: $profileCard.link)
+                                    
+                            }
+                        }
+                        
+                        Section(header: Text("SNS 계정"))
+                        {
+                            HStack {
+                                Text("인스타그램").foregroundColor(.gray)
+                                TextField("", text: $profileCard.insta)
+                                    
+                            }
+                            HStack {
+                                Text("트위터").foregroundColor(.gray)
+                                TextField("", text: $profileCard.twitter)
+                                    
+                            }
+                            HStack {
+                                Text("깃헙").foregroundColor(.gray)
+                                TextField("", text: $profileCard.github)
+                                    
+                            }
+                            HStack {
+                                Text("링크드인").foregroundColor(.gray)
+                                TextField("", text: $profileCard.linkedin)
+                                    
+                            }
+                            HStack {
+                                Text("유튜브").foregroundColor(.gray)
+                                TextField("", text: $profileCard.youtube)
+                                    
+                            }
                         }
                     }
+                    .background(Color.clear)
+                    .scrollContentBackground(.hidden)
                 }.navigationDestination(isPresented: $isGotoNext) {
-                         SelectColorView(profileCard: profileCard, showingCreation: $isShowingCreation).environmentObject(myCards)
+                    SelectColorView(profileCard: $profileCard, sheetTitle: $sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
                     }
-                }.navigationTitle("프로필 제작")
+                }.navigationTitle(sheetTitle)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("돌아가기") {
+                        Button("이전") {
                             if profileCard.back() {
                                 isNotSaved = true
                             } else {
-                                isShowingCreation.toggle()
+                                isShowingSheet.toggle()
                             }
                         }
                     }
@@ -72,7 +156,7 @@ struct CreateInfoView: View {
                 }
                 .alert("돌아가시겠어요?", isPresented: $isNotSaved) {
                     Button("확인", role: .destructive) { // 정보 저장 없이 돌아가기
-                        isShowingCreation.toggle()
+                        isShowingSheet.toggle()
                     }
                     Button("취소", role: .cancel) {
                         isNotSaved = false
@@ -88,9 +172,11 @@ struct CreateInfoView: View {
         }
     }
 }
+
 struct CreateInfoView_Previews: PreviewProvider {
+
     static var previews: some View {
-        CreateInfoView(isShowingCreation: .constant(true)).environmentObject(EnvironmentData())
+        CreateInfoView(isShowingSheet: .constant(true), profileCard: .constant(ProfileCardModel.sampleData[0]), sheetTitle: .constant("프로필 만들기")).environmentObject(EnvironmentData())
     }
 }
 
