@@ -174,7 +174,6 @@ struct CreateInfoView: View {
 }
 
 struct CreateInfoView_Previews: PreviewProvider {
-
     static var previews: some View {
         CreateInfoView(isShowingSheet: .constant(true), profileCard: .constant(ProfileCardModel.sampleData[0]), sheetTitle: .constant("프로필 만들기")).environmentObject(EnvironmentData())
     }

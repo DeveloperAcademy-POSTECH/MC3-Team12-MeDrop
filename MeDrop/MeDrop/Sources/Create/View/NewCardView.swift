@@ -35,6 +35,7 @@ struct NewCardView: View {
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("완료") {
+                                    newCard = ProfileCardModel.sampleData[1]
                                     cards.append(newCard)
                                     isFinish.toggle()
                                 }

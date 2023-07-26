@@ -22,27 +22,34 @@ struct MyCardsView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
+            VStack {
                 TabView(selection: $selectedIndex) {
-                    ForEach($myCards.indices, id: \.self) { index in
-                        Button(action: {isDetail.toggle()}) {
-                            CardView(card: $myCards[index])
+                        ForEach($myCards.indices, id: \.self) { index in
+                            Button(action: {isDetail.toggle()}) {
+                                CardView(card: $myCards[index])
+                                    .frame(height: UIScreen.height * 0.65)
+                            }
+                            .padding()
+                            .tag(index)
+                            .navigationDestination(isPresented: $isDetail) {
+                                CardDetailMyView(card: $myCards[index])
+                            }
                         }
-                        .tag(index)
-                        .navigationDestination(isPresented: $isDetail) {
-                            CardDetailMyView(card: $myCards[index])
-                        }
-                    }
-                    
-                    if $myCards.count == 5 {
-                        FinalCardView()
+                        
+                        if $myCards.count == 5 {
+                            FinalCardView()
+                                .tag($myCards.count + 1)
+                                .padding()
+                                .frame(height: UIScreen.height * 0.8)
+                        } else {
+                            Button(action: {isCreate.toggle()}) {
+                                PlusCardView()
+                            }
+                            .frame(height: UIScreen.height * 0.65)
+                            .padding()
                             .tag($myCards.count + 1)
-                    } else {
-                        Button(action: {isCreate.toggle()}) {
-                            PlusCardView()
                         }
-                        .tag($myCards.count + 1)
-                    }
+                        Spacer()
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
