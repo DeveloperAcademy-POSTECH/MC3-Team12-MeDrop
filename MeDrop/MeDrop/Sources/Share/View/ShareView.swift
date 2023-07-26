@@ -9,28 +9,34 @@ import Foundation
 import SwiftUI
 
 struct ShareView: View {
-    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh",image: "Image1"))
+    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh", image: "Image1"))
     
     var body: some View {
         ZStack {
             DesignSystemAsset.BackgroundColor.background2.ignoresSafeArea()
             
-            if(mpc.connectedPeers.isEmpty)
-            {
-                yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!",fontSize: 17)
-                Button("Start"){
-                    mpc.startHosting()
-                }
-            }
+            VStack{
+                Text("HELLo")
+                
+                Spacer()
+                ArcView()
+                    .frame(width: UIScreen.width, height: 390)
+                    .foregroundColor(.gray)
+            }.ignoresSafeArea()
+           
+                
             
-            else {
-                advertiserList()
-            }
-            
-            
+//            if mpc.connectedPeers.isEmpty {
+//                yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
+//                Button("Start") {
+//                    mpc.startHosting()
+//                }
+//            } else {
+//                advertiserList()
+//            }
         }
         .alert(isPresented: $mpc.showPermissionAlert) {
-            Alert(title: Text("\(mpc.alertUserName)이 맞습니까?"), primaryButton: .default(Text("YES"),action: {
+            Alert(title: Text("\(mpc.alertUserName)이 맞습니까?"), primaryButton: .default(Text("YES"), action: {
                 mpc.sendConnectState()
             }), secondaryButton: .destructive(Text("NO"), action: {
                 mpc.sendDeniedState()
@@ -61,7 +67,7 @@ extension ShareView {
         VStack {
             yellowJellySpeachView(text: "누구에게 교환을 요청할까요?")
             
-            List(mpc.connectedPeers, id: \.self){ peer in
+            List(mpc.connectedPeers, id: \.self) { peer in
                 let displayName = peer.displayName
                 let arr = displayName.split(separator: seperatorString)
                 let name: String = String(arr[0])
@@ -101,15 +107,35 @@ extension ShareView {
                         Text("공유하기")
                             .font(.regular(17))
                             .foregroundColor(DesignSystemAsset.mainBlue)
-                        
                     }
-
                 }
-                
             }
             
             Spacer()
         }
-        .padding(.top,20)
+        .padding(.top, 20)
+    }
+    
+    private struct ArcView: Shape {
+        func path(in rect: CGRect) -> Path {
+            Path { path in
+                
+                let upPos = UIScreen.width / 2 + 10
+                
+                path.move(to: CGPoint(x: rect.minX, y: rect.maxY)) // 왼쪽 아래
+                path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY - upPos ))
+                
+                path.addArc(center: CGPoint(x: rect.midX, y: rect.maxY -  upPos ), radius: UIScreen.width / 2, startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 360), clockwise: false)
+                
+
+                
+                path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - upPos))
+                
+                path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxX))
+                path.addLine(to: CGPoint(x: rect.minX, y: rect.maxX))
+                path.closeSubpath()
+               
+            }
+        }
     }
 }
