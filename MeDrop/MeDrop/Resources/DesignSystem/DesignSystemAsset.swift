@@ -35,6 +35,7 @@ public enum DesignSystemAsset {
         static let button5 = Color("Button5")
         static let button6 = Color("Button6")
         static let button7 = Color("Button7")
+        static let button8 = Color("Button8")
         static let toggle1 = Color("Toggle1")
         static let toggle2 = Color("Toggle2")
     }

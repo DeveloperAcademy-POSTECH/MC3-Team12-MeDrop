@@ -15,17 +15,10 @@ struct ShareView: View {
         ZStack {
             DesignSystemAsset.BackgroundColor.background2.ignoresSafeArea()
             
-            VStack{
-                Text("HELLo")
-                
-                Spacer()
-                ArcView()
-                    .frame(width: UIScreen.width, height: 390)
-                    .foregroundColor(.gray)
-            }.ignoresSafeArea()
            
                 
-            
+            receiveCardView()
+                .ignoresSafeArea()
 //            if mpc.connectedPeers.isEmpty {
 //                yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
 //                Button("Start") {
@@ -47,7 +40,7 @@ struct ShareView: View {
 
 extension ShareView {
     @ViewBuilder
-    private func yellowJellySpeachView(spacing: CGFloat = 20,text: String,fontSize:CGFloat = 12) -> some View {
+    private func yellowJellySpeachView(spacing: CGFloat = 20,text: String,fontSize:CGFloat = 12,textColor:Color = .black) -> some View {
         VStack(spacing: spacing) {
             Image(DesignSystemAsset.Jelly.yellowSmallJelly.rawValue)
                 .resizable()
@@ -55,7 +48,7 @@ extension ShareView {
                 .frame(width: 50, height: 50)
             
             Text(text)
-                .foregroundColor(.black)
+                .foregroundColor(textColor)
                 .font(.bold(fontSize))
                 .kerning(-0.32) // 자간 조정
                 .lineSpacing(10)
@@ -116,7 +109,68 @@ extension ShareView {
         .padding(.top, 20)
     }
     
+    @ViewBuilder
+    private func receiveCardView(arcColor: Color = .gray) -> some View {
+        ZStack {
+            Color.black.opacity(0.6)
+               
+                
+            VStack {
+                yellowJellySpeachView(text: "상대방의 명함을 저장해보세요!", textColor: .white)
+                    .padding(.top, 20)
+                
+                    
+                
+                VStack(spacing: 30) {
+                    
+                    Text(mpc.receiveCard)
+                    HStack(spacing: 20) {
+                        
+                        Button {
+                            DEBUG_LOG("계속하기")
+                        } label: {
+                            Text("계속하기")
+                                .font(.bold(17))
+                                .foregroundColor(DesignSystemAsset.mainBlue)
+                        }
+                        .padding(.horizontal, 48)
+                        .padding(.vertical, 14)
+                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.white))
+                        .frame(maxWidth: .infinity)
+                        
+                        Button {
+                            DEBUG_LOG("저장하기")
+                        } label: {
+                            Text("저장하기")
+                                .font(.bold(17))
+                                .foregroundColor(.black)
+                        }
+                        .padding(.horizontal, 48)
+                        .padding(.vertical, 14)
+                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.ButtonColor.button8))
+                        .frame(maxWidth: .infinity)
+                    }
+                }
+                .padding(.horizontal, 20)
+                .frame(height: 200)
+            
+                
+                    
+               Spacer()
+            }
+            .padding(.top, safeArea.top)
+        }
+        .background(alignment: .bottom) {
+            ArcView()
+                .frame(width: UIScreen.width, height: UIScreen.width)
+                .foregroundColor(arcColor)
+                .edgesIgnoringSafeArea(.bottom)
+        }
+        
+    }
+    
     private struct ArcView: Shape {
+        
         func path(in rect: CGRect) -> Path {
             Path { path in
                 
