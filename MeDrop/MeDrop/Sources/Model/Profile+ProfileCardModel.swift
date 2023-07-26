@@ -89,6 +89,6 @@ extension ProfileCardModel {
 
 extension ProfileCardModel {
     static var emptyCard: ProfileCardModel {
-        ProfileCardModel(name: "", contact: "", company: "", job: "", introduction: "", colorSet: ColorSet.neonPink, email: "", link: "")
+        ProfileCardModel(name: "", contact: "", company: "", job: "", introduction: "", colorSet: ColorSet.neonPink, email: "", link: "", color: [0.4, 0.5, 0.2])
     }
 }
