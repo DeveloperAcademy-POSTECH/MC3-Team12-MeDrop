@@ -45,18 +45,26 @@ struct MyCardsView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
-            .navigationTitle("MY CARDS")
-            .toolbar {
-                Button(action: { isMenu.toggle() }) {
-                    Image(systemName: "ellipsis")
-                }
-                .navigationDestination(isPresented: $isMenu) {
-                    MenuView()
-                }
+        }
+        .navigationTitle("MY CARDS")
+        .toolbar {
+            Button(action: { isMenu.toggle() }) {
+                Image(systemName: "ellipsis")
             }
-            .sheet(isPresented: $isCreate) {
-                NewCardView(cards: $myCards, isFinish: $isCreate)
+            .navigationDestination(isPresented: $isMenu) {
+                MenuView()
             }
+        }
+        .sheet(isPresented: $isCreate) {
+            NewCardView(cards: $myCards, isFinish: $isCreate)
+        }
+        .onChange(of: scenePhase) { phase in
+                    if phase == .inactive || phase == .background { // 앱이 종료되거나 백그라운드로 전환될 때 저장
+                        saveAction()
+                    }
+                }
+        .onDisappear { // 뷰가 사라질 때도 저장
+            saveAction()
         }
     }
 }
