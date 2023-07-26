@@ -10,6 +10,9 @@ import SwiftUI
 struct CollectedCardsView: View {
     @State var isDetail: Bool = false
     @Binding var yourCards: [ProfileCardModel]
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: () -> Void
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -25,11 +28,14 @@ struct CollectedCardsView: View {
             }
             .navigationTitle("Collections")
         }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { saveAction() }
+        }
     }
 }
 
 struct CollectedCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectedCardsView(yourCards: .constant(ProfileCardModel.sampleData))
+        CollectedCardsView(yourCards: .constant(ProfileCardModel.sampleData), saveAction: {})
     }
 }

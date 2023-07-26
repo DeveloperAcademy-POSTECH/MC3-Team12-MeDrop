@@ -41,7 +41,11 @@ struct MainView: View {
                         }
                         .tag(MainViewTab.exchange)
                     
-                    CollectedCardsView(yourCards: $cardStore.yourCards)
+                    CollectedCardsView(yourCards: $cardStore.yourCards){
+                        Task {
+                            try await cardStore.saveData()
+                        }
+                    }
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }

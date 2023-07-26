@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardDetailCollectedView: View {
     @Binding var card: ProfileCardModel
+    
     var body: some View {
         CardDetailView(card: $card, isFromMy: false)
     }
