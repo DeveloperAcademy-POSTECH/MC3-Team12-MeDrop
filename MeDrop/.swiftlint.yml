@@ -68,7 +68,7 @@ function_body_length:
 leading_whitespace:
     severity: warning
 
-# 여는 괄호 앞에 space 있어야 한다. https://realm.github.io/SwiftLint/opening_brace.html
+# 여는 괄호 앞에 swpace 있어야 한다. https://realm.github.io/SwiftLint/opening_brace.html
 opening_brace:
     severity: warning
     allow_multiline_func: fasle

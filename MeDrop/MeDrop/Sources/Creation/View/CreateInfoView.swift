@@ -24,54 +24,76 @@ struct CreateInfoView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
+                VStack(alignment: .leading) {
+                    Text("안내문구2").font(.largeTitle).bold().padding()
                     Form {
-                        VStack(alignment: .leading) {
-                            Text("안내문구1").bold()
-                            
-                        }.font(.regular(28))
-                            .listRowBackground(Color.clear)
-                        
                         Section(header: Text("필수 정보*").foregroundColor(.red)) {
                            
                             HStack {
-                                Text("이름").foregroundColor(Color.gray)
+                                HStack {
+                                    Text("이름").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
+                                    
                                 
-                                TextField("", text: $profileCard.name).multilineTextAlignment(.trailing)
+                                TextField("", text: $profileCard.name)
                             }
                             HStack {
-                                Text("연락처").foregroundColor(Color.gray)
+                                HStack {
+                                    Text("연락처").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 TextField("010-0000-0000", text: $profileCard.contact).keyboardType(.numberPad)
-                                    .multilineTextAlignment(.trailing)
                             }
                             HStack {
-                                Text("소속").foregroundColor(Color.gray)
+                                HStack {
+                                    Text("소속").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 TextField("", text: $profileCard.company)
-                                    .multilineTextAlignment(.trailing)
                             }
                             HStack {
-                                Text("직업").foregroundColor(Color.gray)
+                                HStack {
+                                    Text("직업").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 TextField("", text: $profileCard.job)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
-                                Text("한 줄 소개").foregroundColor(.gray)
+                                HStack {
+                                    Text("한 줄 소개").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 
                                 TextField("", text: $profileCard.introduction.max(textLimit), axis: .vertical)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                         }
                         
                         Section(header: Text("추가 정보")) {
                             HStack {
-                                Text("이메일").foregroundColor(.gray)
+                                HStack {
+                                    Text("이메일").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 TextField("", text: $profileCard.email)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
-                                Text("대표링크").foregroundColor(.gray)
+                                HStack {
+                                    Text("대표 링크").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                    .frame(width: UIScreen.width * 0.2)
                                 TextField("", text: $profileCard.link)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                         }
                         
@@ -80,30 +102,32 @@ struct CreateInfoView: View {
                             HStack {
                                 Text("인스타그램").foregroundColor(.gray)
                                 TextField("", text: $profileCard.insta)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
                                 Text("트위터").foregroundColor(.gray)
                                 TextField("", text: $profileCard.twitter)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
                                 Text("깃헙").foregroundColor(.gray)
                                 TextField("", text: $profileCard.github)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
                                 Text("링크드인").foregroundColor(.gray)
                                 TextField("", text: $profileCard.linkedin)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                             HStack {
                                 Text("유튜브").foregroundColor(.gray)
                                 TextField("", text: $profileCard.youtube)
-                                    .multilineTextAlignment(.trailing)
+                                    
                             }
                         }
                     }
+                    .background(Color.clear)
+                    .scrollContentBackground(.hidden)
                 }.navigationDestination(isPresented: $isGotoNext) {
                     SelectColorView(profileCard: $profileCard, sheetTitle: $sheetTitle, isShowingSheet: $isShowingSheet).environmentObject(myCards)
                     }
