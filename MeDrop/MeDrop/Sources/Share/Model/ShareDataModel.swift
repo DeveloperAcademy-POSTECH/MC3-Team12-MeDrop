@@ -21,7 +21,8 @@ enum RequestType: Codable { // mpc 요청 타입
 struct ShareData: Codable { // 보낼 데이터 모델
     
     let userName: String
-    let team : String
+    let team: String
+    let job: String
     let cardInfo: String
     let image: String
 }

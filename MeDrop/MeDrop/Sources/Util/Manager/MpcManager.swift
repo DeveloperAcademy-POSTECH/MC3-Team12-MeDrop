@@ -36,7 +36,7 @@ class MpcManager: NSObject, ObservableObject {
         
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.userName)\(seperatorString)\(data.team)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.userName)\(seperatorString)\(data.team)\(seperatorString)\(data.job)\(seperatorString)\(data.image)" //TODO: PreferenceManager.id ?? ""
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
@@ -81,7 +81,7 @@ extension MpcManager {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "", cardInfo: "",image: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "",job: "" , cardInfo: "",image: "")))
         disConnecting() // 이전 연결 삭제
     }
     
