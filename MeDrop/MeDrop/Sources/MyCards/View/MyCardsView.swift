@@ -12,6 +12,8 @@ struct MyCardsView: View {
     @State private var newCard = ProfileCardModel.emptyCard
     @State var selectedIndex = 0
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     @State var isMenu = false
     @State var isDetail = false
     @State var isCreate = false
@@ -45,26 +47,21 @@ struct MyCardsView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
-        }
-        .navigationTitle("MY CARDS")
-        .toolbar {
-            Button(action: { isMenu.toggle() }) {
-                Image(systemName: "ellipsis")
+            .navigationTitle("MY CARDS")
+            .toolbar {
+                Button(action: { isMenu.toggle() }) {
+                    Image(systemName: "ellipsis")
+                }
+                .navigationDestination(isPresented: $isMenu) {
+                    MenuView()
+                }
             }
-            .navigationDestination(isPresented: $isMenu) {
-                MenuView()
+            .sheet(isPresented: $isCreate) {
+                NewCardView(cards: $myCards, isFinish: $isCreate)
             }
-        }
-        .sheet(isPresented: $isCreate) {
-            NewCardView(cards: $myCards, isFinish: $isCreate)
         }
         .onChange(of: scenePhase) { phase in
-                    if phase == .inactive || phase == .background { // 앱이 종료되거나 백그라운드로 전환될 때 저장
-                        saveAction()
-                    }
-                }
-        .onDisappear { // 뷰가 사라질 때도 저장
-            saveAction()
+            if phase == .inactive { saveAction() }
         }
     }
 }

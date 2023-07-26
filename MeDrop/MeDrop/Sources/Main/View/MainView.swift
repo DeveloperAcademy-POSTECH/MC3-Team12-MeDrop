@@ -50,8 +50,7 @@ struct MainView: View {
                 .task {
                     do {
                         try await cardStore.loadData()
-                        print(cardStore.myCards)
-                        print(cardStore.yourCards)
+
                     } catch {
                         print("load Error")
                     }
