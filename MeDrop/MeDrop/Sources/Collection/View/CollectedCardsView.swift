@@ -13,7 +13,7 @@ struct CollectedCardsView: View {
     @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
     @State var isDetail = false
     @State var isDelete = false
-    
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading ) { HStack { Spacer()
@@ -25,35 +25,23 @@ struct CollectedCardsView: View {
                         Image(systemName: "chevron.down")
                     }.padding(.trailing)
                         .foregroundColor(.black)
-                }
+            }
                 
                 Spacer()
                 
-                    List { ForEach(profileLists) { profile in
+                    List {
+                        ForEach(profileLists,id:\.self) { profile in
                             Button(action: { isDetail.toggle()
-                                selectedProfile = profile })
-                            {
-                                CollectedCardComponent(profileCard: profile) }
-                        
-//                        profileLists.removeAll { $0.id == profile.id
+                                selectedProfile = profile
+                            },
+                               label: { CollectedCardComponent(profileCard: profile)})
                             .swipeActions {
-                                Button(action: {
-                                    isDelete = true })
-                                { Label("Delete", systemImage: "trash")
-                                }
-                                .tint(.red)
-                            }
-                            .confirmationDialog(
-                                Text("삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다."),
-                                isPresented: $isDelete,
-                                titleVisibility: .visible
-                            ) {
-                                Button("삭제", role: .destructive) {
-                                    withAnimation {
-                                        profileLists.removeAll { $0.id == profile.id }
-                                    }
-                                }
-                            }
+                                Button(action: { selectedProfile = profile
+                                    isDelete.toggle()
+                                },
+                            label: { Label("Delete", systemImage: "trash")})
+                                .tint(.red) }
+                           
                                 .listRowSeparator(.hidden)
                         }
                     }
@@ -64,6 +52,17 @@ struct CollectedCardsView: View {
                     ProfileDetailView(profileCard: $selectedProfile, isFromMy: false)
                 }
             }
+        .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
+        ) {
+            Button("삭제", role: .destructive) {
+                isDelete.toggle()
+                profileLists.removeAll { $0.id == selectedProfile.id
+            }
+            }
+        }
+        .onChange(of: isDelete) { newValue in
+            DEBUG_LOG(newValue)
+        }
         }
 }
 
@@ -72,17 +71,23 @@ struct CollectedCardComponent: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0)
+                .stroke(.black, lineWidth: 1)
             HStack {
+                Image("\(profileCard.type)")
+                    .renderingMode(.template)
+                    .foregroundColor(Color(.sRGB, red: profileCard.color[0], green: profileCard.color[1], blue: profileCard.color[2]))
+                    .padding()
+                
                 VStack(alignment: .leading) {
                     Text("\(profileCard.name)")
-                        .font(.title).bold().truncationMode(.tail)
+                        .font(.title2).bold().truncationMode(.tail)
                     Text("\(profileCard.company)")
                         .truncationMode(.tail)
                     Text("\(profileCard.job)")
                         .truncationMode(.tail)
-                }.padding()
+                }
                 Spacer()
-            }.foregroundColor(.white)
+            }
         }
     }
 }
