@@ -17,7 +17,7 @@ struct NewCardView: View {
     @State var isNotSaved: Bool = false
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             CardInfoView(card: $newCard, isFinish: $isFinish, isShowingColorSelectView: $isShowingColorSelectView)
                 .navigationTitle("프로필 제작")
                 .navigationBarTitleDisplayMode(.inline)
@@ -25,7 +25,12 @@ struct NewCardView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("다음") {
 //                            isNotCompleted.toggle()
-                            isShowingColorSelectView.toggle()
+                            
+                            if newCard.complete() {
+                                isShowingColorSelectView.toggle()
+                            } else {
+                                isNotCompleted = true
+                            }
                         }
                     }
                     
