@@ -19,7 +19,7 @@ struct ProfileDetailView: View {
             Rectangle()
                 .frame( maxHeight: UIScreen.height * 0.9)
                 .foregroundColor(.clear)
-                .background(profileCard.colorSet.contentBackgroundColor)
+//                .background(profileCard.colorSet.contentBackgroundColor)
                 .cornerRadius(135, corners: [.bottomLeft])
                 .overlay {
                     VStack(alignment: .leading) {
@@ -62,7 +62,7 @@ struct ProfileDetailView: View {
                         .padding(.vertical)
                     }
                     .padding()
-                    .foregroundColor(profileCard.colorSet.cardTextColor)
+//                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
             ZStack {
                 Spacer()
@@ -91,7 +91,7 @@ struct ProfileDetailView: View {
                         Image(systemName: "chevron.left")
                         Text("뒤로가기")
                     }
-                    .foregroundColor(profileCard.colorSet.cardTextColor)
+//                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
                 .onTapGesture {
                     dismiss()
@@ -100,7 +100,7 @@ struct ProfileDetailView: View {
             
             ToolbarItem(placement: .principal) {
                 Text("상세페이지")
-                    .foregroundColor(profileCard.colorSet.cardTextColor)
+//                    .foregroundColor(profileCard.colorSet.cardTextColor)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -110,12 +110,12 @@ struct ProfileDetailView: View {
                         Text("편집")
                         Image(systemName: "square.and.pencil")
                     }
-                    .foregroundColor(profileCard.colorSet.cardTextColor)
+//                    .foregroundColor(profileCard.colorSet.cardTextColor)
                 }
                 .opacity(isFromMy ? 1 : 0)
             }
         }
-        .background(profileCard.colorSet.backgroundColor)
+//        .background(profileCard.colorSet.backgroundColor)
     }
 }
 
