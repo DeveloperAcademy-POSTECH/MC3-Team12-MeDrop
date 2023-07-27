@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel = .init()
+    @StateObject private var cardStore = CardStore()
     @State var tab: MainViewTab = .my
     
     var body: some View {
@@ -18,23 +19,45 @@ struct MainView: View {
                 LottieView(jsonName: "MEDROP") { _ in
                     withAnimation {
                         viewModel.isSplashFinished.toggle()
-                    }            
+                    }
             }
             } else if viewModel.isSplashFinished && viewModel.id == nil {
                 OnBoardView()
             } else {
                 TabView(selection: $tab) {
-                    MyView()
+                    MyCardsView(myCards: $cardStore.myCards) {
+                        Task {
+                            try await cardStore.saveData()
+                        }
+                    }
                         .tabItem {
                             Label("My", systemImage: "person.crop.circle.fill")
                         }
                         .tag(MainViewTab.my)
                     
-                    CollectionView()
+                    ExchangeView(collectedCards: $cardStore.yourCards)
+                        .tabItem {
+                            Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
+                        }
+                        .tag(MainViewTab.exchange)
+                    
+                    CollectedCardsView(yourCards: $cardStore.yourCards){
+                        Task {
+                            try await cardStore.saveData()
+                        }
+                    }
                         .tabItem {
                             Label("Collect", systemImage: "shared.with.you")
                         }
                         .tag(MainViewTab.collection)
+                }
+                .task {
+                    do {
+                        try await cardStore.loadData()
+
+                    } catch {
+                        print("load Error")
+                    }
                 }
             }
         }
@@ -49,5 +72,6 @@ struct MainView_Previews: PreviewProvider {
 
 enum MainViewTab: Hashable {
     case my
+    case exchange
     case collection
 }
