@@ -35,6 +35,7 @@ public enum DesignSystemAsset {
         static let button5 = Color("Button5")
         static let button6 = Color("Button6")
         static let button7 = Color("Button7")
+        static let button8 = Color("Button8")
         static let toggle1 = Color("Toggle1")
         static let toggle2 = Color("Toggle2")
     }
@@ -77,5 +78,11 @@ public enum DesignSystemAsset {
         case obt2 = "나를 **각인**시키는\n명함교환, **Me-Sync.**"
         case obt3 = "빠르게 **연결**되는\n비지니스, **Me-Drop.**"
         case obt4 = "번거로운 **명함**관리이제는 **간편하게** 해요."
+    }
+    
+    static let mainBlue = Color("MainBlue")
+    
+    enum Jelly: String {
+        case yellowSmallJelly = "yellowSmallJelly"
     }
 }

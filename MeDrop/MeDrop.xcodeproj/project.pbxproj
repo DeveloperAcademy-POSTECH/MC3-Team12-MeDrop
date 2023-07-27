@@ -35,6 +35,9 @@
 		97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */; };
 		97EB4F532A5ECCCA00524E67 /* MyCardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EB4F522A5ECCCA00524E67 /* MyCardTest.swift */; };
 		9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1A2222A5B9123003B7556 /* Extension+View.swift */; };
+		B00125772A677B2E00439760 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00125762A677B2E00439760 /* ShareView.swift */; };
+		B001257A2A677B3B00439760 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00125792A677B3B00439760 /* ShareViewModel.swift */; };
+		B001257C2A677C3B00439760 /* MpcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001257B2A677C3B00439760 /* MpcManager.swift */; };
 		B03DF2A72A52735400FFA6C7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */; };
 		B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09950F72A579DEB009AC534 /* Extension+Font.swift */; };
 		B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */; };
@@ -69,6 +72,7 @@
 		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
 		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
 		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
+		B0D9B37D2A6F4FF80032B8FF /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6942A5266D000788200 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6932A5266D000788200 /* ContentView.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
@@ -104,6 +108,9 @@
 		97EB4F4F2A5E4EAB00524E67 /* ProfileFBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFBTest.swift; sourceTree = "<group>"; };
 		97EB4F522A5ECCCA00524E67 /* MyCardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardTest.swift; sourceTree = "<group>"; };
 		9BA1A2222A5B9123003B7556 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
+		B00125762A677B2E00439760 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		B00125792A677B3B00439760 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		B001257B2A677C3B00439760 /* MpcManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MpcManager.swift; sourceTree = "<group>"; };
 		B03DF2A62A52735400FFA6C7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B09950F72A579DEB009AC534 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		B09950FA2A57A411009AC534 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
@@ -137,6 +144,7 @@
 		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
 		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
+		B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6932A5266D000788200 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -229,6 +237,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+
+		B00125742A677B1D00439760 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9B37B2A6F4FCA0032B8FF /* Model */,
+				B00125782A677B3300439760 /* ViewModel */,
+				B00125752A677B2700439760 /* View */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		B00125752A677B2700439760 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B00125762A677B2E00439760 /* ShareView.swift */,
 		973748692A6C1A90001BC803 /* MyCards */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +269,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B00125782A677B3300439760 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B00125792A677B3B00439760 /* ShareViewModel.swift */,
 		9737486B2A6C1AA1001BC803 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +417,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B00125742A677B1D00439760 /* Share */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099513A2A5BA40B009AC534 /* Main */,
 				973748692A6C1A90001BC803 /* MyCards */,
@@ -572,6 +600,7 @@
 			children = (
 				B099512C2A592459009AC534 /* FireBaseDataBaseManager.swift */,
 				B09951442A5BA8EF009AC534 /* PreferenceManager.swift */,
+				B001257B2A677C3B00439760 /* MpcManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -598,6 +627,14 @@
 				B099515D2A5F7F84009AC534 /* LottieView.swift */,
 			);
 			path = LottieView;
+			sourceTree = "<group>";
+		};
+		B0D9B37B2A6F4FCA0032B8FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9B37C2A6F4FF80032B8FF /* ShareDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -751,6 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00125772A677B2E00439760 /* ShareView.swift in Sources */,
 				9737488D2A6D7DDA001BC803 /* ColorSelectView.swift in Sources */,
 				97CE58372A5F87C300549E65 /* ProfileDetailView.swift in Sources */,
 				973748962A6E065E001BC803 /* CollectedCardsView.swift in Sources */,
@@ -765,10 +803,13 @@
 				97EB4F532A5ECCCA00524E67 /* MyCardTest.swift in Sources */,
 				682C62C32A59A61800137393 /* SelectColorView.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
+				B001257A2A677B3B00439760 /* ShareViewModel.swift in Sources */,
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				973748912A6D8721001BC803 /* CardDetailCollectedView.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
+				B0D9B37D2A6F4FF80032B8FF /* ShareDataModel.swift in Sources */,
+				B001257C2A677C3B00439760 /* MpcManager.swift in Sources */,
 				B09951452A5BA8EF009AC534 /* PreferenceManager.swift in Sources */,
 				973748742A6C1C9E001BC803 /* CardStore.swift in Sources */,
 				B0E4D6942A5266D000788200 /* ContentView.swift in Sources */,
@@ -930,7 +971,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y2HCV8V2;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
@@ -966,7 +1007,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MeDrop/Preview Content\"";
-				DEVELOPMENT_TEAM = V7Y2HCV8V2;
+				DEVELOPMENT_TEAM = 28NL63HBTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MeDrop/Info.plist;
