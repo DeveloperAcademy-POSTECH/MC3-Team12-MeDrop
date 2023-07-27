@@ -21,6 +21,7 @@
 		970AFC8B2A723DAE0041A948 /* ColorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC8A2A723DAE0041A948 /* ColorSelectView.swift */; };
 		970AFC8D2A723DC70041A948 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC8C2A723DC70041A948 /* EditCardView.swift */; };
 		970AFC8F2A723DE50041A948 /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC8E2A723DE50041A948 /* NewCardView.swift */; };
+		970AFC922A723E420041A948 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC912A723E420041A948 /* MenuView.swift */; };
 		97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEC2A723A9D0005441A /* CardDetailView.swift */; };
 		97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */; };
 		97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA10AA2A7238E9006C6422 /* MyCards.swift */; };
@@ -89,6 +90,7 @@
 		970AFC8A2A723DAE0041A948 /* ColorSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectView.swift; sourceTree = "<group>"; };
 		970AFC8C2A723DC70041A948 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		970AFC8E2A723DE50041A948 /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		970AFC912A723E420041A948 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		97C5EBEC2A723A9D0005441A /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMyView.swift; sourceTree = "<group>"; };
 		97CA10AA2A7238E9006C6422 /* MyCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCards.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		970AFC902A723E270041A948 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				970AFC912A723E420041A948 /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		97C5EBEA2A723A6A0005441A /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +311,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				970AFC902A723E270041A948 /* Menu */,
 				B099513A2A5BA40B009AC534 /* Main */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				97CA10A62A7237EF006C6422 /* MyCards */,
@@ -675,6 +686,7 @@
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
+				970AFC922A723E420041A948 /* MenuView.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
 				9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */,
