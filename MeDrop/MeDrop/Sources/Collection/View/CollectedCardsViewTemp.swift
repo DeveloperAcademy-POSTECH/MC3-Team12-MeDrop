@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CollectedCardsView: View {
+struct CollectedCardsViewTemp: View {
     @State var sortedBy = "가나다 순"
     @State var profileLists: [ProfileCardModel] = ProfileCardModel.sampleData
     @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
@@ -92,8 +92,8 @@ struct CollectedCardComponent: View {
     }
 }
 
-struct CollectedCardsView_Previews: PreviewProvider {
+struct CollectedCardsViewTemp_Previews: PreviewProvider {
     static var previews: some View {
-        CollectedCardsView()
+        CollectedCardsViewTemp()
     }
 }
