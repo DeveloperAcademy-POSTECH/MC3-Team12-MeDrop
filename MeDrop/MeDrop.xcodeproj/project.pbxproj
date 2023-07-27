@@ -16,7 +16,6 @@
 		12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */; };
 		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
-		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
 		9706B49A2A5C28DB00841C3F /* ColorSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9706B4992A5C28DB00841C3F /* ColorSetModel.swift */; };
 		971DB8A02A715778007D58D0 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DB89F2A715778007D58D0 /* CardDetailViewModel.swift */; };
@@ -85,7 +84,6 @@
 		12F44F2E2A6078AA007CB177 /* ProfileCardViewRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardViewRatio.swift; sourceTree = "<group>"; };
 		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
-		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
 		9706B4992A5C28DB00841C3F /* ColorSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetModel.swift; sourceTree = "<group>"; };
 		971DB89F2A715778007D58D0 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardDetailViewModel.swift; path = MeDrop/Sources/Create/View/CardDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -198,7 +196,6 @@
 			children = (
 				682C62C02A59A61000137393 /* CreateInfoView.swift */,
 				682C62C22A59A61800137393 /* SelectColorView.swift */,
-				682C62C42A59A65C00137393 /* CreationMainDummyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -765,7 +762,6 @@
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
 				1231DBBD2A5C01FD00473CA0 /* MyViewModel.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
-				682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */,
 				1231DBBF2A5C7EDD00473CA0 /* Extension+MyView.swift in Sources */,
 				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
 				12F44F2F2A6078AA007CB177 /* ProfileCardViewRatio.swift in Sources */,

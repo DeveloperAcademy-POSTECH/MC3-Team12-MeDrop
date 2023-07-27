@@ -91,6 +91,9 @@ struct ColorSelectView: View {
                 }
             }
         }
+        .onAppear {
+            bgColor = Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2])
+        }
     }
 }
 
