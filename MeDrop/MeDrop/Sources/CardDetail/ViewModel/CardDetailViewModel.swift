@@ -77,9 +77,9 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
             Text(contactButton.labelText)
                 .font(.semiBold(11))
         }
-        .foregroundColor(DesignSystemAsset.ButtonTextColor.gray2)
+        .foregroundColor(.green)
         .frame(width: 76, height: 60)
-        .background(DesignSystemAsset.ButtonColor.button3)
+        .background(.green)
         .cornerRadius(14)
     }
     .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
