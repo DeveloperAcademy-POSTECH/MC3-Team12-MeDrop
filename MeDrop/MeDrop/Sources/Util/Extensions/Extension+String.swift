@@ -16,6 +16,4 @@ extension String {
             return ""
         }
     }
-    
 }
-var seperatorString:String = "✺"
