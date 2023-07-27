@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB32A5BB52D00473CA0 /* CollectionView.swift */; };
 		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
-		1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */; };
-		1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */; };
 		682C62C12A59A61000137393 /* CreateInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C02A59A61000137393 /* CreateInfoView.swift */; };
 		682C62C32A59A61800137393 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C22A59A61800137393 /* SelectColorView.swift */; };
 		682C62C52A59A65C00137393 /* CreationMainDummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C42A59A65C00137393 /* CreationMainDummyView.swift */; };
@@ -66,10 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1231DBB32A5BB52D00473CA0 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
-		1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
-		1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
 		682C62C02A59A61000137393 /* CreateInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInfoView.swift; sourceTree = "<group>"; };
 		682C62C22A59A61800137393 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		682C62C42A59A65C00137393 /* CreationMainDummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationMainDummyView.swift; sourceTree = "<group>"; };
@@ -138,32 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1231DBAF2A5BB50100473CA0 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBB12A5BB51C00473CA0 /* View */,
-				1231DBC02A5CAC4B00473CA0 /* ViewModel */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
-		1231DBB12A5BB51C00473CA0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBB32A5BB52D00473CA0 /* CollectionView.swift */,
-				1231DBC32A5CAC8300473CA0 /* Extension+CollectionView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1231DBC02A5CAC4B00473CA0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1231DBC12A5CAC6200473CA0 /* CollectionViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		682C62BD2A59A57F00137393 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,7 +209,6 @@
 				B00125742A677B1D00439760 /* Share */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099513A2A5BA40B009AC534 /* Main */,
-				1231DBAF2A5BB50100473CA0 /* Collection */,
 				682C62BD2A59A57F00137393 /* Creation */,
 				B099511F2A57BD25009AC534 /* Model */,
 				B09951132A57BC51009AC534 /* Components */,
@@ -624,12 +591,9 @@
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				97EB4F502A5E4EAB00524E67 /* ProfileFBTest.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
-				1231DBB42A5BB52D00473CA0 /* CollectionView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
-				1231DBC22A5CAC6200473CA0 /* CollectionViewModel.swift in Sources */,
-				1231DBC42A5CAC8300473CA0 /* Extension+CollectionView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
