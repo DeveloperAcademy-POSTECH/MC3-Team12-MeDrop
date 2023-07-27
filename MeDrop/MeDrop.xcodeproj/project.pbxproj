@@ -182,6 +182,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		97CA10A62A7237EF006C6422 /* MyCards */ = {
+			isa = PBXGroup;
+			children = (
+				97CA10A72A72380D006C6422 /* View */,
+			);
+			path = MyCards;
+			sourceTree = "<group>";
+		};
+		97CA10A72A72380D006C6422 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B00125742A677B1D00439760 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +237,7 @@
 		B09950F42A579D9D009AC534 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				97CA10A62A7237EF006C6422 /* MyCards */,
 				B00125742A677B1D00439760 /* Share */,
 				B099512E2A597BAB009AC534 /* OnBoard */,
 				B099513A2A5BA40B009AC534 /* Main */,
