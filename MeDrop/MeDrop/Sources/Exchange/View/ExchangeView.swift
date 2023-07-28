@@ -14,9 +14,9 @@ struct ExchangeView: View {
     var body: some View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
-            
-            receiveCardView()
-                .ignoresSafeArea()
+            requestView()
+            //receiveCardView()
+            //.ignoresSafeArea()
 //            if mpc.connectedPeers.isEmpty {
 //                yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
 //                Button("Start") {
@@ -163,6 +163,26 @@ extension ExchangeView {
                
             }
         }
+    }
+    
+    @ViewBuilder
+    private func requestView() -> some View {
+        
+        VStack {
+            VStack(spacing: 30){
+                Text("\(mpc.alertUserName)님에게 교환 요청이 왔어요!\n교환을 시작할까요?")
+                    .foregroundColor(DesignSystemAsset.white1)
+                    .font(.heavy(24))
+                
+                Image(DesignSystemAsset.Jelly.requestJelly.rawValue)
+            }
+            
+            HStack {
+                
+            }
+            
+        }
+        
     }
 }
 
