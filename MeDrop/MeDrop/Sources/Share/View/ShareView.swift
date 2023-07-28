@@ -9,14 +9,12 @@ import Foundation
 import SwiftUI
 
 struct ShareView: View {
-    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh", image: "Image1"))
+    @ObservedObject var mpc = MpcManager(data: ShareData(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
     
     var body: some View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
             
-           
-                
             receiveCardView()
                 .ignoresSafeArea()
 //            if mpc.connectedPeers.isEmpty {
@@ -40,7 +38,7 @@ struct ShareView: View {
 
 extension ShareView {
     @ViewBuilder
-    private func yellowJellySpeachView(spacing: CGFloat = 20,text: String,fontSize:CGFloat = 12,textColor:Color = .black) -> some View {
+    private func yellowJellySpeachView(spacing: CGFloat = 20, text: String, fontSize:CGFloat = 12, textColor:Color = .black) -> some View {
         VStack(spacing: spacing) {
             Image(DesignSystemAsset.Jelly.yellowSmallJelly.rawValue)
                 .resizable()
@@ -66,19 +64,7 @@ extension ShareView {
                 let name: String = String(arr[0])
                 let team: String = String(arr[1])
                 let job: String = String(arr[2])
-                let img: String = String(arr[3])
                 HStack(spacing: 16) {
-                    Image(img)
-                        .resizable()
-                        .scaledToFill()
-                        .background(content: {
-                            Circle()
-                                .foregroundColor(.red)
-                                .shadow(color: .black.opacity(0.25), radius: 4, y: 4)
-                               // .blur(radius: 4,opaque: true) // opaque 투명한 블러를 만들려면 true로 설정하고 투명도를 허용하려면 false로 설정합니다.
-                        })
-                        .frame(width: 60, height: 60)
-                    
                     VStack(alignment: .leading, spacing: 5) {
                         Text(name)
                             .font(.bold(17))
@@ -123,42 +109,28 @@ extension ShareView {
                 
                 VStack(spacing: 30) {
                     
-                    Text(mpc.receiveCard)
-                    HStack(spacing: 20) {
+                    TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com", color: [0.4, 0.5, 0.2]))
                         
-                        Button {
-                            DEBUG_LOG("계속하기")
-                        } label: {
-                            Text("계속하기")
-                                .font(.bold(17))
-                                .foregroundColor(DesignSystemAsset.mainBlue)
-                        }
-                        .padding(.horizontal, 48)
-                        .padding(.vertical, 14)
-                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.white))
-                        .frame(maxWidth: .infinity)
                         
-                        Button {
-                            DEBUG_LOG("저장하기")
-                        } label: {
-                            Text("저장하기")
-                                .font(.bold(17))
-                                .foregroundColor(.black)
-                        }
-                        .padding(.horizontal, 48)
-                        .padding(.vertical, 14)
-                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
-                        .frame(maxWidth: .infinity)
+                    
+                    Button {
+                        DEBUG_LOG("저장하기")
+                    } label: {
+                        Text("저장하기")
+                            .font(.bold(17))
+                            .foregroundColor(.black)
                     }
+                    .padding(.vertical, 14)
+                    .frame(maxWidth: .infinity)
+
+                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
                 }
                 .padding(.horizontal, 20)
-                .frame(height: 200)
-            
-                
-                    
+                 
                Spacer()
             }
             .padding(.top, safeArea.top)
+            .padding(.bottom,safeArea.bottom)
         }
         .background(alignment: .bottom) {
             ArcView()
@@ -190,6 +162,37 @@ extension ShareView {
                 path.closeSubpath()
                
             }
+        }
+    }
+}
+
+struct TmpCardView: View {
+    var card: ProfileCardModel
+    var body: some View {
+        VStack {
+            RoundedRectangle(cornerRadius: 20)
+                .shadow(radius: 10)
+                .padding()
+                .overlay(
+                    VStack {
+                        Spacer()
+                        Image("\(card.type)")
+                            .renderingMode(.template)
+                            .foregroundColor(Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2]))
+                            .padding()
+                            .border(.black)
+                        Spacer()
+                        Text("\(card.introduction)")
+                        Text("\(card.name)")
+                        Text("\(card.company)")
+                        Text("\(card.job)")
+                        Text("\(card.contact)")
+                        Spacer()
+                    }
+                        .padding()
+                        .foregroundColor(.black)
+                )
+                .foregroundColor(.white)
         }
     }
 }
