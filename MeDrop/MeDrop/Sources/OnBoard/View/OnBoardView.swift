@@ -20,7 +20,7 @@ struct OnBoardView: View {
             ZStack(alignment: .top) {
                 Color.white.ignoresSafeArea()
                 VStack(spacing: 30) {
-                    dynamicCustomHeader(screenSize)
+                    //dynamicCustomHeader(screenSize)
                     TabView(selection: $currentTab) {
                         ForEach(onBoardTabs) { tab in
                             GeometryReader { _ in
@@ -40,8 +40,9 @@ struct OnBoardView: View {
                             .tag(tab)
                         }
                     }
-                    .tabViewStyle(.page(indexDisplayMode: .never))// 인디케이터 제거
-                    lineWithText()
+                    .tabViewStyle(PageTabViewStyle())
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                   // .tabViewStyle(.page(indexDisplayMode: .never))// 인디케이터 제거
                     AppleSignInButton()
                         .cornerRadius(100)
                         .frame(width: 268, height: 50)
@@ -52,40 +53,28 @@ struct OnBoardView: View {
             }
             .frame(width: screenSize.width, height: screenSize.height)
         }
-    }
-    @ViewBuilder
-    func dynamicCustomHeader(_ size: CGSize) -> some View {
-        HStack(spacing: 5) {
-            ForEach(onBoardTabs) { tab in
-                ZStack { // 움직이는 막대기
-                    if currentTab == tab {
-                        Rectangle().fill(DesignSystemAsset.BackgroundColor.OnboardingOn)
-                    } else {
-                        Rectangle().fill(DesignSystemAsset.BackgroundColor.onboardingDefault)
-                    }
-                }
-                
-                .frame(height: 4)
-            }
+        .onAppear{
+            setupAppearance()
         }
     }
-    
-    @ViewBuilder
-    func lineWithText() -> some View {
-        ZStack {
-            Text("MeDrop으로 쉬운 명함관리해요")
-                .font(.bold(15))
-                .lineLimit(1)
-                .kerning(-0.4) // 자간 조정
-                .padding(.horizontal, 3)
-                .background(.white)
-                .zIndex(1)
-                .foregroundColor(DesignSystemAsset.TextColor.text2)
-                
-            Rectangle().frame(height: 1)
-                .foregroundColor(DesignSystemAsset.TextColor.text2)
-        }
-    }
+//    @ViewBuilder
+//    func dynamicCustomHeader(_ size: CGSize) -> some View {
+//        HStack(spacing: 5) {
+//            ForEach(onBoardTabs) { tab in
+//                ZStack { // 움직이는 막대기
+//                    if currentTab == tab {
+//                        Rectangle().fill(DesignSystemAsset.mainBlue)
+//                    } else {
+//                        Rectangle().fill(DesignSystemAsset.gray2)
+//                    }
+//                }
+//
+//                .frame(height: 4)
+//            }
+//        }
+//    }
+//
+
     
     struct OnBoardContentView: View {
         var tab: OnBoardTab
@@ -108,5 +97,12 @@ struct OnBoardView: View {
                     .frame(width: 300, height: 300) // 이미지 뷰 frame 사이즈 조정
             }
         }
+    }
+}
+
+extension OnBoardView {
+    func setupAppearance() {
+      UIPageControl.appearance().currentPageIndicatorTintColor = .black
+      UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
 }

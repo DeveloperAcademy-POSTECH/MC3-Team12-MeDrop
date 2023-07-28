@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "PlusCard.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "PlusCard.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "PlusCard 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

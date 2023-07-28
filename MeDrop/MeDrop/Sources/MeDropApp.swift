@@ -15,6 +15,7 @@ struct MeDropApp: App {
         WindowGroup {
 //            ShareView()
              MainView()
+                .preferredColorScheme(.light)
 //                .onAppear{
 //                    loadUserData()
 //                }

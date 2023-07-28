@@ -9,62 +9,25 @@ import Foundation
 import SwiftUI
 
 public enum DesignSystemAsset {
-    public enum CardColor {
-        static let black = Color("Black")
-        static let blue1 = Color("Blue1")
-        static let neonPink = Color("NeonPink")
-        static let lime = Color("Lime")
-        static let white = Color("White")
-    }
-    public enum TextColor {
-        static let text1 = Color("Text1")
-        static let text2 = Color("Text2")
-        static let text3 = Color("Text3")
-        static let text4 = Color("Text4")
-        static let text5 = Color("Text5")
-        static let text6 = Color("Text6")
-        static let text7 = Color("Text7")
-        static let text8 = Color("Text8")
-    }
     
-    public enum ButtonColor {
-        static let button1 = Color("Button1")
-        static let button2 = Color("Button2")
-        static let button3 = Color("Button3")
-        static let button4 = Color("Button4")
-        static let button5 = Color("Button5")
-        static let button6 = Color("Button6")
-        static let button7 = Color("Button7")
-        static let button8 = Color("Button8")
-        static let toggle1 = Color("Toggle1")
-        static let toggle2 = Color("Toggle2")
-    }
+    static let mainBlue = Color("MainBlue")
+    static let blue2 = Color("Blue2")
+    static let blue3 = Color("Blue3")
     
-    public enum BackgroundColor {
-        static let background1 = Color("Background1")
-        static let background2 = Color("Background2")
-        static let onboardingDefault = Color("OnboardingDefault")
-        static let OnboardingOn = Color("OnboardingON")
-    }
+    static let mainRed = Color("MainRed")
     
-    public enum IconColor {
-        static let gray4 = Color("Gray4")
-        static let blue1 = Color("Blue1")
-        static let white = Color("White")
-        static let gray5 = Color("Gray5")
-    }
+    static let mainYellow = Color("MainYellow")
+    static let yellow2 = Color("Yellow2")
     
-    public enum CardText {
-        static let black = Color("Black")
-        static let white = Color("White")
-    }
+    static let gray1 = Color("Gray1")
+    static let gray2 = Color("Gray2")
+    static let gray3 = Color("Gray3")
+    static let gray4 = Color("Gray4")
     
-    public enum ButtonTextColor {
-        static let white = Color("White")
-        static let gray2 = Color("Gray2")
-        static let blue1 = Color("Blue1")
-        static let black = Color("Black")
-    }
+    static let white1 = Color("White")
+    static let white2 = Color("White2")
+    
+    static let black = Color("Black")
     
     public enum OnBoardImage {
         static let onboard1 = "onBoardImg1"
@@ -79,8 +42,6 @@ public enum DesignSystemAsset {
         case obt3 = "빠르게 **연결**되는\n비지니스, **Me-Drop.**"
         case obt4 = "번거로운 **명함**관리이제는 **간편하게** 해요."
     }
-    
-    static let mainBlue = Color("MainBlue")
     
     enum Jelly: String {
         case yellowSmallJelly = "yellowSmallJelly"

@@ -13,7 +13,7 @@ struct ShareView: View {
     
     var body: some View {
         ZStack {
-            DesignSystemAsset.BackgroundColor.background2.ignoresSafeArea()
+            DesignSystemAsset.white2.ignoresSafeArea()
             
            
                 
@@ -147,7 +147,7 @@ extension ShareView {
                         }
                         .padding(.horizontal, 48)
                         .padding(.vertical, 14)
-                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.ButtonColor.button8))
+                        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
                         .frame(maxWidth: .infinity)
                     }
                 }
