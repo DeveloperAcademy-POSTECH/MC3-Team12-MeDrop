@@ -18,7 +18,7 @@ enum RequestType: Codable { // mpc 요청 타입
     case denied
 }
 
-struct ShareData: Codable { // 보낼 데이터 모델
+struct ExchangeDataModel: Codable { // 보낼 데이터 모델
     
     let userName: String
     let team: String
@@ -29,6 +29,6 @@ struct ShareData: Codable { // 보낼 데이터 모델
 struct MpcInfoDTO: Codable { // mpc에 실어 보낼 데이터 타입
     let type: RequestType
     let peerId: String
-    let data: ShareData
+    let data: ExchangeDataModel
 }
 

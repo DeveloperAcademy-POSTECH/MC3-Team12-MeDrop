@@ -22,7 +22,7 @@ class MpcManager: NSObject, ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     var selectedPeer: MCPeerID?
-    var data: ShareData
+    var data: ExchangeDataModel
     var connectedUser: String = ""
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어
@@ -32,7 +32,7 @@ class MpcManager: NSObject, ObservableObject {
     @Published var showPermissionAlert: Bool = false // 알람 플래그 변수
     
     
-    init(data: ShareData, maxPeers: Int = 5) {
+    init(data: ExchangeDataModel, maxPeers: Int = 5) {
         
         self.maxNumPeers = maxPeers
         self.data = data
@@ -81,7 +81,7 @@ extension MpcManager {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "",job: "" , cardInfo: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
         disConnecting() // 이전 연결 삭제
     }
     

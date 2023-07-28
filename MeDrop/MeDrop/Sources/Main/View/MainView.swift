@@ -35,7 +35,7 @@ struct MainView: View {
                         }
                         .tag(MainViewTab.my)
                     
-                    ExchangeView(collectedCards: $cardStore.yourCards)
+                    ExchangeView()
                         .tabItem {
                             Label("Exchange", systemImage: "arrow.up.arrow.down.circle.fill")
                         }
