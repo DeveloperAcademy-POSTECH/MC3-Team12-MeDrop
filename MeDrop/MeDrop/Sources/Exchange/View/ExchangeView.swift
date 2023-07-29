@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ExchangeView: View {
-    @ObservedObject var mpc = MpcManager(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
+    @ObservedObject var mpc = ExchangeViewModel(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
     
     var body: some View {
         ZStack {
