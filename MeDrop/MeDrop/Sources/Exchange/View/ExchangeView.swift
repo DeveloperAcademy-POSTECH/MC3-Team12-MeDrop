@@ -14,7 +14,9 @@ struct ExchangeView: View {
     var body: some View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
-            requestView()
+            
+            loadingView()
+           // requestView()
             //receiveCardView()
             //.ignoresSafeArea()
 //            if mpc.connectedPeers.isEmpty {
@@ -212,6 +214,30 @@ extension ExchangeView {
             }
             .padding(.horizontal,20)
         }
+        
+    }
+    
+    @ViewBuilder
+    private func loadingView() -> some View {
+        
+        VStack{
+            Text("교환 수락을 기다리는 중...")
+                .font(.bold(24))
+                .foregroundColor(.white)
+            LottieView(jsonName: "MEDROP",loopMode: .loop) { _ in
+                
+            }
+            VStack(spacing: 0) {
+                Text("교환할 상대의 기기와 맞닿아 주세요.")
+                    .foregroundColor(.black)
+                    .font(.bold(15))
+                Text("주변에 같은 무선인터넷을 이용하는 사람이 많다면\n로딩이 길어질 수 있습니다.")
+                    .foregroundColor(.black)
+                    .font(.regular(15))
+                    .multilineTextAlignment(.center)
+            }
+        }
+        
         
     }
 }
