@@ -168,7 +168,7 @@ extension ExchangeView {
     @ViewBuilder
     private func requestView() -> some View {
         
-        VStack {
+        VStack(spacing: 50) {
             VStack(spacing: 30){
                 Text("\(mpc.alertUserName)님에게 교환 요청이 왔어요!\n교환을 시작할까요?")
                     .foregroundColor(DesignSystemAsset.white1)
@@ -177,10 +177,40 @@ extension ExchangeView {
                 Image(DesignSystemAsset.Jelly.requestJelly.rawValue)
             }
             
-            HStack {
+            HStack(spacing: 20) {
                 
+                Button {
+                    
+                } label: {
+                    Text("거절하기")
+                        .font(.bold(17))
+                        .foregroundColor(DesignSystemAsset.mainRed)
+                }
+                .padding(.vertical,15)
+                .frame(maxWidth: .infinity)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(DesignSystemAsset.white1)
+                    
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("수락하기")
+                        .font(.bold(17))
+                        .foregroundColor(DesignSystemAsset.mainBlue)
+                }
+                .padding(.vertical,15)
+                .frame(maxWidth: .infinity)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(DesignSystemAsset.white1)
+                    
+                }
+
             }
-            
+            .padding(.horizontal,20)
         }
         
     }
