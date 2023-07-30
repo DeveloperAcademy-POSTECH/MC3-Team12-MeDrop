@@ -14,24 +14,61 @@ struct CollectedCardsView: View {
     @State var isDetail: Bool = false
     @State var isDelete = false
     @Environment(\.scenePhase) private var scenePhase
+    @State var sortYourCards: [ProfileCardModel] = []
     
     let saveAction: () -> Void
     
+    func sortingButton(order: String) -> some View {
+        Button {
+            self.sortedBy = order
+        } label: {
+            Text(order).font(.caption2)
+            Spacer()
+            if sortedBy == order {
+                Image(systemName: "checkmark.circle.fill")
+            } else {
+                Image(systemName: "checkmark.circle")
+            }
+        }
+    }
+    
+    
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading ) { HStack { Spacer()
-                Menu { sortingButton(order: "가나다 순")
-                    sortingButton(order: "새로운 순")
-                    sortingButton(order: "오래된 순")
-                } label: {
-                    Text(sortedBy)
-                    Image(systemName: "chevron.down")
-                }.padding(.trailing)
-                    .foregroundColor(.black)
-            }
-                Spacer()
+            ZStack {
+                
+                DesignSystemAsset.gray4
+                    .edgesIgnoringSafeArea(.all)                
+                
+                VStack(alignment: .leading ) { HStack { Spacer()
+                    Menu { sortingButton(order: "가나다 순")
+                        sortingButton(order: "새로운 순")
+                        sortingButton(order: "오래된 순")
+                    } label: {
+                        HStack {
+                            Text(sortedBy)
+                            Image(systemName: "chevron.down").foregroundColor(.red)
+                        }.onChange(of: sortedBy) { _ in
+                            if sortedBy == "가나다 순" {
+                                sortYourCards.sort {
+                                    $0.name < $1.name
+                                }
+                            } else if sortedBy == "새로운 순" {
+                                sortYourCards.sort {
+                                    $0.date < $1.date
+                                }
+                            } else {
+                                sortYourCards.sort {
+                                    $0.date > $1.date
+                                }
+                            }
+                        }
+                    }.padding(.trailing)
+                        .foregroundColor(.black)
+                }
+                    Spacer()
                     List {
-                        ForEach(yourCards, id:\.self) { profile in
+                        ForEach(sortYourCards, id:\.self) { profile in
                             Button(action: { isDetail.toggle()
                                 selectedProfile = profile
                             },
@@ -42,16 +79,23 @@ struct CollectedCardsView: View {
                                 },
                                        label: { Label("Delete", systemImage: "trash")})
                                 .tint(.red) }
-                            
                             .listRowSeparator(.hidden)
                         }
+                        .listRowBackground(Color.clear)
                     }
                     .listStyle(.plain)
+                    
+                }
             }
-            .navigationTitle("Collected Card")
+            
             .navigationDestination(isPresented: $isDetail) {
                 CardDetailCollectedView(card: $selectedProfile)
             }
+            
+        }
+        
+        .onAppear{
+            sortYourCards = yourCards
         }
         .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
         ) {
@@ -64,9 +108,7 @@ struct CollectedCardsView: View {
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }
-        .onChange(of: isDelete) { newValue in
-            DEBUG_LOG(newValue)
-        }
+        
     }
 }
 
@@ -74,8 +116,7 @@ struct CollectedCardComponent: View {
     var profileCard: ProfileCardModel
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10.0)
-                .stroke(.black, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 10.0).foregroundColor(.white)
             HStack {
                 Image("\(profileCard.type)")
                     .renderingMode(.template)
@@ -98,6 +139,6 @@ struct CollectedCardComponent: View {
 
 struct CollectedCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectedCardsView(yourCards: .constant(ProfileCardModel.sampleData), saveAction: {})
+        CollectedCardsView(yourCards: .constant(ProfileCardModel.sampleData),saveAction: {})
     }
 }
