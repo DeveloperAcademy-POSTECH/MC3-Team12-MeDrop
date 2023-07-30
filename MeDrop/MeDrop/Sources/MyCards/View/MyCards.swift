@@ -53,7 +53,6 @@ struct MyCardsView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
-            .navigationTitle("MY CARDS")
             .toolbar {
                 Button(action: { isMenu.toggle() }) {
                     Image(systemName: "ellipsis")
