@@ -9,6 +9,13 @@ import SwiftUI
 import MultipeerConnectivity
 import Combine
 
+enum ExchangeState{
+    case request
+    case waiting
+    case exchange
+    case refuse
+    case `default`
+}
 
 
 class ExchangeViewModel: NSObject, ObservableObject {
@@ -27,10 +34,9 @@ class ExchangeViewModel: NSObject, ObservableObject {
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어
     @Published var receiveCard: String = ""
-    @Published var connectedState: ConnectState = .notConnected
     @Published var alertUserName: String = "" // 알람에 보여줄 이름
-    @Published var showPermissionAlert: Bool = false // 알람 플래그 변수
-    
+    @Published var showAlert: Bool = false // 알람 플래그 변수
+    @Published var state:ExchangeState = .default
     
     init(data: ExchangeDataModel, maxPeers: Int = 5) {
         
@@ -77,6 +83,9 @@ extension ExchangeViewModel {
     
     
     public func sendDeniedState() { // 거절 신호 보내기
+        
+        self.state = .default
+        
         guard let peer = selectedPeer else  {
             return
         }
@@ -87,12 +96,17 @@ extension ExchangeViewModel {
     
     public func confirmConnectState(id: String) { //확인 신호 보내기
         
+        self.state = .waiting
         let peer = findPeerWIthId(id: id)
         
         sendData(peer: peer, data: MpcInfoDTO(type: .confirm, peerId: identityString, data: data))
     }
     
     public func sendConnectState() { //연결 신호 보내기
+        
+        
+        self.state = .exchange
+        
         guard let peer = selectedPeer else {
             return
         }
@@ -116,10 +130,10 @@ extension ExchangeViewModel {
     
     private func disConnecting() {
         self.selectedPeer = nil
-        self.connectedState = .notConnected
         self.receiveCard = ""
         self.connectedUser = ""
         self.alertUserName = ""
+        self.state = .default
     }
     
     private func sendData(peer: MCPeerID, data: MpcInfoDTO) {
@@ -164,21 +178,20 @@ extension ExchangeViewModel: MCSessionDelegate {
             return
         }
         
-        
         switch receiveData.type {
         case .connect: // 연결 신호 일때
             
-            if connectedState == .notConnected { // 아직 연결 안되었을 때
+            if state == .default { // 아직 연결 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     self.selectedPeer = peerID
-                    self.connectedState = .connected
                     self.receiveCard = receiveData.data.cardInfo
                     self.connectedUser = receiveData.data.userName
+                    self.state = .exchange
                     self.sendConnectState() // 연결한 피어로 연결신호 재전송
                 }
             }
-        
+            
         case .confirm:
             
             DEBUG_LOG("CONFIRM")
@@ -186,36 +199,32 @@ extension ExchangeViewModel: MCSessionDelegate {
             if selectedPeer == nil { //
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
-                
+                    
                     //얼럿 띠우기
                     self.alertUserName = receiveData.data.userName
-                    self.showPermissionAlert.toggle()
                     self.selectedPeer = peerID
+                    self.state = .request
                 }
             }
             
-           
-                
+            
+            
+            
             
             
         case .denied:
-        
-            // 거절 신호 보내기
-            if self.connectedState != .notConnected {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else {return}
-                    
-                    self.disConnecting()
-                    self.sendDeniedState()
-                }
+            
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                
+                self.state = .refuse
+                self.disConnecting()
+                
             }
-            
-            
-        
+    
             
         }
-        
-        
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -243,6 +252,7 @@ extension ExchangeViewModel: MCNearbyServiceBrowserDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        
     }
 }
 
@@ -257,3 +267,4 @@ extension ExchangeViewModel: MCNearbyServiceAdvertiserDelegate {
             
     }
 }
+
