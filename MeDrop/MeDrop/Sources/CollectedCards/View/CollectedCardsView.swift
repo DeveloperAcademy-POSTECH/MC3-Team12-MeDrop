@@ -48,7 +48,6 @@ struct CollectedCardsView: View {
                     }
                     .listStyle(.plain)
             }
-            .navigationTitle("Collected Card")
             .navigationDestination(isPresented: $isDetail) {
                 CardDetailCollectedView(card: $selectedProfile)
             }
