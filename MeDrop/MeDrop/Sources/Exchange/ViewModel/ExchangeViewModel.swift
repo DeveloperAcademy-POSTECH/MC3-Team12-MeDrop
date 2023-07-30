@@ -37,7 +37,6 @@ class ExchangeViewModel: NSObject, ObservableObject {
     @Published var showAlert: Bool = false // 알람 플래그 변수
     @Published var state:ExchangeState = .none
     @Published var toast:Toast?
-    @Published var showToast:Bool = false
     
     init(data: ExchangeDataModel, maxPeers: Int = 5) {
         
@@ -179,6 +178,8 @@ extension ExchangeViewModel: MCSessionDelegate {
             return
         }
         
+        // TODO: 현재 교환 상태일 때  다른 요청 처리
+        
         switch receiveData.type {
         case .connect: // 연결 신호 일때
             
@@ -220,7 +221,6 @@ extension ExchangeViewModel: MCSessionDelegate {
                 guard let self else {return}
                 
                 self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님이 교환 요청을 거절하셨습니다.")
-                self.showAlert.toggle()
                 self.disConnecting()
                 
             }
