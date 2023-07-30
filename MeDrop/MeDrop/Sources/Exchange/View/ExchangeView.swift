@@ -15,19 +15,7 @@ struct ExchangeView: View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
             
-            
-            switch viewModel.state{
-                
-            case .request:
-                requestView()
-            case .waiting:
-                loadingView()
-            case .exchange:
-                receiveCardView()
-            case .refuse:
-                Text("거절")
-            case .default:
-                
+            Group{
                 if viewModel.connectedPeers.isEmpty {
                     
                     yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
@@ -39,9 +27,32 @@ struct ExchangeView: View {
                 else {
                     advertiserList()
                 }
-                
             }
+            
+            
+            Group{
+                switch viewModel.state {
+                    
+                case .request:
+                    requestView()
+                        
+                case .waiting:
+                    loadingView()
+                case .exchange:
+                    receiveCardView()
+                case .none:
+                    EmptyView()
+                }
+            }
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .background {
+                Color.black.opacity(0.8)
+                    .ignoresSafeArea()
+            }
+            
+            
         }
+        .toastView(toast: $viewModel.toast)
     }
 }
 

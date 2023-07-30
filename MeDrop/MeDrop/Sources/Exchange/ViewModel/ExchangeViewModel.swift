@@ -13,8 +13,7 @@ enum ExchangeState{
     case request
     case waiting
     case exchange
-    case refuse
-    case `default`
+    case none
 }
 
 
@@ -36,7 +35,9 @@ class ExchangeViewModel: NSObject, ObservableObject {
     @Published var receiveCard: String = ""
     @Published var alertUserName: String = "" // 알람에 보여줄 이름
     @Published var showAlert: Bool = false // 알람 플래그 변수
-    @Published var state:ExchangeState = .default
+    @Published var state:ExchangeState = .none
+    @Published var toast:Toast?
+    @Published var showToast:Bool = false
     
     init(data: ExchangeDataModel, maxPeers: Int = 5) {
         
@@ -84,7 +85,7 @@ extension ExchangeViewModel {
     
     public func sendDeniedState() { // 거절 신호 보내기
         
-        self.state = .default
+        self.state = .none
         
         guard let peer = selectedPeer else  {
             return
@@ -133,7 +134,7 @@ extension ExchangeViewModel {
         self.receiveCard = ""
         self.connectedUser = ""
         self.alertUserName = ""
-        self.state = .default
+        self.state = .none
     }
     
     private func sendData(peer: MCPeerID, data: MpcInfoDTO) {
@@ -181,7 +182,7 @@ extension ExchangeViewModel: MCSessionDelegate {
         switch receiveData.type {
         case .connect: // 연결 신호 일때
             
-            if state == .default { // 아직 연결 안되었을 때
+            if state != .exchange { // 아직 연결 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     self.selectedPeer = peerID
@@ -218,7 +219,8 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 
-                self.state = .refuse
+                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님이 교환 요청을 거절하셨습니다.")
+                self.showAlert.toggle()
                 self.disConnecting()
                 
             }

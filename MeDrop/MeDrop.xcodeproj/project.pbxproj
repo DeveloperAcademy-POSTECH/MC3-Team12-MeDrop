@@ -60,6 +60,9 @@
 		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
 		B0D9B37D2A6F4FF80032B8FF /* ExchangeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B37C2A6F4FF80032B8FF /* ExchangeDataModel.swift */; };
 		B0D9B37F2A74F11E0032B8FF /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B0D9B37E2A74F11E0032B8FF /* Loading.json */; };
+		B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3812A764D7F0032B8FF /* Toast.swift */; };
+		B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3832A764DB30032B8FF /* ToastView.swift */; };
+		B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
 		B0E4D6992A5266D100788200 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6982A5266D100788200 /* Preview Assets.xcassets */; };
@@ -118,6 +121,9 @@
 		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
 		B0D9B37C2A6F4FF80032B8FF /* ExchangeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDataModel.swift; sourceTree = "<group>"; };
 		B0D9B37E2A74F11E0032B8FF /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
+		B0D9B3812A764D7F0032B8FF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		B0D9B3832A764DB30032B8FF /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6952A5266D100788200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 		B09951132A57BC51009AC534 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B0D9B3802A764BE90032B8FF /* Toast */,
 				B099515C2A5F7F72009AC534 /* LottieView */,
 				B09951142A57BC5B009AC534 /* CardView */,
 			);
@@ -456,6 +463,16 @@
 				B0D9B37C2A6F4FF80032B8FF /* ExchangeDataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B0D9B3802A764BE90032B8FF /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				B0D9B3812A764D7F0032B8FF /* Toast.swift */,
+				B0D9B3832A764DB30032B8FF /* ToastView.swift */,
+				B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		B0E4D6852A5266D000788200 = {
@@ -617,12 +634,14 @@
 				97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				970AFC922A723E420041A948 /* MenuView.swift in Sources */,
+				B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */,
+				B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */,
 				97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B0D9B37D2A6F4FF80032B8FF /* ExchangeDataModel.swift in Sources */,
@@ -633,6 +652,7 @@
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
+				B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
