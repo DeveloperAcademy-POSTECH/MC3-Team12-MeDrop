@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardDetailView: View {
     @Binding var card: ProfileCardModel
+    @State var isUp: Bool = true
     var isFromMy: Bool
     
     var body: some View {
@@ -44,14 +45,38 @@ struct CardDetailView: View {
                 }
             }
             .padding(40)
+            .padding(.bottom, 0)
             
-            HStack(spacing: 10) {
-                Circle()
-                Circle()
-                Circle()
-                Circle()
+            HStack(spacing: 0) {
+                Image("PhoneMy")
+                    .resizable()
+                    .scaledToFit()
+                Image("MsgMy")
+                    .resizable()
+                    .scaledToFit()
+                Button(action:{}){
+                    Image("MailMy")
+                        .resizable()
+                        .scaledToFit()
+                }
+                ZStack {
+                    Circle()
+                        .foregroundColor(.clear)
+                    Button(action: { isUp.toggle()}){
+                        if isUp {
+                            Image("AddUp")
+                                .resizable()
+                                .scaledToFit()
+                        } else {
+                            Image("AddDown")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                }
             }
             .padding()
+            .padding(.top, 0)
         }
     }
 }

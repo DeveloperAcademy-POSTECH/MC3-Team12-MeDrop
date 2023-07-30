@@ -74,7 +74,7 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
         .background(.green)
         .cornerRadius(14)
     }
-    .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
+    .disabled((contactButton == .mail && isEmailEmpty) )
     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3)
 }
 
