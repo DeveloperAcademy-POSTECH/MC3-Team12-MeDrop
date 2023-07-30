@@ -16,6 +16,7 @@ enum RequestType: Codable { // mpc 요청 타입
     case connect
     case confirm
     case denied
+    case occupied
 }
 
 struct ExchangeDataModel: Codable { // 보낼 데이터 모델

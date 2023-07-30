@@ -16,7 +16,6 @@ enum ExchangeState{
     case none
 }
 
-
 class ExchangeViewModel: NSObject, ObservableObject {
     private let mcSession: MCSession
     private let localPeerID: MCPeerID
@@ -35,14 +34,13 @@ class ExchangeViewModel: NSObject, ObservableObject {
     @Published var receiveCard: String = ""
     @Published var alertUserName: String = "" // 알람에 보여줄 이름
     @Published var showAlert: Bool = false // 알람 플래그 변수
-    @Published var state:ExchangeState = .none
-    @Published var toast:Toast?
+    @Published var state: ExchangeState = .none
+    @Published var toast: Toast?
     
     init(data: ExchangeDataModel, maxPeers: Int = 5) {
-        
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.userName)\(seperatorString)\(data.team)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.userName)8\(seperatorString)\(data.team)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
@@ -81,6 +79,10 @@ extension ExchangeViewModel {
     }
     
     
+    public func sendOccupiedState(peer:MCPeerID) { // 이미 사용중 신호 보내기
+        
+        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
+    }
     
     public func sendDeniedState() { // 거절 신호 보내기
         
@@ -151,7 +153,6 @@ extension ExchangeViewModel {
 
 extension ExchangeViewModel: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        
         switch state {
         case .notConnected:
             DEBUG_LOG("Seesion Not Connected")
@@ -195,10 +196,9 @@ extension ExchangeViewModel: MCSessionDelegate {
             }
             
         case .confirm:
+        
             
-            DEBUG_LOG("CONFIRM")
-            
-            if selectedPeer == nil { //
+            if selectedPeer == nil && state != .request && state != .waiting { // 연결이 아무도 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     
@@ -209,9 +209,9 @@ extension ExchangeViewModel: MCSessionDelegate {
                 }
             }
             
-            
-            
-            
+            else { // 연결된 상태로 다른 요청이 왔을 때
+                sendOccupiedState(peer: peerID)
+            }
             
             
         case .denied:
@@ -225,6 +225,17 @@ extension ExchangeViewModel: MCSessionDelegate {
                 
             }
     
+            
+        case .occupied:
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                
+                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님은 이미 다른분과 교환 중입니다.")
+                self.disConnecting()
+                
+            }
+            
             
         }
     }
