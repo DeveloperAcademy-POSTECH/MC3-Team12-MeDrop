@@ -21,7 +21,7 @@ struct MyCardsView: View {
     let saveAction: () -> Void
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 TabView(selection: $selectedIndex) {
                         ForEach($myCards.indices, id: \.self) { index in
@@ -65,6 +65,7 @@ struct MyCardsView: View {
                 NewCardView(cards: $myCards, isFinish: $isCreate)
             }
         }
+        .navigationViewStyle(.stack)
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }

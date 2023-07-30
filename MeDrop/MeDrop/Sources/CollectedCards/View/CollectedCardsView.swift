@@ -34,7 +34,7 @@ struct CollectedCardsView: View {
     
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 
                 DesignSystemAsset.gray4
@@ -93,7 +93,7 @@ struct CollectedCardsView: View {
             }
             
         }
-        
+        .navigationViewStyle(.stack)
         .onAppear{
             sortYourCards = yourCards
         }
