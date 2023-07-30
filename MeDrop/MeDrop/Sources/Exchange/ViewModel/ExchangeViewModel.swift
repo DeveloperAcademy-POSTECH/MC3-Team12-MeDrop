@@ -9,9 +9,14 @@ import SwiftUI
 import MultipeerConnectivity
 import Combine
 
+enum ExchangeState{
+    case request
+    case waiting
+    case exchange
+    case none
+}
 
-
-class MpcManager: NSObject, ObservableObject {
+class ExchangeViewModel: NSObject, ObservableObject {
     private let mcSession: MCSession
     private let localPeerID: MCPeerID
     private let mcAdvertiser: MCNearbyServiceAdvertiser
@@ -22,21 +27,20 @@ class MpcManager: NSObject, ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     var selectedPeer: MCPeerID?
-    var data: ShareData
+    var data: ExchangeDataModel
     var connectedUser: String = ""
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어
     @Published var receiveCard: String = ""
-    @Published var connectedState: ConnectState = .notConnected
     @Published var alertUserName: String = "" // 알람에 보여줄 이름
-    @Published var showPermissionAlert: Bool = false // 알람 플래그 변수
+    @Published var showAlert: Bool = false // 알람 플래그 변수
+    @Published var state: ExchangeState = .none
+    @Published var toast: Toast?
     
-    
-    init(data: ShareData, maxPeers: Int = 5) {
-        
+    init(data: ExchangeDataModel, maxPeers: Int = 5) {
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.userName)\(seperatorString)\(data.team)\(seperatorString)\(data.job)\(seperatorString)\(data.image)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.userName)8\(seperatorString)\(data.team)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
@@ -56,7 +60,7 @@ class MpcManager: NSObject, ObservableObject {
     }
 }
 
-extension MpcManager {
+extension ExchangeViewModel {
     func startHosting() {
         DEBUG_LOG("START")
         mcAdvertiser.startAdvertisingPeer()
@@ -75,24 +79,36 @@ extension MpcManager {
     }
     
     
+    public func sendOccupiedState(peer:MCPeerID) { // 이미 사용중 신호 보내기
+        
+        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
+    }
     
     public func sendDeniedState() { // 거절 신호 보내기
+        
+        self.state = .none
+        
         guard let peer = selectedPeer else  {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ShareData(userName: "", team: "",job: "" , cardInfo: "",image: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
         disConnecting() // 이전 연결 삭제
     }
     
     public func confirmConnectState(id: String) { //확인 신호 보내기
         
+        self.state = .waiting
         let peer = findPeerWIthId(id: id)
         
         sendData(peer: peer, data: MpcInfoDTO(type: .confirm, peerId: identityString, data: data))
     }
     
     public func sendConnectState() { //연결 신호 보내기
+        
+        
+        self.state = .exchange
+        
         guard let peer = selectedPeer else {
             return
         }
@@ -116,10 +132,10 @@ extension MpcManager {
     
     private func disConnecting() {
         self.selectedPeer = nil
-        self.connectedState = .notConnected
         self.receiveCard = ""
         self.connectedUser = ""
         self.alertUserName = ""
+        self.state = .none
     }
     
     private func sendData(peer: MCPeerID, data: MpcInfoDTO) {
@@ -135,9 +151,8 @@ extension MpcManager {
     }
 }
 
-extension MpcManager: MCSessionDelegate {
+extension ExchangeViewModel: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        
         switch state {
         case .notConnected:
             DEBUG_LOG("Seesion Not Connected")
@@ -164,58 +179,65 @@ extension MpcManager: MCSessionDelegate {
             return
         }
         
+        // TODO: 현재 교환 상태일 때  다른 요청 처리
         
         switch receiveData.type {
         case .connect: // 연결 신호 일때
             
-            if connectedState == .notConnected { // 아직 연결 안되었을 때
+            if state != .exchange { // 아직 연결 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     self.selectedPeer = peerID
-                    self.connectedState = .connected
                     self.receiveCard = receiveData.data.cardInfo
                     self.connectedUser = receiveData.data.userName
+                    self.state = .exchange
                     self.sendConnectState() // 연결한 피어로 연결신호 재전송
                 }
             }
-        
+            
         case .confirm:
-            
-            DEBUG_LOG("CONFIRM")
-            
-            if selectedPeer == nil { //
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else {return}
-                
-                    //얼럿 띠우기
-                    self.alertUserName = receiveData.data.userName
-                    self.showPermissionAlert.toggle()
-                    self.selectedPeer = peerID
-                }
-            }
-            
-           
-                
-            
-            
-        case .denied:
         
-            // 거절 신호 보내기
-            if self.connectedState != .notConnected {
+            
+            if selectedPeer == nil && state != .request && state != .waiting { // 연결이 아무도 안되었을 때
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     
-                    self.disConnecting()
-                    self.sendDeniedState()
+                    //얼럿 띠우기
+                    self.alertUserName = receiveData.data.userName
+                    self.selectedPeer = peerID
+                    self.state = .request
                 }
             }
             
+            else { // 연결된 상태로 다른 요청이 왔을 때
+                sendOccupiedState(peer: peerID)
+            }
             
-        
+            
+        case .denied:
+            
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                
+                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님이 교환 요청을 거절하셨습니다.")
+                self.disConnecting()
+                
+            }
+    
+            
+        case .occupied:
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                
+                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님은 이미 다른분과 교환 중입니다.")
+                self.disConnecting()
+                
+            }
+            
             
         }
-        
-        
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -230,7 +252,7 @@ extension MpcManager: MCSessionDelegate {
     }
 }
 
-extension MpcManager: MCNearbyServiceBrowserDelegate {
+extension ExchangeViewModel: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
         // 세션 초대 
         
@@ -243,10 +265,11 @@ extension MpcManager: MCNearbyServiceBrowserDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        
     }
 }
 
-extension MpcManager: MCNearbyServiceAdvertiserDelegate {
+extension ExchangeViewModel: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         
         DEBUG_LOG("CONNECT \(mcSession.connectedPeers.count) ")
@@ -257,3 +280,4 @@ extension MpcManager: MCNearbyServiceAdvertiserDelegate {
             
     }
 }
+

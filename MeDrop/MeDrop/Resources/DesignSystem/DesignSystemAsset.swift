@@ -45,5 +45,6 @@ public enum DesignSystemAsset {
     
     enum Jelly: String {
         case yellowSmallJelly = "yellowSmallJelly"
+        case requestJelly = "RequestJelly"
     }
 }

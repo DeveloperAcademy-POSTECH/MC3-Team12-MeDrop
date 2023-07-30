@@ -16,20 +16,20 @@ enum RequestType: Codable { // mpc 요청 타입
     case connect
     case confirm
     case denied
+    case occupied
 }
 
-struct ShareData: Codable { // 보낼 데이터 모델
+struct ExchangeDataModel: Codable { // 보낼 데이터 모델
     
     let userName: String
     let team: String
     let job: String
     let cardInfo: String
-    let image: String
 }
 
 struct MpcInfoDTO: Codable { // mpc에 실어 보낼 데이터 타입
     let type: RequestType
     let peerId: String
-    let data: ShareData
+    let data: ExchangeDataModel
 }
 
