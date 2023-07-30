@@ -12,50 +12,44 @@ struct CardDetailView: View {
     var isFromMy: Bool
     
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
+        VStack {
+            Spacer()
+            VStack (spacing: 12) {
                 HStack {
-                    Text("\(card.introduction)").font(.title).bold()
+                    Text("\(card.name)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                     Spacer()
                 }
-                
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(.white)
-                    .shadow(radius: 15)
-                    .overlay(
-                        VStack {
-                            Spacer()
-                            HStack {
-                                ForEach(ContactButton.allCases, id: \.self) { contactButton in
-                                    actionButtonDrawer(contactButton: contactButton, profileCard: card)
-                                        .disabled(isFromMy)
-                                }
-                            }
-                            .padding(.vertical)
-                            // 컴포넌트화 예정 HStack + 폰트 + Padding
-                            
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(card.name)").padding(.bottom)
-                                    Text("\(card.company)").padding(.bottom)
-                                    Text("\(card.job)").padding(.bottom)
-                                    Text("\(card.contact)").padding(.bottom)
-                                    Text("\(card.email)")
-                                }
-                                Spacer()
-                            }
-                            Spacer()
-                            HStack {
-                                ForEach(ContactButton.allCases, id: \.self) { contactButton in
-                                    actionButtonDrawer(contactButton: contactButton, profileCard: card)
-                                        .disabled(isFromMy)
-                                }
-                            }
-                            Spacer()
-                        }
-                            .padding()
-                    )
+                VStack {
+                    HStack {
+                        Text("\(card.company)")
+                        Spacer()
+                    }
+                    HStack {
+                        Text("\(card.job)")
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                }
+                HStack {
+                    Image(systemName: "phone.fill")
+                    Text("\(card.contact)")
+                    Spacer()
+                }
+                HStack {
+                    Image(systemName: "envelope.fill")
+                    Text("\(card.email)")
+                    Spacer()
+                }
+            }
+            .padding(40)
+            
+            HStack(spacing: 10) {
+                Circle()
+                Circle()
+                Circle()
+                Circle()
             }
             .padding()
         }

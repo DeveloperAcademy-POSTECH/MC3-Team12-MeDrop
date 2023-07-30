@@ -11,14 +11,12 @@ enum ContactButton: String, Identifiable, CaseIterable {
     case phone
     case message
     case mail
-    case safari
 
     var sfSymbol: String {
         switch self {
         case .phone: return "phone.fill"
         case .message: return "message"
         case .mail: return "envelope.fill"
-        case .safari: return "safari.fill"
         }
     }
 
@@ -27,7 +25,6 @@ enum ContactButton: String, Identifiable, CaseIterable {
         case .phone: return "Phone"
         case .message: return "Message"
         case .mail: return "Mail"
-        case .safari: return "Safari"
         }
     }
     
@@ -60,11 +57,6 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
                 
             case .mail:
                 if let url = URL(string: "mailto:\(profileCard.email)") {
-                    UIApplication.shared.open(url)
-                }
-                
-            case .safari:
-                if let url = URL(string: "https://\(profileCard.link)") {
                     UIApplication.shared.open(url)
                 }
             }
