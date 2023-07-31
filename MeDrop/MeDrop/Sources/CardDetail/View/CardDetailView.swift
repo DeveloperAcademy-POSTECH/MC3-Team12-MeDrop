@@ -99,9 +99,15 @@ struct CardDetailView: View {
                         Button(action: {
                             expand.toggle()
                         }){
-                            Image("AddUp")
-                                .resizable()
-                                .scaledToFit()
+                            if expand {
+                                Image("AddDown")
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Image("AddUp")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                         }
                     }
                     .animation(.spring())
