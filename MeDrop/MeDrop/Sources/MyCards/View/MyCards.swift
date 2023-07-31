@@ -102,8 +102,6 @@ struct MyCardsView: View {
                     }
                     .tabViewStyle(PageTabViewStyle())
                     .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                    
-                    
                     Spacer()
                     
                     TabClipperShape(radius: 38.0)
@@ -111,11 +109,6 @@ struct MyCardsView: View {
                         .frame(height: 88, alignment: .top)
                         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                         .overlay(bottomBar)
-                    //                    .alert("교환 버튼 클릭", isPresented: $showingAlert) {
-                    //                        Button("확인", role: .cancel) { }
-                    //                    }
-                    
-                    
                 }
                 .edgesIgnoringSafeArea(.bottom)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -129,9 +122,12 @@ struct MyCardsView: View {
                         MenuView()
                     }
                 }
-                .sheet(isPresented: $isCreate) {
-                    NewCardView(cards: $myCards, isFinish: $isCreate)
+                .navigationDestination(isPresented: $isCreate) {
+                    CreateCardView(cards: $myCards)
                 }
+//                .sheet(isPresented: $isCreate) {
+//                    NewCardView(cards: $myCards, isFinish: $isCreate)
+//                }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
