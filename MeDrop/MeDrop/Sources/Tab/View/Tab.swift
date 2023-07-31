@@ -27,6 +27,6 @@ enum Tab: String {
 
 var tabItems = [
     TabItem(type: .tabType, icon: "person.text.rectangle.fill", text: "ME CARD", tab: .my),
-    TabItem(type: .buttonType, icon: "arrow.triangle.2.circlepath", text: "Exchange", tab: nil),
+    TabItem(type: .buttonType, icon: "arrow.2.squarepath", text: "Exchange", tab: nil),
     TabItem(type: .tabType, icon: "person.crop.rectangle.stack", text: "YOUR CARDS", tab: .your)
 ]
