@@ -13,71 +13,90 @@ struct CardDetailView: View {
     var isFromMy: Bool
     
     var body: some View {
-        VStack {
-            Spacer()
-            VStack (spacing: 12) {
-                HStack {
-                    Text("\(card.name)")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                VStack {
+        ZStack {
+            VStack {
+                Spacer()
+                VStack(spacing: 12) {
                     HStack {
-                        Text("\(card.company)")
-                        Spacer()
-                    }
-                    HStack {
-                        Text("\(card.job)")
+                        Text("\(card.name)")
+                            .font(.largeTitle)
                             .fontWeight(.bold)
                         Spacer()
                     }
+                    VStack {
+                        HStack {
+                            Text("\(card.company)")
+                            Spacer()
+                        }
+                        HStack {
+                            Text("\(card.job)")
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                    }
+                    HStack {
+                        Image(systemName: "phone.fill")
+                        Text("\(card.contact)")
+                        Spacer()
+                    }
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                        Text("\(card.email)")
+                        Spacer()
+                    }
                 }
-                HStack {
-                    Image(systemName: "phone.fill")
-                    Text("\(card.contact)")
-                    Spacer()
-                }
-                HStack {
-                    Image(systemName: "envelope.fill")
-                    Text("\(card.email)")
-                    Spacer()
-                }
-            }
-            .padding(40)
-            .padding(.bottom, 0)
-            
-            HStack(spacing: 0) {
-                Image("PhoneMy")
-                    .resizable()
-                    .scaledToFit()
-                Image("MsgMy")
-                    .resizable()
-                    .scaledToFit()
-                Button(action:{}){
-                    Image("MailMy")
-                        .resizable()
-                        .scaledToFit()
-                }
-                ZStack {
-                    Circle()
-                        .foregroundColor(.clear)
-                    Button(action: { isUp.toggle()}){
-                        if isUp {
-                            Image("AddUp")
-                                .resizable()
-                                .scaledToFit()
-                        } else {
-                            Image("AddDown")
-                                .resizable()
-                                .scaledToFit()
+                .padding(40)
+                .padding(.bottom, 0)
+                
+                HStack(spacing: 0) {
+                    Button(action:{
+                        if let url = URL(string: "tel:\(card.contact)") {
+                            UIApplication.shared.open(url)
+                        }
+                    }){
+                        Image("PhoneMy")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Button(action:{
+                        if let url = URL(string: "sms:\(card.contact)") {
+                            UIApplication.shared.open(url)
+                        }
+                    }){
+                        Image("MsgMy")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Button(action:{
+                        if let url = URL(string: "mailto:\(card.email)") {
+                            UIApplication.shared.open(url)
+                        }
+                    }){
+                        Image("MailMy")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    ZStack {
+                        Circle()
+                            .foregroundColor(.clear)
+                        Button(action: { isUp.toggle()}){
+                            if isUp {
+                                Image("AddUp")
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Image("AddDown")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                         }
                     }
                 }
+                .padding()
+                .padding(.top, 0)
             }
-            .padding()
-            .padding(.top, 0)
         }
+        .background(.pink)
     }
 }
 

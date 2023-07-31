@@ -64,7 +64,8 @@ struct MainTabView: View {
                     Group {
                         switch selectedTab {
                         case .my:
-                            MyCardsView(myCards: $cardStore.myCards) {
+                            MyCardsView(myCards: $cardStore.myCards)
+                            {
                                 Task {
                                     try await cardStore.saveData()
                                 }
