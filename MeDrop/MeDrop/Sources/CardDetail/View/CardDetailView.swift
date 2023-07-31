@@ -11,6 +11,9 @@ struct CardDetailView: View {
     @Binding var card: ProfileCardModel
     @State var isUp: Bool = true
     var isFromMy: Bool
+    @State private var selectedOption: String = "Option 1"
+        let options = ["Option 1", "Option 2", "Option 3"]
+    @State var expand = false
     
     var body: some View {
         ZStack {
@@ -47,17 +50,22 @@ struct CardDetailView: View {
                 }
                 .padding(40)
                 .padding(.bottom, 0)
-                
-                HStack(spacing: 0) {
-                    Button(action:{
-                        if let url = URL(string: "tel:\(card.contact)") {
-                            UIApplication.shared.open(url)
+                Spacer()
+                    .frame(height: UIScreen.height * 0.1)
+            }
+            VStack {
+                Spacer()
+                HStack( alignment: .bottom, spacing: 0) {
+                        Button(action: {
+                            if let url = URL(string: "tel:\(card.contact)") {
+                                UIApplication.shared.open(url)
+                            }
+                        }){
+                            Image("PhoneMy")
+                                .resizable()
+                                .scaledToFit()
                         }
-                    }){
-                        Image("PhoneMy")
-                            .resizable()
-                            .scaledToFit()
-                    }
+                    
                     Button(action:{
                         if let url = URL(string: "sms:\(card.contact)") {
                             UIApplication.shared.open(url)
@@ -67,7 +75,7 @@ struct CardDetailView: View {
                             .resizable()
                             .scaledToFit()
                     }
-                    Button(action:{
+                    Button(action: {
                         if let url = URL(string: "mailto:\(card.email)") {
                             UIApplication.shared.open(url)
                         }
@@ -76,27 +84,30 @@ struct CardDetailView: View {
                             .resizable()
                             .scaledToFit()
                     }
-                    ZStack {
-                        Circle()
-                            .foregroundColor(.clear)
-                        Button(action: { isUp.toggle()}){
-                            if isUp {
-                                Image("AddUp")
-                                    .resizable()
-                                    .scaledToFit()
-                            } else {
-                                Image("AddDown")
-                                    .resizable()
-                                    .scaledToFit()
+                    
+                    VStack {
+                        if expand {
+                            VStack {
+                                Circle().frame(width: 40)
+                                Circle().frame(width: 40)
                             }
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(50)
+                            .offset(y: expand ? 0 : UIScreen.height * 0.1)
+                        }
+                        Button(action: {
+                            expand.toggle()
+                        }){
+                            Image("AddUp")
+                                .resizable()
+                                .scaledToFit()
                         }
                     }
+                    .animation(.spring())
                 }
-                .padding()
-                .padding(.top, 0)
             }
         }
-        .background(.pink)
     }
 }
 
