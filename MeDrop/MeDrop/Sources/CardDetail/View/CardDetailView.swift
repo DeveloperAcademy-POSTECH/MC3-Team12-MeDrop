@@ -89,24 +89,28 @@ struct CardDetailView: View {
                     VStack {
                         if expand {
                             if !socialMediaLinks.isEmpty {
-                                ForEach(socialMediaLinks, id: \.self) { link in
-                                    Button(action: {
-                                        if let url = URL(string: card.link(for: link)) {
-                                            UIApplication.shared.open(url)
-                                        }
-                                    }) {
-                                        HStack {
-                                            Image(link.icon)
-                                                .resizable()
-                                                .frame(width: 20, height: 20)
-                                            Text(link.name)
+                                VStack{
+                                    ForEach(socialMediaLinks, id: \.self) { link in
+                                        Button(action: {
+                                            if let url = URL(string: card.link(for: link)) {
+                                                UIApplication.shared.open(url)
+                                            }
+                                        }) {
+                                            VStack {
+                                                Image(link.icon)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 50, height: 50)
+                                                Text(link.name)
+                                                    .font(.caption)
+                                                    .foregroundColor(.black)
+                                            }
                                         }
                                     }
                                 }
                                 .padding()
-                                .background(Color.green)
+                                .background(Color.gray)
                                 .cornerRadius(50)
-//                                .offset(y: expand ? 0 : UIScreen.height * 0.1)
                             }
                         }
                         Button(action: {
