@@ -23,8 +23,13 @@ struct EnterDesignView: View {
             VStack {
                 
                 Spacer()
-                
-                Image(systemName: "lanyardcard")
+                Button(action: {
+                    withAnimation(.easeOut(duration: 0.4)) {
+                        selectedDesign += 1
+                    }
+                }) {
+                    Image(systemName: "lanyardcard")
+                }
                 
                 HStack {
                     ForEach(0..<5) { index in
