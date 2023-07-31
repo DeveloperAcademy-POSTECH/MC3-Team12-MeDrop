@@ -11,9 +11,10 @@ struct CardDetailView: View {
     @Binding var card: ProfileCardModel
     @State var isUp: Bool = true
     var isFromMy: Bool
-    @State private var selectedOption: String = "Option 1"
-        let options = ["Option 1", "Option 2", "Option 3"]
     @State var expand = false
+    private var socialMediaLinks: [ProfileCardModel.SocialMediaLink] {
+        card.socialMediaLinks
+    }
     
     var body: some View {
         ZStack {
@@ -87,14 +88,26 @@ struct CardDetailView: View {
                     
                     VStack {
                         if expand {
-                            VStack {
-                                Circle().frame(width: 40)
-                                Circle().frame(width: 40)
+                            if !socialMediaLinks.isEmpty {
+                                ForEach(socialMediaLinks, id: \.self) { link in
+                                    Button(action: {
+                                        if let url = URL(string: card.link(for: link)) {
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }) {
+                                        HStack {
+                                            Image(link.icon)
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                            Text(link.name)
+                                        }
+                                    }
+                                }
+                                .padding()
+                                .background(Color.green)
+                                .cornerRadius(50)
+//                                .offset(y: expand ? 0 : UIScreen.height * 0.1)
                             }
-                            .padding()
-                            .background(Color.green)
-                            .cornerRadius(50)
-                            .offset(y: expand ? 0 : UIScreen.height * 0.1)
                         }
                         Button(action: {
                             expand.toggle()

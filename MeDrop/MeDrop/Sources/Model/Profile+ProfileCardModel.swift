@@ -96,3 +96,38 @@ extension ProfileCardModel {
         ProfileCardModel(name: "", contact: "", company: "", job: "", introduction: "", email: "", link: "", color: [0.4, 0.5, 0.2])
     }
 }
+
+extension ProfileCardModel {
+    struct SocialMediaLink: Hashable {
+        let name: String
+        let icon: String
+        let link: String
+    }
+    
+    var socialMediaLinks: [SocialMediaLink] {
+            var links: [SocialMediaLink] = []
+            if !insta.isEmpty {
+                links.append(SocialMediaLink(name: "Instagram", icon: "instagram", link: insta))
+            }
+            if !twitter.isEmpty {
+                links.append(SocialMediaLink(name: "Twitter", icon: "twitter", link: twitter))
+            }
+            if !github.isEmpty {
+                links.append(SocialMediaLink(name: "GitHub", icon: "github", link: github))
+            }
+            if !linkedin.isEmpty {
+                links.append(SocialMediaLink(name: "LinkedIn", icon: "linkedin", link: linkedin))
+            }
+            if !youtube.isEmpty {
+                links.append(SocialMediaLink(name: "YouTube", icon: "youtube", link: youtube))
+            }
+            if !link.isEmpty {
+                links.append(SocialMediaLink(name: "link", icon: "link", link: link))
+            }
+            return links
+        }
+    
+    func link(for socialMedia: SocialMediaLink) -> String {
+            return socialMedia.link
+        }
+}

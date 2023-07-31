@@ -91,30 +91,33 @@ func infoRowDrawer(label: String, content: String) -> some View {
 }
 
 
-enum SocialButton: String, Identifiable, CaseIterable {
-    case insta
-    case twitter
+enum SocialMediaLink: String, Identifiable, CaseIterable {
+    case link
     case github
-    case linkedin
     case youtube
+    case linkedin
+    case twitter
+    case instagram
 
-    var sfSymbol: String {
+    var text: String {
         switch self {
-        case .insta: return "phone.fill"
-        case .twitter: return "message"
-        case .github: return "envelope.fill"
-        case .linkedin: return "safari.fill"
-        case .youtube: return "safari.fill"
+        case .link: return "link"
+        case .github: return "github"
+        case .youtube: return "youtube"
+        case .linkedin: return "linkedin"
+        case .twitter: return "twitter"
+        case .instagram: return "instagram"
         }
     }
 
-    var labelText: String {
+    var icon: String {
         switch self {
-        case .insta: return "Instagram"
-        case .twitter: return "Twitter"
-        case .github: return "LinkedIn"
-        case .linkedin: return "Youtube"
-        case .youtube: return "Github"
+        case .link: return "link"
+        case .github: return "github"
+        case .youtube: return "youtube"
+        case .linkedin: return "linkedin"
+        case .twitter: return "twitter"
+        case .instagram: return "instagram"
         }
     }
     
@@ -126,4 +129,3 @@ enum SocialButton: String, Identifiable, CaseIterable {
         name
     }
 }
-
