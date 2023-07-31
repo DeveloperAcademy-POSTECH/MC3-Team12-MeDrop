@@ -11,14 +11,12 @@ enum ContactButton: String, Identifiable, CaseIterable {
     case phone
     case message
     case mail
-    case safari
 
     var sfSymbol: String {
         switch self {
         case .phone: return "phone.fill"
         case .message: return "message"
         case .mail: return "envelope.fill"
-        case .safari: return "safari.fill"
         }
     }
 
@@ -27,7 +25,6 @@ enum ContactButton: String, Identifiable, CaseIterable {
         case .phone: return "Phone"
         case .message: return "Message"
         case .mail: return "Mail"
-        case .safari: return "Safari"
         }
     }
     
@@ -62,11 +59,6 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
                 if let url = URL(string: "mailto:\(profileCard.email)") {
                     UIApplication.shared.open(url)
                 }
-                
-            case .safari:
-                if let url = URL(string: "https://\(profileCard.link)") {
-                    UIApplication.shared.open(url)
-                }
             }
         }
     ) {
@@ -82,7 +74,7 @@ func actionButtonDrawer(contactButton: ContactButton, profileCard: any ProfileCa
         .background(.green)
         .cornerRadius(14)
     }
-    .disabled((contactButton == .mail && isEmailEmpty) || (contactButton == .safari && isLinkEmpty))
+    .disabled((contactButton == .mail && isEmailEmpty) )
     .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3)
 }
 
@@ -99,30 +91,33 @@ func infoRowDrawer(label: String, content: String) -> some View {
 }
 
 
-enum SocialButton: String, Identifiable, CaseIterable {
-    case insta
-    case twitter
+enum SocialMediaLink: String, Identifiable, CaseIterable {
+    case link
     case github
-    case linkedin
     case youtube
+    case linkedin
+    case twitter
+    case instagram
 
-    var sfSymbol: String {
+    var text: String {
         switch self {
-        case .insta: return "phone.fill"
-        case .twitter: return "message"
-        case .github: return "envelope.fill"
-        case .linkedin: return "safari.fill"
-        case .youtube: return "safari.fill"
+        case .link: return "link"
+        case .github: return "github"
+        case .youtube: return "youtube"
+        case .linkedin: return "linkedin"
+        case .twitter: return "twitter"
+        case .instagram: return "instagram"
         }
     }
 
-    var labelText: String {
+    var icon: String {
         switch self {
-        case .insta: return "Instagram"
-        case .twitter: return "Twitter"
-        case .github: return "LinkedIn"
-        case .linkedin: return "Youtube"
-        case .youtube: return "Github"
+        case .link: return "link"
+        case .github: return "github"
+        case .youtube: return "youtube"
+        case .linkedin: return "linkedin"
+        case .twitter: return "twitter"
+        case .instagram: return "instagram"
         }
     }
     
@@ -134,4 +129,3 @@ enum SocialButton: String, Identifiable, CaseIterable {
         name
     }
 }
-
