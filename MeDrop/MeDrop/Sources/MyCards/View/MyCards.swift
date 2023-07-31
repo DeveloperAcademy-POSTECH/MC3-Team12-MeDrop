@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyCardsView: View {
+    
+    @Binding var selectedTab: Tab
+    
     @Binding var myCards: [ProfileCardModel]
     @State private var newCard = ProfileCardModel.emptyCard
     @State var selectedIndex = 0
@@ -18,58 +21,117 @@ struct MyCardsView: View {
     @State var isDetail = false
     @State var isCreate = false
     
+    @State var showingAlert = false
+    
     let saveAction: () -> Void
+    
+    
+    var bottomBar: some View {
+        HStack(spacing: 0) {
+            Spacer()
+            ForEach(tabItems) { tabItem in
+                Button(action: {
+                    if tabItem.type == .tabType {
+                        withAnimation(.easeInOut) {
+                            selectedTab = tabItem.tab!
+                        }
+                    } else {
+                        showingAlert = true
+                    }
+                }) {
+                    if tabItem.type == .tabType {
+                        VStack(spacing: 0) {
+                            Image(systemName: tabItem.icon)
+                                .symbolVariant(.fill)
+                                .font(.body.bold())
+                            Text(tabItem.text)
+                                .font(.caption2)
+                                .lineLimit(1)
+                        }
+                    } else {
+                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
+                            .symbolVariant(.fill)
+                            .font(.body.bold())
+                            .foregroundColor(Color.white)
+                            .background(Circle().foregroundColor(.white))
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                            
+                            .disabled(selectedTab == .your)
+                    }
+                }
+                .offset(y: tabItem.type == .tabType ? 0 : -35)
+                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
+                .frame(maxWidth: .infinity)
+                Spacer()
+            }
+        }
+        .frame(height: 88, alignment: .top)
+        .padding(.top, 14)
+    }
 
     var body: some View {
         NavigationStack {
-            VStack {
-                TabView(selection: $selectedIndex) {
-                    ForEach($myCards.indices, id: \.self) { index in
-                        Button(action: {isDetail.toggle()
-                        }) {
-                            CardView(card: $myCards[index])
-                                .frame(height: UIScreen.height * 0.65)
-                        }
-                        .padding()
-                        .tag(index)
-                        .navigationDestination(isPresented: $isDetail) {
-                            CardDetailMyView(card: $myCards[index])
-                        }
-                    }
-                    
-                    if $myCards.count == 5 {
-                        FinalCardView()
-                            .tag($myCards.count + 1)
+                VStack {
+                    TabView(selection: $selectedIndex) {
+                        ForEach($myCards.indices, id: \.self) { index in
+                            Button(action: {isDetail.toggle()
+                            }) {
+                                CardView(card: $myCards[index])
+                                    .frame(height: UIScreen.height * 0.65)
+                            }
                             .padding()
-                            .frame(height: UIScreen.height * 0.65)
-                    } else {
-                        Button(action: {isCreate.toggle()}) {
-                            PlusCardView()
+                            .tag(index)
+                            .navigationDestination(isPresented: $isDetail) {
+                                CardDetailMyView(card: $myCards[index])
+                            }
                         }
-                        .frame(height: UIScreen.height * 0.65)
-                        .padding()
-                        .tag($myCards.count + 1)
+                        
+                        if $myCards.count == 5 {
+                            FinalCardView()
+                                .tag($myCards.count + 1)
+                                .padding()
+                                .frame(height: UIScreen.height * 0.65)
+                        } else {
+                            Button(action: {isCreate.toggle()}) {
+                                PlusCardView()
+                            }
+                            .frame(height: UIScreen.height * 0.65)
+                            .padding()
+                            .tag($myCards.count + 1)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle())
+                    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                    
+                    
+                    Spacer()
+                    
+                    TabClipperShape(radius: 38.0)
+                        .fill(Color(.white))
+                        .frame(height: 88, alignment: .top)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                        .overlay(bottomBar)
+                    //                    .alert("교환 버튼 클릭", isPresented: $showingAlert) {
+                    //                        Button("확인", role: .cancel) { }
+                    //                    }
+                    
+                    
+                }
+                .edgesIgnoringSafeArea(.bottom)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .navigationTitle("ME Card")
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    Button(action: { isMenu.toggle() }) {
+                        Image(systemName: "ellipsis")
+                    }
+                    .navigationDestination(isPresented: $isMenu) {
+                        MenuView()
                     }
                 }
-                .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            
-                
-                
-            }
-            .navigationTitle("ME Card")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                Button(action: { isMenu.toggle() }) {
-                    Image(systemName: "ellipsis")
+                .sheet(isPresented: $isCreate) {
+                    NewCardView(cards: $myCards, isFinish: $isCreate)
                 }
-                .navigationDestination(isPresented: $isMenu) {
-                    MenuView()
-                }
-            }
-            .sheet(isPresented: $isCreate) {
-                NewCardView(cards: $myCards, isFinish: $isCreate)
-            }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
@@ -79,6 +141,6 @@ struct MyCardsView: View {
 
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardsView(myCards: .constant(ProfileCardModel.sampleData), saveAction: {})
+        MyCardsView(selectedTab: .constant(Tab.my), myCards: .constant(ProfileCardModel.sampleData), saveAction: {})
     }
 }
