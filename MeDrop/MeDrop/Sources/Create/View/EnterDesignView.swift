@@ -22,15 +22,17 @@ struct EnterDesignView: View {
             
             VStack {
                 
-                Spacer()
-                Button(action: {
-                    withAnimation(.easeOut(duration: 0.4)) {
-                        selectedDesign += 1
-                    }
-                }) {
-                    Image(systemName: "lanyardcard")
-                }
+//                Spacer()
+//                Button(action: {
+//                    withAnimation(.easeOut(duration: 0.4)) {
+//                        selectedDesign += 1
+//                    }
+//                }) {
+//                    Image(systemName: "lanyardcard")
+//                }
                 
+                CustomCarouselView(activeIndex: $selectedDesign)
+
                 HStack {
                     ForEach(0..<5) { index in
                         Button(action: {
