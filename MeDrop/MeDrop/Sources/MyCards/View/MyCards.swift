@@ -21,38 +21,44 @@ struct MyCardsView: View {
     let saveAction: () -> Void
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 TabView(selection: $selectedIndex) {
-                        ForEach($myCards.indices, id: \.self) { index in
-                            Button(action: {isDetail.toggle()}) {
-                                CardView(card: $myCards[index])
-                                    .frame(height: UIScreen.height * 0.65)
-                            }
-                            .padding()
-                            .tag(index)
-                            .navigationDestination(isPresented: $isDetail) {
-                                CardDetailMyView(card: $myCards[index])
-                            }
-                        }
-                        
-                        if $myCards.count == 5 {
-                            FinalCardView()
-                                .tag($myCards.count + 1)
-                                .padding()
+                    ForEach($myCards.indices, id: \.self) { index in
+                        Button(action: {isDetail.toggle()
+                        }) {
+                            CardView(card: $myCards[index])
                                 .frame(height: UIScreen.height * 0.65)
-                        } else {
-                            Button(action: {isCreate.toggle()}) {
-                                PlusCardView()
-                            }
-                            .frame(height: UIScreen.height * 0.65)
-                            .padding()
-                            .tag($myCards.count + 1)
                         }
+                        .padding()
+                        .tag(index)
+                        .navigationDestination(isPresented: $isDetail) {
+                            CardDetailMyView(card: $myCards[index])
+                        }
+                    }
+                    
+                    if $myCards.count == 5 {
+                        FinalCardView()
+                            .tag($myCards.count + 1)
+                            .padding()
+                            .frame(height: UIScreen.height * 0.65)
+                    } else {
+                        Button(action: {isCreate.toggle()}) {
+                            PlusCardView()
+                        }
+                        .frame(height: UIScreen.height * 0.65)
+                        .padding()
+                        .tag($myCards.count + 1)
+                    }
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            
+                
+                
             }
+            .navigationTitle("ME Card")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 Button(action: { isMenu.toggle() }) {
                     Image(systemName: "ellipsis")
@@ -65,7 +71,6 @@ struct MyCardsView: View {
                 NewCardView(cards: $myCards, isFinish: $isCreate)
             }
         }
-        .navigationViewStyle(.stack)
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }

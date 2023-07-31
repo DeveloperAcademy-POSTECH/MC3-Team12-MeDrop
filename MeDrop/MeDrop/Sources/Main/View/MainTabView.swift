@@ -44,8 +44,6 @@ struct MainTabView: View {
                             .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                             
                             .disabled(selectedTab == .your)
-                            
-                        
                     }
                 }
                 .offset(y: tabItem.type == .tabType ? 0 : -35)
@@ -59,7 +57,7 @@ struct MainTabView: View {
     }
         
         var body: some View {
-            NavigationStack {
+            ZStack {
                 VStack {
                     Group {
                         switch selectedTab {
@@ -88,8 +86,6 @@ struct MainTabView: View {
                             Button("확인", role: .cancel) { }
                         }
                 }
-                .navigationTitle(selectedTab == .my ? "ME Card" : "Collected Cards")
-                .navigationBarTitleDisplayMode(.large)
                 .background(Color.clear)
                 .ignoresSafeArea()
                 

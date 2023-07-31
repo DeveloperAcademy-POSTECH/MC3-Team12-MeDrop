@@ -34,7 +34,7 @@ struct CollectedCardsView: View {
     
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 
                 DesignSystemAsset.gray4
@@ -86,14 +86,13 @@ struct CollectedCardsView: View {
                     .listStyle(.plain)
                     
                 }
-            }
-            
+            }.navigationTitle("Collected Cards")
+                .navigationBarTitleDisplayMode(.large)
             .navigationDestination(isPresented: $isDetail) {
                 CardDetailCollectedView(card: $selectedProfile)
             }
             
         }
-        .navigationViewStyle(.stack)
         .onAppear{
             sortYourCards = yourCards
         }
