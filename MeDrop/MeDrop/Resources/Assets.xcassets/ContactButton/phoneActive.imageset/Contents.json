@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "PhoneActive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "phoneActive.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "phoneActive 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

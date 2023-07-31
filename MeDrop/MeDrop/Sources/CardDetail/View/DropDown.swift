@@ -6,42 +6,14 @@ struct DropdownView: View {
     let options = ["Option 1", "Option 2", "Option 3"]
 
     var body: some View {
-        
-        //            Menu {
-        //                ForEach(options, id: \.self) { option in
-        //                    Button(action: {
-        //                        self.selectedOption = option
-        //                    }) {
-        //                        Circle()
-        //                            .foregroundColor(.black)
-        //                    }
-        //                }
-        //            } label: {
-        //                Label("Select Option", systemImage: "chevron.down.circle")
-        //            }
-        
-        
-        
-        
-        VStack {
-            if expand {
-                VStack {
-                    Circle().frame(width: 50)
-                    Circle().frame(width: 50)
-                }
-                .padding(10)
-                    .background(Color.green)
-                    .cornerRadius(50)
-            }
-            Circle().foregroundColor(.blue).frame(width: 50).onTapGesture{
-                self.expand.toggle()
-            }
-            
+        VStack{
+            Circle()
+                .foregroundColor(Color.blue)
+                .frame(width: 100, height: 100)
+                .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 50, x: 28, y: 28)
+                .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
         }
-        .alignmentGuide(VerticalAlignment.center) { $0[.bottom] }
-        .animation(.spring())
     }
-    
 }
 
 struct DropdownView_Previews: PreviewProvider {

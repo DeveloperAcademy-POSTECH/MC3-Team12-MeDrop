@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "AddUp.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "AddUp 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "AddUp 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "MsgActive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "MsgActive 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "MsgActive 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

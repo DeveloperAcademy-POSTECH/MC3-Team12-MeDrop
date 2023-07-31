@@ -56,40 +56,48 @@ struct CardDetailView: View {
             }
             VStack {
                 Spacer()
-                HStack( alignment: .bottom, spacing: 0) {
+                HStack(alignment: .bottom, spacing: 30) {
                         Button(action: {
                             if let url = URL(string: "tel:\(card.contact)") {
                                 UIApplication.shared.open(url)
                             }
-                        }){
-                            Image("PhoneMy")
+                        }) {
+                            Image("PhoneActive")
                                 .resizable()
                                 .scaledToFit()
+                                .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                         }
                     
-                    Button(action:{
+                    Button(action: {
                         if let url = URL(string: "sms:\(card.contact)") {
                             UIApplication.shared.open(url)
                         }
                     }){
-                        Image("MsgMy")
+                        Image("MsgActive")
                             .resizable()
                             .scaledToFit()
+                            .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                            .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                        
                     }
                     Button(action: {
                         if let url = URL(string: "mailto:\(card.email)") {
                             UIApplication.shared.open(url)
                         }
                     }){
-                        Image("MailMy")
+                       
+                        Image("MailActive")
                             .resizable()
                             .scaledToFit()
+                            .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                            .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                     }
                     
                     VStack {
                         if expand {
                             if !socialMediaLinks.isEmpty {
-                                VStack{
+                                VStack(spacing: 20) {
                                     ForEach(socialMediaLinks, id: \.self) { link in
                                         Button(action: {
                                             if let url = URL(string: card.link(for: link)) {
@@ -100,10 +108,6 @@ struct CardDetailView: View {
                                                 Image(link.icon)
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(width: 50, height: 50)
-                                                Text(link.name)
-                                                    .font(.caption)
-                                                    .foregroundColor(.black)
                                             }
                                         }
                                     }
@@ -117,18 +121,29 @@ struct CardDetailView: View {
                             expand.toggle()
                         }){
                             if expand {
+                                
                                 Image("AddDown")
                                     .resizable()
                                     .scaledToFit()
+                                    .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                    .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                                
                             } else {
+                                Circle()
+                                    .foregroundColor(.white)
+                                    .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                    .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                                    .overlay(
                                 Image("AddUp")
                                     .resizable()
                                     .scaledToFit()
+                                )
                             }
                         }
                     }
                     .animation(.spring())
                 }
+                .padding()
             }
         }
     }

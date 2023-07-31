@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "PhoneMy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "PhoneMy.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "PhoneMy 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
