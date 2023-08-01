@@ -22,7 +22,7 @@ struct EnterInfo1View: View {
                     Text("이름")
                     VStack {
                         HStack {
-                            TextField("이름/닉네임 모두 가능해요.", text: $editingCard.name.max(9))
+                            TextField("이름/닉네임 모두 가능해요.", text: $editingCard.name)
 
                             Spacer()
                             Text("\($editingCard.name.wrappedValue.count)/8").foregroundColor($editingCard.name.wrappedValue.count > 8 ? .red : .gray)
@@ -48,7 +48,7 @@ struct EnterInfo1View: View {
                     Text("직무")
                     VStack {
                         HStack {
-                            TextField("", text: $editingCard.job.max(21))
+                            TextField("", text: $editingCard.job)
 
                             Spacer()
                             Text("\($editingCard.job.wrappedValue.count)/20").foregroundColor($editingCard.job.wrappedValue.count > 20 ? .red : .gray)
