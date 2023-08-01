@@ -31,7 +31,7 @@ struct CustomCarouselView: View {
             //            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
                 // article view
-                DeletableCard(card: $cards[index])
+                DeletableCardView(card: $cards[index])
                     .onTapGesture {
                         isDetail.toggle()
                     }
