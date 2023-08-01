@@ -47,9 +47,6 @@ struct CollectedCardsView: View {
                             selectedTab = tabItem.tab!
                         }
                     }
-                    else {
-                        showingAlert = true
-                    }
                 }) {
                     if tabItem.type == .tabType {
                         VStack(spacing: 0) {

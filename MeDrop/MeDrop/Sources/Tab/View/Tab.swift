@@ -23,10 +23,11 @@ struct TabItem: Identifiable {
 enum Tab: String {
     case my
     case your
+    case exchange
 }
 
 var tabItems = [
     TabItem(type: .tabType, icon: "person.text.rectangle.fill", text: "ME CARD", tab: .my),
-    TabItem(type: .buttonType, icon: "arrow.2.squarepath", text: "Exchange", tab: nil),
+    TabItem(type: .buttonType, icon: "arrow.2.squarepath", text: "Exchange", tab: .exchange),
     TabItem(type: .tabType, icon: "person.crop.rectangle.stack", text: "YOUR CARDS", tab: .your)
 ]

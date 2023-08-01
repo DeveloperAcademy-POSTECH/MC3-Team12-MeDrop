@@ -9,51 +9,107 @@ import Foundation
 import SwiftUI
 
 struct ExchangeView: View {
-    @ObservedObject var viewModel = ExchangeViewModel(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
     
+    @ObservedObject var viewModel:ExchangeViewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
+//    init(){
+//        viewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
+//    }
+    var bottomBar: some View {
+        HStack(spacing: 0) {
+            Spacer()
+            ForEach(tabItems) { tabItem in
+                Button(action: {
+                        withAnimation(.easeInOut) {
+                            selectedTab = tabItem.tab!
+                        }
+                }) {
+                    if tabItem.type == .tabType {
+                        VStack(spacing: 0) {
+                            Image(systemName: tabItem.icon)
+                                .symbolVariant(.fill)
+                                .font(.body.bold())
+                            Text(tabItem.text)
+                                .font(.caption2)
+                                .lineLimit(1)
+                        }
+                    } else {
+                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
+                            .symbolVariant(.fill)
+                            .font(.body.bold())
+//                            .foregroundColor(Color.white)
+                            .background(Circle().foregroundColor(.white))
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                            
+                            .disabled(selectedTab == .your)
+                    }
+                }
+                .offset(y: tabItem.type == .tabType ? 0 : -35)
+                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
+                .frame(maxWidth: .infinity)
+                Spacer()
+            }
+        }
+        .frame(height: 88, alignment: .top)
+        .padding(.top, 14)
+    }
+    
+    @Binding var selectedTab: Tab
     @State var showSheet:Bool = false
     
     var body: some View {
-        ZStack {
-            DesignSystemAsset.white2.ignoresSafeArea()
-            
-            Group{
-                if viewModel.connectedPeers.isEmpty {
                     
-                    yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
-                    Button("Start") {
-                        viewModel.startHosting()
+            VStack {
+                ZStack {
+                    DesignSystemAsset.white2.ignoresSafeArea()
+                    Group{
+                        if viewModel.connectedPeers.isEmpty {
+                            
+                            yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
+                            Button("Start") {
+                                viewModel.startHosting()
+                            }
+                        }
+                        
+                        else {
+                            advertiserList()
+                        }
                     }
+                    
+                    
+                    Group{
+                        switch viewModel.state {
+                            
+                        case .request:
+                            requestView()
+                            
+                        case .waiting:
+                            loadingView()
+                        case .exchange:
+                            receiveCardView()
+                        case .none:
+                            EmptyView()
+                        }
+                    }
+                    .frame(maxWidth: .infinity,maxHeight: .infinity)
+                    .background {
+                        Color.black.opacity(0.8)
+                            .ignoresSafeArea()
+                    }
+                    
+                    
                 }
                 
-                else {
-                    advertiserList()
-                }
-            }
-            
-            
-            Group{
-                switch viewModel.state {
+                TabClipperShape(radius: 38.0)
+                    .fill(Color(.white))
+                    .frame(height: 88, alignment: .top)
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                    .overlay(bottomBar)
                     
-                case .request:
-                    requestView()
-                        
-                case .waiting:
-                    loadingView()
-                case .exchange:
-                    receiveCardView()
-                case .none:
-                    EmptyView()
-                }
-            }
-            .frame(maxWidth: .infinity,maxHeight: .infinity)
-            .background {
-                Color.black.opacity(0.8)
-                    .ignoresSafeArea()
-            }
+                
+                
             
-            
-        }
+        }.edgesIgnoringSafeArea(.bottom)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         .toastView(toast: $viewModel.toast)
         .sheet(isPresented: $showSheet,onDismiss: {
                   

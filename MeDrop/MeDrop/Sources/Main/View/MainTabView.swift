@@ -33,6 +33,8 @@ struct MainTabView: View {
                                     try await cardStore.saveData()
                                 }
                             }
+                        case .exchange:
+                            ExchangeView(selectedTab: $selectedTab)
                         }
                     }
                 }
