@@ -11,6 +11,8 @@ import SwiftUI
 struct ExchangeView: View {
     @ObservedObject var viewModel = ExchangeViewModel(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
     
+    @State var showSheet:Bool = false
+    
     var body: some View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
@@ -53,6 +55,12 @@ struct ExchangeView: View {
             
         }
         .toastView(toast: $viewModel.toast)
+        .sheet(isPresented: $showSheet) {
+            firstExchangeConractView()
+        }
+        .onAppear{
+            showSheet = PreferenceManager.firstExchange!
+        }
     }
 }
 
@@ -255,8 +263,51 @@ extension ExchangeView {
                     .multilineTextAlignment(.center)
             }
         }
+    }
+    
+    @ViewBuilder
+    private func firstExchangeConractView() -> some View {
         
-        
+        VStack(spacing: 20){
+            
+            HStack{
+                Button {
+                    PreferenceManager.firstExchange = true
+                    //TODO: 내 카드로 이동
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                }
+
+            }
+            
+            Text("교환 시 나오는 개인정보 동의문구")
+                .foregroundColor(.black)
+                .font(.bold(24))
+            
+            
+            
+            
+            Spacer()
+            Button {
+                PreferenceManager.firstExchange = false
+            } label: {
+                Text("동의하기")
+                    .foregroundColor(DesignSystemAsset.white1)
+            }
+            .padding(.vertical,14)
+            .background(DesignSystemAsset.gray1)
+            
+            Button {
+                PreferenceManager.firstExchange = true
+                //TODO: 내 카드로 이동
+            } label: {
+                Text("동의안함")
+                    .foregroundColor(DesignSystemAsset.gray1)
+            }
+            .padding(.vertical,14)
+        }.padding(.horizontal,20)
     }
 }
 
