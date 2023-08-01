@@ -59,7 +59,6 @@ struct ExchangeView: View {
     var body: some View {
                     
                 ZStack {
-                    DesignSystemAsset.white2.ignoresSafeArea()
                     Group{
                         if viewModel.connectedPeers.isEmpty {
                             
@@ -80,7 +79,6 @@ struct ExchangeView: View {
                             
                         case .request:
                             requestView()
-                            
                         case .waiting:
                             loadingView()
                         case .exchange:
@@ -89,11 +87,12 @@ struct ExchangeView: View {
                             EmptyView()
                         }
                     }
-                    .frame(maxWidth: .infinity,maxHeight: .infinity)
+                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
                     .background {
                         Color.black.opacity(0.8)
                             .ignoresSafeArea()
                     }
+                    .zIndex(1)
                     
                     VStack{
                         Spacer()
@@ -105,9 +104,9 @@ struct ExchangeView: View {
                     }
                     
                 }
-            .edgesIgnoringSafeArea(.bottom)
             .padding(.top,safeArea.top)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(DesignSystemAsset.white2)
         .toastView(toast: $viewModel.toast)
         .sheet(isPresented: $showSheet,onDismiss: {
                   
@@ -185,13 +184,8 @@ extension ExchangeView {
     
     @ViewBuilder
     private func receiveCardView(arcColor: Color = .gray) -> some View {
-        ZStack {
-            Color.black.opacity(0.6)
-               
                 
-            VStack {
 
-                
                 VStack(spacing: 30) {
                     
                     TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com"))
@@ -210,19 +204,13 @@ extension ExchangeView {
 
                     .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
                 }
+                .padding(.top,safeArea.top)
+                .padding(.bottom,120)
                 .padding(.horizontal, 20)
                  
-               Spacer()
-            }
-            .padding(.top, safeArea.top)
-            .padding(.bottom,safeArea.bottom)
-        }
-        .background(alignment: .bottom) {
-            ArcView()
-                .frame(width: UIScreen.width, height: UIScreen.width)
-                .foregroundColor(arcColor)
-                .edgesIgnoringSafeArea(.bottom)
-        }
+            
+            
+
         
     }
     
