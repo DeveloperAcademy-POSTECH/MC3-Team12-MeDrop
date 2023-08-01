@@ -11,6 +11,8 @@ import SwiftUI
 struct ExchangeView: View {
     @ObservedObject var viewModel = ExchangeViewModel(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
     
+    @State var showSheet:Bool = false
+    
     var body: some View {
         ZStack {
             DesignSystemAsset.white2.ignoresSafeArea()
@@ -53,6 +55,17 @@ struct ExchangeView: View {
             
         }
         .toastView(toast: $viewModel.toast)
+        .sheet(isPresented: $showSheet,onDismiss: {
+                  
+            if !PreferenceManager.firstExchange! { //만약 닫을 때 동의가 안된 상태면
+                //TODO: 내 카드로 이동
+            }
+        }) {
+            firstExchangeConractView()
+        }
+        .onAppear{
+            showSheet = PreferenceManager.firstExchange!
+        }
     }
 }
 
@@ -255,8 +268,63 @@ extension ExchangeView {
                     .multilineTextAlignment(.center)
             }
         }
+    }
+    
+    @ViewBuilder
+    private func firstExchangeConractView() -> some View {
         
-        
+        VStack(spacing: 20){
+            
+            HStack{
+                Button {
+                    PreferenceManager.firstExchange = true
+                    showSheet = false
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                }
+                Spacer()
+
+            }
+            .padding(.top, 20)
+            
+            Text("교환 시 나오는 개인정보 동의문구")
+                .foregroundColor(.black)
+                .font(.bold(24))
+            
+            
+            
+            
+            Spacer()
+            Button {
+                PreferenceManager.firstExchange = false
+                showSheet = false
+            } label: {
+                Text("동의하기")
+                    .foregroundColor(DesignSystemAsset.white1)
+                    .font(.heavy(17))
+            }
+            .padding(.vertical,14)
+            .frame(maxWidth: .infinity)
+
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray1))
+            
+            Button {
+                PreferenceManager.firstExchange = true
+                showSheet = false
+            } label: {
+                Text("동의안함")
+                    .foregroundColor(DesignSystemAsset.gray1)
+                    .font(.heavy(17))
+            }
+            .padding(.vertical,14)
+            .frame(maxWidth: .infinity)
+
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.white2))
+        }
+        .padding(.horizontal,20)
+        .presentationDragIndicator(.visible)
     }
 }
 
