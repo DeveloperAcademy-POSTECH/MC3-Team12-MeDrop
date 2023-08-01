@@ -10,7 +10,8 @@ import SwiftUI
 struct EnterInfo2View: View {
     @Binding var navigationControl: Int
     
-    @Binding var card: ProfileCardModel
+    @Binding var editingCard: ProfileCardModel
+    @Binding var originCard: ProfileCardModel
     @State var isSNSLink = false
     
     @State var isBack = false
@@ -19,10 +20,11 @@ struct EnterInfo2View: View {
     var body: some View {
         NavigationView {
             VStack {
+                
                 VStack(alignment: .leading) {
-                    Text("이메일")
+                    Text("한 줄 소개")
                     VStack {
-                            TextField("fakeID@xxx.xxx", text: $card.email
+                            TextField("예) 성장하는 개발자 김드랍입니다.", text: $editingCard.introduction
                             )
                         Rectangle()
                             .frame(height: 1)
@@ -31,10 +33,38 @@ struct EnterInfo2View: View {
                 }.padding()
                 
                 VStack(alignment: .leading) {
-                    Text("관련링크").padding(.bottom)
+                    Text("이메일")
+                    VStack {
+                            TextField("medrop@dp.com", text: $editingCard.email
+                            ).foregroundColor(editingCard.email.isEmpty ? .gray : .black)
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.gray)
+                    }
+                }.padding()
+                
+                VStack(alignment: .leading) {
+                    Text("링크").padding(.bottom)
                     VStack {
                         HStack {
-                            Text("SNS 링크를 추가하세요").foregroundColor(.gray)
+                            if editingCard.insta.isEmpty && editingCard.linkedin.isEmpty && editingCard.youtube.isEmpty && editingCard.github.isEmpty && editingCard.twitter.isEmpty{
+                                Text("더 많은 링크를 추가하세요").foregroundColor(.gray)}
+                            else {
+                                if editingCard.insta.isEmpty == false {
+                                    Image("instagram_") }
+                                if editingCard.twitter.isEmpty == false {
+                                    Image("twitter_")
+                                }
+                                if editingCard.linkedin.isEmpty == false {
+                                    Image("linkedin_")
+                                }
+                                if editingCard.youtube.isEmpty == false {
+                                    Image("youtube_")
+                                }
+                                if editingCard.github.isEmpty == false {
+                                    Image("github_")
+                                }
+                            }
                             Spacer()
                             Button(action: { isSNSLink.toggle()}) {
                                 Image(systemName: "plus.circle").foregroundColor(.black)
@@ -44,11 +74,11 @@ struct EnterInfo2View: View {
                             .frame(height: 1)
                             .foregroundColor(.gray)
                     }.sheet(isPresented: $isSNSLink) {
-                        SNSEnterView(card: $card, isPresented: $isSNSLink)
+                        SNSEnterView(editingCard: $editingCard, isPresented: $isSNSLink)
                     }
                     VStack {
                         HStack {
-                            TextField("그 외 사이트를 추가하세요", text: $card.link).foregroundColor(.gray)
+                            TextField("블로그, 홈페이지 등의 주소를 입력해주세요.", text: $editingCard.link).foregroundColor(.gray)
                             Spacer()
                         }
                         
@@ -109,6 +139,6 @@ struct EnterInfo2View: View {
 
 struct EnterInfo2View_Previews: PreviewProvider {
     static var previews: some View {
-        EnterInfo2View(navigationControl: .constant(0), card: .constant(ProfileCardModel.sampleData[0]))
+        EnterInfo2View(navigationControl: .constant(0), editingCard: .constant(ProfileCardModel.emptyCard), originCard: .constant(ProfileCardModel.sampleData[0]))
     }
 }

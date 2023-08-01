@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SNSEnterView: View {
-    @Binding var card: ProfileCardModel
+    @Binding var editingCard: ProfileCardModel
     @Binding var isPresented: Bool
+    
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -18,8 +20,8 @@ struct SNSEnterView: View {
                 
                 VStack {
                     HStack {
-                        Image("Instagram")
-                        TextField("", text: $card.insta)
+                        Image("instagram_")
+                        TextField("Instagram 아이디를 입력해주세요.", text: $editingCard.insta)
                     }
                     Rectangle()
                         .frame(height: 1)
@@ -28,8 +30,8 @@ struct SNSEnterView: View {
                 
                 VStack {
                     HStack {
-                        Image("twitter")
-                        TextField("", text: $card.twitter)
+                        Image("twitter_")
+                        TextField("Twitter 아이디를 입력해주세요.", text: $editingCard.twitter)
                     }
                     Rectangle()
                         .frame(height: 1)
@@ -38,8 +40,8 @@ struct SNSEnterView: View {
                 
                 VStack {
                     HStack {
-                        Image("linkedin")
-                        TextField("", text: $card.linkedin)
+                        Image("linkedin_")
+                        TextField("LinkedIn 프로필 링크를 입력해주세요.", text: $editingCard.linkedin)
                     }
                     Rectangle()
                         .frame(height: 1)
@@ -48,8 +50,8 @@ struct SNSEnterView: View {
                 
                 VStack {
                     HStack {
-                        Image("youtube")
-                        TextField("", text: $card.youtube)
+                        Image("youtube_")
+                        TextField("YouTube 채널 링크를 입력해주세요.", text: $editingCard.youtube)
                     }
                     Rectangle()
                         .frame(height: 1)
@@ -58,8 +60,8 @@ struct SNSEnterView: View {
                 
                 VStack {
                     HStack {
-                        Image("github")
-                        TextField("", text: $card.github)
+                        Image("github_")
+                        TextField("GitHub 링크를 입력해주세요.", text: $editingCard.github)
                     }
                     Rectangle()
                         .frame(height: 1)
@@ -78,13 +80,13 @@ struct SNSEnterView: View {
                     }
                 }
             }
-            .navigationTitle("SNS 정보 입력 문구")
+            .navigationTitle("링크를 추가해주세요.")
         }
     }
 }
 
 struct SNSEnterView_Previews: PreviewProvider {
     static var previews: some View {
-        SNSEnterView(card: .constant(ProfileCardModel.emptyCard), isPresented: .constant(true))
+        SNSEnterView(editingCard: .constant(ProfileCardModel.emptyCard), isPresented: .constant(true))
     }
 }

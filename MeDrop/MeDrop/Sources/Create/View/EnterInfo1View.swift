@@ -9,7 +9,8 @@ import SwiftUI
 
 struct EnterInfo1View: View {
     @Binding var navigationControl: Int
-    @Binding var card: ProfileCardModel
+    @Binding var editingCard: ProfileCardModel
+    @Binding var originCard: ProfileCardModel
     
     @State var isBack = false
     @Environment(\.dismiss) private var dismiss
@@ -21,10 +22,10 @@ struct EnterInfo1View: View {
                     Text("이름")
                     VStack {
                         HStack {
-                            TextField("실명/닉네임 모두 가능해요.", text: $card.name.max(21))
+                            TextField("이름/닉네임 모두 가능해요.", text: $editingCard.name)
 
                             Spacer()
-                            Text("\($card.name.wrappedValue.count)/20").foregroundColor($card.name.wrappedValue.count > 20 ? .red : .gray) 
+                            Text("\($editingCard.name.wrappedValue.count)/8").foregroundColor($editingCard.name.wrappedValue.count > 8 ? .red : .gray)
                         }
                         Rectangle()
                             .frame(height: 1)
@@ -35,7 +36,7 @@ struct EnterInfo1View: View {
                     Text("소속")
                     VStack {
                         HStack {
-                            TextField("소속을 입력해주세요.", text: $card.company)
+                            TextField("회사, 학교, 단체 등을 입력해주세요.", text: $editingCard.company)
                             Spacer()
                         }
                         Rectangle()
@@ -44,13 +45,13 @@ struct EnterInfo1View: View {
                     }
                 }.padding()
                 VStack(alignment: .leading) {
-                    Text("직업")
+                    Text("직무")
                     VStack {
                         HStack {
-                            TextField("직업을 입력해주세요.", text: $card.job.max(21))
+                            TextField("", text: $editingCard.job)
 
                             Spacer()
-                            Text("\($card.job.wrappedValue.count)/20").foregroundColor($card.job.wrappedValue.count > 20 ? .red : .gray)
+                            Text("\($editingCard.job.wrappedValue.count)/20").foregroundColor($editingCard.job.wrappedValue.count > 20 ? .red : .gray)
                         }
                         Rectangle()
                             .frame(height: 1)
@@ -59,11 +60,11 @@ struct EnterInfo1View: View {
                 }.padding()
                 
                 VStack(alignment: .leading) {
-                    Text("연락처")
+                    Text("핸드폰 번호")
                     VStack {
                         HStack {
                             
-                            NumberPhoneMaskView(text: $card.contact).keyboardType(.numberPad)
+                            NumberPhoneMaskView(text: $editingCard.contact).keyboardType(.numberPad)
                             Spacer()
                         }
                         Rectangle()
@@ -93,12 +94,12 @@ struct EnterInfo1View: View {
                             RoundedRectangle(cornerRadius: 10)
                             Text("다음").foregroundColor(.white)
                         }
-                            }.disabled(card.complete() && card.contact.count == 13
+                            }.disabled(editingCard.complete() && editingCard.contact.count == 13
                                        ? false : true)
                 }
                 .frame(height: UIScreen.height * 0.08)
                 .padding()
-            }.navigationTitle("필수 정보 입력 문구")
+            }.navigationTitle("필수 정보를 입력해주세요.")
             
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
@@ -130,7 +131,7 @@ struct EnterInfo1View: View {
 
 struct EnterInfo1View_Previews: PreviewProvider {
     static var previews: some View {
-        EnterInfo1View(navigationControl: .constant(0), card: .constant(ProfileCardModel.sampleData[0]))
+        EnterInfo1View(navigationControl: .constant(0), editingCard: .constant(ProfileCardModel.sampleData[0]), originCard: .constant(ProfileCardModel.sampleData[0]))
     }
 }
 

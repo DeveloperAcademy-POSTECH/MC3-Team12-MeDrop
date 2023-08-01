@@ -394,6 +394,11 @@ struct TmpCardView: View {
                 .overlay(
                     VStack {
                         Spacer()
+                        Image("\(card.designType)_background")
+                            .renderingMode(.template)
+                            .padding()
+                            .border(.black)
+                        Spacer()
                         Text("\(card.introduction)")
                         Text("\(card.name)")
                         Text("\(card.company)")

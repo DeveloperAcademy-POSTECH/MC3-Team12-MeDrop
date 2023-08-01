@@ -9,9 +9,11 @@ import SwiftUI
 
 struct EnterDesignView: View {
     @Binding var navigationControl: Int
-    @Binding var card: ProfileCardModel
+    @Binding var editingCard: ProfileCardModel
+    @Binding var originCard: ProfileCardModel
     @State var selectedDesign = 0
     @Binding var cards: [ProfileCardModel]
+    var isCreate: Bool
     
     @State var isBack = false
     @Environment(\.dismiss) private var dismiss
@@ -27,7 +29,7 @@ struct EnterDesignView: View {
                     ForEach(0..<5) { index in
                         Button(action: {
                             // MARK: TEMP use introduction to store design selection
-                            card.introduction = "\(selectedDesign)-\(index)"
+                            editingCard.introduction = "\(selectedDesign)-\(index)"
                         }) {
                             Image("\(selectedDesign)-\(index)")
                         }
@@ -47,7 +49,10 @@ struct EnterDesignView: View {
                     }
                     
                     Button(action: { withAnimation(.easeIn(duration: 0.2)){
-                        cards.append(card)
+                        originCard = editingCard
+                        if isCreate {
+                            cards.append(originCard)
+                        }
                         dismiss()
                     }}) {
                         ZStack {
@@ -68,7 +73,7 @@ struct EnterDesignView: View {
                 } message: {
                     Text("지금 돌아간다면 정보는 저장되지 않습니다. ")
                 }
-            }.navigationTitle("명함 디자인 선택 문구")
+            }.navigationTitle("명함 디자인을 설정하세요")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(action: {
@@ -98,6 +103,6 @@ struct EnterDesignView: View {
 
 struct EnterDesignView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterDesignView(navigationControl: .constant(2), card: .constant(ProfileCardModel.emptyCard), cards: .constant(ProfileCardModel.sampleData))
+        EnterDesignView(navigationControl: .constant(2), editingCard: .constant(ProfileCardModel.emptyCard), originCard: .constant(ProfileCardModel.sampleData[0]), cards: .constant(ProfileCardModel.sampleData), isCreate: true)
     }
 }

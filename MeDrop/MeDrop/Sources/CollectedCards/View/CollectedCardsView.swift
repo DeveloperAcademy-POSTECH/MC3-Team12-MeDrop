@@ -11,14 +11,13 @@ struct CollectedCardsView: View {
     
     @Binding var selectedTab: Tab
     
-    @State var sortedBy = "가나다 순"
+    @State var sortedBy = "이름 순서"
     @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
     @Binding var yourCards: [ProfileCardModel]
     @State var isDetail: Bool = false
     @State var isDelete = false
     @Environment(\.scenePhase) private var scenePhase
-    @State var sortYourCards: [ProfileCardModel] = []
-    
+
     @State var showingAlert = false
     
     let saveAction: () -> Void
@@ -57,25 +56,15 @@ struct CollectedCardsView: View {
                                 .font(.caption2)
                                 .lineLimit(1)
                         }
-                    } else {
-                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
-                            .symbolVariant(.fill)
-                            .font(.body.bold())
-                            .foregroundColor(Color.white)
-                            .background(Circle().foregroundColor(.white))
-                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                            
-                            .disabled(selectedTab == .your)
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -35)
                 .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
             }
         }
         .frame(height: 88, alignment: .top)
-        .padding(.top, 14)
+        .padding(.top, 30)
     }
     
     
@@ -90,24 +79,24 @@ struct CollectedCardsView: View {
                 VStack(alignment: .leading ) {
                     HStack {
                     Spacer()
-                    Menu { sortingButton(order: "가나다 순")
-                        sortingButton(order: "새로운 순")
-                        sortingButton(order: "오래된 순")
+                    Menu { sortingButton(order: "이름 순서")
+                        sortingButton(order: "새로운 순서")
+                        sortingButton(order: "오래된 순서")
                     } label: {
                         HStack {
                             Text(sortedBy)
                             Image(systemName: "chevron.down").foregroundColor(.red)
                         }.onChange(of: sortedBy) { _ in
-                            if sortedBy == "가나다 순" {
-                                sortYourCards.sort {
+                            if sortedBy == "이름 순서" {
+                                yourCards.sort {
                                     $0.name < $1.name
                                 }
-                            } else if sortedBy == "새로운 순" {
-                                sortYourCards.sort {
+                            } else if sortedBy == "새로운 순서" {
+                                yourCards.sort {
                                     $0.date < $1.date
                                 }
                             } else {
-                                sortYourCards.sort {
+                                yourCards.sort {
                                     $0.date > $1.date
                                 }
                             }
@@ -117,13 +106,18 @@ struct CollectedCardsView: View {
                 }
                     Spacer()
                     
-                    if sortYourCards.isEmpty == false {
+                    if yourCards.isEmpty == false {
                         List {
-                            ForEach(sortYourCards, id:\.self) { profile in
-                                Button(action: { isDetail.toggle()
+                            ForEach(yourCards, id:\.self) { profile in
+                                Button(action: {
                                     selectedProfile = profile
+                                    
+                                    isDetail.toggle()
+                                    
                                 },
                                        label: { CollectedCardComponent(profileCard: profile)})
+                                .navigationDestination(isPresented: $isDetail) {
+                                        CardDetailCollectedView(card: $selectedProfile)}
                                 .swipeActions {
                                     Button(action: { selectedProfile = profile
                                         isDelete.toggle()
@@ -137,46 +131,35 @@ struct CollectedCardsView: View {
                         .listStyle(.plain)
                     }
                     
-                    
                     Spacer()
                     
-                    TabClipperShape(radius: 38.0)
+                    TabCollectionShape(radius: 38.0)
                         .fill(.white)
                         .frame(height: 88, alignment: .top)
-                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)                    
+                    .foregroundColor(.white)
+                    .frame(height: 88, alignment: .center)
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                         .overlay(bottomBar)
-    //                    .alert("교환 버튼 클릭", isPresented: $showingAlert) {
-    //                        Button("확인", role: .cancel) { }
-    //                    }
-                    
-                    
                 }
                 .edgesIgnoringSafeArea(.bottom)
             }
+            .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
+            ) {
+                Button("삭제", role: .destructive) {
+                    isDelete.toggle()
+                    yourCards.removeAll { $0.id == selectedProfile.id
+                }
+                }
+            }
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive { saveAction() }
+            }
             
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationTitle("Collected Cards")
-                .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(isPresented: $isDetail) {
-                CardDetailCollectedView(card: $selectedProfile)
-            }
-            
         }
-        .onAppear{
-            sortYourCards = yourCards
-        }
-        .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
-        ) {
-            Button("삭제", role: .destructive) {
-                isDelete.toggle()
-                yourCards.removeAll { $0.id == selectedProfile.id
-            }
-            }
-        }
-        .onChange(of: scenePhase) { phase in
-            if phase == .inactive { saveAction() }
-        }
-        
+        .navigationTitle("Collected Cards")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -186,7 +169,14 @@ struct CollectedCardComponent: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0).foregroundColor(.white)
             HStack {
+<<<<<<< HEAD
                
+=======
+                Image("\(profileCard.designType)_circle")
+                    .renderingMode(.template)
+                    .padding()
+                
+>>>>>>> 08390e2284375525f643066307d90681f6630d37
                 VStack(alignment: .leading) {
                     Text("\(profileCard.name)")
                         .font(.title2).bold().truncationMode(.tail)
