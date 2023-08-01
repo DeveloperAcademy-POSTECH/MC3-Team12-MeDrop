@@ -55,14 +55,14 @@ struct MyCardsView: View {
                             .disabled(selectedTab == .your)
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -35)
+                .offset(y: tabItem.type == .tabType ? 0 : -UIScreen.height * 0.04)
                 .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
             }
         }
-        .frame(height: 88, alignment: .top)
-        .padding(.top, 14)
+        .frame(height: UIScreen.height * 0.1, alignment: .top)
+        .padding(.top, UIScreen.height * 0.02)
     }
 
     var body: some View {
@@ -102,7 +102,7 @@ struct MyCardsView: View {
                     
                     TabClipperShape(radius: 38.0)
                         .fill(Color(.white))
-                        .frame(height: 88, alignment: .top)
+                        .frame(height: UIScreen.height * 0.1, alignment: .top)
                         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                         .overlay(bottomBar)
                 }

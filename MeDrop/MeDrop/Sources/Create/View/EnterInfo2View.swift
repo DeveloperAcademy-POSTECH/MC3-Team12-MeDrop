@@ -22,47 +22,62 @@ struct EnterInfo2View: View {
             VStack {
                 
                 VStack(alignment: .leading) {
-                    Text("한 줄 소개")
+                    Text("한 줄 소개").font(
+                        Font.custom("SF Pro Text", size: 17)
+                        .weight(.bold)
+                        )
                     VStack {
                             TextField("예) 성장하는 개발자 김드랍입니다.", text: $editingCard.introduction
-                            )
+                            ).font(Font.custom("SF Pro Text", size: 17))
+                            
                         Rectangle()
                             .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
+                            
+                    }.foregroundColor(DesignSystemAsset.gray1)
                 }.padding()
                 
                 VStack(alignment: .leading) {
-                    Text("이메일")
+                    Text("이메일").font(
+                        Font.custom("SF Pro Text", size: 17)
+                        .weight(.bold)
+                        )
                     VStack {
                             TextField("medrop@dp.com", text: $editingCard.email
-                            ).foregroundColor(editingCard.email.isEmpty ? .gray : .black)
+                            ).font(Font.custom("SF Pro Text", size: 17))
+                            
                         Rectangle()
                             .frame(height: 1)
-                            .foregroundColor(.gray)
-                    }
+                            
+                    }.foregroundColor(DesignSystemAsset.gray1)
                 }.padding()
                 
                 VStack(alignment: .leading) {
-                    Text("링크").padding(.bottom)
+                    Text("링크")
+                        .font(
+                        Font.custom("SF Pro Text", size: 17)
+                        .weight(.bold)
+                        )
                     VStack {
                         HStack {
                             if editingCard.insta.isEmpty && editingCard.linkedin.isEmpty && editingCard.youtube.isEmpty && editingCard.github.isEmpty && editingCard.twitter.isEmpty{
-                                Text("더 많은 링크를 추가하세요").foregroundColor(.gray)}
+                                Text("더 많은 링크를 추가하세요").font(Font.custom("SF Pro Text", size: 17))
+                                    .foregroundColor(DesignSystemAsset.gray1)
+                            }
                             else {
                                 if editingCard.insta.isEmpty == false {
-                                    Image("instagram_") }
+                                    Image("instagram_").resizable().frame(width: 24, height: 24) }
                                 if editingCard.twitter.isEmpty == false {
-                                    Image("twitter_")
+                                    Image("twitter_").resizable().frame(width: 24, height: 24)
                                 }
                                 if editingCard.linkedin.isEmpty == false {
                                     Image("linkedin_")
+                                .resizable().frame(width: 24, height: 24)
                                 }
                                 if editingCard.youtube.isEmpty == false {
-                                    Image("youtube_")
+                                    Image("youtube_").resizable().frame(width: 24, height: 24)
                                 }
                                 if editingCard.github.isEmpty == false {
-                                    Image("github_")
+                                    Image("github_").resizable().frame(width: 24, height: 24)
                                 }
                             }
                             Spacer()
@@ -78,6 +93,7 @@ struct EnterInfo2View: View {
                     }
                     VStack {
                         HStack {
+                                Image("link_").resizable().frame(width:24, height: 24)
                             TextField("블로그, 홈페이지 등의 주소를 입력해주세요.", text: $editingCard.link).foregroundColor(.gray)
                             Spacer()
                         }
@@ -96,21 +112,26 @@ struct EnterInfo2View: View {
                             navigationControl -= 1 }}
                     ) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray4)
-                            Text("이전").foregroundColor(DesignSystemAsset.gray2)
+                            RoundedRectangle(cornerRadius: 10).foregroundColor(Color(red: 0.96, green: 0.95, blue: 0.91))
+                            Text("이전")
+                                .font(Font.custom("SF Pro Text", size: 17))
+                                .foregroundColor(DesignSystemAsset.gray3)
                         }
                     }
                     Button(action: { withAnimation(.easeIn(duration: 0.2)){
                         navigationControl += 1 }}) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                            Text("다음").foregroundColor(.white)
-                        }
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(Color(red: 0.33, green: 0.38, blue: 0.54))
+                                Text("건너뛰기")
+                                    .font(Font.custom("SF Pro Text", size: 17))
+                                    .foregroundColor(DesignSystemAsset.white1)
+                            }
                     }
                 }
-                .frame(height: UIScreen.height * 0.08)
+                .frame(height: UIScreen.height * 0.07)
                 .padding()
-            }.navigationTitle("추가 정보 입력 문구")
+            }.navigationTitle("추가 정보를 입력해주세요.")
             .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(action: {
