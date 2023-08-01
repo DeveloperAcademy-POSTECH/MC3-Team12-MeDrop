@@ -13,16 +13,9 @@ struct CardView: View {
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 20)
-                .shadow(radius: 10)
                 .padding()
                 .overlay(
                     VStack {
-                        Spacer()
-                        Image("\(card.designType)-background")
-//                            .renderingMode(.template)
-//                            .foregroundColor(Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2]))
-                            .padding()
-                            .border(.black)
                         Spacer()
                         Text("\(card.introduction)")
                         Text("\(card.name)")
@@ -34,7 +27,9 @@ struct CardView: View {
                         .padding()
                         .foregroundColor(.black)
                 )
-                .foregroundColor(.white)
+                .foregroundColor(.clear)
+                .background(Image("\(card.designType)-background").resizable().scaledToFit())
+                .shadow(radius: 10)
         }
     }
 }
