@@ -13,18 +13,17 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-//            if !viewModel.isSplashFinished {
-//                LottieView(jsonName: "MEDROP") { _ in
-//                    withAnimation {
-//                        viewModel.isSplashFinished.toggle()
-//                    }
-//                }
-//            } else if viewModel.isSplashFinished && viewModel.id == nil {
-//                OnBoardView()
-//            } else {
-//                MainTabView()
-//            }
-            MainTabView()
+            if !viewModel.isSplashFinished {
+                LottieView(jsonName: "MEDROP") { _ in
+                    withAnimation {
+                        viewModel.isSplashFinished.toggle()
+                    }
+            }
+            } else if viewModel.isSplashFinished && viewModel.id == nil {
+                OnBoardView()
+            } else {
+                MainTabView()
+            }
         }
     }
 }
