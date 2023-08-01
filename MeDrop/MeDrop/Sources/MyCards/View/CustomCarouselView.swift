@@ -26,27 +26,52 @@ struct CustomCarouselView: View {
     let deleteIconMaxOpacity: Double = 1.0
     let deleteIconMinOpacity: Double = 0.0
     
+    
+    @State private var mycards: [ProfileCardModel] = []
+    init(cards: Binding<[ProfileCardModel]>, activeIndex: Binding<Int>) {
+            self._cards = cards
+            self._activeIndex = activeIndex
+            
+            // Set mycards to have the same values as cards and append empty card
+            self._mycards = State(initialValue: cards.wrappedValue + [ProfileCardModel.emptyCard])
+        }
+    
     var body: some View {
         ZStack {
-            //            ForEach(store.items) { item in
-            ForEach($cards.indices, id: \.self) { index in
-                // article view
-                DeletableCardView(card: $cards[index])
-                    .onTapGesture {
-                        isDetail.toggle()
+            ForEach($mycards.indices, id: \.self) { index in
+                if  index == (cards.count-1) {
+                    if index == 5 {
+                        FinalCardView()
+                            .scaleEffect(0.9 - abs(distance(index)) * 0.2)
+                            .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
+                            .offset(x: myXOffset(index), y: 0)
+                            .zIndex(1.0 - abs(distance(index)) * 0.1)
+                    } else {
+                        PlusCardView()
+                            .scaleEffect(0.9 - abs(distance(index)) * 0.2)
+                            .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
+                            .offset(x: myXOffset(index), y: 0)
+                            .zIndex(1.0 - abs(distance(index)) * 0.1)
                     }
-                    .navigationDestination(isPresented: $isDetail) {
-                        CardDetailMyView(card: $cards[Int(snappedItem)], cards: $cards)
-                    }
-                    .scaleEffect(0.9 - abs(distance(index)) * 0.2)
-                    .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
-                    .offset(x: myXOffset(index), y: max(dragOffset.height + stoppedOffset, -cardMaxHeight))
-                    .zIndex(1.0 - abs(distance(index)) * 0.1)
-                    .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
-                    .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
-                    .onAppear {
-                        move.toggle()
-                    }
+                }else {
+                    // article view
+                    DeletableCardView(card: $mycards[index])
+                        .onTapGesture {
+                            isDetail.toggle()
+                        }
+                        .navigationDestination(isPresented: $isDetail) {
+                            CardDetailMyView(card: $mycards[Int(snappedItem)], cards: $mycards)
+                        }
+                        .scaleEffect(0.9 - abs(distance(index)) * 0.2)
+                        .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
+                        .offset(x: myXOffset(index), y: max(dragOffset.height + stoppedOffset, -cardMaxHeight))
+                        .zIndex(1.0 - abs(distance(index)) * 0.1)
+                        .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
+                        .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
+                        .onAppear {
+                            move.toggle()
+                        }
+                }
             }
         }
         .simultaneousGesture(
