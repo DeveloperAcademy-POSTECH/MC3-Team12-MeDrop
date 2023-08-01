@@ -123,7 +123,7 @@ struct EnterInfo2View: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(Color(red: 0.33, green: 0.38, blue: 0.54))
-                                Text("건너뛰기")
+                                Text("다음")
                                     .font(Font.custom("SF Pro Text", size: 17))
                                     .foregroundColor(DesignSystemAsset.white1)
                             }

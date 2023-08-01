@@ -112,7 +112,7 @@ struct EnterInfo1View: View {
                         }}) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(Color(red: 0.33, green: 0.38, blue: 0.54))
+                                    .foregroundColor(editingCard.complete() && editingCard.contact.count == 13 ? Color(red: 0.33, green: 0.38, blue: 0.54) : DesignSystemAsset.white2)
                                 Text("다음")
                                     .font(Font.custom("SF Pro Text", size: 17))
                                     .foregroundColor(DesignSystemAsset.white1)
