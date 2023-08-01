@@ -55,7 +55,12 @@ struct ExchangeView: View {
             
         }
         .toastView(toast: $viewModel.toast)
-        .sheet(isPresented: $showSheet) {
+        .sheet(isPresented: $showSheet,onDismiss: {
+                  
+            if !PreferenceManager.firstExchange! { //만약 닫을 때 동의가 안된 상태면
+                //TODO: 내 카드로 이동
+            }
+        }) {
             firstExchangeConractView()
         }
         .onAppear{
@@ -273,14 +278,16 @@ extension ExchangeView {
             HStack{
                 Button {
                     PreferenceManager.firstExchange = true
-                    //TODO: 내 카드로 이동
+                    showSheet = false
                 } label: {
                     Image(systemName: "xmark")
                         .font(.title2)
                         .foregroundColor(.black)
                 }
+                Spacer()
 
             }
+            .padding(.top, 20)
             
             Text("교환 시 나오는 개인정보 동의문구")
                 .foregroundColor(.black)
@@ -292,22 +299,32 @@ extension ExchangeView {
             Spacer()
             Button {
                 PreferenceManager.firstExchange = false
+                showSheet = false
             } label: {
                 Text("동의하기")
                     .foregroundColor(DesignSystemAsset.white1)
+                    .font(.heavy(17))
             }
             .padding(.vertical,14)
-            .background(DesignSystemAsset.gray1)
+            .frame(maxWidth: .infinity)
+
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray1))
             
             Button {
                 PreferenceManager.firstExchange = true
-                //TODO: 내 카드로 이동
+                showSheet = false
             } label: {
                 Text("동의안함")
                     .foregroundColor(DesignSystemAsset.gray1)
+                    .font(.heavy(17))
             }
             .padding(.vertical,14)
-        }.padding(.horizontal,20)
+            .frame(maxWidth: .infinity)
+
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.white2))
+        }
+        .padding(.horizontal,20)
+        .presentationDragIndicator(.visible)
     }
 }
 
