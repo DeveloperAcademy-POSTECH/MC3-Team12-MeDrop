@@ -24,19 +24,14 @@ struct MyCardsView: View {
     @State var showingAlert = false
     
     let saveAction: () -> Void
-    
-    
+     
     var bottomBar: some View {
         HStack(spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
                 Button(action: {
-                    if tabItem.type == .tabType {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                        }
-                    } else {
-                        showingAlert = true
                     }
                 }) {
                     if tabItem.type == .tabType {
@@ -125,9 +120,6 @@ struct MyCardsView: View {
                 .navigationDestination(isPresented: $isCreate) {
                     CreateCardView(cards: $myCards)
                 }
-//                .sheet(isPresented: $isCreate) {
-//                    NewCardView(cards: $myCards, isFinish: $isCreate)
-//                }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }

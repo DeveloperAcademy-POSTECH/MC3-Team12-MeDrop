@@ -62,8 +62,7 @@ struct CustomCarouselView: View {
                         draggingItem = draggingItem - snappedItem > 1.0 ? snappedItem + 1.0 : snappedItem - value.translation.width / 150
                     } else {
                         draggingItem = snappedItem - draggingItem > 1.0 ? snappedItem - 1.0 : snappedItem - value.translation.width / 150
-                    }
-                    
+                    }   
                 }
                 .onEnded { value in
                     withAnimation {
