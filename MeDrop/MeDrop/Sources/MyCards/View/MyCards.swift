@@ -67,64 +67,64 @@ struct MyCardsView: View {
 
     var body: some View {
         NavigationStack {
-                VStack {
-                    TabView(selection: $selectedIndex) {
-                        ForEach($myCards.indices, id: \.self) { index in
-                            Button(action: {isDetail.toggle()
-                            }) {
-                                CardView(card: $myCards[index])
-                                    .frame(height: UIScreen.height * 0.65)
-                            }
-                            .padding()
-                            .tag(index)
-                            .navigationDestination(isPresented: $isDetail) {
-                                CardDetailMyView(card: $myCards[index], cards: $myCards)
-                            }
+            VStack {
+                TabView(selection: $selectedIndex) {
+                    ForEach($myCards.indices, id: \.self) { index in
+                        Button(action: {isDetail.toggle()
+                        }) {
+                            CardView(card: $myCards[index])
                         }
-                        
-                        if $myCards.count == 5 {
-                            FinalCardView()
-                                .tag($myCards.count + 1)
-                                .padding()
-                                .frame(height: UIScreen.height * 0.65)
-                        } else {
-                            Button(action: {isCreate.toggle()}) {
-                                PlusCardView()
-                            }
-                            .frame(height: UIScreen.height * 0.65)
-                            .padding()
-                            .tag($myCards.count + 1)
+                        .padding()
+                        .tag(index)
+                        .navigationDestination(isPresented: $isDetail) {
+                            CardDetailMyView(card: $myCards[index], cards: $myCards)
                         }
                     }
-                    .tabViewStyle(PageTabViewStyle())
-                    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                    Spacer()
                     
-                    TabClipperShape(radius: 38.0)
+                    if $myCards.count == 5 {
+                        FinalCardView()
+                            .tag($myCards.count + 1)
+                            .padding()
+                        
+                    } else {
+                        Button(action: {isCreate.toggle()}) {
+                            PlusCardView()
+                        }
+                        .padding()
+                        .tag($myCards.count + 1)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                
+                TabClipperShape(radius: 38.0)
                         .fill(Color(.white))
                         .frame(height: UIScreen.height * 0.1, alignment: .top)
                         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                         .overlay(bottomBar)
+                Spacer()
+                
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationTitle("ME Card")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                Button(action: { isMenu.toggle() }) {
+                    Image(systemName: "gearshape.fill")
                 }
-                .edgesIgnoringSafeArea(.bottom)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationTitle("ME Card")
-                .navigationBarTitleDisplayMode(.large)
-                .toolbar {
-                    Button(action: { isMenu.toggle() }) {
-                        Image(systemName: "ellipsis")
-                    }
-                    .navigationDestination(isPresented: $isMenu) {
-                        MenuView()
-                    }
+                .navigationDestination(isPresented: $isMenu) {
+                    MenuView()
                 }
-                .navigationDestination(isPresented: $isCreate) {
-                    CreateCardView(editingCard: $makingCard, originCard: $makingCard , cards: $myCards, isCreate: true)
-                }
+            }
+            .navigationDestination(isPresented: $isCreate) {
+                CreateCardView(editingCard: $makingCard, originCard: $makingCard , cards: $myCards, isCreate: true)
+            }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }
+        .tint(.black)
     }
 }
 
