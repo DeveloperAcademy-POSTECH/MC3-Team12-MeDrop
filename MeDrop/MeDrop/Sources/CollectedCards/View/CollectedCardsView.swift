@@ -169,14 +169,9 @@ struct CollectedCardComponent: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0).foregroundColor(.white)
             HStack {
-<<<<<<< HEAD
-               
-=======
-                Image("\(profileCard.designType)_circle")
+                Image("\(profileCard.designType)-circle")
                     .renderingMode(.template)
                     .padding()
-                
->>>>>>> 08390e2284375525f643066307d90681f6630d37
                 VStack(alignment: .leading) {
                     Text("\(profileCard.name)")
                         .font(.title2).bold().truncationMode(.tail)
