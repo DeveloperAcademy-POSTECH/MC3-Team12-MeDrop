@@ -9,8 +9,10 @@ import SwiftUI
 
 struct CardDetailMyView: View {
     @Binding var card: ProfileCardModel
+    @Binding var cards: [ProfileCardModel]
     @State var isShowingEdit: Bool = false
     @State var editingCard = ProfileCardModel.emptyCard
+    @State var navigationControl: Int = 0
     
     var body: some View {
         CardDetailView(card: $card, isFromMy: true)
@@ -22,14 +24,19 @@ struct CardDetailMyView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isShowingEdit) {
-                EditCardView(originCard: $card, editingCard: $editingCard, isFinish: $isShowingEdit)
+            .navigationDestination(isPresented: $isShowingEdit) {
+                CreateCardView( editingCard: $editingCard,
+                    originCard: $card, cards: $cards, isCreate: false)
             }
+        
+//            .sheet(isPresented: $isShowingEdit) {
+//                EditCardView(originCard: $card, editingCard: $editingCard, isFinish: $isShowingEdit)
+//            }
     }
 }
 
 struct CardDetailMyView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailMyView(card: .constant(ProfileCardModel.sampleData[1]))
+        CardDetailMyView(card: .constant(ProfileCardModel.sampleData[1]), cards: .constant(ProfileCardModel.sampleData))
     }
 }

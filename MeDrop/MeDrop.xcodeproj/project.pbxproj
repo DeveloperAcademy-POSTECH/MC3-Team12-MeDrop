@@ -14,6 +14,7 @@
 		681557EA2A77FC1700625801 /* SNSEnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557E92A77FC1700625801 /* SNSEnterView.swift */; };
 		681557EC2A78041D00625801 /* EnterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557EB2A78041D00625801 /* EnterDesignView.swift */; };
 		681557F02A78700500625801 /* CustomCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557EF2A78700500625801 /* CustomCarouselView.swift */; };
+		682109A42A78E4D2002CABE7 /* TapCollectionShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682109A32A78E4D2002CABE7 /* TapCollectionShape.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
 		68D92B152A765F7900121985 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B142A765F7900121985 /* MainTabView.swift */; };
 		68D92B192A766C6600121985 /* TapClipperShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B182A766C6600121985 /* TapClipperShape.swift */; };
@@ -86,6 +87,7 @@
 		681557E92A77FC1700625801 /* SNSEnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSEnterView.swift; sourceTree = "<group>"; };
 		681557EB2A78041D00625801 /* EnterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDesignView.swift; sourceTree = "<group>"; };
 		681557EF2A78700500625801 /* CustomCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarouselView.swift; sourceTree = "<group>"; };
+		682109A32A78E4D2002CABE7 /* TapCollectionShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCollectionShape.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
 		68D92B142A765F7900121985 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		68D92B182A766C6600121985 /* TapClipperShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapClipperShape.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				68D92B182A766C6600121985 /* TapClipperShape.swift */,
 				68D92B1A2A766CB800121985 /* Tab.swift */,
+				682109A32A78E4D2002CABE7 /* TapCollectionShape.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
 				681557EC2A78041D00625801 /* EnterDesignView.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
+				682109A42A78E4D2002CABE7 /* TapCollectionShape.swift in Sources */,
 				97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */,
 				B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */,
 				97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */,

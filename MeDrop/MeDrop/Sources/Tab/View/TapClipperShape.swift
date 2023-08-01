@@ -34,12 +34,3 @@ struct TabClipperShape: Shape {
     }
 }
 
-struct TabClipperShape_Previews: PreviewProvider {
-    static var previews: some View {
-        TabClipperShape()
-            .frame(maxWidth: .infinity)
-            .frame(height: 200)
-//            .padding(.horizontal, 16)
-    }
-}
-

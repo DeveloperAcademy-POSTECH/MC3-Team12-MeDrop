@@ -10,6 +10,7 @@ import SwiftUI
 struct MyCardsView: View {
     
     @Binding var selectedTab: Tab
+    @State var makingCard: ProfileCardModel = ProfileCardModel()
     
     @Binding var myCards: [ProfileCardModel]
     @State private var newCard = ProfileCardModel.emptyCard
@@ -77,7 +78,7 @@ struct MyCardsView: View {
                             .padding()
                             .tag(index)
                             .navigationDestination(isPresented: $isDetail) {
-                                CardDetailMyView(card: $myCards[index])
+                                CardDetailMyView(card: $myCards[index], cards: $myCards)
                             }
                         }
                         
@@ -118,7 +119,7 @@ struct MyCardsView: View {
                     }
                 }
                 .navigationDestination(isPresented: $isCreate) {
-                    CreateCardView(cards: $myCards)
+                    CreateCardView(editingCard: $makingCard, originCard: $makingCard , cards: $myCards, isCreate: true)
                 }
         }
         .onChange(of: scenePhase) { phase in
