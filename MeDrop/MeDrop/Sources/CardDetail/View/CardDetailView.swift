@@ -48,6 +48,7 @@ struct CardDetailView: View {
                         Text("\(card.email)")
                         Spacer()
                     }
+                    .opacity(card.email.isEmpty ? 0 : 1)
                 }
                 .padding(40)
                 .padding(.bottom, 0)
@@ -62,7 +63,7 @@ struct CardDetailView: View {
                                 UIApplication.shared.open(url)
                             }
                         }) {
-                            Image("PhoneActive")
+                            Image("phoneActive")
                                 .resizable()
                                 .scaledToFit()
                                 .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
@@ -86,13 +87,22 @@ struct CardDetailView: View {
                             UIApplication.shared.open(url)
                         }
                     }){
-                       
-                        Image("MailActive")
-                            .resizable()
-                            .scaledToFit()
-                            .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
-                            .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                        if card.email.isEmpty {
+                            Image("MailMy")
+                                .resizable()
+                                .scaledToFit()
+                                .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                        } else {
+                            Image("MailActive")
+                                .resizable()
+                                .scaledToFit()
+                                .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
+                        }
+                           
                     }
+                    .disabled(card.email.isEmpty)
                     
                     VStack {
                         if expand {
@@ -113,7 +123,6 @@ struct CardDetailView: View {
                                     }
                                 }
                                 .padding()
-                                .background(Color.gray)
                                 .cornerRadius(50)
                             }
                         }
@@ -146,6 +155,8 @@ struct CardDetailView: View {
                 .padding()
             }
         }
+        .background(Image("\(card.designType)")
+            .resizable().scaledToFit())
     }
 }
 

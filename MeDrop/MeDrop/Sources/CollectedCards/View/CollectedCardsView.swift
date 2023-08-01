@@ -186,11 +186,7 @@ struct CollectedCardComponent: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0).foregroundColor(.white)
             HStack {
-                Image("\(profileCard.type)")
-                    .renderingMode(.template)
-                    .foregroundColor(Color(.sRGB, red: profileCard.color[0], green: profileCard.color[1], blue: profileCard.color[2]))
-                    .padding()
-                
+               
                 VStack(alignment: .leading) {
                     Text("\(profileCard.name)")
                         .font(.title2).bold().truncationMode(.tail)

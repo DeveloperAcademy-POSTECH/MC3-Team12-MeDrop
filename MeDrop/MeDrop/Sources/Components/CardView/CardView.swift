@@ -17,12 +17,7 @@ struct CardView: View {
                 .padding()
                 .overlay(
                     VStack {
-                        Spacer()
-                        Image("\(card.type)")
-//                            .renderingMode(.template)
-//                            .foregroundColor(Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2]))
-                            .padding()
-                            .border(.black)
+                        
                         Spacer()
                         Text("\(card.introduction)")
                         Text("\(card.name)")

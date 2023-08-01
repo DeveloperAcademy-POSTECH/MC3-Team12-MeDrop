@@ -41,7 +41,7 @@ struct ColorSelectView: View {
                         }
                     
                     HStack {
-                        Button(action: { card.type = 0 }, label: {
+                        Button(action: {  }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
                                 Image("0")
@@ -50,7 +50,7 @@ struct ColorSelectView: View {
                             }
                         })
                         
-                        Button(action: { card.type = 1 }, label: {
+                        Button(action: { }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
                                 Image("1")
@@ -59,7 +59,7 @@ struct ColorSelectView: View {
                             }
                         })
                         
-                        Button(action: { card.type = 2 }, label: {
+                        Button(action: {  }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
                                 Image("2")
@@ -68,7 +68,7 @@ struct ColorSelectView: View {
                             }
                         })
                         
-                        Button(action: { card.type = 3 }, label: {
+                        Button(action: {  }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
                                 Image("3")
@@ -77,7 +77,7 @@ struct ColorSelectView: View {
                             }
                         })
                         
-                        Button(action: { card.type = 4 }, label: {
+                        Button(action: {  }, label: {
                             ZStack {
                                 Circle().foregroundColor(Color.white)
                                 Image("4")
@@ -91,9 +91,7 @@ struct ColorSelectView: View {
                 }
             }
         }
-        .onAppear {
-            bgColor = Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2])
-        }
+       
     }
 }
 
