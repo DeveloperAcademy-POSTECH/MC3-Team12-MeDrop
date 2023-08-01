@@ -117,7 +117,15 @@ extension ProfileCardModel {
         return links
     }
     
+    
+    // 여기
     func link(for socialMedia: SocialMediaLink) -> String {
+        if socialMedia.name == "Instagram" {
+            return "https://www.instagram.com/" + insta
+        } else if socialMedia.name == "Youtube" {
+            return "https://www.youtube.com/" + youtube
+        } else {
             return socialMedia.link
         }
+    }
 }
