@@ -17,13 +17,21 @@ struct CustomCarouselView: View {
     @State private var move = false
     
     @State var isDetail = false
+    
+    @State private var isShowingDeleteIcon = false
+    @State private var dragOffset: CGSize = .zero // 드래그 오프셋을 추적하기 위한 변수 추가
+    @State private var stoppedOffset: CGFloat = 0
+    @State var isDelete = false
+    let cardMaxHeight: CGFloat = UIScreen.height * 0.08
+    let deleteIconMaxOpacity: Double = 1.0
+    let deleteIconMinOpacity: Double = 0.0
+    
     var body: some View {
-        
         ZStack {
             //            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
                 // article view
-                CardView(card: $cards[index])
+                DeletableCard(card: $cards[index])
                     .onTapGesture {
                         isDetail.toggle()
                     }
@@ -32,7 +40,7 @@ struct CustomCarouselView: View {
                     }
                     .scaleEffect(0.9 - abs(distance(index)) * 0.2)
                     .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
-                    .offset(x: myXOffset(index), y: 0)
+                    .offset(x: myXOffset(index), y: max(dragOffset.height + stoppedOffset, -cardMaxHeight))
                     .zIndex(1.0 - abs(distance(index)) * 0.1)
                     .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
                     .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
@@ -41,7 +49,7 @@ struct CustomCarouselView: View {
                     }
             }
         }
-        .gesture(
+        .simultaneousGesture(
             DragGesture()
                 .onChanged { value in
                     if value.translation.width < 0 {
