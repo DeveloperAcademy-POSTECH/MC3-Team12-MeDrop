@@ -30,6 +30,7 @@
 		970AFC812A723B960041A948 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC802A723B960041A948 /* Extension+CollectionView.swift */; };
 		970AFC842A723D240041A948 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC832A723D240041A948 /* CardDetailViewModel.swift */; };
 		970AFC922A723E420041A948 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC912A723E420041A948 /* MenuView.swift */; };
+		971DEAF52A79328B006CE9E3 /* DeletableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */; };
 		97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEC2A723A9D0005441A /* CardDetailView.swift */; };
 		97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */; };
 		97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA10AA2A7238E9006C6422 /* MyCards.swift */; };
@@ -105,6 +106,7 @@
 		970AFC802A723B960041A948 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
 		970AFC832A723D240041A948 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		970AFC912A723E420041A948 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableCardView.swift; sourceTree = "<group>"; };
 		97C5EBEC2A723A9D0005441A /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMyView.swift; sourceTree = "<group>"; };
 		97CA10AA2A7238E9006C6422 /* MyCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCards.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				97CA10AA2A7238E9006C6422 /* MyCards.swift */,
 				681557EF2A78700500625801 /* CustomCarouselView.swift */,
 				682109A52A78FE78002CABE7 /* CarouselDesignView.swift */,
+				971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */,
 				B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */,
 				12D31DB62A79550300BB8B20 /* TermsInUseView.swift in Sources */,
+				971DEAF52A79328B006CE9E3 /* DeletableCardView.swift in Sources */,
 				97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B0D9B37D2A6F4FF80032B8FF /* ExchangeDataModel.swift in Sources */,

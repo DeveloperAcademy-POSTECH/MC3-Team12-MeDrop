@@ -28,10 +28,7 @@ struct CardDetailMyView: View {
                 CreateCardView( editingCard: $editingCard,
                     originCard: $card, cards: $cards, isCreate: false)
             }
-        
-//            .sheet(isPresented: $isShowingEdit) {
-//                EditCardView(originCard: $card, editingCard: $editingCard, isFinish: $isShowingEdit)
-//            }
+
     }
 }
 

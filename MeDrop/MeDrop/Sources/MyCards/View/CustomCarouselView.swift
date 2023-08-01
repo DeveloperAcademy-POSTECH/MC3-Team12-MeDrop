@@ -8,36 +8,63 @@
 import SwiftUI
 
 struct CustomCarouselView: View {
-    
+    // 좌우 스와이프 관련 변수
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
-    
-    @Binding var cards: [ProfileCardModel]
     @Binding var activeIndex: Int
     @State private var move = false
     
+    // 카드 배열 변수
+    @Binding var cards: [ProfileCardModel]
+    
+    // 다른 페이지 이동 변수
+    @State var isDetail = false
+    @State var isCreate = false
+
+    // 카드 생성 변수
+    @State var makingCard: ProfileCardModel = ProfileCardModel()
+    
     var body: some View {
-        
         ZStack {
-//            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
-                
-                // article view
-                CardView(card: $cards[index])
-                    .frame(height: UIScreen.height * 0.65).padding()
-                
-                .scaleEffect(0.9 - abs(distance(index)) * 0.2 )
-                .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
-                .offset(x: myXOffset(index), y: 0)
-                .zIndex(1.0 - abs(distance(index)) * 0.1)
-                .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
-                .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
-                .onAppear {
-                    move.toggle()
+                DeletableCardView(card: $cards[index])
+                    .onTapGesture {
+                        isDetail.toggle()
+                    }
+                    .navigationDestination(isPresented: $isDetail) {
+                        if Int(draggingItem) < cards.count {
+                            CardDetailMyView(card: $cards[Int(draggingItem)], cards: $cards)
+                        }
+                    }
+                    .scaleEffect(0.9 - abs(distance(index)) * 0.2)
+                    .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
+                    .offset(x: myXOffset(index))
+                    .zIndex(1.0 - abs(distance(index)) * 0.1)
+                    .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
+                    .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
+            }
+            
+            if cards.count != 5 {
+                Button(action: { isCreate.toggle()}) {
+                    PlusCardView()
                 }
+                .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
+                .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
+                .offset(x: myXOffset(cards.count))
+                .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
+            } else {
+                FinalCardView()
+                    .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
+                    .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
+                    .offset(x: myXOffset(cards.count))
+                    .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
             }
         }
-        .gesture(
+        .onAppear{
+            makingCard = ProfileCardModel.emptyCard
+            move.toggle()
+        }
+        .simultaneousGesture(
             DragGesture()
                 .onChanged { value in
                     if value.translation.width < 0 {
@@ -49,19 +76,15 @@ struct CustomCarouselView: View {
                     print("dragging", draggingItem)
                     print("snapped", snappedItem)
                 }
-                .onEnded { value in
+                .onEnded { _ in
                     withAnimation(.easeIn) {
-                        
                         draggingItem = round(draggingItem)
                         
                         print("dragging", draggingItem)
                         print("snapped", snappedItem)
                         
-                        //Get the active Item index
-                        
-                        
-                        if Int(self.draggingItem) >= cards.count  {
-                            draggingItem = Double(cards.count - 1)
+                        if Int(self.draggingItem) >= cards.count + 1 {
+                            draggingItem = Double(cards.count)
                         } else if self.draggingItem < 0 {
                             self.activeIndex = 0
                             draggingItem = Double(0.0)
@@ -73,6 +96,9 @@ struct CustomCarouselView: View {
                     }
                 }
         )
+        .navigationDestination(isPresented: $isCreate) {
+            CreateCardView(editingCard: $makingCard, originCard: $makingCard, cards: $cards, isCreate: true)
+        }
     }
     
     func distance(_ item: Int) -> Double {
@@ -81,12 +107,11 @@ struct CustomCarouselView: View {
     
     func myXOffset(_ item: Int) -> Double {
         let angle =  distance(item)
-//        print(item, angle)
         return (angle) * 290
     }
 }
 struct CustomCarouselView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomCarouselView(cards: .constant(ProfileCardModel.sampleData), activeIndex: .constant(0))
+        CustomCarouselView(activeIndex: .constant(0), cards: .constant(ProfileCardModel.sampleData))
     }
 }

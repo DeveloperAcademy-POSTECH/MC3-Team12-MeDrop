@@ -12,6 +12,12 @@ struct CardDetailCollectedView: View {
     
     var body: some View {
         CardDetailView(card: $card, isFromMy: false)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("삭제") {
+                    }
+                }
+            }
     }
 }
 
