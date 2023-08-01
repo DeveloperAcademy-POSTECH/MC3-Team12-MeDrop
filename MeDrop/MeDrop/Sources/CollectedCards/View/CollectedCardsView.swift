@@ -63,8 +63,8 @@ struct CollectedCardsView: View {
                 Spacer()
             }
         }
-        .frame(height: 88, alignment: .top)
-        .padding(.top, 30)
+        .frame(height: UIScreen.height * 0.1, alignment: .top)
+        .padding(.top, UIScreen.height * 0.04)
     }
     
     
@@ -135,15 +135,15 @@ struct CollectedCardsView: View {
                     
                     TabCollectionShape(radius: 38.0)
                         .fill(.white)
-                        .frame(height: 88, alignment: .top)
-                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)                    
-                    .foregroundColor(.white)
-                    .frame(height: 88, alignment: .center)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                        .frame(height: UIScreen.height * 0.1, alignment: .top)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                         .overlay(bottomBar)
                 }
                 .edgesIgnoringSafeArea(.bottom)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .navigationTitle("Collected Cards")
+            .navigationBarTitleDisplayMode(.inline)
             .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
             ) {
                 Button("삭제", role: .destructive) {
@@ -158,8 +158,7 @@ struct CollectedCardsView: View {
             
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .navigationTitle("Collected Cards")
-            .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 

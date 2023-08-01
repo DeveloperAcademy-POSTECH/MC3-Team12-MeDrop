@@ -1,5 +1,5 @@
 //
-//  CarouselDesignView.swift
+//  CustomCarouselView.swift
 //  MeDrop
 //
 //  Created by jose Yun on 2023/08/01.
@@ -12,28 +12,30 @@ struct CarouselDesignView: View {
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
     
-    @Binding var cards: [ProfileCardModel]
+    @Binding var card: ProfileCardModel
+    @State var cards:[ProfileCardModel] = []
     @Binding var activeIndex: Int
     @State private var move = false
+    @Binding var color: String
     
     var body: some View {
         
         ZStack {
+//            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
                 
                 // article view
-                CardView(card: $cards[index])
-                    .frame(height: UIScreen.height * 0.65).padding()
+                CardDesignView(card: $cards[index], color: $color, design: String(index))
+                    .frame(width: UIScreen.width * 0.69, height: UIScreen.height * 0.53).padding()
                 
                 .scaleEffect(0.9 - abs(distance(index)) * 0.2 )
                 .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
                 .offset(x: myXOffset(index), y: 0)
                 .zIndex(1.0 - abs(distance(index)) * 0.1)
-                .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
-                .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
-                .onAppear {
-                    move.toggle()
-                }
+            }
+        }.onAppear {
+            for _ in 0..<5 {
+                cards.append(card)
             }
         }
         .gesture(
@@ -49,7 +51,8 @@ struct CarouselDesignView: View {
                     print("snapped", snappedItem)
                 }
                 .onEnded { value in
-                    withAnimation(.easeIn) {
+                    withAnimation(.easeIn)
+                    {
                         
                         draggingItem = round(draggingItem)
                         
@@ -81,11 +84,11 @@ struct CarouselDesignView: View {
     func myXOffset(_ item: Int) -> Double {
         let angle =  distance(item)
 //        print(item, angle)
-        return (angle) * 290
+        return (angle) * 250
     }
 }
 struct CarouselDesignView_Previews: PreviewProvider {
     static var previews: some View {
-        CarouselDesignView(cards: .constant(ProfileCardModel.sampleData), activeIndex: .constant(0))
+        CarouselDesignView(card: .constant(ProfileCardModel.sampleData[0]), activeIndex: .constant(0), color: .constant("0"))
     }
 }

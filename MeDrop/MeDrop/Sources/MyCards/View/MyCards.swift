@@ -55,14 +55,14 @@ struct MyCardsView: View {
                             .disabled(selectedTab == .your)
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -35)
+                .offset(y: tabItem.type == .tabType ? 0 : -UIScreen.height * 0.04)
                 .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
             }
         }
-        .frame(height: 88, alignment: .top)
-        .padding(.top, 14)
+        .frame(height: UIScreen.height * 0.1, alignment: .top)
+        .padding(.top, UIScreen.height * 0.02)
     }
 
     var body: some View {
