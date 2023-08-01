@@ -58,13 +58,12 @@ struct ExchangeView: View {
     
     var body: some View {
                     
-            VStack {
                 ZStack {
                     DesignSystemAsset.white2.ignoresSafeArea()
                     Group{
                         if viewModel.connectedPeers.isEmpty {
                             
-                            yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
+                            exchangePlaceHolderView(text: "교환을 할 수 있는 유저가 없어요.\n상대방도 미드랍 앱을 켜면 교환이 가능해요", fontSize: 17)
                             Button("Start") {
                                 viewModel.startHosting()
                             }
@@ -96,19 +95,18 @@ struct ExchangeView: View {
                             .ignoresSafeArea()
                     }
                     
+                    VStack{
+                        Spacer()
+                        TabClipperShape(radius: 38.0)
+                            .fill(Color(.white))
+                            .frame(height: 88, alignment: .top)
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                            .overlay(bottomBar)
+                    }
                     
                 }
-                
-                TabClipperShape(radius: 38.0)
-                    .fill(Color(.white))
-                    .frame(height: 88, alignment: .top)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                    .overlay(bottomBar)
-                    
-                
-                
-            
-        }.edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.bottom)
+            .padding(.top,safeArea.top)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         .toastView(toast: $viewModel.toast)
         .sheet(isPresented: $showSheet,onDismiss: {
@@ -127,13 +125,8 @@ struct ExchangeView: View {
 
 extension ExchangeView {
     @ViewBuilder
-    private func yellowJellySpeachView(spacing: CGFloat = 20, text: String, fontSize:CGFloat = 12, textColor:Color = .black) -> some View {
+    private func exchangePlaceHolderView(spacing: CGFloat = 20, text: String, fontSize:CGFloat = 12, textColor:Color = DesignSystemAsset.blue3) -> some View {
         VStack(spacing: spacing) {
-            Image(DesignSystemAsset.Jelly.yellowSmallJelly.rawValue)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 50, height: 50)
-            
             Text(text)
                 .foregroundColor(textColor)
                 .font(.bold(fontSize))
@@ -144,8 +137,14 @@ extension ExchangeView {
     
     @ViewBuilder
     private func advertiserList() -> some View {
-        VStack {
-            yellowJellySpeachView(text: "누구에게 교환을 요청할까요?")
+        VStack(spacing: 16) {
+            
+            Text("교환하기")
+                .font(.bold(17))
+                .foregroundColor(.black)
+                
+            
+            exchangePlaceHolderView(text: "교환을 진행할 사람을 선택해주세요.",fontSize: 13)
             
             List(viewModel.connectedPeers, id: \.self) { peer in
                 let displayName = peer.displayName
@@ -191,10 +190,7 @@ extension ExchangeView {
                
                 
             VStack {
-                yellowJellySpeachView(text: "상대방의 명함을 저장해보세요!", textColor: .white)
-                    .padding(.top, 20)
-                
-                    
+
                 
                 VStack(spacing: 30) {
                     
@@ -311,7 +307,7 @@ extension ExchangeView {
             Text("교환 수락을 기다리는 중...")
                 .font(.bold(24))
                 .foregroundColor(.white)
-            LottieView(jsonName: "MEDROP",loopMode: .loop) { _ in
+            LottieView(jsonName: "Loading",loopMode: .loop) { _ in
                 
             }
             VStack(spacing: 0) {
@@ -358,7 +354,7 @@ extension ExchangeView {
                 showSheet = false
             } label: {
                 Text("동의하기")
-                    .foregroundColor(DesignSystemAsset.white1)
+                    .foregroundColor(DesignSystemAsset.blue4)
                     .font(.heavy(17))
             }
             .padding(.vertical,14)
@@ -370,8 +366,8 @@ extension ExchangeView {
                 PreferenceManager.firstExchange = true
                 showSheet = false
             } label: {
-                Text("동의안함")
-                    .foregroundColor(DesignSystemAsset.gray1)
+                Text("취소하기")
+                    .foregroundColor(DesignSystemAsset.btBlue)
                     .font(.heavy(17))
             }
             .padding(.vertical,14)
