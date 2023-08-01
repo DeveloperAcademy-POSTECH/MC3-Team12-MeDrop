@@ -87,7 +87,7 @@ struct ExchangeView: View {
                             EmptyView()
                         }
                     }
-                    .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                    .frame(maxWidth: .infinity,maxHeight: .infinity)
                     .background {
                         Color.black.opacity(0.8)
                             .ignoresSafeArea()
@@ -136,14 +136,17 @@ extension ExchangeView {
     
     @ViewBuilder
     private func advertiserList() -> some View {
-        VStack(spacing: 16) {
+        VStack(spacing:0) {
             
-            Text("교환하기")
-                .font(.bold(17))
-                .foregroundColor(.black)
+            VStack(spacing:16){
+                Text("교환하기")
+                    .font(.bold(17))
+                    .foregroundColor(.black)
+                    
                 
-            
-            exchangePlaceHolderView(text: "교환을 진행할 사람을 선택해주세요.",fontSize: 13)
+                exchangePlaceHolderView(text: "교환을 진행할 사람을 선택해주세요.",fontSize: 13)
+            }
+           
             
             List(viewModel.connectedPeers, id: \.self) { peer in
                 let displayName = peer.displayName
@@ -291,22 +294,14 @@ extension ExchangeView {
     @ViewBuilder
     private func loadingView() -> some View {
         
-        VStack{
-            Text("교환 수락을 기다리는 중...")
+        VStack(spacing:0){
+            Text("상대방의 응답을 기다리고 있어요.")
                 .font(.bold(24))
                 .foregroundColor(.white)
             LottieView(jsonName: "Loading",loopMode: .loop) { _ in
                 
             }
-            VStack(spacing: 0) {
-                Text("교환할 상대의 기기와 맞닿아 주세요.")
-                    .foregroundColor(.black)
-                    .font(.bold(15))
-                Text("주변에 같은 무선인터넷을 이용하는 사람이 많다면\n로딩이 길어질 수 있습니다.")
-                    .foregroundColor(.black)
-                    .font(.regular(15))
-                    .multilineTextAlignment(.center)
-            }
+            .frame(width: 350,height: 350)
         }
     }
     
