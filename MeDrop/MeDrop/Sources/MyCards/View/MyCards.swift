@@ -96,14 +96,14 @@ struct MyCardsView: View {
 //                .tabViewStyle(PageTabViewStyle())
 //                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 
+                Spacer()
                 CustomCarouselView(cards: $myCards, activeIndex: .constant(0))
-                
+                Spacer()
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
                     .frame(height: 88, alignment: .top)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                     .overlay(bottomBar)
-                Spacer()
             }
             .edgesIgnoringSafeArea(.bottom)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
