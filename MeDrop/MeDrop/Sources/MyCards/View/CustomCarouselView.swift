@@ -16,25 +16,29 @@ struct CustomCarouselView: View {
     @Binding var activeIndex: Int
     @State private var move = false
     
+    @State var isDetail = false
     var body: some View {
         
         ZStack {
-//            ForEach(store.items) { item in
+            //            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
-                
                 // article view
                 CardView(card: $cards[index])
-                    .frame(height: UIScreen.height * 0.65).padding()
-                
-                .scaleEffect(0.9 - abs(distance(index)) * 0.2 )
-                .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
-                .offset(x: myXOffset(index), y: 0)
-                .zIndex(1.0 - abs(distance(index)) * 0.1)
-                .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
-                .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
-                .onAppear {
-                    move.toggle()
-                }
+                    .onTapGesture {
+                        isDetail.toggle()
+                    }
+                    .navigationDestination(isPresented: $isDetail) {
+                        CardDetailMyView(card: $cards[index], cards: $cards)
+                    }
+                    .scaleEffect(0.9 - abs(distance(index)) * 0.2)
+                    .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
+                    .offset(x: myXOffset(index), y: 0)
+                    .zIndex(1.0 - abs(distance(index)) * 0.1)
+                    .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
+                    .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
+                    .onAppear {
+                        move.toggle()
+                    }
             }
         }
         .gesture(

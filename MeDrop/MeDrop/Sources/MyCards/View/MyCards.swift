@@ -68,34 +68,35 @@ struct MyCardsView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                TabView(selection: $selectedIndex) {
-                    ForEach($myCards.indices, id: \.self) { index in
-                        Button(action: {isDetail.toggle()
-                        }) {
-                            CardView(card: $myCards[index])
-                        }
-                        .padding()
-                        .tag(index)
-                        .navigationDestination(isPresented: $isDetail) {
-                            CardDetailMyView(card: $myCards[index], cards: $myCards)
-                        }
-                    }
-                    
-                    if $myCards.count == 5 {
-                        FinalCardView()
-                            .tag($myCards.count + 1)
-                            .padding()
-                        
-                    } else {
-                        Button(action: {isCreate.toggle()}) {
-                            PlusCardView()
-                        }
-                        .padding()
-                        .tag($myCards.count + 1)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//                TabView(selection: $selectedIndex) {
+//                    ForEach($myCards.indices, id: \.self) { index in
+//                        Button(action: {isDetail.toggle()
+//                        }) {
+//                            CardView(card: $myCards[index])
+//                        }
+//                        .padding()
+//                        .tag(index)
+//                        .navigationDestination(isPresented: $isDetail) {
+//                            CardDetailMyView(card: $myCards[index], cards: $myCards)
+//                        }
+//                    }
+//
+//                    if $myCards.count == 5 {
+//                        FinalCardView()
+//                            .tag($myCards.count + 1)
+//                            .padding()
+//                    } else {
+//                        Button(action: {isCreate.toggle()}) {
+//                            PlusCardView()
+//                        }
+//                        .padding()
+//                        .tag($myCards.count + 1)
+//                    }
+//                }
+//                .tabViewStyle(PageTabViewStyle())
+//                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                
+                CustomCarouselView(cards: $myCards, activeIndex: .constant(0))
                 
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
@@ -103,7 +104,6 @@ struct MyCardsView: View {
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                     .overlay(bottomBar)
                 Spacer()
-                
             }
             .edgesIgnoringSafeArea(.bottom)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
