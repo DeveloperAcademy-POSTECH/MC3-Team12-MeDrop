@@ -62,17 +62,16 @@ struct ProfileCardModel: ProfileCard, Identifiable,Hashable {
     
     var date: Int = 20200101
 
-
     func complete() -> Bool {
-        if name.isEmpty || contact.isEmpty || company.isEmpty || job.isEmpty || introduction.isEmpty {
-            return false
-        } else {
+        if name.isEmpty == false && job.isEmpty == false && contact.isEmpty == false && company.isEmpty == false && contact.count == 13 {
             return true
+        } else {
+            return false
         }
     }
     
     func back() -> Bool {
-        if !name.isEmpty || !contact.isEmpty || !company.isEmpty || !job.isEmpty || !introduction.isEmpty {
+        if name.isEmpty && contact.isEmpty && company.isEmpty || !job.isEmpty || !introduction.isEmpty {
             return true
         } else {
             return false
@@ -89,7 +88,6 @@ extension ProfileCardModel {
         ProfileCardModel(name: "카일", contact: "010-4444-4444", company: "􀣺 kayle Developer ", job: "COO.", introduction: "한 줄 소개; 카일 CEO", email: "kayle@gmail.com", link: "kayle.com", color: [0.4, 0.5, 0.2], date: 20200110)
     ]
 }
-
 
 extension ProfileCardModel {
     static var emptyCard: ProfileCardModel {

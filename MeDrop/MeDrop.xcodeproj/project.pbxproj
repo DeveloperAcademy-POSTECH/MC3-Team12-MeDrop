@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */; };
+		681557E42A77EE3300625801 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557E32A77EE3300625801 /* CreateCardView.swift */; };
+		681557E62A77F03800625801 /* EnterInfo1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557E52A77F03800625801 /* EnterInfo1View.swift */; };
+		681557E82A77FA5B00625801 /* EnterInfo2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557E72A77FA5B00625801 /* EnterInfo2View.swift */; };
+		681557EA2A77FC1700625801 /* SNSEnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557E92A77FC1700625801 /* SNSEnterView.swift */; };
+		681557EC2A78041D00625801 /* EnterDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557EB2A78041D00625801 /* EnterDesignView.swift */; };
+		681557F02A78700500625801 /* CustomCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681557EF2A78700500625801 /* CustomCarouselView.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
 		68D92B152A765F7900121985 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B142A765F7900121985 /* MainTabView.swift */; };
 		68D92B192A766C6600121985 /* TapClipperShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B182A766C6600121985 /* TapClipperShape.swift */; };
@@ -74,6 +80,12 @@
 
 /* Begin PBXFileReference section */
 		1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
+		681557E32A77EE3300625801 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		681557E52A77F03800625801 /* EnterInfo1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInfo1View.swift; sourceTree = "<group>"; };
+		681557E72A77FA5B00625801 /* EnterInfo2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInfo2View.swift; sourceTree = "<group>"; };
+		681557E92A77FC1700625801 /* SNSEnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSEnterView.swift; sourceTree = "<group>"; };
+		681557EB2A78041D00625801 /* EnterDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDesignView.swift; sourceTree = "<group>"; };
+		681557EF2A78700500625801 /* CustomCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarouselView.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
 		68D92B142A765F7900121985 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		68D92B182A766C6600121985 /* TapClipperShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapClipperShape.swift; sourceTree = "<group>"; };
@@ -210,6 +222,11 @@
 				970AFC8A2A723DAE0041A948 /* ColorSelectView.swift */,
 				970AFC8C2A723DC70041A948 /* EditCardView.swift */,
 				970AFC8E2A723DE50041A948 /* NewCardView.swift */,
+				681557E32A77EE3300625801 /* CreateCardView.swift */,
+				681557E52A77F03800625801 /* EnterInfo1View.swift */,
+				681557E72A77FA5B00625801 /* EnterInfo2View.swift */,
+				681557E92A77FC1700625801 /* SNSEnterView.swift */,
+				681557EB2A78041D00625801 /* EnterDesignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				97CA10AA2A7238E9006C6422 /* MyCards.swift */,
+				681557EF2A78700500625801 /* CustomCarouselView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -656,10 +674,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				970AFC8B2A723DAE0041A948 /* ColorSelectView.swift in Sources */,
+				681557E62A77F03800625801 /* EnterInfo1View.swift in Sources */,
 				B00125772A677B2E00439760 /* ExchangeView.swift in Sources */,
 				970AFC842A723D240041A948 /* CardDetailViewModel.swift in Sources */,
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */,
+				681557E82A77FA5B00625801 /* EnterInfo2View.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
 				970AFC922A723E420041A948 /* MenuView.swift in Sources */,
 				B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */,
@@ -668,6 +688,7 @@
 				682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */,
 				68D92B152A765F7900121985 /* MainTabView.swift in Sources */,
 				B09951562A5CF15E009AC534 /* Extension+String.swift in Sources */,
+				681557EC2A78041D00625801 /* EnterDesignView.swift in Sources */,
 				B09951372A5B9AFC009AC534 /* Extension+UIApplication.swift in Sources */,
 				97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */,
 				B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */,
@@ -680,6 +701,7 @@
 				B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */,
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
+				681557EA2A77FC1700625801 /* SNSEnterView.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */,
 				68D92B1B2A766CB800121985 /* Tab.swift in Sources */,
@@ -687,10 +709,12 @@
 				68D92B192A766C6600121985 /* TapClipperShape.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
 				B09951422A5BA8AF009AC534 /* Extension+Color.swift in Sources */,
+				681557E42A77EE3300625801 /* CreateCardView.swift in Sources */,
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				970AFC7F2A723B730041A948 /* CollectedCardsView.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
 				97E3202F2A774DE000656E4A /* DropDown.swift in Sources */,
+				681557F02A78700500625801 /* CustomCarouselView.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
 				97CA10AD2A723949006C6422 /* CardStore.swift in Sources */,
