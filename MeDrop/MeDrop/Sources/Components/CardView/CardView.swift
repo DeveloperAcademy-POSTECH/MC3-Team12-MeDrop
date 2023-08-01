@@ -35,19 +35,26 @@ struct CardView: View {
 }
 
 struct PlusCardView: View {
-    var body: some View {
-        Image("PlusCard")
-            .resizable()
-            .scaledToFit()
-            .padding()
-            .shadow(radius: 10)
-    }
+var body: some View {
+    RoundedRectangle(cornerRadius: 20)
+        .shadow(radius: 10)
+        .padding()
+        .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
+        .foregroundColor(.white)
+        .overlay(
+            Image("Plus")
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.width / 3)
+        )
+}
 }
 
 struct FinalCardView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .shadow(radius: 15)
+            .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
             .padding()
             .overlay(
                 Text("Final")
@@ -55,3 +62,10 @@ struct FinalCardView: View {
             )
     }
 }
+
+struct CardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardView(card: .constant(ProfileCardModel.sampleData[1]))
+    }
+}
+
