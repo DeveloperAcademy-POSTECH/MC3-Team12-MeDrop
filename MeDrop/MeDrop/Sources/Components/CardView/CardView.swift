@@ -11,26 +11,19 @@ import SwiftUI
 struct CardView: View {
     @Binding var card: ProfileCardModel
     var body: some View {
-        VStack {
             RoundedRectangle(cornerRadius: 20)
-                .padding()
+                .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
+                .background(Image("\(card.designType)-background").resizable().scaledToFit())
+                .shadow(radius: 10)
                 .overlay(
                     VStack {
                         Spacer()
-                        Text("\(card.introduction)")
-                        Text("\(card.name)")
-                        Text("\(card.company)")
-                        Text("\(card.job)")
-                        Text("\(card.contact)")
-                        Spacer()
+                        infoDrawer(card: card)
                     }
-                        .padding()
                         .foregroundColor(.black)
+                        .padding()
                 )
-                .foregroundColor(.clear)
-                .background(Image("\(card.designType)-background").resizable().scaledToFit())
-                .shadow(radius: 10)
-        }
+                .foregroundColor(.clear))
     }
 }
 
