@@ -17,16 +17,12 @@ struct CardView: View {
                 .padding()
                 .overlay(
                     VStack {
-<<<<<<< HEAD
-                        
-=======
                         Spacer()
-                        Image("\(card.designType)_background")
+                        Image("\(card.designType)-background")
 //                            .renderingMode(.template)
 //                            .foregroundColor(Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2]))
                             .padding()
                             .border(.black)
->>>>>>> 08390e2284375525f643066307d90681f6630d37
                         Spacer()
                         Text("\(card.introduction)")
                         Text("\(card.name)")
