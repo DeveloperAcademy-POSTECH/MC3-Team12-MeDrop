@@ -1,5 +1,5 @@
 //
-//  CustomCarouselView.swift
+//  CarouselDesignView.swift
 //  MeDrop
 //
 //  Created by jose Yun on 2023/08/01.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomCarouselView: View {
+struct CarouselDesignView: View {
     
     @State private var snappedItem = 0.0
     @State private var draggingItem = 0.0
@@ -19,7 +19,6 @@ struct CustomCarouselView: View {
     var body: some View {
         
         ZStack {
-//            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
                 
                 // article view
@@ -85,8 +84,8 @@ struct CustomCarouselView: View {
         return (angle) * 290
     }
 }
-struct CustomCarouselView_Previews: PreviewProvider {
+struct CarouselDesignView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomCarouselView(cards: .constant(ProfileCardModel.sampleData), activeIndex: .constant(0))
+        CarouselDesignView(cards: .constant(ProfileCardModel.sampleData), activeIndex: .constant(0))
     }
 }

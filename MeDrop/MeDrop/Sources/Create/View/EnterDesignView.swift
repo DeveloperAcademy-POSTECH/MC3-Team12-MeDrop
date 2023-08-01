@@ -23,7 +23,7 @@ struct EnterDesignView: View {
         NavigationView {
             
             VStack {
-                CustomCarouselView(activeIndex: $selectedDesign)
+//                CustomCarouselView(cards: $editingCard, activeIndex: $selectedDesign)
 
                 HStack {
                     ForEach(0..<5) { index in
