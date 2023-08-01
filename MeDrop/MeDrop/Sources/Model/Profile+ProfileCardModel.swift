@@ -7,30 +7,24 @@
 
 import SwiftUI
 
-class EnvironmentData: ObservableObject {
-    @Published var cardNum: [Int] = []
-}
-
 protocol ProfileCard: Identifiable, Codable {
     
     var name: String { get set }
     var contact: String { get set }
     var company: String { get set }
     var job: String { get set }
+    
     var introduction: String { get set }
-    
     var email: String { get set }
-    var link: String { get set }
     
+    var link: String { get set }
     var insta: String { get set }
     var twitter: String { get set }
     var github: String { get set }
     var linkedin: String { get set }
     var youtube: String { get set }
     
-    var type: Int { get set }
-    var animated: Bool { get set }
-    var color: [CGFloat] { get set }
+    var designType: String { get set }
     
     var date: Int { get set }
     
@@ -56,9 +50,7 @@ struct ProfileCardModel: ProfileCard, Identifiable,Hashable {
     var linkedin: String = ""
     var youtube: String = ""
     
-    var type: Int = 0
-    var animated: Bool = true
-    var color: [CGFloat] = [0.4, 0.5, 0.2]
+    var designType: String = ""
     
     var date: Int = 20200101
 
@@ -120,7 +112,7 @@ extension ProfileCardModel {
             links.append(SocialMediaLink(name: "Twitter", icon: "twitter", link: twitter))
         }
         if !insta.isEmpty {
-            links.append(SocialMediaLink(name: "Instagram", icon: "instagram", link: insta))
+            links.append(SocialMediaLink(name: "Instagram", icon: "Instagram", link: insta))
         }
         return links
     }
