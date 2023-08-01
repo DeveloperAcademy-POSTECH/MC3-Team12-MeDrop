@@ -42,36 +42,27 @@ struct CustomCarouselView: View {
                     .zIndex(1.0 - abs(distance(index)) * 0.1)
                     .rotation3DEffect(.degrees(Double(move ? 6 : -6)), axis: (x: CGFloat(move ? 90 : -45), y: CGFloat(move ? -30 : -60), z: 0.0))
                     .animation(.easeInOut.speed(0.1).repeatForever(), value: move)
-                    .onAppear {
-                        move.toggle()
-                    }
             }
             
             if cards.count != 5 {
-                PlusCardView()
-                    .onTapGesture{
-                        isCreate.toggle()
-                    }
-                    .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
-                    .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
-                    .offset(x: myXOffset(cards.count))
-                    .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
-                    .onAppear {
-                        move.toggle()
-                    }
+                Button(action: { isCreate.toggle()}) {
+                    PlusCardView()
+                }
+                .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
+                .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
+                .offset(x: myXOffset(cards.count))
+                .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
             } else {
                 FinalCardView()
                     .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
                     .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
                     .offset(x: myXOffset(cards.count))
                     .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
-                    .onAppear {
-                        move.toggle()
-                    }
             }
         }
         .onAppear{
             makingCard = ProfileCardModel.emptyCard
+            move.toggle()
         }
         .simultaneousGesture(
             DragGesture()
