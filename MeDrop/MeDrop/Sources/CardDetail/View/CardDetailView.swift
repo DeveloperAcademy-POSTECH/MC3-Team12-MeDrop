@@ -110,9 +110,11 @@ struct CardDetailView: View {
                                 VStack(spacing: 20) {
                                     ForEach(socialMediaLinks, id: \.self) { link in
                                         Button(action: {
+                                            
                                             if let url = URL(string: card.link(for: link)) {
                                                 UIApplication.shared.open(url)
                                             }
+                                          
                                         }) {
                                             VStack {
                                                 Image(link.icon)
@@ -138,15 +140,11 @@ struct CardDetailView: View {
                                     .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                                 
                             } else {
-                                Circle()
-                                    .foregroundColor(.white)
-                                    .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
-                                    .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
-                                    .overlay(
                                 Image("AddUp")
                                     .resizable()
                                     .scaledToFit()
-                                )
+                                    .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
+                                    .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                             }
                         }
                     }
@@ -155,7 +153,8 @@ struct CardDetailView: View {
                 .padding()
             }
         }
-        .background(Image("\(card.designType)")
+        // 여기
+        .background(Image("\(card.designType)-background")
             .resizable().scaledToFit())
     }
 }
