@@ -14,6 +14,7 @@ struct EnterDesignView: View {
     @State var selectedDesign = 0
     @Binding var cards: [ProfileCardModel]
     var isCreate: Bool
+    @State var color: String = "0"
     
     @State var isBack = false
     @Environment(\.dismiss) private var dismiss
@@ -23,19 +24,25 @@ struct EnterDesignView: View {
         NavigationView {
             
             VStack {
-//                CustomCarouselView(cards: $editingCard, activeIndex: $selectedDesign)
+                CarouselDesignView(card: $editingCard, activeIndex: $selectedDesign, color: $color)
 
                 HStack {
                     ForEach(0..<5) { index in
                         Button(action: {
-                            // MARK: TEMP use introduction to store design selection
-                            editingCard.introduction = "\(selectedDesign)-\(index)"
+                            
+                            editingCard.designType = "\(selectedDesign)-\(index)"
+                            color = String(index)
+                            
                         }) {
                             Image("\(selectedDesign)-\(index)")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: UIScreen.height * 0.06)
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
+                                
                         }
                     }
-                }
-                Spacer()
+                }.padding(.horizontal)
                 HStack {
                     
                     Button(action: {
@@ -43,8 +50,10 @@ struct EnterDesignView: View {
                             navigationControl -= 1 }}
                     ) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray4)
-                            Text("이전").foregroundColor(DesignSystemAsset.gray2)
+                            RoundedRectangle(cornerRadius: 10).foregroundColor(Color(red: 0.96, green: 0.95, blue: 0.91))
+                            Text("이전")
+                                .font(Font.custom("SF Pro Text", size: 17))
+                                .foregroundColor(DesignSystemAsset.gray3)
                         }
                     }
                     
@@ -57,11 +66,14 @@ struct EnterDesignView: View {
                     }}) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                            Text("완료").foregroundColor(.white)
+                                .foregroundColor(Color(red: 0.33, green: 0.38, blue: 0.54))
+                            Text("완료")
+                                .font(Font.custom("SF Pro Text", size: 17))
+                                .foregroundColor(DesignSystemAsset.white1)
                         }
                     }
                 }
-                .frame(height: UIScreen.height * 0.07)
+                .frame(height: UIScreen.height * 0.06)
                 .padding()
                 .alert("돌아가시겠어요?", isPresented: $isBack) {
                     Button("확인", role: .destructive) {
@@ -73,7 +85,11 @@ struct EnterDesignView: View {
                 } message: {
                     Text("지금 돌아간다면 정보는 저장되지 않습니다. ")
                 }
-            }.navigationTitle("명함 디자인을 설정하세요")
+            }
+            .onAppear {
+                selectedDesign = editingCard.designType.first?.wholeNumberValue ?? 0
+            }
+            .navigationTitle("명함 디자인을 설정하세요")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(action: {
