@@ -21,16 +21,6 @@ struct EnterDesignView: View {
         NavigationView {
             
             VStack {
-                
-//                Spacer()
-//                Button(action: {
-//                    withAnimation(.easeOut(duration: 0.4)) {
-//                        selectedDesign += 1
-//                    }
-//                }) {
-//                    Image(systemName: "lanyardcard")
-//                }
-                
                 CustomCarouselView(activeIndex: $selectedDesign)
 
                 HStack {
@@ -70,7 +60,6 @@ struct EnterDesignView: View {
                 .padding()
                 .alert("돌아가시겠어요?", isPresented: $isBack) {
                     Button("확인", role: .destructive) {
-                        // 정보 저장 없이 돌아가기
                         dismiss()
                     }
                     Button("취소", role: .cancel) {
