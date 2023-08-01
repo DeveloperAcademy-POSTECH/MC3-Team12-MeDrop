@@ -23,7 +23,7 @@ struct CardView: View {
                         .foregroundColor(.black)
                         .padding()
                 )
-                .foregroundColor(.clear))
+                .foregroundColor(.clear)
     }
 }
 
