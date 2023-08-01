@@ -198,7 +198,7 @@ extension ExchangeView {
                 
                 VStack(spacing: 30) {
                     
-                    TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com", color: [0.4, 0.5, 0.2]))
+                    TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com"))
                         
                         
                     
@@ -394,9 +394,8 @@ struct TmpCardView: View {
                 .overlay(
                     VStack {
                         Spacer()
-                        Image("\(card.type)")
+                        Image("\(card.designType)_background")
                             .renderingMode(.template)
-                            .foregroundColor(Color(.sRGB, red: card.color[0], green: card.color[1], blue: card.color[2]))
                             .padding()
                             .border(.black)
                         Spacer()

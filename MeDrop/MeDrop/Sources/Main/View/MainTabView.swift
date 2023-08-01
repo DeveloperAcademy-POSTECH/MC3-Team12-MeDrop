@@ -12,8 +12,6 @@ struct MainTabView: View {
         @State var showingAlert = false
     
         @StateObject private var cardStore = CardStore()
-    
-    
         
         var body: some View {
             ZStack {
