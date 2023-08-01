@@ -69,7 +69,7 @@ struct MyCardsView: View {
         NavigationStack {
             VStack {
                 Spacer()
-                CustomCarouselView(cards: $myCards, activeIndex: .constant(0))
+                CustomCarouselView(activeIndex: .constant(0), cards: $myCards)
                 Spacer()
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
