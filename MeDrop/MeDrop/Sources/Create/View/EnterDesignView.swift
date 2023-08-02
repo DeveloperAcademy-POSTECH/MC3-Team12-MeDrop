@@ -24,7 +24,9 @@ struct EnterDesignView: View {
         NavigationView {
             
             VStack {
+                Spacer()
                 CarouselDesignView(card: $editingCard, activeIndex: $selectedDesign, color: $color)
+                Spacer()
 
                 HStack {
                     ForEach(0..<5) { index in
