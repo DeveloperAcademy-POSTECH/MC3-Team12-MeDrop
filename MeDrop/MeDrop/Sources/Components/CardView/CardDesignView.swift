@@ -14,6 +14,7 @@ struct CardDesignView: View {
     var body: some View {
         
         RoundedRectangle(cornerRadius: 20)
+            .frame(width: UIScreen.height * 0.5 * (3/5), height: UIScreen.height * 0.5)
             .background(Image("\(design)-\(color)-background").resizable().scaledToFit())
             .shadow(radius: 10)
             .overlay(
@@ -32,6 +33,7 @@ struct CardDesignView: View {
 
 struct CardDesignView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDesignView(card: .constant(ProfileCardModel.emptyCard), color: .constant("0"))
+        CardDesignView(card: .constant(ProfileCardModel.sampleData[0]), color: .constant("0"))
     }
 }
+

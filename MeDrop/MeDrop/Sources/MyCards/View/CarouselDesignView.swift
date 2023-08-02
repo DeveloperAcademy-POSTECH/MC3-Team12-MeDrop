@@ -21,7 +21,6 @@ struct CarouselDesignView: View {
     var body: some View {
         
         ZStack {
-//            ForEach(store.items) { item in
             ForEach($cards.indices, id: \.self) { index in
                 
                 // article view
