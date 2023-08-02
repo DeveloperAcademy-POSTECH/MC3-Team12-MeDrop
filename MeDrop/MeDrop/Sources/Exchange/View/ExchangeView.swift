@@ -19,43 +19,34 @@ struct ExchangeView: View {
     }
     
     var bottomBar: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
-                Button(action: {
+                if tabItem.type == .tabType {
+                    Button(action: {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                        }
-                }) {
-                    if tabItem.type == .tabType {
+                        } }) {
                         VStack(spacing: 0) {
                             Image(systemName: tabItem.icon)
                                 .symbolVariant(.fill)
                                 .font(.body.bold())
                             Text(tabItem.text)
-                                .font(.caption2)
-                                .lineLimit(1)
-                        }
-                    } else {
-                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
-                            .symbolVariant(.fill)
-                            .font(.body.bold())
-//                            .foregroundColor(Color.white)
-                            .background(Circle().foregroundColor(.white))
-                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                            
-                            .disabled(selectedTab == .your)
+                                .font(Font.custom("SF Pro Text", size: 11))
+                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
+                else {
+                    Image("ExchangeMenu")
+                        .resizable()
+                        .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                        .scaledToFit()
+                        .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                        .offset(y: -UIScreen.height * 0.05)
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -35)
-                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }
+            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
         }
-        .frame(height: 88, alignment: .top)
-        .padding(.top, 14)
-    }
     
 
     
