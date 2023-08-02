@@ -30,7 +30,6 @@ struct CustomCarouselView: View {
                 DeletableCardView(card: $cards[index], cards: $cards)
                     .onTapGesture {
                         isDetail.toggle()
-                        print(index)
                     }
                     .navigationDestination(isPresented: $isDetail) {
                             CardDetailMyView(card: $cards[Int(index)], cards: $cards)
