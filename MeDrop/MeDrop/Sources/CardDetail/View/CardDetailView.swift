@@ -117,11 +117,9 @@ struct CardDetailView: View {
                                 VStack(spacing: 20) {
                                     ForEach(socialMediaLinks, id: \.self) { link in
                                         Button(action: {
-                                            
                                             if let url = URL(string: card.link(for: link)) {
                                                 UIApplication.shared.open(url)
                                             }
-                                          
                                         }) {
                                             VStack {
                                                 Image(link.icon)
@@ -132,20 +130,20 @@ struct CardDetailView: View {
                                     }
                                 }
                                 .padding()
+                                .background(.white)
                                 .cornerRadius(50)
+                                .shadow(radius: 4)
                             }
                         }
                         Button(action: {
                             expand.toggle()
                         }){
                             if expand {
-                                
                                 Image("AddDown")
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
                                     .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
-                                
                             } else {
                                 Image("AddUp")
                                     .resizable()
