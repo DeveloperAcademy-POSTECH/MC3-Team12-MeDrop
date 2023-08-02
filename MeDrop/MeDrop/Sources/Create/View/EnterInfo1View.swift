@@ -168,7 +168,7 @@ var body: some View {
                 set: { self.text = $0
                     
                 })
-            TextField ("010-0000-000", text: textChangedBinding)
+            TextField ("010-0000-0000", text: textChangedBinding)
             }
             }
         }
@@ -182,7 +182,7 @@ class FilterNumberPhone: ObservableObject {
         
         for ch in mask where index < numbers.endIndex {
             if ch == "X" {
-                result.append (numbers [index])
+                result.append(numbers [index])
                 index = numbers.index(after: index)
             } else {
                 result.append(ch)

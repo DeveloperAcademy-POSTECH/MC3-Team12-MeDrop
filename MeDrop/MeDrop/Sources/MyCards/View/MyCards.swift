@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MyCardsView: View {
-    
     @Binding var selectedTab: Tab
     @State var makingCard: ProfileCardModel = ProfileCardModel()
     
@@ -21,57 +20,79 @@ struct MyCardsView: View {
     @State var isMenu = false
     @State var isDetail = false
     @State var isCreate = false
+    @State var expand = false
     
     @State var showingAlert = false
     
     let saveAction: () -> Void
      
     var bottomBar: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
-                Button(action: {
+                if tabItem.type == .tabType {
+                    Button(action: {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                    }
-                }) {
-                    if tabItem.type == .tabType {
+                        } }) {
                         VStack(spacing: 0) {
                             Image(systemName: tabItem.icon)
                                 .symbolVariant(.fill)
                                 .font(.body.bold())
                             Text(tabItem.text)
-                                .font(.caption2)
-                                .lineLimit(1)
+                                .font(Font.custom("SF Pro Text", size: 11))
+                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
+                else {
+                    ZStack {
+                                    Button(action: {
+                                        print("export")
+                                    }, label: {
+                                        Image("ExportButton")
+                                            .resizable()
+                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                            .scaledToFit()
+                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                                    })
+                                    .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
+                                
+                                    Button(action: {
+                                        selectedTab = .exchange
+                                    }, label: {
+                                        Image("ExchangeButton")
+                                            .resizable()
+                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                            .scaledToFit()
+                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                                    })
+                                    .offset(y: expand ? -UIScreen.height * 0.08 : 0)
+                                
+                                    Button(action: {
+                                        expand.toggle()
+                                    }, label: {
+                                        Image("ExchangeMenu")
+                                            .resizable()
+                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                            .scaledToFit()
+                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                                    })
                         }
-                    } else {
-                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
-                            .symbolVariant(.fill)
-                            .font(.body.bold())
-                            .foregroundColor(Color.white)
-                            .background(Circle().foregroundColor(.white))
-                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                        .offset(y: -UIScreen.height * 0.05)
+                        .animation(.spring())
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -UIScreen.height * 0.04)
-                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }
+            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
         }
-        .frame(height: UIScreen.height * 0.1, alignment: .top)
-        .padding(.top, UIScreen.height * 0.02)
-    }
 
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer()
                 CustomCarouselView(activeIndex: .constant(0), cards: $myCards)
                 Spacer()
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
-                    .frame(height: 88, alignment: .top)
+                    .frame(height: UIScreen.height * 0.1, alignment: .top)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                     .overlay(bottomBar)
             }
@@ -97,7 +118,6 @@ struct MyCardsView: View {
         .tint(.black)
     }
 }
-
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
         MyCardsView(selectedTab: .constant(Tab.my), myCards: .constant(ProfileCardModel.sampleData), saveAction: {})

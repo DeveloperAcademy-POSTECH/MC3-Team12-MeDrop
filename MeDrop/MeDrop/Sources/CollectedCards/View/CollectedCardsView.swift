@@ -37,34 +37,68 @@ struct CollectedCardsView: View {
     }
     
     var bottomBar: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
-                Button(action: {
-                    if tabItem.type == .tabType {
+                if tabItem.type == .tabType {
+                    Button(action: {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                        }
-                    }
-                }) {
-                    if tabItem.type == .tabType {
+                        } }) {
                         VStack(spacing: 0) {
                             Image(systemName: tabItem.icon)
                                 .symbolVariant(.fill)
                                 .font(.body.bold())
                             Text(tabItem.text)
-                                .font(.caption2)
-                                .lineLimit(1)
-                        }
+                                .font(Font.custom("SF Pro Text", size: 11))
+                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
+                else {
+                    ZStack {
+                        Image("ExchangeMenu")
+                            .resizable()
+                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                            .scaledToFit()
+                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                        .opacity(0)
+                    }
+                        .offset(y: -UIScreen.height * 0.05)
+                        .animation(.spring())
                     }
                 }
-                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }
+            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
         }
-        .frame(height: UIScreen.height * 0.1, alignment: .top)
-        .padding(.top, UIScreen.height * 0.04)
+    
+    
+    var sortingButton: some View {
+        HStack {
+        Spacer()
+        Menu { sortingButton(order: "이름 순서")
+            sortingButton(order: "새로운 순서")
+            sortingButton(order: "오래된 순서")
+        } label: {
+            HStack {
+                Text(sortedBy)
+                Image(systemName: "chevron.down").foregroundColor(.red)
+            }.onChange(of: sortedBy) { _ in
+                if sortedBy == "이름 순서" {
+                    yourCards.sort {
+                        $0.name < $1.name
+                    }
+                } else if sortedBy == "새로운 순서" {
+                    yourCards.sort {
+                        $0.date < $1.date
+                    }
+                } else {
+                    yourCards.sort {
+                        $0.date > $1.date
+                    }
+                }
+            }
+        }.padding(.trailing)
+        .foregroundColor(.black)
+    }
     }
     
     
@@ -77,33 +111,9 @@ struct CollectedCardsView: View {
                 
                 
                 VStack(alignment: .leading ) {
-                    HStack {
-                    Spacer()
-                    Menu { sortingButton(order: "이름 순서")
-                        sortingButton(order: "새로운 순서")
-                        sortingButton(order: "오래된 순서")
-                    } label: {
-                        HStack {
-                            Text(sortedBy)
-                            Image(systemName: "chevron.down").foregroundColor(.red)
-                        }.onChange(of: sortedBy) { _ in
-                            if sortedBy == "이름 순서" {
-                                yourCards.sort {
-                                    $0.name < $1.name
-                                }
-                            } else if sortedBy == "새로운 순서" {
-                                yourCards.sort {
-                                    $0.date < $1.date
-                                }
-                            } else {
-                                yourCards.sort {
-                                    $0.date > $1.date
-                                }
-                            }
-                        }
-                    }.padding(.trailing)
-                    .foregroundColor(.black)
-                }
+                    
+                    sortingButton
+                    
                     Spacer()
                     
                     if yourCards.isEmpty == false {
@@ -155,8 +165,7 @@ struct CollectedCardsView: View {
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive { saveAction() }
             }
-            
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         }
         
     }
