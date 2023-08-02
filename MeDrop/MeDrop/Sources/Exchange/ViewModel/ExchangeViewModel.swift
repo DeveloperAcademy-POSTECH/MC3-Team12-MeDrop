@@ -38,6 +38,7 @@ class ExchangeViewModel: NSObject, ObservableObject {
     @Published var toast: Toast?
     
     init(data: ProfileCardModel, maxPeers: Int = 5) {
+        
         self.maxNumPeers = maxPeers
         self.data = data
         self.identityString = "\(data.name)\(seperatorString)\(data.company)\(seperatorString)\(data.job)\(seperatorString)"
@@ -83,7 +84,7 @@ extension ExchangeViewModel {
     
     public func sendOccupiedState(peer:MCPeerID) { // 이미 사용중 신호 보내기
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: ProfileCardModel() ))
+        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: data ))
     }
     
     public func sendDeniedState() { // 거절 신호 보내기
@@ -94,7 +95,7 @@ extension ExchangeViewModel {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ProfileCardModel() ))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: data ))
         disConnecting() // 이전 연결 삭제
     }
     
@@ -109,7 +110,7 @@ extension ExchangeViewModel {
     public func sendConnectState() { //연결 신호 보내기
         
         
-        self.state = .exchange
+       
         
         guard let peer = selectedPeer else {
             return
@@ -141,7 +142,6 @@ extension ExchangeViewModel {
     }
     
     private func sendData(peer: MCPeerID, data: MpcInfoDTO) {
-        DEBUG_LOG("SEND")
         if !mcSession.connectedPeers.isEmpty{
             do {
                 let encodeData = try JSONEncoder().encode(data)
@@ -192,6 +192,7 @@ extension ExchangeViewModel: MCSessionDelegate {
         
         switch receiveData.type {
         case .connect: // 연결 신호 일때
+            
             
             if state != .exchange { // 아직 연결 안되었을 때
                 DispatchQueue.main.async { [weak self] in
@@ -281,7 +282,6 @@ extension ExchangeViewModel: MCNearbyServiceBrowserDelegate {
 extension ExchangeViewModel: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         
-        DEBUG_LOG("CONNECT \(mcSession.connectedPeers.count) ")
         
         if mcSession.connectedPeers.count < maxNumPeers {
             invitationHandler(true, mcSession)
