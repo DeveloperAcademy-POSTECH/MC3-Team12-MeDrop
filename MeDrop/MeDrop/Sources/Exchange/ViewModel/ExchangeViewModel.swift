@@ -40,15 +40,14 @@ class ExchangeViewModel: NSObject, ObservableObject {
     init(data: ProfileCardModel, maxPeers: Int = 5) {
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.name)8\(seperatorString)\(data.company)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.name)\(seperatorString)\(data.company)\(seperatorString)\(data.job)\(seperatorString)"
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
         
         self.mcAdvertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: serviceType)
         self.mcBrowser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: serviceType)
-        
-        
+           
         super.init()
         mcSession.delegate = self
         mcAdvertiser.delegate = self
@@ -152,6 +151,13 @@ extension ExchangeViewModel {
             }
         }
     }
+    
+    public func save(){
+        var container = PreferenceManager.collections
+        container?.append(receiveCard)
+        PreferenceManager.collections = container
+        disConnecting()
+    }
 }
 
 extension ExchangeViewModel: MCSessionDelegate {
@@ -168,6 +174,7 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 self.connectedPeers = session.connectedPeers
+                self.connectedPeers = self.connectedPeers.uniqued() // 중복제거
             }
             
         @unknown default:
