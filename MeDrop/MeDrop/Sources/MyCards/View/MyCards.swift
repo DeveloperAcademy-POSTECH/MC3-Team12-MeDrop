@@ -37,64 +37,65 @@ struct MyCardsView: View {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
                         } }) {
-                        VStack(spacing: 0) {
-                            Image(systemName: tabItem.icon)
-                                .symbolVariant(.fill)
-                                .font(.body.bold())
-                            Text(tabItem.text)
-                                .font(Font.custom("SF Pro Text", size: 11))
-                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
-                else {
+                            VStack(spacing: 0) {
+                                Image(systemName: tabItem.icon)
+                                    .symbolVariant(.fill)
+                                    .font(.body.bold())
+                                Text(tabItem.text)
+                                    .font(Font.custom("SF Pro Text", size: 11))
+                            }
+                            .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)}
+                } else {
                     ZStack {
                         if selectedIndex < myCards.count {
                             ImageRenderView(card: myCards[selectedIndex])
                                 .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
                         }
                         Button(action: {
-   
                             if selectedIndex >= 0 && selectedIndex < myCards.count {
                                 selectedTab = .exchange
                             } else {
                                 showingInvalidAlert.toggle()
                             }
                             expand.toggle()
-                                    }, label: {
-                                        Image("ExchangeButton")
-                                            .resizable()
-                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
-                                            .scaledToFit()
-                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-                                    })
-                                    .offset(y: expand ? -UIScreen.height * 0.08 : 0)
-                                
-                                    Button(action: {
-                                        expand.toggle()
-                                    }, label: {
-                                        Image("ExchangeMenu")
-                                            .resizable()
-                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
-                                            .scaledToFit()
-                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-                                    })
-                        }
-                        .offset(y: -UIScreen.height * 0.05)
-                        .animation(.spring())
+                        }, label: {
+                            Image("ExchangeButton")
+                                .resizable()
+                                .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                .scaledToFit()
+                                .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                        })
+                        .offset(y: expand ? -UIScreen.height * 0.08 : 0)
+                        
+                        Button(action: {
+                            expand.toggle()
+                        }, label: {
+                            Image("ExchangeMenu")
+                                .resizable()
+                                .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                .scaledToFit()
+                                .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                        })
                     }
+                    .offset(y: -UIScreen.height * 0.05)
+                    .animation(.spring())
                 }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            }.frame(height: UIScreen.height * 0.1, alignment: .top)
-            .alert(isPresented: $showingInvalidAlert) {
-                Alert(title: Text(myCards.isEmpty ? "아직 교환할 명함이 없어요!" : "유효하지 않은 명함입니다."), message: Text(myCards.isEmpty ? "먼저 명함을 만들어주세요.": "내 명함 화면에서 명함을 선택해주세요."), dismissButton: .default(Text("확인")))
-            }.onDisappear {
-                expand = false
             }
-        
+            .frame(maxWidth: .infinity)
+            Spacer()
         }
+        .frame(height: UIScreen.height * 0.1, alignment: .top)
+        .alert(isPresented: $showingInvalidAlert) {
+            Alert(title: Text(myCards.isEmpty ? "아직 교환할 명함이 없어요!" : "유효하지 않은 명함입니다."), message: Text(myCards.isEmpty ? "먼저 명함을 만들어주세요.": "내 명함 화면에서 명함을 선택해주세요."), dismissButton: .default(Text("확인")))
+        }.onDisappear {
+            expand = false
+        }
+    }
 
     var body: some View {
         NavigationStack {
             VStack {
+                Spacer()
                 CustomCarouselView(activeIndex: $selectedIndex, cards: $myCards)
                 Spacer()
                 TabClipperShape(radius: 38.0)
