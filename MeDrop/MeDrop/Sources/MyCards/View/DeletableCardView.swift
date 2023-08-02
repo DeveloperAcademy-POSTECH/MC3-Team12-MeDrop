@@ -29,8 +29,8 @@ struct DeletableCardView: View {
                 .foregroundColor(.black)
                 .opacity(isShowingDeleteIcon ? deleteIconMaxOpacity : deleteIconMinOpacity)
                 .animation(.spring())
-                
                 .padding()
+                .padding(.bottom)
             }
             
             CardView(card: card)
