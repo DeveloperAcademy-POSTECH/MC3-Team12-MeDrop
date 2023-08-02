@@ -15,7 +15,7 @@ struct CardDetailMyView: View {
     @State var navigationControl: Int = 0
     
     var body: some View {
-        CardDetailView(card: $card, isFromMy: true)
+        CardDetailView(card: $card, cards: $cards, isFromMy: true)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("편집") {
