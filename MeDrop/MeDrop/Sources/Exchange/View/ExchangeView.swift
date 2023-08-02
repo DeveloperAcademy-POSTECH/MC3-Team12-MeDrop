@@ -178,7 +178,7 @@ extension ExchangeView {
                 VStack(spacing: 30) {
                     
                     
-                    CardView(card: viewModel.data)
+                    CardView(card: viewModel.receiveCard)
                         
                         
                     
@@ -304,7 +304,7 @@ extension ExchangeView {
                 .frame(maxWidth:.infinity,alignment:.leading)
             
             Text("주변에 있는 사람의 교환 대기 목록에 내 이름, 소속, 직무가 보여요. 상대방은 이를 통해 나에게 교환을 신청할 수 있어요.\n\n명함을 교환하면 나의 명함은 상대방의 명함 지갑에 보관되고, 상대방의 명함은 나의 명함 지갑에 보관돼요.\n\n명함의 수정과 삭제는 상대방의 명함 지갑에 반영되지 않으며, 상대방이 수정한 명함도 나의 명함 지갑에 반영되지 않습니다.")
-                .font(.light(17))
+                .font(.regular(17))
                 .foregroundColor(.black)
             
             
