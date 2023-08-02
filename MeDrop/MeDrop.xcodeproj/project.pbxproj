@@ -75,6 +75,7 @@
 		B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3812A764D7F0032B8FF /* Toast.swift */; };
 		B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3832A764DB30032B8FF /* ToastView.swift */; };
 		B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */; };
+		B0D9B38E2A79FD600032B8FF /* Extension+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B38D2A79FD600032B8FF /* Extension+Sequence.swift */; };
 		B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E4D6912A5266D000788200 /* MeDropApp.swift */; };
 		B0E4D6962A5266D100788200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6952A5266D100788200 /* Assets.xcassets */; };
 		B0E4D6992A5266D100788200 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E4D6982A5266D100788200 /* Preview Assets.xcassets */; };
@@ -148,6 +149,7 @@
 		B0D9B3812A764D7F0032B8FF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B0D9B3832A764DB30032B8FF /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
+		B0D9B38D2A79FD600032B8FF /* Extension+Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Sequence.swift"; sourceTree = "<group>"; };
 		B0E4D68E2A5266D000788200 /* MeDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E4D6912A5266D000788200 /* MeDropApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeDropApp.swift; sourceTree = "<group>"; };
 		B0E4D6952A5266D100788200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				B09951412A5BA8AF009AC534 /* Extension+Color.swift */,
 				1231DBB92A5BE34B00473CA0 /* Extension+CGFloat.swift */,
 				B09951552A5CF15E009AC534 /* Extension+String.swift */,
+				B0D9B38D2A79FD600032B8FF /* Extension+Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				B00125772A677B2E00439760 /* ExchangeView.swift in Sources */,
 				682109A82A792111002CABE7 /* CardDesignView.swift in Sources */,
 				970AFC842A723D240041A948 /* CardDetailViewModel.swift in Sources */,
+				B0D9B38E2A79FD600032B8FF /* Extension+Sequence.swift in Sources */,
 				B09950F82A579DEB009AC534 /* Extension+Font.swift in Sources */,
 				97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */,
 				681557E82A77FA5B00625801 /* EnterInfo2View.swift in Sources */,

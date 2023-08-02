@@ -168,6 +168,7 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 self.connectedPeers = session.connectedPeers
+                self.connectedPeers = self.connectedPeers.uniqued() // 중복제거 
             }
             
         @unknown default:
