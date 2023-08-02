@@ -27,20 +27,20 @@ class ExchangeViewModel: NSObject, ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     var selectedPeer: MCPeerID?
-    var data: ExchangeDataModel
+    var data: ProfileCardModel
     var connectedUser: String = ""
     
     @Published var connectedPeers: [MCPeerID] = [] // 현재 연결된 피어
-    @Published var receiveCard: String = ""
+    @Published var receiveCard: ProfileCardModel = ProfileCardModel()
     @Published var alertUserName: String = "" // 알람에 보여줄 이름
     @Published var showAlert: Bool = false // 알람 플래그 변수
     @Published var state: ExchangeState = .none
     @Published var toast: Toast?
     
-    init(data: ExchangeDataModel, maxPeers: Int = 5) {
+    init(data: ProfileCardModel, maxPeers: Int = 5) {
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.userName)8\(seperatorString)\(data.team)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.name)8\(seperatorString)\(data.company)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
@@ -48,10 +48,13 @@ class ExchangeViewModel: NSObject, ObservableObject {
         self.mcAdvertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: serviceType)
         self.mcBrowser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: serviceType)
         
+        
         super.init()
         mcSession.delegate = self
         mcAdvertiser.delegate = self
         mcBrowser.delegate = self
+        
+        startHosting()
     }
     
     deinit {
@@ -81,7 +84,7 @@ extension ExchangeViewModel {
     
     public func sendOccupiedState(peer:MCPeerID) { // 이미 사용중 신호 보내기
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .occupied, peerId: identityString, data: ProfileCardModel() ))
     }
     
     public func sendDeniedState() { // 거절 신호 보내기
@@ -92,7 +95,7 @@ extension ExchangeViewModel {
             return
         }
         
-        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ExchangeDataModel(userName: "", team: "",job: "" , cardInfo: "")))
+        sendData(peer: peer, data: MpcInfoDTO(type: .denied, peerId: identityString, data: ProfileCardModel() ))
         disConnecting() // 이전 연결 삭제
     }
     
@@ -132,7 +135,7 @@ extension ExchangeViewModel {
     
     private func disConnecting() {
         self.selectedPeer = nil
-        self.receiveCard = ""
+        self.receiveCard = ProfileCardModel()
         self.connectedUser = ""
         self.alertUserName = ""
         self.state = .none
@@ -188,8 +191,8 @@ extension ExchangeViewModel: MCSessionDelegate {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else {return}
                     self.selectedPeer = peerID
-                    self.receiveCard = receiveData.data.cardInfo
-                    self.connectedUser = receiveData.data.userName
+                    self.receiveCard = receiveData.data
+                    self.connectedUser = receiveData.data.name
                     self.state = .exchange
                     self.sendConnectState() // 연결한 피어로 연결신호 재전송
                 }
@@ -203,7 +206,7 @@ extension ExchangeViewModel: MCSessionDelegate {
                     guard let self else {return}
                     
                     //얼럿 띠우기
-                    self.alertUserName = receiveData.data.userName
+                    self.alertUserName = receiveData.data.name
                     self.selectedPeer = peerID
                     self.state = .request
                 }

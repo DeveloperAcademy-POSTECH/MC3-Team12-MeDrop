@@ -32,7 +32,7 @@ struct MainTabView: View {
                                 }
                             }
                         case .exchange:
-                            ExchangeView(selectedTab: $selectedTab)
+                            ExchangeView(card:ProfileCardModel.sampleData[1],tab: $selectedTab)
                         }
                     }
                 }
