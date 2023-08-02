@@ -35,7 +35,7 @@ struct ExchangeView: View {
                                 .font(Font.custom("SF Pro Text", size: 11))
                         }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
                 else {
-                    Image("ExchangeMenu")
+                    Image("ExchangeMenu_Black")
                         .resizable()
                         .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
                         .scaledToFit()
