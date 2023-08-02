@@ -122,8 +122,8 @@ extension ProfileCardModel {
     func link(for socialMedia: SocialMediaLink) -> String {
         if socialMedia.name == "Instagram" {
             return "https://www.instagram.com/" + insta
-        } else if socialMedia.name == "Youtube" {
-            return "https://www.youtube.com/" + youtube
+        } else if socialMedia.name == "twitter" {
+            return "https://twitter.com/" + twitter
         } else {
             return socialMedia.link
         }
