@@ -13,7 +13,7 @@ struct MyCardsView: View {
     
     @Binding var myCards: [ProfileCardModel]
     @State private var newCard = ProfileCardModel.emptyCard
-    @State var selectedIndex = 0
+    @Binding var selectedIndex: Int
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -23,6 +23,7 @@ struct MyCardsView: View {
     @State var expand = false
     
     @State var showingAlert = false
+    @State var showingInvalidAlert = false
     
     let saveAction: () -> Void
      
@@ -46,6 +47,7 @@ struct MyCardsView: View {
                     ZStack {
                                     Button(action: {
                                         print("export")
+                                        expand.toggle()
                                     }, label: {
                                         Image("ExportButton")
                                             .resizable()
@@ -55,8 +57,16 @@ struct MyCardsView: View {
                                     })
                                     .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
                                 
-                                    Button(action: {
-                                        selectedTab = .exchange
+                        Button(action: {
+                            
+                        
+                            
+                            if selectedIndex >= 0 && selectedIndex < myCards.count {
+                                selectedTab = .exchange
+                            } else {
+                                showingInvalidAlert.toggle()
+                            }
+                            expand.toggle()
                                     }, label: {
                                         Image("ExchangeButton")
                                             .resizable()
@@ -82,13 +92,19 @@ struct MyCardsView: View {
                 }
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
+            }.frame(height: UIScreen.height * 0.1, alignment: .top)
+            .alert(isPresented: $showingInvalidAlert) {
+                Alert(title: Text(myCards.isEmpty ? "아직 교환할 명함이 없어요!" : "유효하지 않은 명함입니다."), message: Text(myCards.isEmpty ? "먼저 명함을 만들어주세요.": "내 명함 화면에서 명함을 선택해주세요."), dismissButton: .default(Text("확인")))
+            }.onDisappear {
+                expand = false
+            }
+        
         }
 
     var body: some View {
         NavigationStack {
             VStack {
-                CustomCarouselView(activeIndex: .constant(0), cards: $myCards)
+                CustomCarouselView(activeIndex: $selectedIndex, cards: $myCards)
                 Spacer()
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
@@ -112,6 +128,9 @@ struct MyCardsView: View {
                 CreateCardView(editingCard: $makingCard, originCard: $makingCard, cards: $myCards, isCreate: true)
             }
         }
+        .onAppear {
+            selectedIndex = 0
+        }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }
@@ -120,6 +139,6 @@ struct MyCardsView: View {
 }
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardsView(selectedTab: .constant(Tab.my), myCards: .constant(ProfileCardModel.sampleData), saveAction: {})
+        MyCardsView(selectedTab: .constant(Tab.my), myCards: .constant(ProfileCardModel.sampleData), selectedIndex: .constant(0), saveAction: {})
     }
 }
