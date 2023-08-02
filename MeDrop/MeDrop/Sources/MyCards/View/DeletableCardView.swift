@@ -16,7 +16,7 @@ struct DeletableCardView: View {
     let deleteIconMaxOpacity: Double = 1.0
     let deleteIconMinOpacity: Double = 0.0
     
-    @Binding var isDelete: Bool
+    @State var isDelete = false
     
     var body: some View {
         ZStack {
@@ -56,7 +56,7 @@ struct DeletableCardView: View {
                 )
                 .animation(.spring())
         }
-        .confirmationDialog("카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
+        .confirmationDialog("카드를 삭제 하시겠습니까?\n카드 속 모든 정보가 ME DROP에서 제거됩니다.", isPresented: $isDelete, titleVisibility: .visible
         ) {
             Button("카드 삭제", role: .destructive) {
                 isDelete.toggle()
@@ -72,6 +72,6 @@ struct DeletableCardView: View {
 
 struct DeletableCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]), isDelete: .constant(false))
+        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]))
     }
 }

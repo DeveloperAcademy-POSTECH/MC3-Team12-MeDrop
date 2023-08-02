@@ -20,9 +20,6 @@ struct CustomCarouselView: View {
     // 다른 페이지 이동 변수
     @State var isDetail = false
     @State var isCreate = false
-    
-    // 삭제할 변수
-    @State var isDelete = false
 
     // 카드 생성 변수
     @State var makingCard: ProfileCardModel = ProfileCardModel()
@@ -30,7 +27,7 @@ struct CustomCarouselView: View {
     var body: some View {
         ZStack {
             ForEach($cards.indices, id: \.self) { index in
-                DeletableCardView(card: $cards[index], isDelete: $isDelete)
+                DeletableCardView(card: $cards[index])
                     .onTapGesture {
                         isDetail.toggle()
                     }
