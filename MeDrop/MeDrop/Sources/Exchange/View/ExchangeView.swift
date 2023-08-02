@@ -135,7 +135,7 @@ extension ExchangeView {
                     .foregroundColor(.black)
                     
                 
-                exchangePlaceHolderView(text: "교환을 진행할 사람을 선택해주세요.",fontSize: 13)
+                exchangePlaceHolderView(text: "카드를 교환할 사람을 선택해주세요.",fontSize: 13)
             }
            
             
