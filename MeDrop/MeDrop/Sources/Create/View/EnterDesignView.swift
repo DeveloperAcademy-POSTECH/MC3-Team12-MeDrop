@@ -91,9 +91,6 @@ struct EnterDesignView: View {
                     Text("지금 돌아간다면 정보는 저장되지 않습니다. ")
                 }
             }
-            .onAppear {
-                selectedDesign = editingCard.designType.first?.wholeNumberValue ?? 0
-            }
             .navigationTitle("명함 디자인을 설정하세요")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
