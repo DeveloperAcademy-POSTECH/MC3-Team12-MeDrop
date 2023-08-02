@@ -32,6 +32,8 @@
 		970AFC842A723D240041A948 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC832A723D240041A948 /* CardDetailViewModel.swift */; };
 		971DEAF52A79328B006CE9E3 /* DeletableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */; };
 		971DEAF92A79E7A8006CE9E3 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEAF82A79E7A8006CE9E3 /* DeleteView.swift */; };
+		971DEB012A7A7836006CE9E3 /* ImageRenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEB002A7A7836006CE9E3 /* ImageRenderModel.swift */; };
+		971DEB032A7A78A8006CE9E3 /* ImageRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEB022A7A78A8006CE9E3 /* ImageRender.swift */; };
 		97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEC2A723A9D0005441A /* CardDetailView.swift */; };
 		97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */; };
 		97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA10AA2A7238E9006C6422 /* MyCards.swift */; };
@@ -108,6 +110,8 @@
 		970AFC832A723D240041A948 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableCardView.swift; sourceTree = "<group>"; };
 		971DEAF82A79E7A8006CE9E3 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
+		971DEB002A7A7836006CE9E3 /* ImageRenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderModel.swift; sourceTree = "<group>"; };
+		971DEB022A7A78A8006CE9E3 /* ImageRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRender.swift; sourceTree = "<group>"; };
 		97C5EBEC2A723A9D0005441A /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMyView.swift; sourceTree = "<group>"; };
 		97CA10AA2A7238E9006C6422 /* MyCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCards.swift; sourceTree = "<group>"; };
@@ -263,6 +267,15 @@
 			path = Delete;
 			sourceTree = "<group>";
 		};
+		971DEAFF2A7A7827006CE9E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				971DEB002A7A7836006CE9E3 /* ImageRenderModel.swift */,
+				971DEB022A7A78A8006CE9E3 /* ImageRender.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		97C5EBEA2A723A6A0005441A /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +298,7 @@
 		97CA10A62A7237EF006C6422 /* MyCards */ = {
 			isa = PBXGroup;
 			children = (
+				971DEAFF2A7A7827006CE9E3 /* ViewModel */,
 				97CA10A72A72380D006C6422 /* View */,
 			);
 			path = MyCards;
@@ -712,6 +726,7 @@
 				97CA10AB2A7238E9006C6422 /* MyCards.swift in Sources */,
 				B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */,
 				971DEAF52A79328B006CE9E3 /* DeletableCardView.swift in Sources */,
+				971DEB032A7A78A8006CE9E3 /* ImageRender.swift in Sources */,
 				97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */,
 				B09951322A5B9760009AC534 /* AppleSignInButton.swift in Sources */,
 				B0D9B37D2A6F4FF80032B8FF /* ExchangeDataModel.swift in Sources */,
@@ -748,6 +763,7 @@
 				B099513D2A5BA428009AC534 /* MainView.swift in Sources */,
 				B09951482A5CD706009AC534 /* MainViewModel.swift in Sources */,
 				970AFC7A2A723ACE0041A948 /* CardDetailCollectedView.swift in Sources */,
+				971DEB012A7A7836006CE9E3 /* ImageRenderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
