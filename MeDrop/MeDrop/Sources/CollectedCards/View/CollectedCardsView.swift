@@ -117,7 +117,7 @@ struct CollectedCardsView: View {
                                 },
                                        label: { CollectedCardComponent(profileCard: profile)})
                                 .navigationDestination(isPresented: $isDetail) {
-                                        CardDetailCollectedView(card: $selectedProfile)}
+                                    CardDetailCollectedView(card: $selectedProfile, cards: $yourCards)}
                                 .swipeActions {
                                     Button(action: { selectedProfile = profile
                                         isDelete.toggle()
