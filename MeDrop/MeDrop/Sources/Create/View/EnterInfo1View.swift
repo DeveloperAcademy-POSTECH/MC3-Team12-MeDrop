@@ -30,7 +30,7 @@ struct EnterInfo1View: View {
                                 .font(Font.custom("SF Pro Text", size: 17))
 
                             Spacer()
-                            Text("\($editingCard.name.wrappedValue.count)/8").foregroundColor($editingCard.name.wrappedValue.count > 8 ? .red : .gray)
+                            Text("\($editingCard.name.wrappedValue.count)/8").foregroundColor(.gray)
                                 .font(Font.custom("SF Pro Text", size: 13))
                         }
                         Rectangle()
@@ -64,7 +64,7 @@ struct EnterInfo1View: View {
                                 .font(Font.custom("SF Pro Text", size: 16))
 
                             Spacer()
-                            Text("\($editingCard.job.wrappedValue.count)/16").foregroundColor($editingCard.job.wrappedValue.count > 16 ? .red : .gray)
+                            Text("\($editingCard.job.wrappedValue.count)/16").foregroundColor(.gray)
                                 .font(Font.custom("SF Pro Text", size: 13))
                         }
                         Rectangle()
@@ -81,7 +81,7 @@ struct EnterInfo1View: View {
                     VStack {
                         HStack {
                             
-                            NumberPhoneMaskView(text: $editingCard.contact).keyboardType(.numberPad)
+                            NumberPhoneMaskView(text: $editingCard.contact.max(13)).keyboardType(.numberPad)
                                 .font(Font.custom("SF Pro Text", size: 17))
                             Spacer()
                         }
@@ -169,7 +169,10 @@ var body: some View {
                     
                 })
             TextField ("010-0000-0000", text: textChangedBinding)
-            }
+            .onChange(of: text ) { _ in
+                print(text)
+    }
+    }
             }
         }
 
@@ -195,9 +198,9 @@ class FilterNumberPhone: ObservableObject {
 extension Binding where Value == String {
     func max(_ limit: Int) -> Self {
         if self.wrappedValue.count > limit {
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.wrappedValue = String(self.wrappedValue.dropLast())
-            }
+//            }
         }
         return self
     }
