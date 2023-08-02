@@ -14,7 +14,7 @@ struct CardDetailCollectedView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        CardDetailView(card: $card, isFromMy: false)
+        CardDetailView(card: $card, cards: $cards, isFromMy: false)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("삭제") {

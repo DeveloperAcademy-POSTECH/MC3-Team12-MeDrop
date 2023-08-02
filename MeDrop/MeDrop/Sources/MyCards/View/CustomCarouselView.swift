@@ -32,9 +32,7 @@ struct CustomCarouselView: View {
                         isDetail.toggle()
                     }
                     .navigationDestination(isPresented: $isDetail) {
-                        if( Int(draggingItem) < cards.count && 0 < Int(draggingItem) ){
-                            CardDetailMyView(card: $cards[Int(draggingItem)], cards: $cards)
-                        }
+                            CardDetailMyView(card: $cards[Int(index)], cards: $cards)
                     }
                     .scaleEffect(0.9 - abs(distance(index)) * 0.2)
                     .opacity(Double(index) == draggingItem ? 1.0 : 0.5)

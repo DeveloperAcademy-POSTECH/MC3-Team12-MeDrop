@@ -10,8 +10,11 @@ import SwiftUI
 struct CardDetailView: View {
     @Binding var card: ProfileCardModel
     @State var isUp: Bool = true
+    @State var isDelete = false
+    @Binding var cards: [ProfileCardModel]
     var isFromMy: Bool
     @State var expand = false
+    @Environment(\.dismiss) private var dismiss
     private var socialMediaLinks: [ProfileCardModel.SocialMediaLink] {
         card.socialMediaLinks
     }
@@ -155,13 +158,25 @@ struct CardDetailView: View {
                 }
             }
             if isFromMy {
-                Button(action: {}){
+                Button(action: { isDelete.toggle() }){
                     DeleteView()
                 }
+                .padding()
                 .foregroundColor(.black)
             }
         }
-        // 여기
+        .confirmationDialog("카드를 삭제 하시겠습니까?\n카드 속 모든 정보가 ME DROP에서 제거됩니다.", isPresented: $isDelete, titleVisibility: .visible
+        ) {
+            Button("카드 삭제", role: .destructive) {
+                cards.removeAll { $0.id == card.id
+            }
+                isDelete.toggle()
+                dismiss()
+            }
+            Button("취소", role: .cancel) {
+                isDelete.toggle()
+            }
+        }
         .background(Image("\(card.designType)-background")
             .resizable().scaledToFit())
     }
@@ -169,6 +184,6 @@ struct CardDetailView: View {
 
 struct CardDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CardDetailView(card: .constant(ProfileCardModel.sampleData[1]), isFromMy: true)
+        CardDetailView(card: .constant(ProfileCardModel.sampleData[1]), cards: .constant(ProfileCardModel.sampleData), isFromMy: true)
     }
 }
