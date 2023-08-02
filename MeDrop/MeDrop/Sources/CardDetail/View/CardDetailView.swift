@@ -159,6 +159,7 @@ struct CardDetailView: View {
                                         .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                                 }
                             }
+                            .disabled(card.socialMediaLinks.isEmpty)
                         }
                     }
                 }// VStack
