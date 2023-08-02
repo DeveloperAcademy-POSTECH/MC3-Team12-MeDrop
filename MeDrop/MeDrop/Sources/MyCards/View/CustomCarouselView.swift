@@ -48,19 +48,19 @@ struct CustomCarouselView: View {
                 Button(action: { isCreate.toggle()}) {
                     PlusCardView()
                 }
-                .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
-                .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
-                .offset(x: myXOffset(cards.count))
+                .scaleEffect(cards.isEmpty ? 1 : (1.0 - abs(distance(cards.count)) * 0.2))
+                .opacity(cards.isEmpty ? 1 : (Double(cards.count) == draggingItem ? 1.0 : 0.5))
+                .offset(x: cards.isEmpty ? 0 : myXOffset(cards.count))
                 .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
             } else {
                 FinalCardView()
-                    .scaleEffect(0.9 - abs(distance(cards.count)) * 0.2)
+                    .scaleEffect(1 - abs(distance(cards.count)) * 0.2)
                     .opacity(Double(cards.count) == draggingItem ? 1.0 : 0.5)
                     .offset(x: myXOffset(cards.count))
                     .zIndex(1.0 - abs(distance(cards.count)) * 0.1)
             }
         }
-        .onAppear{
+        .onAppear {
             makingCard = ProfileCardModel.emptyCard
             move.toggle()
         }
@@ -72,16 +72,10 @@ struct CustomCarouselView: View {
                     } else {
                         draggingItem = snappedItem - draggingItem > 1.0 ? snappedItem - 1.0 : snappedItem - value.translation.width / 150
                     }
-                    
-                    print("dragging", draggingItem)
-                    print("snapped", snappedItem)
                 }
                 .onEnded { _ in
                     withAnimation(.easeIn) {
                         draggingItem = round(draggingItem)
-                        
-                        print("dragging", draggingItem)
-                        print("snapped", snappedItem)
                         
                         if Int(self.draggingItem) >= cards.count + 1 {
                             draggingItem = Double(cards.count)
@@ -92,7 +86,6 @@ struct CustomCarouselView: View {
                         
                         snappedItem = draggingItem
                         self.activeIndex = Int(draggingItem)
-                        print("activeIndex", activeIndex)
                     }
                 }
         )

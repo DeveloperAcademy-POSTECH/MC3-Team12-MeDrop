@@ -12,26 +12,20 @@ struct CardDesignView: View {
     @Binding var color: String
     var design: String = "0"
     var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .padding()
-                .overlay(
-                    VStack {
-                        Spacer()
-                        Text("\(card.introduction)")
-                        Text("\(card.name)")
-                        Text("\(card.company)")
-                        Text("\(card.job)")
-                        Text("\(card.contact)")
-                        Spacer()
-                    }
-                        .padding()
-                        .foregroundColor(.black)
-                )
-                .foregroundColor(.clear)
-                .background(Image("\(design)-\(color)-background").resizable().scaledToFit())
-                .shadow(radius: 10)
-        }
+        
+        RoundedRectangle(cornerRadius: 20)
+            .background(Image("\(design)-\(color)-background").resizable().scaledToFit())
+            .shadow(radius: 10)
+            .overlay(
+                VStack {
+                    Spacer()
+                    infoDrawer(card: card)
+                }
+                    .foregroundColor(.black)
+                    .padding()
+            )
+            .foregroundColor(.clear)
+            .padding()
     }
 }
 
