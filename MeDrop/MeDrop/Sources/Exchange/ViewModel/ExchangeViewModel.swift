@@ -40,7 +40,7 @@ class ExchangeViewModel: NSObject, ObservableObject {
     init(data: ProfileCardModel, maxPeers: Int = 5) {
         self.maxNumPeers = maxPeers
         self.data = data
-        self.identityString = "\(data.name)8\(seperatorString)\(data.company)\(seperatorString)\(data.job)" //TODO: PreferenceManager.id ?? ""
+        self.identityString = "\(data.name)\(seperatorString)\(data.company)\(seperatorString)\(data.job)\(seperatorString)"
         self.localPeerID = MCPeerID(displayName: identityString)
         
         self.mcSession = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)

@@ -99,12 +99,7 @@ struct ExchangeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(DesignSystemAsset.white2)
         .toastView(toast: $viewModel.toast)
-        .sheet(isPresented: $showSheet,onDismiss: {
-                  
-            if !PreferenceManager.firstExchange! { //만약 닫을 때 동의가 안된 상태면
-                //TODO: 내 카드로 이동
-            }
-        }) {
+        .sheet(isPresented: $showSheet) {
             firstExchangeConractView()
         }
         .onAppear{
@@ -302,10 +297,14 @@ extension ExchangeView {
             }
             .padding(.top, 20)
             
-            Text("교환 시 나오는 개인정보 동의문구")
+            Text("교환이 처음이시군요.")
                 .foregroundColor(.black)
                 .font(.bold(24))
+                .frame(maxWidth:.infinity,alignment:.leading)
             
+            Text("주변에 있는 사람의 교환 대기 목록에 내 이름, 소속, 직무가 보여요. 상대방은 이를 통해 나에게 교환을 신청할 수 있어요.\n\n명함을 교환하면 나의 명함은 상대방의 명함 지갑에 보관되고, 상대방의 명함은 나의 명함 지갑에 보관돼요.\n\n명함의 수정과 삭제는 상대방의 명함 지갑에 반영되지 않으며, 상대방이 수정한 명함도 나의 명함 지갑에 반영되지 않습니다.")
+                .font(.light(17))
+                .foregroundColor(.black)
             
             
             
@@ -326,6 +325,8 @@ extension ExchangeView {
             Button {
                 PreferenceManager.firstExchange = true
                 showSheet = false
+                viewModel.invalidate()
+                selectedTab = .my  
             } label: {
                 Text("취소하기")
                     .foregroundColor(DesignSystemAsset.btBlue)
