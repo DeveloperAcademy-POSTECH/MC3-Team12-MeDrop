@@ -73,7 +73,7 @@ struct EnterDesignView: View {
                         }
                     }
                 }
-                .frame(height: UIScreen.height * 0.06)
+                .frame(height: UIScreen.height * 0.07)
                 .padding()
                 .alert("돌아가시겠어요?", isPresented: $isBack) {
                     Button("확인", role: .destructive) {

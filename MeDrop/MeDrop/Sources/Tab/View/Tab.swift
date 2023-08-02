@@ -27,7 +27,7 @@ enum Tab: String {
 }
 
 var tabItems = [
-    TabItem(type: .tabType, icon: "person.text.rectangle.fill", text: "내 명함", tab: .my),
+    TabItem(type: .tabType, icon: "person.text.rectangle", text: "내 명함", tab: .my),
     TabItem(type: .buttonType, icon: "arrow.2.squarepath", text: "", tab: .exchange),
-    TabItem(type: .tabType, icon: "person.crop.rectangle.stack", text: "명함 지갑", tab: .your)
+    TabItem(type: .tabType, icon: "shared.with.you", text: "명함 지갑", tab: .your)
 ]

@@ -15,43 +15,34 @@ struct ExchangeView: View {
 //        viewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
 //    }
     var bottomBar: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
-                Button(action: {
+                if tabItem.type == .tabType {
+                    Button(action: {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                        }
-                }) {
-                    if tabItem.type == .tabType {
+                        } }) {
                         VStack(spacing: 0) {
                             Image(systemName: tabItem.icon)
                                 .symbolVariant(.fill)
                                 .font(.body.bold())
                             Text(tabItem.text)
-                                .font(.caption2)
-                                .lineLimit(1)
-                        }
-                    } else {
-                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
-                            .symbolVariant(.fill)
-                            .font(.body.bold())
-//                            .foregroundColor(Color.white)
-                            .background(Circle().foregroundColor(.white))
-                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                            
-                            .disabled(selectedTab == .your)
+                                .font(Font.custom("SF Pro Text", size: 11))
+                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
+                else {
+                            Image("ExchangeMenu_Black")
+                                .resizable()
+                                .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
+                                .scaledToFit()
+                                .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+                                .offset(y: -UIScreen.height * 0.05)
                     }
                 }
-                .offset(y: tabItem.type == .tabType ? 0 : -35)
-                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }
+            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
         }
-        .frame(height: 88, alignment: .top)
-        .padding(.top, 14)
-    }
     
     @Binding var selectedTab: Tab
     @State var showSheet:Bool = false
@@ -61,7 +52,7 @@ struct ExchangeView: View {
             VStack {
                 ZStack {
                     DesignSystemAsset.white2.ignoresSafeArea()
-                    Group{
+                    Group {
                         if viewModel.connectedPeers.isEmpty {
                             
                             yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
@@ -101,7 +92,7 @@ struct ExchangeView: View {
                 
                 TabClipperShape(radius: 38.0)
                     .fill(Color(.white))
-                    .frame(height: 88, alignment: .top)
+                    .frame(height: UIScreen.height * 0.1, alignment: .top)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
                     .overlay(bottomBar)
                     
@@ -109,7 +100,8 @@ struct ExchangeView: View {
                 
             
         }.edgesIgnoringSafeArea(.bottom)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(DesignSystemAsset.white2)
         .toastView(toast: $viewModel.toast)
         .sheet(isPresented: $showSheet,onDismiss: {
                   

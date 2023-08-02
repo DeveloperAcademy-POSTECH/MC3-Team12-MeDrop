@@ -88,8 +88,6 @@ struct EnterInfo2View: View {
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.gray)
-                    }.sheet(isPresented: $isSNSLink) {
-                        SNSEnterView(editingCard: $editingCard, isPresented: $isSNSLink)
                     }
                     VStack {
                         HStack {
@@ -132,6 +130,9 @@ struct EnterInfo2View: View {
                 .frame(height: UIScreen.height * 0.07)
                 .padding()
             }.navigationTitle("추가 정보를 입력해주세요.")
+            .sheet(isPresented: $isSNSLink) {
+                SNSEnterView(editingCard: $editingCard, isPresented: $isSNSLink)
+            }
             .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(action: {
