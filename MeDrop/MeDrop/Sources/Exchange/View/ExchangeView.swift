@@ -197,9 +197,10 @@ extension ExchangeView {
                         
                     
                     Button {
-                        DEBUG_LOG("저장하기")
+                        viewModel.save()
+
                     } label: {
-                        Text("저장하기")
+                        Text("완료")
                             .font(.bold(17))
                             .foregroundColor(.black)
                     }

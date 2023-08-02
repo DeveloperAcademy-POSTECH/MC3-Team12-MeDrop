@@ -8,7 +8,6 @@
 import Foundation
 import MultipeerConnectivity
 extension Sequence where Element == MCPeerID {
-    //TODO: 중복값 제거
     
     func uniqued() -> [Element] {
         var displayNames = [String:Bool]()

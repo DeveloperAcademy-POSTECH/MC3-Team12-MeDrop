@@ -15,6 +15,8 @@ public final class PreferenceManager {
     enum Constants: String {
         case id
         case firstExchange
+        case myCards
+        case collections
     }
     
     @UserDefaultWrapper(key: Constants.id.rawValue, defaultValue: nil)
@@ -22,6 +24,13 @@ public final class PreferenceManager {
     
     @UserDefaultWrapper(key: Constants.firstExchange.rawValue, defaultValue: true)
     public static var firstExchange: Bool?
+    
+    @UserDefaultWrapper(key: Constants.myCards.rawValue, defaultValue:[])
+    static var myCards: [ProfileCardModel]?
+    
+    @UserDefaultWrapper(key: Constants.collections.rawValue, defaultValue: [])
+    static var collections: [ProfileCardModel]?
+    
 }
 
 @propertyWrapper
