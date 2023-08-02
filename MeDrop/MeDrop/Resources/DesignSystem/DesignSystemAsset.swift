@@ -41,10 +41,9 @@ public enum DesignSystemAsset {
     }
     
     enum OnBoardText: String {
-        case obt1 = "**간편하게** 제작하는\n나만의 명함, **Me-card.**"
-        case obt2 = "나를 **각인**시키는\n명함교환, **Me-Sync.**"
-        case obt3 = "빠르게 **연결**되는\n비지니스, **Me-Drop.**"
-        case obt4 = "번거로운 **명함**관리이제는 **간편하게** 해요."
+        case obt1 = "**나만의 명함**을 만들어보세요"
+        case obt2 = "**손쉽게** 명함을 **교환**해요"
+        case obt3 = "받은 **명함**을 **확인**해보세요."
     }
     
     enum Jelly: String {

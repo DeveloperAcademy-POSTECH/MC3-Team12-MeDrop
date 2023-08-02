@@ -94,7 +94,7 @@ struct OnBoardView: View {
                 Image(tab.image)
                     .resizable() // 사이즈 조정 가능
                     .aspectRatio(contentMode: .fit) // 프레임 사이즈에 맞게 이미지 사이즈 조정
-                    .frame(width: 300, height: 300) // 이미지 뷰 frame 사이즈 조정
+                    .frame(width: 350, height: 350) // 이미지 뷰 frame 사이즈 조정
             }
         }
     }
