@@ -46,8 +46,10 @@ struct MyCardsView: View {
                         }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
                 else {
                     ZStack {
+                        if selectedIndex < myCards.count {
                             ImageRenderView(card: myCards[selectedIndex])
                                 .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
+                        }
                         Button(action: {
    
                             if selectedIndex >= 0 && selectedIndex < myCards.count {
