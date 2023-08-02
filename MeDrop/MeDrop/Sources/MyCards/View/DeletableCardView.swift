@@ -62,6 +62,7 @@ struct DeletableCardView: View {
             Button("카드 삭제", role: .destructive) {
                 isDelete.toggle()
                 cards.removeAll { $0.id == card.id }
+                PreferenceManager.myCards = cards
             }
             Button("취소", role: .cancel) {
                 isDelete.toggle()

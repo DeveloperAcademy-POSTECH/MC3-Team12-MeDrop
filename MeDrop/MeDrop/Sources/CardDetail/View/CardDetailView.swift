@@ -165,7 +165,8 @@ struct CardDetailView: View {
                 .padding()
             }
             if isFromMy {
-                Button(action: { isDelete.toggle() }){
+                Button(action: {
+                    isDelete.toggle() }){
                     DeleteView()
                 }
                 .padding()
@@ -175,8 +176,8 @@ struct CardDetailView: View {
         .confirmationDialog("카드를 삭제 하시겠습니까?\n카드 속 모든 정보가 ME DROP에서 제거됩니다.", isPresented: $isDelete, titleVisibility: .visible
         ) {
             Button("카드 삭제", role: .destructive) {
-                cards.removeAll { $0.id == card.id
-                }
+                cards.removeAll { $0.id == card.id }
+                PreferenceManager.myCards = cards
                 isDelete.toggle()
                 dismiss()
             }
