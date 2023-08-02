@@ -17,6 +17,7 @@ struct DeletableCardView: View {
     let deleteIconMinOpacity: Double = 0.0
     
     @State var isDelete = false
+    @Binding var cards: [ProfileCardModel]
     
     var body: some View {
         ZStack {
@@ -60,6 +61,7 @@ struct DeletableCardView: View {
         ) {
             Button("카드 삭제", role: .destructive) {
                 isDelete.toggle()
+                cards.removeAll { $0.id == card.id }
             }
             Button("취소", role: .cancel) {
                 isDelete.toggle()
@@ -72,6 +74,6 @@ struct DeletableCardView: View {
 
 struct DeletableCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]))
+        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]), cards: .constant(ProfileCardModel.sampleData))
     }
 }
