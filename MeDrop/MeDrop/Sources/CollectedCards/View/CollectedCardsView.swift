@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct CollectedCardsView: View {
-    
     @Binding var selectedTab: Tab
     
     @State var sortedBy = "이름 순서"
     @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
     @Binding var yourCards: [ProfileCardModel]
     @State var isDetail: Bool = false
-    @State var isDelete = false
     @Environment(\.scenePhase) private var scenePhase
 
     @State var showingAlert = false
@@ -70,7 +68,6 @@ struct CollectedCardsView: View {
             }        .frame(height: UIScreen.height * 0.1, alignment: .top)
         }
     
-    
     var sortingButton: some View {
         HStack {
         Spacer()
@@ -101,44 +98,32 @@ struct CollectedCardsView: View {
     }
     }
     
-    
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 DesignSystemAsset.gray4
                     .edgesIgnoringSafeArea(.all)
                 
-                
                 VStack(alignment: .leading ) {
-                    
                     sortingButton
-                    
                     Spacer()
                     
                     if yourCards.isEmpty == false {
-                        List {
+                        ScrollView {
                             ForEach(yourCards, id:\.self) { profile in
                                 Button(action: {
                                     selectedProfile = profile
-                                    
                                     isDetail.toggle()
                                     
                                 },
-                                       label: { CollectedCardComponent(profileCard: profile)})
+                                       label: { CollectedCardComponent(yourCards: $yourCards, profileCard: profile).padding(.horizontal)
+                                }
+                                ).buttonStyle(.plain)
                                 .navigationDestination(isPresented: $isDetail) {
-                                    CardDetailCollectedView(card: $selectedProfile, cards: $yourCards)}
-                                .swipeActions {
-                                    Button(action: { selectedProfile = profile
-                                        isDelete.toggle()
-                                    },
-                                           label: { Label("Delete", systemImage: "trash")})
-                                    .tint(.red) }
-                                .listRowSeparator(.hidden)
+                                    CardDetailCollectedView(card: $selectedProfile, cards: $yourCards)
+                                }
                             }
-                            .listRowBackground(DesignSystemAsset.gray4)
                         }
-                        .listStyle(.plain)
                     }
                     
                     Spacer()
@@ -152,45 +137,14 @@ struct CollectedCardsView: View {
                 .edgesIgnoringSafeArea(.bottom)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .navigationTitle("Collected Cards")
+            .navigationTitle("명함 지갑")
             .navigationBarTitleDisplayMode(.inline)
-            .confirmationDialog("\(selectedProfile.name) 님의 카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
-            ) {
-                Button("삭제", role: .destructive) {
-                    isDelete.toggle()
-                    yourCards.removeAll { $0.id == selectedProfile.id
-                }
-                }
-            }
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive { saveAction() }
             }
 
         }
         
-    }
-}
-
-struct CollectedCardComponent: View {
-    var profileCard: ProfileCardModel
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10.0).foregroundColor(.white)
-            HStack {
-                Image("\(profileCard.designType)-circle")
-                    .renderingMode(.template)
-                    .padding()
-                VStack(alignment: .leading) {
-                    Text("\(profileCard.name)")
-                        .font(.title2).bold().truncationMode(.tail)
-                    Text("\(profileCard.company)")
-                        .truncationMode(.tail)
-                    Text("\(profileCard.job)")
-                        .truncationMode(.tail)
-                }
-                Spacer()
-            }
-        }
     }
 }
 

@@ -43,6 +43,8 @@ struct EnterDesignView: View {
                         }
                     }
                 }.padding(.horizontal)
+                
+                Spacer()
                 HStack {
                     
                     Button(action: {
