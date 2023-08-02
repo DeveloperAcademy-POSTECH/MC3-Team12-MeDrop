@@ -39,6 +39,13 @@ struct CardDetailView: View {
                         }
                     }
                     HStack {
+                        Image(systemName: "person.fill")
+                        Text("\(card.introduction)")
+                        Spacer()
+                    }
+                    .opacity(card.introduction.isEmpty ? 0 : 1)
+                    
+                    HStack {
                         Image(systemName: "phone.fill")
                         Text("\(card.contact)")
                         Spacer()
