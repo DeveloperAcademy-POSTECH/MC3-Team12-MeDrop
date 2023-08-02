@@ -11,6 +11,8 @@ struct MainTabView: View {
         @State var selectedTab: Tab = .my
         @State var showingAlert = false
     
+        @State var selectedIndex: Int = 0
+    
         @StateObject private var cardStore = CardStore()
         
         var body: some View {
@@ -19,7 +21,7 @@ struct MainTabView: View {
                     Group {
                         switch selectedTab {
                         case .my:
-                            MyCardsView(selectedTab: $selectedTab, myCards: $cardStore.myCards) {
+                            MyCardsView(selectedTab: $selectedTab, myCards: $cardStore.myCards, selectedIndex: $selectedIndex ) {
                                 Task {
                                     try await cardStore.saveData()
                                 }
@@ -32,7 +34,7 @@ struct MainTabView: View {
                                 }
                             }
                         case .exchange:
-                            ExchangeView(card:ProfileCardModel.sampleData[1],tab: $selectedTab) //TODO: 선택된 카드로 넣기
+                            ExchangeView(card: cardStore.myCards[selectedIndex],tab: $selectedTab) //TODO: 선택된 카드로 넣기
                         }
                     }
                 }
