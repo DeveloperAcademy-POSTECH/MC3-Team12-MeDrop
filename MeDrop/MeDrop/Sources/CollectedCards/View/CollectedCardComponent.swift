@@ -64,6 +64,7 @@ struct CollectedCardComponent: View {
                         ) {
                             Button("삭제", role: .destructive) {
                                 yourCards.removeAll { $0.id == profileCard.id }
+                                PreferenceManager.collections = yourCards
                                 resetSwipe = true
                                 isDelete.toggle()
                                 
