@@ -18,6 +18,11 @@
 		682109A62A78FE78002CABE7 /* CarouselDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682109A52A78FE78002CABE7 /* CarouselDesignView.swift */; };
 		682109A82A792111002CABE7 /* CardDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682109A72A792111002CABE7 /* CardDesignView.swift */; };
 		682C62C72A59AB7900137393 /* Profile+ProfileCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */; };
+		68C7970A2A79D99900773CA4 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C797052A79D99800773CA4 /* PrivacyView.swift */; };
+		68C7970B2A79D99900773CA4 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C797062A79D99800773CA4 /* MenuView.swift */; };
+		68C7970C2A79D99900773CA4 /* DeleteAccontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C797072A79D99800773CA4 /* DeleteAccontView.swift */; };
+		68C7970D2A79D99900773CA4 /* TermsInUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C797082A79D99800773CA4 /* TermsInUseView.swift */; };
+		68C7970E2A79D99900773CA4 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C797092A79D99800773CA4 /* FAQView.swift */; };
 		68D92B152A765F7900121985 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B142A765F7900121985 /* MainTabView.swift */; };
 		68D92B192A766C6600121985 /* TapClipperShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B182A766C6600121985 /* TapClipperShape.swift */; };
 		68D92B1B2A766CB800121985 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D92B1A2A766CB800121985 /* Tab.swift */; };
@@ -25,7 +30,6 @@
 		970AFC7F2A723B730041A948 /* CollectedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC7E2A723B730041A948 /* CollectedCardsView.swift */; };
 		970AFC812A723B960041A948 /* Extension+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC802A723B960041A948 /* Extension+CollectionView.swift */; };
 		970AFC842A723D240041A948 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC832A723D240041A948 /* CardDetailViewModel.swift */; };
-		970AFC922A723E420041A948 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970AFC912A723E420041A948 /* MenuView.swift */; };
 		971DEAF52A79328B006CE9E3 /* DeletableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */; };
 		97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEC2A723A9D0005441A /* CardDetailView.swift */; };
 		97C5EBEF2A723AB00005441A /* CardDetailMyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */; };
@@ -90,6 +94,11 @@
 		682109A52A78FE78002CABE7 /* CarouselDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselDesignView.swift; sourceTree = "<group>"; };
 		682109A72A792111002CABE7 /* CardDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDesignView.swift; sourceTree = "<group>"; };
 		682C62C62A59AB7900137393 /* Profile+ProfileCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+ProfileCardModel.swift"; sourceTree = "<group>"; };
+		68C797052A79D99800773CA4 /* PrivacyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
+		68C797062A79D99800773CA4 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		68C797072A79D99800773CA4 /* DeleteAccontView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccontView.swift; sourceTree = "<group>"; };
+		68C797082A79D99800773CA4 /* TermsInUseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsInUseView.swift; sourceTree = "<group>"; };
+		68C797092A79D99800773CA4 /* FAQView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		68D92B142A765F7900121985 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		68D92B182A766C6600121985 /* TapClipperShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapClipperShape.swift; sourceTree = "<group>"; };
 		68D92B1A2A766CB800121985 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
@@ -97,7 +106,6 @@
 		970AFC7E2A723B730041A948 /* CollectedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsView.swift; sourceTree = "<group>"; };
 		970AFC802A723B960041A948 /* Extension+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CollectionView.swift"; sourceTree = "<group>"; };
 		970AFC832A723D240041A948 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
-		970AFC912A723E420041A948 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		971DEAF42A79328B006CE9E3 /* DeletableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableCardView.swift; sourceTree = "<group>"; };
 		97C5EBEC2A723A9D0005441A /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		97C5EBEE2A723AB00005441A /* CardDetailMyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMyView.swift; sourceTree = "<group>"; };
@@ -238,7 +246,11 @@
 		970AFC902A723E270041A948 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				970AFC912A723E420041A948 /* MenuView.swift */,
+				68C797072A79D99800773CA4 /* DeleteAccontView.swift */,
+				68C797092A79D99800773CA4 /* FAQView.swift */,
+				68C797062A79D99800773CA4 /* MenuView.swift */,
+				68C797052A79D99800773CA4 /* PrivacyView.swift */,
+				68C797082A79D99800773CA4 /* TermsInUseView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -681,7 +693,6 @@
 				97C5EBED2A723A9D0005441A /* CardDetailView.swift in Sources */,
 				681557E82A77FA5B00625801 /* EnterInfo2View.swift in Sources */,
 				B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */,
-				970AFC922A723E420041A948 /* MenuView.swift in Sources */,
 				B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */,
 				B099510F2A57A8CA009AC534 /* DesignSystemAsset.swift in Sources */,
 				1231DBBA2A5BE34B00473CA0 /* Extension+CGFloat.swift in Sources */,
@@ -703,10 +714,12 @@
 				B099512A2A591BFD009AC534 /* AppDelegate.swift in Sources */,
 				682109A62A78FE78002CABE7 /* CarouselDesignView.swift in Sources */,
 				9BA1A2232A5B9123003B7556 /* Extension+View.swift in Sources */,
+				68C7970D2A79D99900773CA4 /* TermsInUseView.swift in Sources */,
 				681557EA2A77FC1700625801 /* SNSEnterView.swift in Sources */,
 				B099512D2A592459009AC534 /* FireBaseDataBaseManager.swift in Sources */,
 				B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */,
 				68D92B1B2A766CB800121985 /* Tab.swift in Sources */,
+				68C7970B2A79D99900773CA4 /* MenuView.swift in Sources */,
 				B0E4D6922A5266D000788200 /* MeDropApp.swift in Sources */,
 				68D92B192A766C6600121985 /* TapClipperShape.swift in Sources */,
 				B099514F2A5CE2B3009AC534 /* OnBoardViewModel.swift in Sources */,
@@ -715,8 +728,11 @@
 				B09951352A5B98B2009AC534 /* Utility.swift in Sources */,
 				970AFC7F2A723B730041A948 /* CollectedCardsView.swift in Sources */,
 				B09951392A5B9B4D009AC534 /* Extension+UIScreen.swift in Sources */,
+				68C7970E2A79D99900773CA4 /* FAQView.swift in Sources */,
+				68C7970A2A79D99900773CA4 /* PrivacyView.swift in Sources */,
 				681557F02A78700500625801 /* CustomCarouselView.swift in Sources */,
 				B09951402A5BA5BF009AC534 /* OnBoardView.swift in Sources */,
+				68C7970C2A79D99900773CA4 /* DeleteAccontView.swift in Sources */,
 				B09951162A57BC7D009AC534 /* CardView.swift in Sources */,
 				97CC87952A7912F30094075D /* CardViewModel.swift in Sources */,
 				97CA10AD2A723949006C6422 /* CardStore.swift in Sources */,
