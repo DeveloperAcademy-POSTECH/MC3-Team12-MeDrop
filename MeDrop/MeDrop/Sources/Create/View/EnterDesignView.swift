@@ -63,6 +63,9 @@ struct EnterDesignView: View {
                         originCard = editingCard
                         if isCreate {
                             cards.append(originCard)
+                            var container = PreferenceManager.myCards!
+                            container.append(originCard)
+                            PreferenceManager.myCards = container
                         }
                         dismiss()
                     }}) {
