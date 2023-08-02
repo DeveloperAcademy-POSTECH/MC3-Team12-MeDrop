@@ -205,11 +205,11 @@ extension ExchangeView {
                     .padding(.vertical, 14)
                     .frame(maxWidth: .infinity)
 
-                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
+                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.btBeige))
                 }
                 .padding(.top,safeArea.top)
                 .padding(.bottom,120)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 45)
                  
             
             
@@ -246,7 +246,7 @@ extension ExchangeView {
         
         VStack(spacing: 50) {
             VStack(spacing: 30){
-                Text("\(viewModel.alertUserName)님에게 교환 요청이 왔어요!\n교환을 시작할까요?")
+                Text("\(viewModel.alertUserName)님에게\n교환을 시작할까요?")
                     .foregroundColor(DesignSystemAsset.white1)
                     .font(.heavy(24))
                 
@@ -337,13 +337,13 @@ extension ExchangeView {
                 showSheet = false
             } label: {
                 Text("동의하기")
-                    .foregroundColor(DesignSystemAsset.blue4)
+                    .foregroundColor(DesignSystemAsset.white1)
                     .font(.heavy(17))
             }
             .padding(.vertical,14)
             .frame(maxWidth: .infinity)
 
-            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray1))
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.blue4))
             
             Button {
                 PreferenceManager.firstExchange = true

@@ -16,6 +16,8 @@ public enum DesignSystemAsset {
     static let blue4 = Color("Blue4")
     static let btBlue = Color("BTBlue")
     
+    static let btBeige = Color("BTBeige")
+    
     static let mainRed = Color("MainRed")
     
     static let mainYellow = Color("MainYellow")
