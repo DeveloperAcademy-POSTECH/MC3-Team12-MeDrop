@@ -28,7 +28,7 @@ struct CarouselDesignView: View {
                 CardDesignView(card: $cards[index], color: $color, design: String(index))
                     .frame(width: UIScreen.width * 0.69, height: UIScreen.height * 0.53).padding()
                 
-                .scaleEffect(0.9 - abs(distance(index)) * 0.2 )
+                .scaleEffect(1.0 - abs(distance(index)) * 0.2 )
                 .opacity(Double(index) == draggingItem ? 1.0 : 0.5)
                 .offset(x: myXOffset(index), y: 0)
                 .zIndex(1.0 - abs(distance(index)) * 0.1)
