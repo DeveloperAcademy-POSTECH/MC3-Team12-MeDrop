@@ -10,10 +10,14 @@ import SwiftUI
 
 struct ExchangeView: View {
     
-    @ObservedObject var viewModel:ExchangeViewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
-//    init(){
-//        viewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
-//    }
+    @ObservedObject var viewModel:ExchangeViewModel
+    @Binding var selectedTab: Tab
+    @State var showSheet:Bool = false
+    init(card:ProfileCardModel,tab:Binding<Tab>){
+        self._viewModel = ObservedObject.init(initialValue: ExchangeViewModel(data: card))
+        self._selectedTab = tab
+    }
+    
     var bottomBar: some View {
         HStack(spacing: 0) {
             Spacer()
@@ -53,8 +57,7 @@ struct ExchangeView: View {
         .padding(.top, 14)
     }
     
-    @Binding var selectedTab: Tab
-    @State var showSheet:Bool = false
+
     
     var body: some View {
                     
@@ -63,9 +66,6 @@ struct ExchangeView: View {
                         if viewModel.connectedPeers.isEmpty {
                             
                             exchangePlaceHolderView(text: "교환을 할 수 있는 유저가 없어요.\n상대방도 미드랍 앱을 켜면 교환이 가능해요", fontSize: 17)
-                            Button("Start") {
-                                viewModel.startHosting()
-                            }
                         }
                         
                         else {
@@ -191,7 +191,8 @@ extension ExchangeView {
 
                 VStack(spacing: 30) {
                     
-                    TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com"))
+                    
+                    CardView(card: viewModel.data)
                         
                         
                     
