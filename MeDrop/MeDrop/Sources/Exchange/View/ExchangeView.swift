@@ -184,6 +184,7 @@ extension ExchangeView {
                     
                     Button {
                         viewModel.save()
+                        selectedTab = .your
 
                     } label: {
                         Text("완료")

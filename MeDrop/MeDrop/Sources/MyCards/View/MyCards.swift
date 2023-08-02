@@ -11,7 +11,8 @@ struct MyCardsView: View {
     @Binding var selectedTab: Tab
     @State var makingCard: ProfileCardModel = ProfileCardModel()
     
-    @Binding var myCards: [ProfileCardModel]
+//    @Binding var myCards: [ProfileCardModel]
+    @State var myCards = PreferenceManager.myCards!
     @State private var newCard = ProfileCardModel.emptyCard
     @Binding var selectedIndex: Int
     
@@ -104,7 +105,7 @@ struct MyCardsView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationTitle("ME Card")
+            .navigationTitle("내 명함")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 Button(action: { isMenu.toggle() }) {
@@ -129,6 +130,6 @@ struct MyCardsView: View {
 }
 struct MyCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardsView(selectedTab: .constant(Tab.my), myCards: .constant(ProfileCardModel.sampleData), selectedIndex: .constant(0), saveAction: {})
+        MyCardsView(selectedTab: .constant(Tab.my), selectedIndex: .constant(0), saveAction: {})
     }
 }

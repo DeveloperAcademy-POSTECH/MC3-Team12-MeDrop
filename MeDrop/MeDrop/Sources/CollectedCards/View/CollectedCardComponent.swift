@@ -175,7 +175,7 @@ struct SwipeItemView<Content: View, Right: View>: View {
 
 struct CollectedCardsView2_Previews: PreviewProvider {
     static var previews: some View {
-        CollectedCardsView(selectedTab: .constant(Tab.your), yourCards: .constant(ProfileCardModel.sampleData),saveAction: {})
+        CollectedCardsView(selectedTab: .constant(Tab.your), saveAction: {})
     }
 }
 
