@@ -51,8 +51,6 @@ struct MyCardsView: View {
                             .foregroundColor(Color.white)
                             .background(Circle().foregroundColor(.white))
                             .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                            
-                            .disabled(selectedTab == .your)
                     }
                 }
                 .offset(y: tabItem.type == .tabType ? 0 : -UIScreen.height * 0.04)
