@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct ImageRender: View {
+struct ImageRenderView: View {
+    var card: ProfileCardModel
     var body: some View {
-        ShareLink(item: Image(uiImage: generateSnapshot(card: ProfileCardModel.sampleData[1])), preview: SharePreview("Weather Chart", image: Image("\(ProfileCardModel.sampleData[1].designType)-circle")))
+        ShareLink(item: Image(uiImage: generateSnapshot(card: card)), preview: SharePreview("ME DROP", image: Image("\(card.designType)-circle")))
             {
                 Image("ExportButton")
                     .resizable()
@@ -20,8 +21,8 @@ struct ImageRender: View {
     }
 }
 
-struct ImageRender_Previews: PreviewProvider {
+struct ImageRenderView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageRender()
+        ImageRenderView(card: ProfileCardModel.sampleData[1])
     }
 }
