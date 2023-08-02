@@ -154,8 +154,15 @@ struct CardDetailView: View {
             }
         }
         // 여기
-        .background(Image("\(card.designType)-background")
-            .resizable().scaledToFit())
+        .background(
+            
+            VStack{
+                Image("\(card.designType)-background")
+                    .resizable()
+                    .scaledToFit()
+                    .edgesIgnoringSafeArea(.all)
+             Spacer()
+            })
     }
 }
 
