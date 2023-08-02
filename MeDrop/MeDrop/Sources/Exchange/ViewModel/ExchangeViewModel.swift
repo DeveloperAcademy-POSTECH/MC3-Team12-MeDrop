@@ -220,7 +220,7 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 
-                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님이 교환 요청을 거절하셨습니다.")
+                self.toast = Toast(type: .exchange, title: "ME DROP", message: "상대방이 교환 요청을 거절하셨습니다.")
                 self.disConnecting()
                 
             }
@@ -231,7 +231,7 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 
-                self.toast = Toast(type: .error, title: "거절 알림", message: "\(self.alertUserName)님은 이미 다른분과 교환 중입니다.")
+                self.toast = Toast(type: .exchange, title: "거절 알림", message: "상대방이 교환을 진행 중이에요.")
                 self.disConnecting()
                 
             }

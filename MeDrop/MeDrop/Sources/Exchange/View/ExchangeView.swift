@@ -80,7 +80,7 @@ struct ExchangeView: View {
                         case .request:
                             requestView()
                         case .waiting:
-                            loadingView()
+                            LoadingView()
                         case .exchange:
                             receiveCardView()
                         case .none:
@@ -290,21 +290,6 @@ extension ExchangeView {
         }
         
     }
-    
-    @ViewBuilder
-    private func loadingView() -> some View {
-        
-        VStack(spacing:0){
-            Text("상대방의 응답을 기다리고 있어요.")
-                .font(.bold(24))
-                .foregroundColor(.white)
-            LottieView(jsonName: "Loading",loopMode: .loop) { _ in
-                
-            }
-            .frame(width: 350,height: 350)
-        }
-    }
-    
     @ViewBuilder
     private func firstExchangeConractView() -> some View {
         
@@ -391,4 +376,51 @@ struct TmpCardView: View {
                 .foregroundColor(.white)
         }
     }
+}
+
+struct LoadingView: View {
+    
+    @State var loadingText: [String] = "MEDROP".map{String($0)}
+    @State private var counter:Int = 0
+    
+    private let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    
+    var body: some View{
+        VStack(spacing:20){
+            
+            Text("상대방의 응답을 기다리고 있어요.")
+                .font(.bold(24))
+                .foregroundColor(.white)
+                .padding(.bottom,30)
+            Image("Logo")
+                .resizable()
+                .scaledToFill()
+                .frame(width:200,height: 200)
+            
+            HStack(spacing:0){
+                ForEach(loadingText.indices){ index in
+                    Text(loadingText[index])
+                        .font(.heavy(28))
+                        .foregroundColor(.white)
+                        .offset(y:counter == index ? -10 :0)
+                    
+                }
+            }
+            .transition(.scale.animation(.easeIn))
+            .onReceive(timer) { _ in
+                withAnimation(.spring()) {
+                    
+                    let lastIndex = loadingText.count - 1
+                    
+                    if counter == lastIndex {
+                        counter = 0
+                        
+                    } else {
+                        counter += 1
+                    }
+                }
+            }
+        }
+}
+
 }
