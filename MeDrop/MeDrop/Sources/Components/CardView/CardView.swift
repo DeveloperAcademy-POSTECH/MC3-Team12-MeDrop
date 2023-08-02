@@ -28,19 +28,19 @@ struct CardView: View {
 }
 
 struct PlusCardView: View {
-var body: some View {
-    RoundedRectangle(cornerRadius: 20)
-        .shadow(radius: 10)
-        .padding()
-        .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
-        .foregroundColor(.white)
-        .overlay(
-            Image("Plus")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.width / 3)
-        )
-}
+    var body: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .shadow(radius: 10)
+            .padding()
+            .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
+            .foregroundColor(.white)
+            .overlay(
+                Image("Plus")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.width / 5)
+            )
+    }
 }
 
 struct FinalCardView: View {

@@ -27,14 +27,12 @@ struct CustomCarouselView: View {
     var body: some View {
         ZStack {
             ForEach($cards.indices, id: \.self) { index in
-                DeletableCardView(card: $cards[index])
+                DeletableCardView(card: $cards[index], cards: $cards)
                     .onTapGesture {
                         isDetail.toggle()
                     }
                     .navigationDestination(isPresented: $isDetail) {
-                        if Int(draggingItem) < cards.count {
-                            CardDetailMyView(card: $cards[Int(draggingItem)], cards: $cards)
-                        }
+                            CardDetailMyView(card: $cards[Int(index)], cards: $cards)
                     }
                     .scaleEffect(0.9 - abs(distance(index)) * 0.2)
                     .opacity(Double(index) == draggingItem ? 1.0 : 0.5)

@@ -12,20 +12,21 @@ struct DeletableCardView: View {
     @State private var isShowingDeleteIcon = false
     @State private var dragOffset: CGSize = .zero // 드래그 오프셋을 추적하기 위한 변수 추가
     @State private var stoppedOffset: CGFloat = 0
-    @State var isDelete = false
     let cardMaxHeight: CGFloat = UIScreen.height * 0.08
     let deleteIconMaxOpacity: Double = 1.0
     let deleteIconMinOpacity: Double = 0.0
+    
+    @State var isDelete = false
+    @Binding var cards: [ProfileCardModel]
     
     var body: some View {
         ZStack {
             VStack {
                 Spacer()
                 Button(action: {isDelete.toggle()}) {
-                    Image(systemName: "trash.circle")
+                    DeleteView()
                 }
-                .foregroundColor(.red)
-                .font(.largeTitle)
+                .foregroundColor(.black)
                 .opacity(isShowingDeleteIcon ? deleteIconMaxOpacity : deleteIconMinOpacity)
                 .animation(.spring())
                 
@@ -55,13 +56,24 @@ struct DeletableCardView: View {
                         }
                 )
                 .animation(.spring())
-            
+        }
+        .confirmationDialog("카드를 삭제 하시겠습니까?\n카드 속 모든 정보가 ME DROP에서 제거됩니다.", isPresented: $isDelete, titleVisibility: .visible
+        ) {
+            Button("카드 삭제", role: .destructive) {
+                isDelete.toggle()
+                cards.removeAll { $0.id == card.id }
+            }
+            Button("취소", role: .cancel) {
+                isDelete.toggle()
+                isShowingDeleteIcon.toggle()
+                stoppedOffset = 0
+            }
         }
     }
 }
 
 struct DeletableCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]))
+        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]), cards: .constant(ProfileCardModel.sampleData))
     }
 }
