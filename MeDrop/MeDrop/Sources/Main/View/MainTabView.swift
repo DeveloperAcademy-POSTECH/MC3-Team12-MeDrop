@@ -32,7 +32,7 @@ struct MainTabView: View {
                                 }
                             }
                         case .exchange:
-                            ExchangeView(card:ProfileCardModel.sampleData[1],tab: $selectedTab)
+                            ExchangeView(card:ProfileCardModel.sampleData[1],tab: $selectedTab) //TODO: 선택된 카드로 넣기
                         }
                     }
                 }
