@@ -50,7 +50,7 @@ struct ProfileCardModel: ProfileCard, Identifiable,Hashable {
     var linkedin: String = ""
     var youtube: String = ""
     
-    var designType: String = ""
+    var designType: String = "0-0"
     
     var date: Int = 20200101
 
