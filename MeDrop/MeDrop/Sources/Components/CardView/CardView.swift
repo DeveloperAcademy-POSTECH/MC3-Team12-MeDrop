@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CardView: View {
-    @Binding var card: ProfileCardModel
+    var card: ProfileCardModel
     var body: some View {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
@@ -58,7 +58,7 @@ struct FinalCardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: .constant(ProfileCardModel.sampleData[1]))
+        CardView(card: ProfileCardModel.sampleData[1])
     }
 }
 

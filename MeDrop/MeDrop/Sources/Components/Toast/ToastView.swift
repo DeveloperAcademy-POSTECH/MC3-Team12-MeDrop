@@ -15,8 +15,15 @@ struct ToastView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
-                Image(systemName: type.iconFileName)
-                    .foregroundColor(type.themeColor)
+                
+                if type == .exchange {
+                    Image(type.iconFileName)
+                }
+                else{
+                    Image(systemName: type.iconFileName)
+                        .foregroundColor(type.themeColor)
+                }
+                
                 
                 VStack(alignment: .leading) {
                     Text(title)

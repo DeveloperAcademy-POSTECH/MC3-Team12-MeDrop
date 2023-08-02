@@ -14,11 +14,20 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if !viewModel.isSplashFinished {
-                LottieView(jsonName: "MEDROP") { _ in
-                    withAnimation {
-                        viewModel.isSplashFinished.toggle()
+                Image("Splash")
+                    .frame(width: 350,height: 350)
+                    .onAppear{
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                            
+                            withAnimation {
+                                viewModel.isSplashFinished.toggle()
+                            }
+                            
+                           
+                        }
+                        
                     }
-            }
             } else if viewModel.isSplashFinished && viewModel.id == nil {
                 OnBoardView()
             } else {

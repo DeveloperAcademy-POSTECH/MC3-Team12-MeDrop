@@ -71,9 +71,7 @@
 		B09951582A5E377A009AC534 /* OnBoardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09951572A5E377A009AC534 /* OnBoardTab.swift */; };
 		B099515B2A5F7E41009AC534 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B099515A2A5F7E41009AC534 /* Lottie */; };
 		B099515E2A5F7F84009AC534 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099515D2A5F7F84009AC534 /* LottieView.swift */; };
-		B09951642A5FF55C009AC534 /* MEDROP.json in Resources */ = {isa = PBXBuildFile; fileRef = B09951632A5FF55C009AC534 /* MEDROP.json */; };
 		B0D9B37D2A6F4FF80032B8FF /* ExchangeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B37C2A6F4FF80032B8FF /* ExchangeDataModel.swift */; };
-		B0D9B37F2A74F11E0032B8FF /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B0D9B37E2A74F11E0032B8FF /* Loading.json */; };
 		B0D9B3822A764D7F0032B8FF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3812A764D7F0032B8FF /* Toast.swift */; };
 		B0D9B3842A764DB30032B8FF /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3832A764DB30032B8FF /* ToastView.swift */; };
 		B0D9B3862A764E4C0032B8FF /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */; };
@@ -146,9 +144,7 @@
 		B09951552A5CF15E009AC534 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		B09951572A5E377A009AC534 /* OnBoardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardTab.swift; sourceTree = "<group>"; };
 		B099515D2A5F7F84009AC534 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
-		B09951632A5FF55C009AC534 /* MEDROP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MEDROP.json; sourceTree = "<group>"; };
 		B0D9B37C2A6F4FF80032B8FF /* ExchangeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDataModel.swift; sourceTree = "<group>"; };
-		B0D9B37E2A74F11E0032B8FF /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		B0D9B3812A764D7F0032B8FF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B0D9B3832A764DB30032B8FF /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B0D9B3852A764E4C0032B8FF /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
@@ -325,8 +321,6 @@
 				B099510D2A57A8A0009AC534 /* DesignSystem */,
 				B09950F92A57A0EC009AC534 /* Fonts */,
 				B0E4D6952A5266D100788200 /* Assets.xcassets */,
-				B0D9B37E2A74F11E0032B8FF /* Loading.json */,
-				B09951632A5FF55C009AC534 /* MEDROP.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -639,7 +633,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09951642A5FF55C009AC534 /* MEDROP.json in Resources */,
 				B09951232A5838DF009AC534 /* GoogleService-Info.plist in Resources */,
 				B099510B2A57A412009AC534 /* SF-Pro-Text-Semibold.otf in Resources */,
 				B09951032A57A412009AC534 /* SF-Pro-Text-Medium.otf in Resources */,
@@ -653,7 +646,6 @@
 				B09951092A57A412009AC534 /* SF-Pro-Text-Heavy.otf in Resources */,
 				B09951042A57A412009AC534 /* SF-Pro-Text-Light.otf in Resources */,
 				B09951062A57A412009AC534 /* SF-Pro-Text-Regular.otf in Resources */,
-				B0D9B37F2A74F11E0032B8FF /* Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

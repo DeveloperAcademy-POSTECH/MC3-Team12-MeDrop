@@ -32,7 +32,7 @@ struct DeletableCardView: View {
                 .padding()
             }
             
-            CardView(card: $card)
+            CardView(card: card)
                 .offset(y: max(dragOffset.height + stoppedOffset, -cardMaxHeight)) // 멈출 높이에 오프셋 추가
                 .gesture(
                     DragGesture()
