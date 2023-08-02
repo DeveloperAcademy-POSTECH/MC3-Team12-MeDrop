@@ -34,7 +34,7 @@ struct MainTabView: View {
                                 }
                             }
                         case .exchange:
-                            ExchangeView(card: cardStore.myCards[selectedIndex],tab: $selectedTab) //TODO: 선택된 카드로 넣기
+                            ExchangeView(card: cardStore.myCards[selectedIndex],tab: $selectedTab)
                         }
                     }
                 }
