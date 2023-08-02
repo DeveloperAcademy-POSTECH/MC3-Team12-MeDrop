@@ -12,10 +12,11 @@ struct DeletableCardView: View {
     @State private var isShowingDeleteIcon = false
     @State private var dragOffset: CGSize = .zero // 드래그 오프셋을 추적하기 위한 변수 추가
     @State private var stoppedOffset: CGFloat = 0
-    @State var isDelete = false
     let cardMaxHeight: CGFloat = UIScreen.height * 0.08
     let deleteIconMaxOpacity: Double = 1.0
     let deleteIconMinOpacity: Double = 0.0
+    
+    @Binding var isDelete: Bool
     
     var body: some View {
         ZStack {
@@ -54,13 +55,23 @@ struct DeletableCardView: View {
                         }
                 )
                 .animation(.spring())
-            
+        }
+        .confirmationDialog("카드를 삭제 하시겠습니까?\n 이 행동은 돌이킬 수 없습니다.", isPresented: $isDelete, titleVisibility: .visible
+        ) {
+            Button("카드 삭제", role: .destructive) {
+                isDelete.toggle()
+            }
+            Button("취소", role: .cancel) {
+                isDelete.toggle()
+                isShowingDeleteIcon.toggle()
+                stoppedOffset = 0
+            }
         }
     }
 }
 
 struct DeletableCardView_Previews: PreviewProvider {
     static var previews: some View {
-        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]))
+        DeletableCardView(card: .constant(ProfileCardModel.sampleData[1]), isDelete: .constant(false))
     }
 }
