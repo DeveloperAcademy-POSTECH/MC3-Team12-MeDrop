@@ -22,10 +22,9 @@ struct DeletableCardView: View {
             VStack {
                 Spacer()
                 Button(action: {isDelete.toggle()}) {
-                    Image(systemName: "trash.circle")
+                    DeleteView()
                 }
-                .foregroundColor(.red)
-                .font(.largeTitle)
+                .foregroundColor(.black)
                 .opacity(isShowingDeleteIcon ? deleteIconMaxOpacity : deleteIconMinOpacity)
                 .animation(.spring())
                 
