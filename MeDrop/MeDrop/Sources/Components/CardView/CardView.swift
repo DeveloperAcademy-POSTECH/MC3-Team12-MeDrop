@@ -45,20 +45,48 @@ struct PlusCardView: View {
 
 struct FinalCardView: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 20)
-            .shadow(radius: 15)
-            .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
-            .padding()
-            .overlay(
-                Text("Final")
-                    .foregroundColor(.white)
-            )
+       
+            RoundedRectangle(cornerRadius: 20)
+                .shadow(radius: 10)
+                .overlay(
+                    ZStack {
+                        Image("PlusDisabled")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.width / 5)
+                        VStack {
+                            Spacer()
+                            HStack(spacing: 0) {
+                                Text("최대 ")
+                                Text("5개")
+                                    .fontWeight(.bold)
+                                Text("까지 만들 수 있어요.")
+                            }
+//                            .font(.caption)
+                            .padding(3)
+                            .foregroundColor(.black)
+                            
+                            VStack{
+                                Text("카드를 추가하려면")
+                                Text("기존 명함을 위로 스와이프해서 지워주세요.")
+                                Spacer()
+                                    .frame(height: UIScreen.height * 0.05)
+                            }
+                                .foregroundColor(DesignSystemAsset.gray3)
+                                .font(.caption)
+                        }
+                    }
+                )
+                .padding()
+                .frame(width: UIScreen.height * 0.6 * (3/5), height: UIScreen.height * 0.6)
+                .foregroundColor(.white)
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: ProfileCardModel.sampleData[1])
+//        CardView(card: ProfileCardModel.sampleData[1])
+        FinalCardView()
     }
 }
 

@@ -109,7 +109,7 @@ struct MyCardsView: View {
                 }
             }
             .navigationDestination(isPresented: $isCreate) {
-                CreateCardView(editingCard: $makingCard, originCard: $makingCard , cards: $myCards, isCreate: true)
+                CreateCardView(editingCard: $makingCard, originCard: $makingCard, cards: $myCards, isCreate: true)
             }
         }
         .onChange(of: scenePhase) { phase in

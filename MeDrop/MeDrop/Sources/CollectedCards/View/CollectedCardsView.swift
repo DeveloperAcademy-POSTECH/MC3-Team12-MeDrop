@@ -103,7 +103,6 @@ struct CollectedCardsView: View {
             ZStack {
                 DesignSystemAsset.gray4
                     .edgesIgnoringSafeArea(.all)
-                
                 VStack(alignment: .leading ) {
                     sortingButton
                     Spacer()
@@ -114,7 +113,6 @@ struct CollectedCardsView: View {
                                 Button(action: {
                                     selectedProfile = profile
                                     isDetail.toggle()
-                                    
                                 },
                                        label: { CollectedCardComponent(yourCards: $yourCards, profileCard: profile).padding(.horizontal)
                                 }
@@ -142,9 +140,8 @@ struct CollectedCardsView: View {
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive { saveAction() }
             }
-
         }
-        
+        .tint(.black)
     }
 }
 
