@@ -46,25 +46,12 @@ struct MyCardsView: View {
                         }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
                 else {
                     ZStack {
-                                    Button(action: {
-                                        print("export")
-                                        expand.toggle()
-                                    }, label: {
-                                        Image("ExportButton")
-                                            .resizable()
-                                            .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
-                                            .scaledToFit()
-                                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-                                    })
-                                    .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
-                                
+                        if selectedIndex < myCards.count {
+                            ImageRenderView(card: myCards[selectedIndex])
+                                .offset(y: expand ?  -UIScreen.height * 0.16 : 0)
+                        }
                         Button(action: {
-                            
-                            print(selectedIndex)
-                            print(PreferenceManager.myCards!.count)
-                            
-                        
-                            
+   
                             if selectedIndex >= 0 && selectedIndex < myCards.count {
                                 selectedTab = .exchange
                             } else {
