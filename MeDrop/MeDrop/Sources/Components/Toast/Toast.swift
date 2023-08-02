@@ -32,7 +32,7 @@ extension ToastStyle {
         case .warning: return "exclamationmark.triangle.fill"
         case .success: return "checkmark.circle.fill"
         case .error: return "xmark.circle.fill"
-        case .exchange: return "ToastImage"
+        case .exchange: return "toastImage"
         }
     }
 }

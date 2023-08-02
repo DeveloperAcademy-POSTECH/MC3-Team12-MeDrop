@@ -47,8 +47,7 @@ class ExchangeViewModel: NSObject, ObservableObject {
         
         self.mcAdvertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: serviceType)
         self.mcBrowser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: serviceType)
-        
-        
+           
         super.init()
         mcSession.delegate = self
         mcAdvertiser.delegate = self
@@ -152,6 +151,13 @@ extension ExchangeViewModel {
             }
         }
     }
+    
+    public func save(){
+        var container = PreferenceManager.collections
+        container?.append(receiveCard)
+        PreferenceManager.collections = container
+        disConnecting()
+    }
 }
 
 extension ExchangeViewModel: MCSessionDelegate {
@@ -168,6 +174,7 @@ extension ExchangeViewModel: MCSessionDelegate {
             DispatchQueue.main.async { [weak self] in
                 guard let self else {return}
                 self.connectedPeers = session.connectedPeers
+                self.connectedPeers = self.connectedPeers.uniqued() // 중복제거
             }
             
         @unknown default:
