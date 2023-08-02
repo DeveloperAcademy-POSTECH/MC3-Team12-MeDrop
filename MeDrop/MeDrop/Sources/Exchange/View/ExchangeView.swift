@@ -99,12 +99,7 @@ struct ExchangeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(DesignSystemAsset.white2)
         .toastView(toast: $viewModel.toast)
-        .sheet(isPresented: $showSheet,onDismiss: {
-                  
-            if !PreferenceManager.firstExchange! { //만약 닫을 때 동의가 안된 상태면
-                //TODO: 내 카드로 이동
-            }
-        }) {
+        .sheet(isPresented: $showSheet) {
             firstExchangeConractView()
         }
         .onAppear{
@@ -326,6 +321,8 @@ extension ExchangeView {
             Button {
                 PreferenceManager.firstExchange = true
                 showSheet = false
+                viewModel.invalidate()
+                selectedTab = .my  
             } label: {
                 Text("취소하기")
                     .foregroundColor(DesignSystemAsset.btBlue)
