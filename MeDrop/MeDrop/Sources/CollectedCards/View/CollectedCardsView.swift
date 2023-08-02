@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CollectedCardsView: View {
-    
     @Binding var selectedTab: Tab
     
     @State var sortedBy = "이름 순서"
@@ -105,13 +104,9 @@ struct CollectedCardsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 DesignSystemAsset.gray4
                     .edgesIgnoringSafeArea(.all)
-                
-                
                 VStack(alignment: .leading ) {
-                    
                     sortingButton
                     
                     Spacer()
@@ -123,7 +118,6 @@ struct CollectedCardsView: View {
                                     selectedProfile = profile
                                     
                                     isDetail.toggle()
-                                    
                                 },
                                        label: { CollectedCardComponent(profileCard: profile)})
                                 .navigationDestination(isPresented: $isDetail) {
@@ -165,9 +159,8 @@ struct CollectedCardsView: View {
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive { saveAction() }
             }
-
         }
-        
+        .tint(.black)
     }
 }
 

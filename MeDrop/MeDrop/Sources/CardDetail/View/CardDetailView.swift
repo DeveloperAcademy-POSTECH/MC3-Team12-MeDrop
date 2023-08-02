@@ -22,6 +22,7 @@ struct CardDetailView: View {
     var body: some View {
         VStack {
             ZStack {
+                
                 VStack {
                     Spacer()
                     VStack(spacing: 12) {
@@ -42,30 +43,31 @@ struct CardDetailView: View {
                                 Spacer()
                             }
                         }
-                    }
-                    if !card.introduction.isEmpty {
+                        if !card.introduction.isEmpty {
+                            HStack {
+                                Image(systemName: "person.fill")
+                                Text("\(card.introduction)")
+                                Spacer()
+                            }
+                        }
                         HStack {
-                            Image(systemName: "person.fill")
-                            Text("\(card.introduction)")
+                            Image(systemName: "phone.fill")
+                            Text("\(card.contact)")
                             Spacer()
                         }
-                    }
-                    HStack {
-                        Image(systemName: "phone.fill")
-                        Text("\(card.contact)")
-                        Spacer()
-                    }
-                    if !card.email.isEmpty {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                            Text("\(card.email)")
-                            Spacer()
+                        if !card.email.isEmpty {
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                Text("\(card.email)")
+                                Spacer()
+                            }
                         }
                     }
+                    .padding(40)
+                    .padding(.bottom, 0)
                     Spacer()
                         .frame(height: UIScreen.height * 0.1)
                 }
-                .padding()
                 
                 VStack {
                     Spacer()
@@ -92,7 +94,6 @@ struct CardDetailView: View {
                                 .scaledToFit()
                                 .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
                                 .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
-                            
                         }
                         
                         Button(action: {
@@ -113,7 +114,6 @@ struct CardDetailView: View {
                                     .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
                                     .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
                             }
-                            
                         }
                         .disabled(card.email.isEmpty)
                         
@@ -123,11 +123,9 @@ struct CardDetailView: View {
                                     VStack(spacing: 20) {
                                         ForEach(socialMediaLinks, id: \.self) { link in
                                             Button(action: {
-                                                
                                                 if let url = URL(string: card.link(for: link)) {
                                                     UIApplication.shared.open(url)
                                                 }
-                                                
                                             }) {
                                                 VStack {
                                                     Image(link.icon)
@@ -152,8 +150,7 @@ struct CardDetailView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .shadow(color: Color(#colorLiteral(red: 0.051, green: 0.153, blue: 0.314, alpha: 1)).opacity(0.16), radius: 20, x: 28, y: 28)
-                                        .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)
-                                    
+                                        .shadow(color: Color.white.opacity(1), radius: 48, x: -23, y: -23)  
                                 } else {
                                     Image("AddUp")
                                         .resizable()
@@ -166,8 +163,6 @@ struct CardDetailView: View {
                     }
                 }// VStack
                 .padding()
-                
-                
             }
             if isFromMy {
                 Button(action: { isDelete.toggle() }){
