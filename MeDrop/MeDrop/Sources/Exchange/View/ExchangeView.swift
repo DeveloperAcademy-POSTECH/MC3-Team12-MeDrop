@@ -10,55 +10,62 @@ import SwiftUI
 
 struct ExchangeView: View {
     
-    @ObservedObject var viewModel:ExchangeViewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
-//    init(){
-//        viewModel = .init(data: ExchangeDataModel(userName: "ㅈㄷㅂㄷ", team: "소속2", job: "디자이너", cardInfo: "hhh"))
-//    }
+    @ObservedObject var viewModel:ExchangeViewModel
+    @Binding var selectedTab: Tab
+    @State var showSheet:Bool = false
+    init(card:ProfileCardModel,tab:Binding<Tab>){
+        self._viewModel = ObservedObject.init(initialValue: ExchangeViewModel(data: card))
+        self._selectedTab = tab
+    }
+    
     var bottomBar: some View {
-        HStack(alignment: .bottom, spacing: 0) {
+        HStack(spacing: 0) {
             Spacer()
             ForEach(tabItems) { tabItem in
-                if tabItem.type == .tabType {
-                    Button(action: {
+                Button(action: {
                         withAnimation(.easeInOut) {
                             selectedTab = tabItem.tab!
-                        } }) {
+                        }
+                }) {
+                    if tabItem.type == .tabType {
                         VStack(spacing: 0) {
                             Image(systemName: tabItem.icon)
                                 .symbolVariant(.fill)
                                 .font(.body.bold())
                             Text(tabItem.text)
-                                .font(Font.custom("SF Pro Text", size: 11))
-                        }.foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)} }
-                else {
-                            Image("ExchangeMenu_Black")
-                                .resizable()
-                                .frame(width: UIScreen.width * 0.15, height: UIScreen.width * 0.15)
-                                .scaledToFit()
-                                .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-                                .offset(y: -UIScreen.height * 0.05)
+                                .font(.caption2)
+                                .lineLimit(1)
+                        }
+                    } else {
+                        Image(systemName: tabItem.icon).foregroundColor(selectedTab == .my ? .black : .gray).padding()
+                            .symbolVariant(.fill)
+                            .font(.body.bold())
+//                            .foregroundColor(Color.white)
+                            .background(Circle().foregroundColor(.white))
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                            
+                            .disabled(selectedTab == .your)
                     }
                 }
+                .offset(y: tabItem.type == .tabType ? 0 : -35)
+                .foregroundColor(selectedTab == tabItem.tab ? .black : .secondary)
                 .frame(maxWidth: .infinity)
                 Spacer()
-            }        .frame(height: UIScreen.height * 0.1, alignment: .top)
+            }
         }
+        .frame(height: 88, alignment: .top)
+        .padding(.top, 14)
+    }
     
-    @Binding var selectedTab: Tab
-    @State var showSheet:Bool = false
+
     
     var body: some View {
                     
-            VStack {
                 ZStack {
-                    DesignSystemAsset.white2.ignoresSafeArea()
-                    Group {
+                    Group{
                         if viewModel.connectedPeers.isEmpty {
                             
-                            yellowJellySpeachView(text: "교환을 할 수 있는 유저가 없어요...\n저희 앱을 추천해 보세요!", fontSize: 17)
-                            Button("Start") {
-                                viewModel.startHosting()
-                            }
+                            exchangePlaceHolderView(text: "교환을 할 수 있는 유저가 없어요.\n상대방도 미드랍 앱을 켜면 교환이 가능해요", fontSize: 17)
                         }
                         
                         else {
@@ -72,9 +79,8 @@ struct ExchangeView: View {
                             
                         case .request:
                             requestView()
-                            
                         case .waiting:
-                            loadingView()
+                            LoadingView()
                         case .exchange:
                             receiveCardView()
                         case .none:
@@ -86,22 +92,21 @@ struct ExchangeView: View {
                         Color.black.opacity(0.8)
                             .ignoresSafeArea()
                     }
+                    .zIndex(1)
                     
+                    VStack{
+                        Spacer()
+                        TabClipperShape(radius: 38.0)
+                            .fill(Color(.white))
+                            .frame(height: UIScreen.height * 0.1, alignment: .top)
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
+                            .overlay(bottomBar)
+                    }
                     
                 }
-                
-                TabClipperShape(radius: 38.0)
-                    .fill(Color(.white))
-                    .frame(height: UIScreen.height * 0.1, alignment: .top)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: -1)
-                    .overlay(bottomBar)
-                    
-                
-                
-            
-        }.edgesIgnoringSafeArea(.bottom)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(DesignSystemAsset.white2)
+            .padding(.top,safeArea.top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(DesignSystemAsset.white2)
         .toastView(toast: $viewModel.toast)
         .sheet(isPresented: $showSheet,onDismiss: {
                   
@@ -119,13 +124,8 @@ struct ExchangeView: View {
 
 extension ExchangeView {
     @ViewBuilder
-    private func yellowJellySpeachView(spacing: CGFloat = 20, text: String, fontSize:CGFloat = 12, textColor:Color = .black) -> some View {
+    private func exchangePlaceHolderView(spacing: CGFloat = 20, text: String, fontSize:CGFloat = 12, textColor:Color = DesignSystemAsset.blue3) -> some View {
         VStack(spacing: spacing) {
-            Image(DesignSystemAsset.Jelly.yellowSmallJelly.rawValue)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 50, height: 50)
-            
             Text(text)
                 .foregroundColor(textColor)
                 .font(.bold(fontSize))
@@ -136,8 +136,17 @@ extension ExchangeView {
     
     @ViewBuilder
     private func advertiserList() -> some View {
-        VStack {
-            yellowJellySpeachView(text: "누구에게 교환을 요청할까요?")
+        VStack(spacing:0) {
+            
+            VStack(spacing:16){
+                Text("교환하기")
+                    .font(.bold(17))
+                    .foregroundColor(.black)
+                    
+                
+                exchangePlaceHolderView(text: "교환을 진행할 사람을 선택해주세요.",fontSize: 13)
+            }
+           
             
             List(viewModel.connectedPeers, id: \.self) { peer in
                 let displayName = peer.displayName
@@ -178,19 +187,12 @@ extension ExchangeView {
     
     @ViewBuilder
     private func receiveCardView(arcColor: Color = .gray) -> some View {
-        ZStack {
-            Color.black.opacity(0.6)
-               
                 
-            VStack {
-                yellowJellySpeachView(text: "상대방의 명함을 저장해보세요!", textColor: .white)
-                    .padding(.top, 20)
-                
-                    
-                
+
                 VStack(spacing: 30) {
                     
-                    TmpCardView(card: ProfileCardModel(name: "젤리빈", contact: "010-0000-0000", company: "􀣺 jelly Developer Academy", job: "Designer.", introduction: "한 줄 소개; 젤리빈 어쩌구 저쩌구", email: "jellyBeen@gmail.com", link: "jellyBeen.com"))
+                    
+                    CardView(card: viewModel.data)
                         
                         
                     
@@ -204,21 +206,15 @@ extension ExchangeView {
                     .padding(.vertical, 14)
                     .frame(maxWidth: .infinity)
 
-                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.yellow2))
+                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(DesignSystemAsset.btBeige))
                 }
-                .padding(.horizontal, 20)
+                .padding(.top,safeArea.top)
+                .padding(.bottom,120)
+                .padding(.horizontal, 45)
                  
-               Spacer()
-            }
-            .padding(.top, safeArea.top)
-            .padding(.bottom,safeArea.bottom)
-        }
-        .background(alignment: .bottom) {
-            ArcView()
-                .frame(width: UIScreen.width, height: UIScreen.width)
-                .foregroundColor(arcColor)
-                .edgesIgnoringSafeArea(.bottom)
-        }
+            
+            
+
         
     }
     
@@ -251,7 +247,7 @@ extension ExchangeView {
         
         VStack(spacing: 50) {
             VStack(spacing: 30){
-                Text("\(viewModel.alertUserName)님에게 교환 요청이 왔어요!\n교환을 시작할까요?")
+                Text("\(viewModel.alertUserName)님에게\n교환을 시작할까요?")
                     .foregroundColor(DesignSystemAsset.white1)
                     .font(.heavy(24))
                 
@@ -295,29 +291,6 @@ extension ExchangeView {
         }
         
     }
-    
-    @ViewBuilder
-    private func loadingView() -> some View {
-        
-        VStack{
-            Text("교환 수락을 기다리는 중...")
-                .font(.bold(24))
-                .foregroundColor(.white)
-            LottieView(jsonName: "MEDROP",loopMode: .loop) { _ in
-                
-            }
-            VStack(spacing: 0) {
-                Text("교환할 상대의 기기와 맞닿아 주세요.")
-                    .foregroundColor(.black)
-                    .font(.bold(15))
-                Text("주변에 같은 무선인터넷을 이용하는 사람이 많다면\n로딩이 길어질 수 있습니다.")
-                    .foregroundColor(.black)
-                    .font(.regular(15))
-                    .multilineTextAlignment(.center)
-            }
-        }
-    }
-    
     @ViewBuilder
     private func firstExchangeConractView() -> some View {
         
@@ -356,14 +329,14 @@ extension ExchangeView {
             .padding(.vertical,14)
             .frame(maxWidth: .infinity)
 
-            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.gray1))
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(DesignSystemAsset.blue4))
             
             Button {
                 PreferenceManager.firstExchange = true
                 showSheet = false
             } label: {
-                Text("동의안함")
-                    .foregroundColor(DesignSystemAsset.gray1)
+                Text("취소하기")
+                    .foregroundColor(DesignSystemAsset.btBlue)
                     .font(.heavy(17))
             }
             .padding(.vertical,14)
@@ -404,4 +377,51 @@ struct TmpCardView: View {
                 .foregroundColor(.white)
         }
     }
+}
+
+struct LoadingView: View {
+    
+    @State var loadingText: [String] = "MEDROP".map{String($0)}
+    @State private var counter:Int = 0
+    
+    private let timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    
+    var body: some View{
+        VStack(spacing:20){
+            
+            Text("상대방의 응답을 기다리고 있어요.")
+                .font(.bold(24))
+                .foregroundColor(.white)
+                .padding(.bottom,30)
+            Image("Logo")
+                .resizable()
+                .scaledToFill()
+                .frame(width:200,height: 200)
+            
+            HStack(spacing:0){
+                ForEach(loadingText.indices){ index in
+                    Text(loadingText[index])
+                        .font(.heavy(28))
+                        .foregroundColor(.white)
+                        .offset(y:counter == index ? -10 :0)
+                    
+                }
+            }
+            .transition(.scale.animation(.easeIn))
+            .onReceive(timer) { _ in
+                withAnimation(.spring()) {
+                    
+                    let lastIndex = loadingText.count - 1
+                    
+                    if counter == lastIndex {
+                        counter = 0
+                        
+                    } else {
+                        counter += 1
+                    }
+                }
+            }
+        }
+}
+
 }
