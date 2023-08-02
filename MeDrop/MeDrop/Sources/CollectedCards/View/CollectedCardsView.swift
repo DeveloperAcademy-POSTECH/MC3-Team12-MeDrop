@@ -12,7 +12,7 @@ struct CollectedCardsView: View {
     
     @State var sortedBy = "이름 순서"
     @State var selectedProfile: ProfileCardModel = ProfileCardModel.sampleData[0]
-    @Binding var yourCards: [ProfileCardModel]
+    @State var container = PreferenceManager.collections!
     @State var isDetail: Bool = false
     @Environment(\.scenePhase) private var scenePhase
 
@@ -80,15 +80,15 @@ struct CollectedCardsView: View {
                 Image(systemName: "chevron.down").foregroundColor(.red)
             }.onChange(of: sortedBy) { _ in
                 if sortedBy == "이름 순서" {
-                    yourCards.sort {
+                    container.sort {
                         $0.name < $1.name
                     }
                 } else if sortedBy == "새로운 순서" {
-                    yourCards.sort {
+                    container.sort {
                         $0.date < $1.date
                     }
                 } else {
-                    yourCards.sort {
+                    container.sort {
                         $0.date > $1.date
                     }
                 }
@@ -107,18 +107,18 @@ struct CollectedCardsView: View {
                     sortingButton
                     Spacer()
                     
-                    if yourCards.isEmpty == false {
+                    if container.isEmpty == false {
                         ScrollView {
-                            ForEach(yourCards, id:\.self) { profile in
+                            ForEach(container, id:\.self) { profile in
                                 Button(action: {
                                     selectedProfile = profile
                                     isDetail.toggle()
                                 },
-                                       label: { CollectedCardComponent(yourCards: $yourCards, profileCard: profile).padding(.horizontal)
+                                       label: { CollectedCardComponent(yourCards: $container, profileCard: profile).padding(.horizontal)
                                 }
                                 ).buttonStyle(.plain)
                                 .navigationDestination(isPresented: $isDetail) {
-                                    CardDetailCollectedView(card: $selectedProfile, cards: $yourCards)
+                                    CardDetailCollectedView(card: $selectedProfile, cards: $container)
                                 }
                             }
                         }
@@ -147,6 +147,6 @@ struct CollectedCardsView: View {
 
 struct CollectedCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectedCardsView(selectedTab: .constant(Tab.your), yourCards: .constant(ProfileCardModel.sampleData),saveAction: {})
+        CollectedCardsView(selectedTab: .constant(Tab.your), container: ProfileCardModel.sampleData, saveAction: {})
     }
 }

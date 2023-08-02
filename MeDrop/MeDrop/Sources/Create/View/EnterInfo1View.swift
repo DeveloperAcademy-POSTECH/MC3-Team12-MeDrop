@@ -169,9 +169,6 @@ var body: some View {
                     
                 })
             TextField ("010-0000-0000", text: textChangedBinding)
-            .onChange(of: text ) { _ in
-                print(text)
-    }
     }
             }
         }

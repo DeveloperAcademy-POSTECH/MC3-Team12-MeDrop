@@ -12,6 +12,7 @@ struct MainTabView: View {
         @State var showingAlert = false
     
         @State var selectedIndex: Int = 0
+
     
         @StateObject private var cardStore = CardStore()
         
@@ -21,20 +22,20 @@ struct MainTabView: View {
                     Group {
                         switch selectedTab {
                         case .my:
-                            MyCardsView(selectedTab: $selectedTab, myCards: $cardStore.myCards, selectedIndex: $selectedIndex ) {
+                            MyCardsView(selectedTab: $selectedTab, selectedIndex: $selectedIndex) {
                                 Task {
                                     try await cardStore.saveData()
                                 }
                             }
                         case .your:
-                            CollectedCardsView(selectedTab: $selectedTab, yourCards: $cardStore.yourCards
-                            ){
+                            CollectedCardsView(selectedTab: $selectedTab){
                                 Task {
                                     try await cardStore.saveData()
                                 }
                             }
                         case .exchange:
-                            ExchangeView(card: cardStore.myCards[selectedIndex],tab: $selectedTab)
+                            ExchangeView(card:  PreferenceManager.myCards![selectedIndex], tab: $selectedTab) //TODO: 선택된 카드로 넣기
+
                         }
                     }
                 }
