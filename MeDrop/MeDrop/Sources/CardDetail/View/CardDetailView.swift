@@ -38,24 +38,25 @@ struct CardDetailView: View {
                             Spacer()
                         }
                     }
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text("\(card.introduction)")
-                        Spacer()
+                    if !card.introduction.isEmpty {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("\(card.introduction)")
+                            Spacer()
+                        }
                     }
-                    .opacity(card.introduction.isEmpty ? 0 : 1)
-                    
                     HStack {
                         Image(systemName: "phone.fill")
                         Text("\(card.contact)")
                         Spacer()
                     }
-                    HStack {
-                        Image(systemName: "envelope.fill")
-                        Text("\(card.email)")
-                        Spacer()
+                    if !card.email.isEmpty {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text("\(card.email)")
+                            Spacer()
+                        }
                     }
-                    .opacity(card.email.isEmpty ? 0 : 1)
                 }
                 .padding(40)
                 .padding(.bottom, 0)
